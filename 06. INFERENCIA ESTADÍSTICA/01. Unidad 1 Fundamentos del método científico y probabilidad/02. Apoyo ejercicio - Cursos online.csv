@@ -1,0 +1,201 @@
+id_estudiante,curso,nivel,mes_inicio,semanas_activo,sesiones_completadas,pct_avance,completado,motivo_abandono,promedio_nota
+EST0001,ML Introducción,Intermedio,11,11,12,38.6,0,dificultad_contenido,3.9
+EST0002,Análisis de Datos,Básico,2,9,14,59.8,0,dificultad_contenido,4.9
+EST0003,SQL Avanzado,Básico,5,3,6,91.4,0,sin_soporte,3.8
+EST0004,Análisis de Datos,Intermedio,6,4,32,85.3,0,sin_soporte,4.4
+EST0005,ML Introducción,Avanzado,2,6,39,66.8,0,otro,2.1
+EST0006,SQL Avanzado,Avanzado,3,8,29,24.7,0,dificultad_contenido,5.0
+EST0007,SQL Avanzado,Intermedio,5,6,30,58.5,0,dificultad_contenido,6.1
+EST0008,SQL Avanzado,Intermedio,9,4,37,61.5,1,,5.9
+EST0009,Python Básico,Intermedio,11,11,30,29.4,0,falta_tiempo,6.3
+EST0010,Análisis de Datos,Básico,8,12,29,50.5,0,sin_soporte,4.7
+EST0011,ML Introducción,Intermedio,4,12,24,23.7,0,otro,5.0
+EST0012,Análisis de Datos,Avanzado,8,4,40,82.5,1,,5.7
+EST0013,SQL Avanzado,Avanzado,10,6,12,40.8,0,otro,5.8
+EST0014,Python Básico,Básico,3,2,28,40.2,0,otro,4.1
+EST0015,Python Básico,Intermedio,6,11,6,47.2,0,problemas_tecnicos,5.1
+EST0016,Python Básico,Intermedio,5,5,37,51.8,0,sin_soporte,4.9
+EST0017,SQL Avanzado,Intermedio,1,1,21,45.1,0,otro,6.3
+EST0018,SQL Avanzado,Intermedio,4,11,14,58.2,0,otro,5.5
+EST0019,Análisis de Datos,Avanzado,3,5,28,25.4,0,problemas_tecnicos,3.2
+EST0020,Visualización,Avanzado,4,6,16,22.9,0,problemas_tecnicos,4.6
+EST0021,Visualización,Básico,6,7,30,96.0,1,,6.2
+EST0022,Python Básico,Avanzado,5,4,29,13.4,0,problemas_tecnicos,5.4
+EST0023,Python Básico,Intermedio,9,7,9,64.9,1,,5.5
+EST0024,Análisis de Datos,Básico,5,5,39,55.0,0,dificultad_contenido,5.4
+EST0025,Python Básico,Intermedio,8,8,38,100,1,,2.9
+EST0026,SQL Avanzado,Intermedio,3,1,21,86.1,1,,7.0
+EST0027,Python Básico,Básico,11,3,6,36.1,0,problemas_tecnicos,5.3
+EST0028,ML Introducción,Básico,1,12,16,30.7,0,otro,3.0
+EST0029,Visualización,Básico,10,7,40,89.7,1,,5.7
+EST0030,SQL Avanzado,Básico,9,6,35,48.7,0,otro,5.6
+EST0031,ML Introducción,Intermedio,2,6,4,73.7,1,,4.9
+EST0032,SQL Avanzado,Avanzado,5,2,22,54.5,0,otro,4.1
+EST0033,ML Introducción,Básico,2,2,20,39.5,0,sin_soporte,5.8
+EST0034,ML Introducción,Básico,3,8,20,66.1,1,,5.2
+EST0035,ML Introducción,Básico,4,6,27,86.3,0,dificultad_contenido,6.9
+EST0036,Visualización,Avanzado,9,8,13,49.0,0,dificultad_contenido,3.5
+EST0037,Python Básico,Avanzado,1,8,33,50.0,0,otro,5.7
+EST0038,Análisis de Datos,Intermedio,2,8,37,13.0,0,dificultad_contenido,4.9
+EST0039,Visualización,Básico,9,1,10,49.6,0,falta_tiempo,6.7
+EST0040,SQL Avanzado,Intermedio,5,4,32,71.0,1,,5.3
+EST0041,SQL Avanzado,Básico,10,8,22,40.4,0,otro,4.0
+EST0042,Visualización,Básico,9,12,1,100,0,dificultad_contenido,6.6
+EST0043,ML Introducción,Avanzado,4,11,19,28.8,0,dificultad_contenido,4.7
+EST0044,Análisis de Datos,Avanzado,3,10,7,78.6,0,otro,5.7
+EST0045,Python Básico,Intermedio,6,7,37,71.6,0,sin_soporte,4.0
+EST0046,Python Básico,Intermedio,9,5,22,50.6,0,dificultad_contenido,5.6
+EST0047,ML Introducción,Intermedio,10,2,31,79.2,0,falta_tiempo,4.8
+EST0048,Visualización,Intermedio,7,8,37,67.0,1,,5.0
+EST0049,Python Básico,Básico,9,6,20,76.5,0,otro,4.1
+EST0050,ML Introducción,Básico,4,11,6,59.9,0,falta_tiempo,3.6
+EST0051,SQL Avanzado,Intermedio,11,4,21,62.4,0,falta_tiempo,5.4
+EST0052,Python Básico,Básico,7,10,12,38.8,0,falta_tiempo,3.7
+EST0053,Visualización,Avanzado,3,2,4,40.3,0,otro,5.5
+EST0054,Análisis de Datos,Básico,12,7,20,43.5,0,problemas_tecnicos,5.6
+EST0055,SQL Avanzado,Avanzado,9,7,19,37.5,0,falta_tiempo,6.9
+EST0056,Python Básico,Básico,1,2,17,100,1,,7.0
+EST0057,Python Básico,Básico,8,8,39,90.9,1,,6.2
+EST0058,Visualización,Básico,12,8,15,12.5,0,falta_tiempo,5.5
+EST0059,Python Básico,Avanzado,8,2,7,51.0,0,problemas_tecnicos,3.1
+EST0060,Visualización,Básico,7,3,1,50.7,0,problemas_tecnicos,4.8
+EST0061,Análisis de Datos,Intermedio,7,1,23,32.9,0,dificultad_contenido,6.6
+EST0062,Python Básico,Básico,12,3,37,72.8,1,,6.2
+EST0063,SQL Avanzado,Intermedio,2,8,27,16.3,0,otro,4.6
+EST0064,Visualización,Básico,7,7,22,81.5,1,,4.6
+EST0065,Análisis de Datos,Intermedio,3,10,36,86.5,1,,5.6
+EST0066,SQL Avanzado,Avanzado,8,12,10,69.7,0,dificultad_contenido,4.3
+EST0067,Python Básico,Básico,7,1,32,56.2,0,problemas_tecnicos,6.3
+EST0068,Análisis de Datos,Avanzado,8,7,40,68.0,0,otro,6.8
+EST0069,Visualización,Básico,7,7,15,73.3,0,sin_soporte,3.5
+EST0070,Análisis de Datos,Básico,1,12,2,22.1,0,otro,5.8
+EST0071,Visualización,Intermedio,9,3,30,100,1,,6.7
+EST0072,Visualización,Básico,9,9,33,99.2,1,,5.3
+EST0073,Análisis de Datos,Básico,12,2,2,8.7,0,dificultad_contenido,6.4
+EST0074,Visualización,Intermedio,1,7,3,72.0,0,dificultad_contenido,6.9
+EST0075,Análisis de Datos,Básico,12,1,12,40.8,0,sin_soporte,4.8
+EST0076,Análisis de Datos,Avanzado,8,1,39,43.1,0,falta_tiempo,4.8
+EST0077,Python Básico,Avanzado,10,2,25,29.5,0,otro,5.1
+EST0078,Python Básico,Avanzado,1,7,40,70.8,0,problemas_tecnicos,7.0
+EST0079,Análisis de Datos,Intermedio,11,10,12,95.4,1,,3.8
+EST0080,SQL Avanzado,Avanzado,2,9,28,29.8,0,otro,5.1
+EST0081,Visualización,Básico,5,5,29,60.4,0,sin_soporte,5.1
+EST0082,Análisis de Datos,Avanzado,11,3,17,87.5,0,otro,5.4
+EST0083,SQL Avanzado,Avanzado,10,1,38,60.5,0,falta_tiempo,5.9
+EST0084,Visualización,Intermedio,2,3,3,79.5,1,,4.4
+EST0085,Python Básico,Básico,6,2,40,64.0,0,otro,3.3
+EST0086,Visualización,Avanzado,8,10,1,6.2,0,otro,5.6
+EST0087,ML Introducción,Avanzado,12,6,6,77.3,0,falta_tiempo,4.0
+EST0088,SQL Avanzado,Básico,6,3,8,51.2,0,otro,5.0
+EST0089,ML Introducción,Avanzado,8,5,27,56.8,0,falta_tiempo,4.0
+EST0090,SQL Avanzado,Avanzado,7,5,3,69.2,1,,5.8
+EST0091,Python Básico,Avanzado,1,7,34,76.0,1,,5.9
+EST0092,Python Básico,Avanzado,10,12,21,100,1,,5.4
+EST0093,Análisis de Datos,Avanzado,6,1,19,43.1,0,sin_soporte,3.4
+EST0094,Python Básico,Intermedio,3,11,28,73.7,0,sin_soporte,5.4
+EST0095,Análisis de Datos,Intermedio,12,9,31,63.1,0,falta_tiempo,5.7
+EST0096,Análisis de Datos,Básico,5,6,39,83.3,1,,3.4
+EST0097,Python Básico,Básico,12,4,17,69.1,0,dificultad_contenido,5.1
+EST0098,Análisis de Datos,Básico,7,7,29,68.7,1,,4.3
+EST0099,Visualización,Intermedio,11,4,28,98.0,1,,6.8
+EST0100,Análisis de Datos,Básico,6,4,11,31.0,0,problemas_tecnicos,2.6
+EST0101,Visualización,Básico,4,10,33,55.7,0,problemas_tecnicos,5.6
+EST0102,Visualización,Intermedio,12,7,25,40.8,0,sin_soporte,5.8
+EST0103,SQL Avanzado,Básico,5,5,25,50.7,0,dificultad_contenido,5.3
+EST0104,Python Básico,Intermedio,11,12,40,82.4,1,,5.3
+EST0105,Visualización,Avanzado,9,7,11,58.5,0,sin_soporte,5.7
+EST0106,SQL Avanzado,Básico,10,12,14,94.4,1,,6.7
+EST0107,Visualización,Avanzado,9,4,26,-0.5,0,sin_soporte,4.3
+EST0108,Visualización,Básico,6,4,19,40.0,0,dificultad_contenido,5.2
+EST0109,ML Introducción,Avanzado,5,12,22,74.1,0,falta_tiempo,3.8
+EST0110,ML Introducción,Básico,3,4,17,100,1,,4.0
+EST0111,Visualización,Básico,3,10,25,37.3,0,sin_soporte,5.4
+EST0112,Python Básico,Básico,5,3,16,72.9,1,,3.1
+EST0113,Python Básico,Intermedio,4,3,14,20.6,0,dificultad_contenido,5.7
+EST0114,ML Introducción,Básico,9,7,34,83.0,1,,5.8
+EST0115,Visualización,Básico,8,5,5,85.7,1,,4.3
+EST0116,Python Básico,Intermedio,10,2,30,80.3,1,,5.4
+EST0117,Análisis de Datos,Intermedio,8,4,39,58.3,0,sin_soporte,6.4
+EST0118,ML Introducción,Intermedio,7,3,21,88.1,1,,4.6
+EST0119,Análisis de Datos,Intermedio,9,5,23,5.6,0,sin_soporte,6.4
+EST0120,SQL Avanzado,Avanzado,1,8,27,-9.7,0,falta_tiempo,5.1
+EST0121,ML Introducción,Intermedio,5,2,40,31.8,0,problemas_tecnicos,5.8
+EST0122,Análisis de Datos,Avanzado,11,4,5,40.3,0,sin_soporte,5.1
+EST0123,Visualización,Básico,1,1,7,75.4,1,,5.0
+EST0124,Análisis de Datos,Intermedio,5,1,38,34.2,0,sin_soporte,2.7
+EST0125,Python Básico,Intermedio,7,4,3,84.6,1,,4.5
+EST0126,Visualización,Avanzado,3,3,12,74.6,1,,6.2
+EST0127,SQL Avanzado,Básico,1,5,11,53.8,0,otro,6.7
+EST0128,Visualización,Intermedio,4,4,19,39.4,0,falta_tiempo,4.8
+EST0129,Visualización,Básico,1,3,35,76.4,0,sin_soporte,7.0
+EST0130,ML Introducción,Básico,2,1,40,55.8,0,problemas_tecnicos,4.8
+EST0131,Visualización,Básico,8,11,40,77.7,0,falta_tiempo,4.9
+EST0132,SQL Avanzado,Básico,6,9,19,71.3,1,,6.2
+EST0133,Visualización,Avanzado,7,3,14,84.7,1,,5.9
+EST0134,SQL Avanzado,Intermedio,3,11,40,73.4,0,problemas_tecnicos,6.0
+EST0135,Python Básico,Avanzado,9,10,33,23.4,0,otro,5.5
+EST0136,ML Introducción,Básico,4,1,38,34.1,0,problemas_tecnicos,5.1
+EST0137,Visualización,Básico,5,9,3,93.1,1,,5.1
+EST0138,ML Introducción,Básico,2,1,8,18.6,0,dificultad_contenido,3.6
+EST0139,Análisis de Datos,Intermedio,3,7,37,56.9,0,otro,7.0
+EST0140,SQL Avanzado,Avanzado,1,1,27,50.3,0,dificultad_contenido,6.4
+EST0141,Visualización,Intermedio,11,9,19,68.2,0,problemas_tecnicos,6.4
+EST0142,SQL Avanzado,Básico,11,6,21,43.6,0,problemas_tecnicos,4.2
+EST0143,Análisis de Datos,Intermedio,12,4,17,60.4,1,,4.2
+EST0144,SQL Avanzado,Intermedio,8,11,3,77.4,1,,4.4
+EST0145,Visualización,Avanzado,2,10,32,100,1,,6.0
+EST0146,SQL Avanzado,Avanzado,8,2,15,51.8,0,sin_soporte,4.8
+EST0147,Python Básico,Intermedio,7,9,18,95.5,1,,6.7
+EST0148,Python Básico,Avanzado,5,12,22,88.6,1,,4.6
+EST0149,SQL Avanzado,Básico,9,9,26,63.4,0,dificultad_contenido,5.9
+EST0150,ML Introducción,Avanzado,10,9,34,23.3,0,sin_soporte,5.2
+EST0151,SQL Avanzado,Básico,6,2,24,100,1,,6.0
+EST0152,SQL Avanzado,Básico,6,4,2,13.5,0,falta_tiempo,4.9
+EST0153,ML Introducción,Básico,2,4,12,100,1,,5.8
+EST0154,Python Básico,Avanzado,12,2,25,27.7,0,otro,6.4
+EST0155,ML Introducción,Intermedio,3,9,4,41.2,0,dificultad_contenido,7.0
+EST0156,Visualización,Básico,10,1,9,69.0,1,,4.9
+EST0157,ML Introducción,Básico,6,11,31,39.1,0,problemas_tecnicos,5.4
+EST0158,SQL Avanzado,Básico,11,11,23,49.0,0,falta_tiempo,5.1
+EST0159,Visualización,Avanzado,2,6,35,71.5,0,problemas_tecnicos,5.6
+EST0160,SQL Avanzado,Avanzado,1,4,17,83.3,1,,5.8
+EST0161,ML Introducción,Básico,5,9,3,57.0,0,otro,5.8
+EST0162,ML Introducción,Avanzado,4,1,24,28.5,0,dificultad_contenido,5.1
+EST0163,SQL Avanzado,Básico,2,5,39,98.7,0,otro,4.3
+EST0164,Visualización,Intermedio,10,5,10,31.0,0,sin_soporte,6.0
+EST0165,ML Introducción,Básico,2,6,5,59.0,0,sin_soporte,5.8
+EST0166,SQL Avanzado,Avanzado,2,8,14,57.5,0,dificultad_contenido,4.7
+EST0167,ML Introducción,Básico,12,3,8,35.6,0,problemas_tecnicos,5.3
+EST0168,Visualización,Intermedio,4,9,16,88.5,1,,5.6
+EST0169,Análisis de Datos,Básico,7,10,22,90.1,1,,2.8
+EST0170,SQL Avanzado,Básico,8,5,36,77.8,1,,3.5
+EST0171,ML Introducción,Intermedio,10,9,6,73.5,1,,4.9
+EST0172,ML Introducción,Intermedio,10,5,20,63.8,0,sin_soporte,3.2
+EST0173,Análisis de Datos,Básico,10,6,6,37.6,0,dificultad_contenido,5.4
+EST0174,ML Introducción,Avanzado,6,7,21,20.6,0,falta_tiempo,5.1
+EST0175,Visualización,Intermedio,11,11,39,92.5,1,,4.3
+EST0176,Python Básico,Avanzado,10,1,12,29.5,0,dificultad_contenido,4.6
+EST0177,Análisis de Datos,Básico,3,11,6,67.5,0,sin_soporte,5.3
+EST0178,ML Introducción,Intermedio,7,1,13,22.8,0,dificultad_contenido,6.5
+EST0179,Visualización,Intermedio,11,2,11,92.7,1,,6.0
+EST0180,Visualización,Avanzado,10,3,15,51.4,0,falta_tiempo,6.1
+EST0181,Python Básico,Intermedio,12,1,15,25.5,0,falta_tiempo,5.2
+EST0182,Análisis de Datos,Avanzado,5,1,39,54.8,0,dificultad_contenido,6.2
+EST0183,SQL Avanzado,Avanzado,7,8,24,11.8,0,falta_tiempo,7.0
+EST0184,SQL Avanzado,Intermedio,2,10,8,66.7,0,problemas_tecnicos,5.3
+EST0185,SQL Avanzado,Avanzado,7,2,4,41.3,0,sin_soporte,4.2
+EST0186,SQL Avanzado,Básico,5,8,22,30.7,0,sin_soporte,5.1
+EST0187,SQL Avanzado,Intermedio,9,1,19,62.9,1,,7.0
+EST0188,ML Introducción,Avanzado,9,3,32,40.6,0,problemas_tecnicos,5.3
+EST0189,SQL Avanzado,Básico,4,3,23,32.2,0,problemas_tecnicos,5.4
+EST0190,ML Introducción,Intermedio,9,3,34,54.2,0,falta_tiempo,4.5
+EST0191,SQL Avanzado,Intermedio,9,10,34,52.8,0,sin_soporte,5.0
+EST0192,Análisis de Datos,Intermedio,10,8,37,57.0,0,falta_tiempo,4.0
+EST0193,ML Introducción,Básico,2,7,34,64.5,0,problemas_tecnicos,4.4
+EST0194,Visualización,Avanzado,9,2,14,46.7,0,problemas_tecnicos,5.7
+EST0195,Análisis de Datos,Intermedio,3,9,1,50.0,0,otro,4.4
+EST0196,Python Básico,Intermedio,7,12,28,45.8,0,otro,5.6
+EST0197,Análisis de Datos,Básico,4,9,6,56.2,0,falta_tiempo,4.2
+EST0198,SQL Avanzado,Básico,5,10,24,74.4,0,dificultad_contenido,5.3
+EST0199,Análisis de Datos,Intermedio,5,11,39,67.3,0,dificultad_contenido,5.7
+EST0200,ML Introducción,Intermedio,4,1,38,30.9,0,problemas_tecnicos,6.9

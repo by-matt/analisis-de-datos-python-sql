@@ -1,0 +1,478 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 4 - Métodos de sumarización y análisis de variables categóricas en Pandas"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 4 – Métodos de Sumarización y Análisis de Variables Categóricas en Pandas\n",
+    "### Exploración de datos con Pandas\n",
+    "\n",
+    "**Temas:** `min()` · `max()` · `mean()` · `median()` · `sum()` · `count()` · `unique()` · `value_counts()`\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Análisis de Postulantes (RRHH)\n",
+    "\n",
+    "Tu jefatura solicita un resumen rápido de más de 1.000 registros de postulantes:\n",
+    "edad mínima/máxima, promedio, cuántos datos faltan, cargos distintos y el más demandado.\n",
+    "\n",
+    "**Archivo:** `postulantes_rrhh.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('postulantes_rrhh.csv')\n",
+    "print(f'Archivo cargado: {df.shape[0]:,} filas × {df.shape[1]} columnas')\n",
+    "print(df.head())"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–6 – `min()` y `max()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: min() y max() ────────────────────────────────────────────────────\n",
+    "\n",
+    "df['Edad'].min()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: min() y max() ────────────────────────────────────────────────────\n",
+    "\n",
+    "df['Edad'].max()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 7 – `mean()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 7: mean() — valores nulos se excluyen por defecto ──────────────────\n",
+    "\n",
+    "df['Sueldo'].mean()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 8 – `median()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 8: median() — útil con asimetrías u outliers ───────────────────────\n",
+    "\n",
+    "df['Edad'].median()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 9 – `sum()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 9: sum() — presupuestos, acumulados, balances ──────────────────────\n",
+    "\n",
+    "df['Ventas'].sum()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 10 – `count()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: count() — valores NO nulos (detecta datos faltantes) ────────────\n",
+    "\n",
+    "df['Ciudad'].count()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 10–11 – Ejemplo Aplicado (todos los métodos numéricos)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slides 10–11: Ejemplo aplicado completo ───────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "datos = {'Edad': [25, 32, 41, 38, None, 29, 44],\n",
+    "         'Departamento': ['TI', 'TI', 'RRHH', 'TI', 'RRHH', 'Ventas', 'RRHH']}\n",
+    "\n",
+    "df = pd.DataFrame(datos)\n",
+    "print(\"Edad mínima:\", df['Edad'].min())\n",
+    "print(\"Edad máxima:\", df['Edad'].max())\n",
+    "print(\"Promedio de edad:\", df['Edad'].mean())\n",
+    "print(\"Mediana de edad:\", df['Edad'].median())\n",
+    "print(\"Total de registros válidos:\", df['Edad'].count())\n",
+    "# Estos métodos se pueden aplicar también a todo el DataFrame:\n",
+    "df[['Edad']].mean()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 15 – `unique()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 15: unique() — diversidad de valores (sin frecuencia) ───────────────\n",
+    "\n",
+    "df['Departamento'].unique()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 16 – `value_counts()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 16: value_counts() — frecuencia de cada categoría, ordenada ─────────\n",
+    "\n",
+    "df['Departamento'].value_counts()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 17 – `value_counts()` con valores faltantes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: value_counts(dropna=False) — incluye NaN en el conteo ──────────\n",
+    "\n",
+    "df['Departamento'].value_counts(dropna=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Ejemplo aplicado — análisis de regiones ────────────────────────\n",
+    "\n",
+    "df = pd.DataFrame({'Región': ['Norte', 'Sur', 'Centro', 'Norte', 'Sur', 'Centro', 'Centro', 'Norte']})\n",
+    "print(\"Regiones únicas:\", df['Región'].unique())\n",
+    "print(\"Frecuencia por región:\")\n",
+    "print(df['Región'].value_counts())"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 19–23 – Ejercicio Guiado: Postulantes a Cargos Tecnológicos\n",
+    "\n",
+    "**Objetivo (Slide 20):** Resumen numérico y categórico del DataFrame de postulantes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: Crear el DataFrame de postulantes ───────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "data = {'Nombre': ['Valentina', 'Pedro', 'Laura', 'Javiera', 'Carlos', 'Martín'],\n",
+    "        'Edad': [29, 35, 31, 28, 42, 38],\n",
+    "        'Experiencia (años)': [3, 8, 5, 2, 10, 6],\n",
+    "        'Departamento': ['TI', 'TI', 'RRHH', 'TI', 'RRHH', 'Ventas']}\n",
+    "df = pd.DataFrame(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 22: Aplicar todos los métodos ──────────────────────────────────────\n",
+    "\n",
+    "print(\"Edad mínima:\", df['Edad'].min())\n",
+    "print(\"Edad máxima:\", df['Edad'].max())\n",
+    "print(\"Edad promedio:\", df['Edad'].mean())\n",
+    "print(\"Edad mediana:\", df['Edad'].median())\n",
+    "print(\"Total de años de experiencia:\", df['Experiencia (años)'].sum())\n",
+    "print(\"Cantidad de datos válidos:\", df['Edad'].count())\n",
+    "print(\"Departamentos únicos:\", df['Departamento'].unique())\n",
+    "print(\"Frecuencia de departamentos:\")\n",
+    "print(df['Departamento'].value_counts())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23: Preguntas de análisis ──────────────────────────────────────────\n",
+    "\n",
+    "rango_edad = df['Edad'].max() - df['Edad'].min()\n",
+    "depto_mas_demandado = df['Departamento'].value_counts().idxmax()\n",
+    "\n",
+    "print(f'Rango de edad: {rango_edad} años ({df[\"Edad\"].min()} – {df[\"Edad\"].max()})')\n",
+    "print(f'Departamento con mayor demanda: {depto_mas_demandado} ({df[\"Departamento\"].value_counts().max()} postulantes)')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 24–27 – Ejercicio Guiado: Asistencia a Capacitaciones\n",
+    "\n",
+    "**Objetivo (Slide 25):** Resumen estadístico y categórico para informe de gestión."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 26: Crear el DataFrame de capacitaciones ───────────────────────────\n",
+    "\n",
+    "data = {'Participante': ['Luis', 'Camila', 'Rodrigo', 'Daniela', 'Constanza', 'Ignacio'],\n",
+    "        'Edad': [34, 29, 45, 31, 27, 38],\n",
+    "        'Duración (horas)': [3, 2, 4, 3, 2, 5],\n",
+    "        'Modalidad': ['Online', 'Presencial', 'Online', 'Online', 'Presencial', 'Online']}\n",
+    "df = pd.DataFrame(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 27: Aplicar los métodos ────────────────────────────────────────────\n",
+    "\n",
+    "df['Edad'].min()\n",
+    "df['Edad'].max()\n",
+    "df['Edad'].mean()\n",
+    "df['Duración (horas)'].sum()\n",
+    "df['Modalidad'].unique()\n",
+    "df['Modalidad'].value_counts()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Actividad Autónoma – Aplicación al desafío inicial (1.200 postulantes)\n",
+    "\n",
+    "Responde las 5 preguntas del **Slide 3** con el archivo real.\n",
+    "\n",
+    "**Archivo:** `postulantes_rrhh.csv`\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 1 – Carga el archivo y aplica min(), max(), mean() y median()\n",
+    "# sobre la columna 'edad'\n",
+    "# (Slide 3: ¿edad mínima, máxima, promedio y mediana?)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df = pd.read_csv('postulantes_rrhh.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 2 – Usa count() para detectar columnas con datos faltantes\n",
+    "# (Slide 3: ¿cuántos datos faltan o están vacíos?)\n",
+    "# Compara con df.shape[0] para ver cuántos nulos hay por columna\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 3 – Usa unique() sobre 'cargo_postulado'\n",
+    "# (Slide 3: ¿cuántos tipos distintos de cargo se están postulando?)\n",
+    "# ¿Detectas algún error de tipado? (Slides 15 y 29)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 4 – Usa value_counts() sobre 'cargo_postulado'\n",
+    "# (Slide 3: ¿cuál es el cargo más demandado?)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 5 – Suma total de experiencia acumulada (experiencia_anos)\n",
+    "# y value_counts() de 'region' y 'educacion'\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Preguntas de cierre (Slides 29 y 31)\n",
+    "\n",
+    "1. ¿Qué método entrega el valor más común de una columna categórica?\n",
+    "2. ¿Cómo calcularías el promedio de una columna numérica?\n",
+    "3. ¿Qué diferencia hay entre `count()` y `value_counts()`?\n",
+    "4. ¿Qué devuelve el método `unique()`?\n",
+    "5. ¿Cómo detectarías si una variable tiene categorías mal escritas?"
+   ]
+  }
+
+ ]
+}

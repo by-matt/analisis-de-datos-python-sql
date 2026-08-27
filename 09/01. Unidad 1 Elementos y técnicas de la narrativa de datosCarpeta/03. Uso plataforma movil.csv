@@ -1,0 +1,9 @@
+usuario_id,fecha,duracion_sesion_min,acciones_realizadas,sistema_operativo,abandono_temprano
+201,2025-07-01,8,3,Android,False
+202,2025-07-01,15,7,iOS,False
+203,2025-07-02,6,2,iOS,True
+204,2025-07-02,4,1,Android,True
+205,2025-07-03,12,5,Android,False
+206,2025-07-03,5,2,iOS,True
+207,2025-07-04,3,1,Android,True
+208,2025-07-04,9,4,iOS,False

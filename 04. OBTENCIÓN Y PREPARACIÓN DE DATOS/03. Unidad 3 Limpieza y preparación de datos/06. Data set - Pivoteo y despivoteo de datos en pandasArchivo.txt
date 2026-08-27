@@ -1,0 +1,452 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 6 - Pivoteo y despivoteo de datos en pandas"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 6 – Pivoteo y Despivoteo de Datos en Pandas\n",
+    "### Limpieza y preparación de datos\n",
+    "\n",
+    "**Temas:** `pivot()` · `pivot_table()` · `melt()` · Formato largo ↔ ancho\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Participaciones por Curso y Mes\n",
+    "\n",
+    "Datos en **formato largo** (una fila por participación).\n",
+    "La jefatura necesita una tabla donde las columnas sean los meses y las filas los cursos.\n",
+    "\n",
+    "**Archivos:** `asistencias_talleres.csv` / `ventas_mensuales.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('asistencias_talleres.csv')\n",
+    "print(f'Filas: {df.shape[0]} | Columnas: {list(df.columns)}')\n",
+    "print('Formato largo (una fila por registro):')\n",
+    "print(df.head(10))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 6 – Sintaxis de `pivot()`\n",
+    "\n",
+    "- `index`: columna que permanecerá como índice de fila\n",
+    "- `columns`: valores únicos que se convertirán en columnas\n",
+    "- `values`: valores que se ubicarán en la intersección fila/columna\n",
+    "\n",
+    "> ⚠️ Solo funciona si **no hay duplicados** en la combinación index + columns."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Sintaxis básica de pivot() ──────────────────────────────────────\n",
+    "\n",
+    "DataFrame.pivot(index='...', columns='...', values='...')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 7 – Ejemplo Práctico de `pivot()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 7: Ejemplo práctico de pivot() ─────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "data = {'curso': ['Python', 'Python', 'SQL', 'SQL'],\n",
+    "        'mes': ['Enero', 'Febrero', 'Enero', 'Febrero'],\n",
+    "        'participaciones': [25, 30, 18, 22]}\n",
+    "df = pd.DataFrame(data)\n",
+    "pivotado = df.pivot(index='curso', columns='mes', values='participaciones')\n",
+    "print(pivotado)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 8 – Limitación de `pivot()`: Duplicados"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 8: Error con duplicados en pivot() ──────────────────────────────────\n",
+    "# ValueError: Index contains duplicate entries, cannot reshape\n",
+    "# Solución: usar pivot_table()\n",
+    "\n",
+    "data_dup = {'curso': ['Python', 'Python', 'SQL', 'SQL', 'Python'],\n",
+    "            'mes':   ['Enero',  'Enero',  'Enero', 'Febrero', 'Febrero'],\n",
+    "            'participaciones': [25, 10, 18, 22, 30]}\n",
+    "df_dup = pd.DataFrame(data_dup)\n",
+    "\n",
+    "try:\n",
+    "    df_dup.pivot(index='curso', columns='mes', values='participaciones')\n",
+    "except ValueError as e:\n",
+    "    print(f'❌ Error: {e}')\n",
+    "    print('→ Solución: usar pivot_table()')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 9 – Sintaxis de `pivot_table()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 9: Sintaxis extendida de pivot_table() ──────────────────────────────\n",
+    "\n",
+    "DataFrame.pivot_table(index='...', columns='...', values='...', aggfunc='...', fill_value=0)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 10 – Ejemplo de `pivot_table()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Ejemplo completo de pivot_table() ───────────────────────────────\n",
+    "\n",
+    "df = pd.DataFrame({\n",
+    "    'curso': ['Python', 'Python', 'SQL', 'SQL', 'Python'],\n",
+    "    'mes': ['Enero', 'Febrero', 'Enero', 'Febrero', 'Enero'],\n",
+    "    'asistentes': [25, 30, 18, 22, 20]\n",
+    "})\n",
+    "pivotado = df.pivot_table(\n",
+    "    index='curso',\n",
+    "    columns='mes',\n",
+    "    values='asistentes',\n",
+    "    aggfunc='sum',\n",
+    "    fill_value=0\n",
+    ")\n",
+    "print(pivotado)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 13 – Sintaxis de `melt()` (Despivoteo)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Sintaxis de melt() ─────────────────────────────────────────────\n",
+    "# id_vars: columna(s) que permanecerán fijas\n",
+    "# var_name: nombre para las columnas convertidas en fila\n",
+    "# value_name: nombre de la columna de valores numéricos\n",
+    "\n",
+    "pd.melt(df, id_vars=[...], var_name='...', value_name='...')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 14 – Ejemplo de `melt()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 14: Ejemplo completo de melt() ─────────────────────────────────────\n",
+    "\n",
+    "pivotado = pivotado.reset_index()\n",
+    "despivotado = pd.melt(\n",
+    "    pivotado,\n",
+    "    id_vars='curso',\n",
+    "    var_name='mes',\n",
+    "    value_name='asistentes'\n",
+    ")\n",
+    "print(despivotado)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 15–18 – Actividad Guiada: Asistencias a Talleres\n",
+    "\n",
+    "**Objetivo (Slide 16):** Pivotear con `pivot_table()` y luego revertir con `melt()`.\n",
+    "\n",
+    "**Archivo:** `asistencias_talleres.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Cargar el archivo ───────────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('asistencias_talleres.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Pivotear los datos ──────────────────────────────────────────────\n",
+    "\n",
+    "tabla = df.pivot_table(\n",
+    "    index='taller',\n",
+    "    columns='mes',\n",
+    "    values='asistentes',\n",
+    "    aggfunc='sum'\n",
+    ")\n",
+    "print('Tabla pivoteada (formato ancho):')\n",
+    "print(tabla)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 18: Despivotear los datos ──────────────────────────────────────────\n",
+    "\n",
+    "tabla = tabla.reset_index()\n",
+    "df_original = pd.melt(tabla,\n",
+    "                      id_vars='taller',\n",
+    "                      var_name='mes',\n",
+    "                      value_name='asistentes')\n",
+    "print('DataFrame revertido (formato largo):')\n",
+    "print(df_original.head(12))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 18: Guardar resultados ──────────────────────────────────────────────\n",
+    "\n",
+    "tabla.to_csv('asistencias_pivot.csv', index=False)\n",
+    "df_original.to_csv('asistencias_revertidas.csv', index=False)\n",
+    "print('✅ asistencias_pivot.csv y asistencias_revertidas.csv exportados')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Verificación con margins=True (totales por fila y columna) ──────\n",
+    "\n",
+    "df = pd.read_csv('asistencias_talleres.csv')\n",
+    "tabla_con_totales = df.pivot_table(\n",
+    "    index='taller',\n",
+    "    columns='mes',\n",
+    "    values='asistentes',\n",
+    "    aggfunc='sum',\n",
+    "    fill_value=0,\n",
+    "    margins=True,\n",
+    "    margins_name='TOTAL'\n",
+    ")\n",
+    "print(tabla_con_totales)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 20–22 – Actividad Autónoma: Ventas Mensuales por Sucursal\n",
+    "\n",
+    "**Contexto (Slide 21):** Sucursales como filas, meses como columnas → luego revertir a formato largo.\n",
+    "\n",
+    "**Archivo:** `ventas_mensuales.csv`\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 22: Cargar el archivo ───────────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('ventas_mensuales.csv')\n",
+    "print(f'Filas: {len(df)} | Columnas: {list(df.columns)}')\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 22: Aplicar pivot_table() ──────────────────────────────────────────\n",
+    "# sucursal = filas | mes = columnas | ventas = valores | aggfunc = 'sum'\n",
+    "\n",
+    "resumen = df.pivot_table(\n",
+    "    index='sucursal',\n",
+    "    columns='mes',\n",
+    "    values='ventas',\n",
+    "    aggfunc='sum'\n",
+    ")\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# print(resumen)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 22: Despivotear con melt() ─────────────────────────────────────────\n",
+    "\n",
+    "resumen = resumen.reset_index()\n",
+    "df_largo = pd.melt(resumen,\n",
+    "                   id_vars='sucursal',\n",
+    "                   var_name='mes',\n",
+    "                   value_name='ventas')\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# print(df_largo.head(15))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 22: Guardar los resultados como archivos .csv ───────────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# resumen.to_csv('ventas_pivot.csv', index=False)\n",
+    "# df_largo.to_csv('ventas_formato_largo.csv', index=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Ejercicio adicional: pivot_table() con múltiples aggfunc ─────────────────\n",
+    "# Aplica aggfunc=['sum', 'mean', 'count'] sobre ventas_mensuales.csv\n",
+    "# ¿Qué sucursal tuvo el mayor promedio de ventas?\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Preguntas de reflexión y cierre (Slide 19)\n",
+    "\n",
+    "1. ¿En qué casos es mejor usar formato ancho vs. formato largo?\n",
+    "2. ¿Qué riesgos hay al despivotear sin revisar los datos originales?\n",
+    "3. ¿Cuándo usar `pivot()` y cuándo `pivot_table()`?\n",
+    "4. ¿Cómo aplicarías estas transformaciones en tu entorno de trabajo?"
+   ]
+  }
+
+ ]
+}

@@ -1,0 +1,2 @@
+ID,Descripcion_grafico,Errores_detectados,Objetivo_aparente
+1,"Gráfico de barras apiladas con colores similares y sin etiquetas, que representa la evolución de ventas trimestrales por región, pero sin indicar unidad de medida ni fuente de datos.","Colores sin contraste, falta de etiquetas, ausencia de unidades, sin fuente de datos.",Mostrar la participación de regiones en las ventas por trimestre.

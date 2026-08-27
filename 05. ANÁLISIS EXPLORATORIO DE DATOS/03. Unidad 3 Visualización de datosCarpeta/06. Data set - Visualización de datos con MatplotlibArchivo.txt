@@ -1,0 +1,846 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📊 Clase 6 — Visualización de datos con Matplotlib\n",
+    "## Unidad: Visualización de datos\n",
+    "\n",
+    "**Situación:** Desarrollas un dashboard exploratorio de ventas para una empresa de retail. La dirección comercial necesita visualizar comparativamente los volúmenes de ventas por trimestre y región, junto con la evolución mensual — todo en una sola figura exportable.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Crear gráficos con la **interfaz funcional `pyplot`** de forma correcta\n",
+    "- Dominar el **modelo orientado a objetos (OO)**: `Figure`, `Axes`, `Axis`, `Artist`\n",
+    "- Comparar `pyplot` vs OO: cuándo usar cada uno\n",
+    "- Encapsular visualizaciones en **funciones reutilizables**\n",
+    "- Construir **subgráficos** con `plt.subplots(nrows, ncols)` y `.flat`\n",
+    "- Exportar gráficos con `fig.savefig()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "print('✅ Librerías cargadas')\n",
+    "import matplotlib\n",
+    "print(f'Matplotlib {matplotlib.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Interfaz funcional `pyplot`\n",
+    "\n",
+    "### 1.1 ¿Cómo funciona pyplot internamente?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de arquitectura — slide 7\n",
+    "tabla_arq = pd.DataFrame({\n",
+    "    'Componente': ['Figura (figure)','Ejes (axes)','Datos','Metadatos'],\n",
+    "    'Descripción': [\n",
+    "        'El lienzo o espacio donde se dibuja el gráfico.',\n",
+    "        'Área dentro de la figura donde se representa la visualización.',\n",
+    "        'Serie de puntos, líneas o barras a representar.',\n",
+    "        'Título, etiquetas de ejes, leyendas, grillas.'\n",
+    "    ]\n",
+    "})\n",
+    "print('=== Arquitectura de un gráfico pyplot ===')\n",
+    "print(tabla_arq.to_string(index=False))\n",
+    "print()\n",
+    "print('Nota: pyplot crea la figura y los ejes en segundo plano.')\n",
+    "print('Cada instrucción (plot, title, xlabel...) los va completando.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Ejemplo pyplot — código exacto de la presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 8\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "meses  = ['Ene', 'Feb', 'Mar', 'Abr']\n",
+    "ventas = [300, 320, 310, 330]\n",
+    "\n",
+    "# Crear figura y grafico\n",
+    "plt.figure(figsize=(8, 5))\n",
+    "# Definimos tamaño en pulgadas\n",
+    "plt.plot(meses, ventas, color='steelblue', marker='o', linestyle='--', linewidth=2)\n",
+    "\n",
+    "# Agregar metadatos\n",
+    "plt.title('Ventas mensuales primer cuatrimestre')\n",
+    "plt.xlabel('Mes')\n",
+    "plt.ylabel('Ventas (miles de $)')\n",
+    "plt.grid(True)\n",
+    "\n",
+    "# Mostrar la figura\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Explicaciones clave — slide 9\n",
+    "print('Parámetros usados en el ejemplo:')\n",
+    "print(\"  marker='o'     → visualiza cada punto individual\")\n",
+    "print(\"  linestyle='--' → estilo discontinuo a la línea\")\n",
+    "print(\"  linewidth=2    → controla el grosor del trazo\")\n",
+    "print(\"  color='steelblue' → color de la línea\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de tipos de gráficos — slide 10\n",
+    "tabla_tipos = pd.DataFrame({\n",
+    "    'Función':     ['plot()','bar(), barh()','scatter()','hist()','pie()'],\n",
+    "    'Uso típico':  [\n",
+    "        'Series temporales, líneas',\n",
+    "        'Comparaciones categóricas',\n",
+    "        'Relaciones entre dos variables',\n",
+    "        'Distribuciones de frecuencia',\n",
+    "        'Proporciones (con reservas de uso)'\n",
+    "    ]\n",
+    "})\n",
+    "print(tabla_tipos.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Buenas prácticas y errores comunes con pyplot"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de errores comunes — slide 12\n",
+    "tabla_err = pd.DataFrame({\n",
+    "    'Error': ['El gráfico no se muestra',\n",
+    "              'Los gráficos se superponen al ejecutar varias veces',\n",
+    "              'Texto ilegible o cortado'],\n",
+    "    'Causa probable': ['Olvido de plt.show()',\n",
+    "                       'Estado persistente de la figura implícita',\n",
+    "                       'Tamaño por defecto muy pequeño'],\n",
+    "    'Solución recomendada': [\n",
+    "        'Incluirlo al final del bloque de código.',\n",
+    "        'Usar plt.clf() o plt.close(\"all\") entre ejecuciones.',\n",
+    "        'Usar figsize y evitar etiquetas largas.'\n",
+    "    ]\n",
+    "})\n",
+    "print(tabla_err.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración: plt.clf() y plt.close() en acción\n",
+    "print('=== Demostración de limpieza de figuras ===')\n",
+    "\n",
+    "# Gráfico 1\n",
+    "plt.figure(figsize=(5, 3))\n",
+    "plt.plot([1,2,3],[10,20,30], color='blue')\n",
+    "plt.title('Gráfico 1 — antes de clf()')\n",
+    "plt.show()\n",
+    "\n",
+    "# Limpiar estado\n",
+    "plt.clf()   # limpia la figura actual\n",
+    "\n",
+    "# Gráfico 2 — limpio, sin residuos\n",
+    "plt.figure(figsize=(5, 3))\n",
+    "plt.bar(['A','B','C'],[5,3,7], color='green')\n",
+    "plt.title('Gráfico 2 — después de clf()')\n",
+    "plt.show()\n",
+    "\n",
+    "plt.close('all')  # cerrar todas las figuras abiertas\n",
+    "print('plt.close(\"all\") ejecutado.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Modelo orientado a objetos (OO)\n",
+    "\n",
+    "### 2.1 Arquitectura jerárquica"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de arquitectura OO — slide 15\n",
+    "tabla_oo = pd.DataFrame({\n",
+    "    'Componente': ['Figure','Axes','Axis','Artist'],\n",
+    "    'Descripción': [\n",
+    "        'Lienzo general donde se dibujan uno o varios gráficos.',\n",
+    "        'Recuadro o área dentro de la figura. Cada Axes tiene su propio sistema de coordenadas.',\n",
+    "        'Cada uno de los ejes X o Y en un Axes. Controla valores, tics y etiquetas.',\n",
+    "        'Cualquier objeto visible: títulos, textos, líneas, cuadros, leyendas, etc.'\n",
+    "    ]\n",
+    "})\n",
+    "print('=== Arquitectura OO de Matplotlib ===')\n",
+    "print(tabla_oo.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Gráfico OO — código exacto de la presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 16\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "# Datos\n",
+    "meses  = ['Ene', 'Feb', 'Mar', 'Abr']\n",
+    "ventas = [300, 320, 310, 330]\n",
+    "\n",
+    "# Crear la figura y los ejes\n",
+    "fig, ax = plt.subplots(figsize=(8, 5))\n",
+    "\n",
+    "# Dibujar en los ejes\n",
+    "ax.plot(meses, ventas, color='darkgreen', marker='o')\n",
+    "\n",
+    "# Personalizar elementos\n",
+    "ax.set_title('Evolución de ventas primer cuatrimestre')\n",
+    "ax.set_xlabel('Meses')\n",
+    "ax.set_ylabel('Miles de $')\n",
+    "ax.grid(True)\n",
+    "\n",
+    "# Mostrar\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Explicación del modelo OO — slide 17\n",
+    "print('=== Explicación del modelo OO ===')\n",
+    "print('fig → el lienzo general donde se dibuja todo')\n",
+    "print('ax  → el área específica del gráfico')\n",
+    "print()\n",
+    "print('Métodos de ax que controlan cada aspecto:')\n",
+    "metodos = [\n",
+    "    ('ax.plot()', 'Trazar línea o puntos'),\n",
+    "    ('ax.bar()',  'Gráfico de barras'),\n",
+    "    ('ax.set_title()', 'Título del área de dibujo'),\n",
+    "    ('ax.set_xlabel()', 'Etiqueta eje X'),\n",
+    "    ('ax.set_ylabel()', 'Etiqueta eje Y'),\n",
+    "    ('ax.legend()',     'Leyenda'),\n",
+    "    ('ax.grid(True)',   'Cuadrícula'),\n",
+    "    ('ax.set_xlim()',   'Límites del eje X'),\n",
+    "    ('ax.set_ylim()',   'Límites del eje Y'),\n",
+    "]\n",
+    "for metodo, desc in metodos:\n",
+    "    print(f'  {metodo:<22} → {desc}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Comparativa pyplot vs OO — slide 19"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tabla_comp = pd.DataFrame({\n",
+    "    'Característica': ['Figura implícita','Modularidad','Escalabilidad',\n",
+    "                       'Uso en proyectos complejos','Sintaxis'],\n",
+    "    'pyplot (funcional)': ['Sí','Baja','Limitada','No recomendado',\n",
+    "                            'plt.plot(), plt.title()...'],\n",
+    "    'Modelo OO (estructurado)': ['No (requiere definición)','Alta','Completa',\n",
+    "                                  'Recomendado','ax.plot(), ax.set_title()']\n",
+    "})\n",
+    "print('=== Comparativa técnica: pyplot vs OO ===')\n",
+    "print(tabla_comp.to_string(index=False))\n",
+    "print()\n",
+    "print('Recomendación: usa pyplot para exploración rápida.')\n",
+    "print('Usa OO para reportes, funciones reutilizables y subgráficos.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4 Función reutilizable — código exacto de la presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 20\n",
+    "def grafico_ventas(meses, ventas, titulo):\n",
+    "    fig, ax = plt.subplots(figsize=(7, 4))\n",
+    "    ax.plot(meses, ventas, marker='s', color='teal')\n",
+    "    ax.set_title(titulo)\n",
+    "    ax.set_xlabel('Meses')\n",
+    "    ax.set_ylabel('Ventas ($)')\n",
+    "    ax.grid(True)\n",
+    "    return fig\n",
+    "\n",
+    "# Llamado de la función\n",
+    "grafico_ventas(['Ene', 'Feb', 'Mar'], [300, 280, 320], 'Ventas Trimestre 1')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración de la ventaja de la función reutilizable\n",
+    "# Llamar la misma función con diferentes datos\n",
+    "trimestres = [\n",
+    "    (['Ene','Feb','Mar'], [300, 280, 320], 'Ventas Q1 — Zona Norte'),\n",
+    "    (['Abr','May','Jun'], [340, 360, 380], 'Ventas Q2 — Zona Norte'),\n",
+    "    (['Jul','Ago','Sep'], [310, 295, 330], 'Ventas Q3 — Zona Norte'),\n",
+    "]\n",
+    "\n",
+    "for meses_t, ventas_t, titulo_t in trimestres:\n",
+    "    grafico_ventas(meses_t, ventas_t, titulo_t)\n",
+    "    plt.show()\n",
+    "\n",
+    "print('Misma función, distintos datos — código reutilizable ✅')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué ventajas ofrece el modelo OO frente a pyplot en visualizaciones complejas?\n",
+    "c1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Cuál es la estructura jerárquica de Matplotlib y qué rol cumple cada componente?\n",
+    "c2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. Modifica la función grafico_ventas() para añadir el parámetro color:\n",
+    "def grafico_ventas_v2(meses, ventas, titulo, color='teal'):\n",
+    "    fig, ax = plt.subplots(figsize=(7, 4))\n",
+    "    ax.plot(meses, ventas, marker='s', color=color)  # ← ahora acepta color\n",
+    "    ax.set_title(titulo)\n",
+    "    ax.set_xlabel('Meses')\n",
+    "    ax.set_ylabel('Ventas ($)')\n",
+    "    ax.grid(True)\n",
+    "    return fig\n",
+    "\n",
+    "grafico_ventas_v2(['Ene','Feb','Mar'], [300, 280, 320], 'Q1 con color rojo', color='crimson')\n",
+    "plt.show()\n",
+    "\n",
+    "print(f'1. {c1}')\n",
+    "print(f'2. {c2}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Figuras y subgráficos (`subplots`)\n",
+    "\n",
+    "### 3.1 Fundamentos de `plt.subplots()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 25\n",
+    "fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))\n",
+    "\n",
+    "print(f'Tipo de fig:  {type(fig)}')\n",
+    "print(f'Tipo de axs:  {type(axs)}')\n",
+    "print(f'Shape de axs: {axs.shape}  → arreglo 2×2')\n",
+    "print(f'axs[0,0]:     {type(axs[0,0])}  → Axes superior izquierdo')\n",
+    "print(f'axs.flat:     iterador lineal → [axs[0,0], axs[0,1], axs[1,0], axs[1,1]]')\n",
+    "\n",
+    "plt.close(fig)  # cerrar la figura vacía\n",
+    "\n",
+    "print()\n",
+    "print('Tabla de errores con subgráficos:')\n",
+    "tabla_sub_err = pd.DataFrame({\n",
+    "    'Error': ['Índices incorrectos al usar axs[i]',\n",
+    "              'Etiquetas y títulos se superponen',\n",
+    "              'Pérdida de proporción visual'],\n",
+    "    'Causa': ['Arreglo 2D sin recorrer con .flat',\n",
+    "               'Falta de ajuste en el diseño',\n",
+    "               'Tamaño de figura inadecuado'],\n",
+    "    'Solución': ['Usar axs.flat para iterar linealmente',\n",
+    "                  'Aplicar tight_layout() y ajustar márgenes',\n",
+    "                  'Ajustar figsize y cantidad de filas/columnas']\n",
+    "})\n",
+    "print(tabla_sub_err.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Ejemplo aplicado: comparación regional de ventas (código exacto)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 26\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "meses = ['Ene', 'Feb', 'Mar']\n",
+    "datos = {\n",
+    "    'Norte':   [250, 260, 270],\n",
+    "    'Centro':  [300, 310, 320],\n",
+    "    'Sur':     [200, 190, 210],\n",
+    "    'Austral': [180, 170, 160]\n",
+    "}\n",
+    "\n",
+    "fig, axs = plt.subplots(2, 2, figsize=(12, 8))\n",
+    "regiones = list(datos.keys())\n",
+    "\n",
+    "for i, ax in enumerate(axs.flat):\n",
+    "    region = regiones[i]\n",
+    "    ax.plot(meses, datos[region], marker='o', color='navy')\n",
+    "    ax.set_title(f'Región {region}')\n",
+    "    ax.set_xlabel('Mes')\n",
+    "    ax.set_ylabel('Ventas ($)')\n",
+    "    ax.grid(True)\n",
+    "\n",
+    "fig.suptitle('Comparativo de ventas trimestrales por región')\n",
+    "plt.tight_layout()\n",
+    "plt.subplots_adjust(top=0.9)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Versión mejorada con colores diferenciados y barras\n",
+    "colores = ['#2E75B6', '#ED7D31', '#70AD47', '#7030A0']\n",
+    "\n",
+    "fig2, axs2 = plt.subplots(2, 2, figsize=(12, 8))\n",
+    "regiones = list(datos.keys())\n",
+    "\n",
+    "for i, (ax, color) in enumerate(zip(axs2.flat, colores)):\n",
+    "    region = regiones[i]\n",
+    "    valores = datos[region]\n",
+    "    # Línea + barras\n",
+    "    ax.bar(meses, valores, color=color, alpha=0.4, edgecolor='white')\n",
+    "    ax.plot(meses, valores, marker='o', color=color, linewidth=2, zorder=5)\n",
+    "    ax.set_title(f'Región {region}', fontsize=11, fontweight='bold')\n",
+    "    ax.set_xlabel('Mes')\n",
+    "    ax.set_ylabel('Ventas ($)')\n",
+    "    ax.set_ylim(0, max(max(v) for v in datos.values()) * 1.2)\n",
+    "    ax.grid(True, axis='y', linestyle='--', alpha=0.5)\n",
+    "    # Anotar valores\n",
+    "    for j, v in enumerate(valores):\n",
+    "        ax.text(j, v + 5, str(v), ha='center', fontsize=9, fontweight='bold')\n",
+    "\n",
+    "fig2.suptitle('Comparativo de ventas trimestrales por región\\n(versión mejorada)',\n",
+    "              fontsize=13, fontweight='bold')\n",
+    "plt.tight_layout()\n",
+    "plt.subplots_adjust(top=0.88)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Layouts de subgráficos disponibles"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "x = np.arange(1, 7)\n",
+    "y = np.random.randint(100, 400, 6)\n",
+    "\n",
+    "fig, axes = plt.subplots(2, 3, figsize=(15, 7))\n",
+    "fig.suptitle('Galería de tipos de gráficos en subgráficos', fontweight='bold', fontsize=12)\n",
+    "\n",
+    "# plot()\n",
+    "axes[0,0].plot(x, y, 'b-o', linewidth=2)\n",
+    "axes[0,0].set_title('plot() — Línea')\n",
+    "axes[0,0].grid(True)\n",
+    "\n",
+    "# bar()\n",
+    "axes[0,1].bar(x, y, color='#2E75B6', edgecolor='white')\n",
+    "axes[0,1].set_title('bar() — Barras verticales')\n",
+    "axes[0,1].grid(True, axis='y')\n",
+    "\n",
+    "# barh()\n",
+    "regiones = ['N','C','S','E','O','A']\n",
+    "axes[0,2].barh(regiones, y, color='#70AD47', edgecolor='white')\n",
+    "axes[0,2].set_title('barh() — Barras horizontales')\n",
+    "axes[0,2].grid(True, axis='x')\n",
+    "\n",
+    "# scatter()\n",
+    "x2 = np.random.randint(10, 100, 40)\n",
+    "y2 = x2 * 0.9 + np.random.normal(0, 10, 40)\n",
+    "axes[1,0].scatter(x2, y2, color='#ED7D31', alpha=0.6, s=40)\n",
+    "axes[1,0].set_title('scatter()')\n",
+    "axes[1,0].grid(True)\n",
+    "\n",
+    "# hist()\n",
+    "datos_hist = np.random.normal(50, 12, 200)\n",
+    "axes[1,1].hist(datos_hist, bins=15, color='#7030A0', edgecolor='white', alpha=0.8)\n",
+    "axes[1,1].set_title('hist() — Histograma')\n",
+    "axes[1,1].grid(True, axis='y')\n",
+    "\n",
+    "# pie()\n",
+    "sizes = [35, 25, 20, 20]\n",
+    "labels_p = ['Norte','Centro','Sur','Austral']\n",
+    "axes[1,2].pie(sizes, labels=labels_p, autopct='%1.1f%%',\n",
+    "              startangle=90, colors=['#2E75B6','#ED7D31','#70AD47','#FFC000'])\n",
+    "axes[1,2].set_title('pie() — Torta')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 3. ¿Cómo se usan los subgráficos para comparar diferentes conjuntos de datos?\n",
+    "c3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Qué errores debes evitar al crear múltiples subgráficos?\n",
+    "c4 = \"\"\n",
+    "\n",
+    "# ✏️ ¿Por qué es necesario plt.subplots_adjust(top=0.9) junto a tight_layout?\n",
+    "r_adjust = \"\"\n",
+    "\n",
+    "print(f'3. Subgráficos: {c3}')\n",
+    "print(f'4. Errores:     {c4}')\n",
+    "print(f'adjust(top):    {r_adjust}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad guiada: Reporte visual comparativo\n",
+    "\n",
+    "### Función `reporte_regional()` — código exacto de la presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 33\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "def reporte_regional(datos):\n",
+    "    regiones = list(datos.keys())\n",
+    "    fig, axs = plt.subplots(2, 2, figsize=(12, 8))\n",
+    "\n",
+    "    for i, ax in enumerate(axs.flat):\n",
+    "        region = regiones[i]\n",
+    "        meses  = list(datos[region].keys())\n",
+    "        ventas = list(datos[region].values())\n",
+    "\n",
+    "        ax.plot(meses, ventas, marker='o', color='steelblue')\n",
+    "        ax.set_title(f'Región {region}')\n",
+    "        ax.set_xlabel('Mes')\n",
+    "        ax.set_ylabel('Ventas ($)')\n",
+    "        ax.grid(True)\n",
+    "\n",
+    "    fig.suptitle('Informe mensual de ventas por región')\n",
+    "    plt.tight_layout()\n",
+    "    plt.subplots_adjust(top=0.9)\n",
+    "    plt.show()\n",
+    "\n",
+    "# Simulación de datos\n",
+    "datos_ventas = {\n",
+    "    'Norte':   {'Ene': 240, 'Feb': 260, 'Mar': 250},\n",
+    "    'Centro':  {'Ene': 310, 'Feb': 320, 'Mar': 330},\n",
+    "    'Sur':     {'Ene': 190, 'Feb': 200, 'Mar': 180},\n",
+    "    'Austral': {'Ene': 170, 'Feb': 160, 'Mar': 175}\n",
+    "}\n",
+    "\n",
+    "reporte_regional(datos_ventas)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Versión extendida con exportación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Función extendida — buenas prácticas del slide 31-32\n",
+    "def reporte_regional_pro(datos, titulo_general='Informe mensual de ventas',\n",
+    "                          guardar=False, nombre_archivo='reporte_ventas.png'):\n",
+    "    \"\"\"\n",
+    "    Genera un reporte comparativo de ventas por región.\n",
+    "    \n",
+    "    Parámetros:\n",
+    "    -----------\n",
+    "    datos : dict\n",
+    "        Diccionario {región: {mes: ventas}}\n",
+    "    titulo_general : str\n",
+    "        Título de la figura completa\n",
+    "    guardar : bool\n",
+    "        Si True, guarda el gráfico como imagen\n",
+    "    nombre_archivo : str\n",
+    "        Nombre del archivo de salida (PNG)\n",
+    "    \n",
+    "    Retorna:\n",
+    "    --------\n",
+    "    fig : matplotlib.figure.Figure\n",
+    "    \"\"\"\n",
+    "    colores_reg = ['#2E75B6', '#ED7D31', '#70AD47', '#7030A0']\n",
+    "    regiones    = list(datos.keys())\n",
+    "\n",
+    "    fig, axs = plt.subplots(2, 2, figsize=(14, 9))\n",
+    "\n",
+    "    for i, (ax, color) in enumerate(zip(axs.flat, colores_reg)):\n",
+    "        region  = regiones[i]\n",
+    "        meses_r = list(datos[region].keys())\n",
+    "        ventas_r = list(datos[region].values())\n",
+    "\n",
+    "        # Barra + línea combinadas\n",
+    "        ax.bar(meses_r, ventas_r, color=color, alpha=0.35, edgecolor='white', label='Ventas')\n",
+    "        ax.plot(meses_r, ventas_r, marker='o', color=color, linewidth=2.5, zorder=5)\n",
+    "\n",
+    "        # Personalización\n",
+    "        ax.set_title(f'Región {region}', fontsize=11, fontweight='bold', color=color)\n",
+    "        ax.set_xlabel('Mes')\n",
+    "        ax.set_ylabel('Ventas ($)')\n",
+    "        ax.grid(True, axis='y', linestyle='--', alpha=0.4)\n",
+    "        ax.set_ylim(0, max(max(v) for v in datos.values()) * 1.25)\n",
+    "\n",
+    "        # Anotaciones de valor\n",
+    "        for j, v in enumerate(ventas_r):\n",
+    "            ax.annotate(f'{v}', xy=(j, v), xytext=(0, 5),\n",
+    "                        textcoords='offset points', ha='center',\n",
+    "                        fontsize=9, fontweight='bold')\n",
+    "\n",
+    "    fig.suptitle(titulo_general, fontsize=14, fontweight='bold')\n",
+    "    plt.tight_layout()\n",
+    "    plt.subplots_adjust(top=0.92)\n",
+    "\n",
+    "    if guardar:\n",
+    "        fig.savefig(nombre_archivo, dpi=150, bbox_inches='tight')\n",
+    "        print(f'✅ Gráfico guardado como {nombre_archivo}')\n",
+    "\n",
+    "    plt.show()\n",
+    "    return fig\n",
+    "\n",
+    "\n",
+    "# Usar la función con datos del slide\n",
+    "fig_reporte = reporte_regional_pro(\n",
+    "    datos_ventas,\n",
+    "    titulo_general='Informe mensual de ventas por región — Q1',\n",
+    "    guardar=True,\n",
+    "    nombre_archivo='reporte_ventas_q1.png'\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Probar con datos del próximo trimestre"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Actualizar la función con Q2 — misma función, distintos datos\n",
+    "datos_q2 = {\n",
+    "    'Norte':   {'Abr': 265, 'May': 280, 'Jun': 295},\n",
+    "    'Centro':  {'Abr': 335, 'May': 350, 'Jun': 360},\n",
+    "    'Sur':     {'Abr': 185, 'May': 195, 'Jun': 210},\n",
+    "    'Austral': {'Abr': 180, 'May': 185, 'Jun': 200}\n",
+    "}\n",
+    "\n",
+    "reporte_regional_pro(\n",
+    "    datos_q2,\n",
+    "    titulo_general='Informe mensual de ventas por región — Q2',\n",
+    "    guardar=False\n",
+    ")\n",
+    "print('✅ La función reutilizable funciona con diferentes datos sin modificar el código')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas de cierre (slide 36):"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué ventajas ofrece el modelo OO frente a pyplot en visualizaciones complejas?\n",
+    "p1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Cuál es la estructura jerárquica de Matplotlib y qué rol cumple cada componente?\n",
+    "p2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Cómo se usan los subgráficos para comparar diferentes conjuntos de datos?\n",
+    "p3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Qué errores comunes debes evitar al crear múltiples subgráficos en una misma figura?\n",
+    "p4 = \"\"\n",
+    "\n",
+    "# ✏️ 5. ¿Cómo puedes reutilizar una visualización profesional en distintos contextos productivos?\n",
+    "p5 = \"\"\n",
+    "\n",
+    "print('--- PREGUNTAS DE CIERRE ---')\n",
+    "for i, p in enumerate([p1, p2, p3, p4, p5], 1):\n",
+    "    print(f'{i}. {p}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de diferencias y buenas prácticas\n",
+    "\n",
+    "### pyplot vs Modelo OO\n",
+    "\n",
+    "| | pyplot (funcional) | Modelo OO (fig, ax) |\n",
+    "|-|-|-|\n",
+    "| Figura | Implícita (oculta) | Explícita (`fig, ax = plt.subplots()`) |\n",
+    "| Modularidad | Baja | Alta |\n",
+    "| Escalabilidad | Limitada | Completa |\n",
+    "| Subgráficos | `plt.subplot()` | `plt.subplots(n,m)` + `axs.flat` |\n",
+    "| Uso recomendado | Exploración rápida | Reportes y proyectos |\n",
+    "\n",
+    "### Subgráficos con `plt.subplots()`\n",
+    "\n",
+    "| Patrón | Código | Descripción |\n",
+    "|--------|--------|-------------|\n",
+    "| 1 fila, 2 cols | `fig, (ax1, ax2) = plt.subplots(1, 2)` | Desempacar directo |\n",
+    "| 2×2 con flat | `for ax in axs.flat:` | Iterar sin índices |\n",
+    "| Título global | `fig.suptitle('...')` | Título de la figura completa |\n",
+    "| Evitar solapamiento | `plt.tight_layout()` + `plt.subplots_adjust(top=0.9)` | Espacio para suptitle |\n",
+    "| Exportar | `fig.savefig('archivo.png', dpi=150, bbox_inches='tight')` | Alta calidad |\n",
+    "\n",
+    "> 💡 **`axs.flat`** convierte el arreglo 2D de ejes en un iterador lineal — es la forma más limpia de recorrer subgráficos con `enumerate()`.\n",
+    "\n",
+    "> 💡 **Funciones reutilizables** que reciben `datos` y retornan `fig` son el patrón profesional para reportes automáticos, alertas y dashboards."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

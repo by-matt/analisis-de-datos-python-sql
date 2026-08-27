@@ -1,0 +1,301 @@
+id_cliente,tipo_contrato,tipo_cliente,region,plan,tiempo_contrato,uso_mensual_gb,satisfaccion,n_reclamos,abandono
+CLI0001,semestral,Residencial,Biobío,Básico,13,18.6,6.2,1,no
+CLI0002,mensual,Residencial,Valparaíso,Básico,17,10.5,4.3,3,no
+CLI0003,anual,Empresarial,Valparaíso,Estándar,49,35.7,10,2,no
+CLI0004,mensual,Residencial,Biobío,Básico,3,25.6,4.1,4,sí
+CLI0005,mensual,Residencial,Antofagasta,Premium,4,91.5,5.0,4,no
+CLI0006,anual,Pyme,Valparaíso,Premium,16,65.4,6.8,2,no
+CLI0007,mensual,Residencial,Metropolitana,Estándar,9,18.2,6.3,2,no
+CLI0008,anual,Pyme,Metropolitana,Premium,52,94.1,8.8,3,no
+CLI0009,mensual,Pyme,Los Lagos,Básico,11,26.4,3.4,4,sí
+CLI0010,mensual,Residencial,Los Lagos,Premium,11,82.1,6.0,4,no
+CLI0011,semestral,Residencial,Biobío,Básico,13,14.5,3.8,2,no
+CLI0012,mensual,Residencial,Los Lagos,Estándar,3,46.9,5.3,1,sí
+CLI0013,mensual,Pyme,Antofagasta,Premium,3,67.9,6.5,2,no
+CLI0014,anual,Pyme,Metropolitana,Premium,46,95.2,7.3,0,no
+CLI0015,mensual,Residencial,Antofagasta,Básico,9,35.0,5.0,4,no
+CLI0016,anual,Pyme,Los Lagos,Básico,21,25.4,5.4,3,no
+CLI0017,anual,Residencial,Los Lagos,Estándar,43,67.4,,2,no
+CLI0018,mensual,Pyme,Metropolitana,Básico,16,6.0,7.5,0,no
+CLI0019,mensual,Pyme,Antofagasta,Premium,6,77.7,8.3,2,no
+CLI0020,anual,Residencial,Biobío,Estándar,54,54.5,6.8,1,no
+CLI0021,mensual,Residencial,Metropolitana,Estándar,1,32.6,4.5,4,sí
+CLI0022,mensual,Residencial,Biobío,Básico,17,22.3,6.0,4,no
+CLI0023,mensual,Pyme,Los Lagos,Estándar,8,44.7,2.7,5,sí
+CLI0024,mensual,Empresarial,Metropolitana,Premium,4,87.3,7.4,3,no
+CLI0025,mensual,Residencial,Valparaíso,Premium,15,84.9,6.5,3,no
+CLI0026,anual,Pyme,Metropolitana,Básico,53,11.6,10,1,no
+CLI0027,anual,Residencial,Valparaíso,Estándar,43,16.2,7.5,2,no
+CLI0028,mensual,Empresarial,Biobío,Estándar,18,40.7,5.0,2,sí
+CLI0029,mensual,Residencial,Los Lagos,Premium,18,89.7,6.4,0,sí
+CLI0030,semestral,Residencial,Los Lagos,Básico,33,18.9,7.4,3,no
+CLI0031,mensual,Residencial,Los Lagos,Básico,2,5.8,4.0,1,sí
+CLI0032,mensual,Pyme,Biobío,Básico,9,11.0,3.7,4,sí
+CLI0033,mensual,Residencial,Metropolitana,Estándar,4,47.4,5.7,5,sí
+CLI0034,anual,Empresarial,Biobío,Básico,40,4.9,8.2,0,no
+CLI0035,anual,Pyme,Los Lagos,Básico,54,19.1,6.5,3,no
+CLI0036,mensual,Residencial,Los Lagos,Básico,9,12.6,5.2,4,sí
+CLI0037,semestral,Empresarial,Los Lagos,Estándar,14,59.2,4.1,3,sí
+CLI0038,mensual,Residencial,Biobío,Básico,15,19.5,4.2,3,sí
+CLI0039,mensual,Pyme,Valparaíso,Premium,2,88.0,3.4,4,sí
+CLI0040,anual,Residencial,Biobío,Básico,55,22.4,7.8,2,no
+CLI0041,anual,Empresarial,Los Lagos,Premium,21,87.9,5.6,3,sí
+CLI0042,mensual,Residencial,Biobío,Estándar,8,32.9,5.1,5,sí
+CLI0043,anual,Empresarial,Valparaíso,Básico,41,2.0,9.3,2,no
+CLI0044,mensual,Empresarial,Metropolitana,Estándar,12,57.4,4.6,2,no
+CLI0045,semestral,Residencial,Metropolitana,Estándar,11,,3.5,3,sí
+CLI0046,anual,Empresarial,Los Lagos,Premium,19,73.7,4.5,4,no
+CLI0047,anual,Residencial,Los Lagos,Premium,55,76.2,5.3,3,no
+CLI0048,semestral,Empresarial,Los Lagos,Estándar,27,43.4,7.7,1,no
+CLI0049,mensual,Empresarial,Biobío,Estándar,10,32.6,5.2,2,no
+CLI0050,mensual,Pyme,Biobío,Estándar,18,53.7,6.5,2,no
+CLI0051,anual,Pyme,Biobío,Estándar,40,32.2,7.4,3,no
+CLI0052,mensual,Residencial,Biobío,Premium,11,67.6,8.6,3,no
+CLI0053,mensual,Residencial,Valparaíso,Básico,2,15.4,6.8,3,no
+CLI0054,semestral,Residencial,Antofagasta,Estándar,18,45.5,6.0,4,sí
+CLI0055,anual,Residencial,Antofagasta,Básico,23,21.2,4.0,1,no
+CLI0056,mensual,Residencial,Antofagasta,Premium,17,70.5,7.9,2,no
+CLI0057,anual,Pyme,Los Lagos,Estándar,47,33.3,7.6,0,no
+CLI0058,anual,Empresarial,Los Lagos,Estándar,52,46.2,7.7,3,no
+CLI0059,mensual,Empresarial,Biobío,Premium,3,85.6,6.0,3,no
+CLI0060,mensual,Pyme,Antofagasta,Estándar,2,35.8,5.5,4,no
+CLI0061,semestral,Pyme,Metropolitana,Premium,18,51.6,6.4,1,no
+CLI0062,anual,Pyme,Los Lagos,Premium,26,96.1,5.1,3,no
+CLI0063,mensual,Pyme,Antofagasta,Premium,6,94.5,2.5,2,no
+CLI0064,semestral,Pyme,Metropolitana,Básico,26,9.4,3.6,4,sí
+CLI0065,mensual,Empresarial,Valparaíso,Estándar,11,27.1,8.2,3,no
+CLI0066,anual,Empresarial,Metropolitana,Premium,46,76.2,10,2,no
+CLI0067,mensual,Pyme,Metropolitana,Básico,8,15.8,5.7,4,sí
+CLI0068,semestral,Residencial,Antofagasta,Premium,14,92.7,5.8,2,no
+CLI0069,anual,Residencial,Valparaíso,Estándar,18,15.7,4.3,4,no
+CLI0070,anual,Residencial,Metropolitana,Premium,56,73.6,8.3,1,no
+CLI0071,mensual,Pyme,Los Lagos,Básico,2,7.7,6.4,2,no
+CLI0072,anual,Empresarial,Metropolitana,Estándar,35,39.6,4.9,2,no
+CLI0073,mensual,Pyme,Los Lagos,Premium,9,59.9,3.2,2,no
+CLI0074,semestral,Empresarial,Valparaíso,Básico,14,19.9,6.5,2,no
+CLI0075,semestral,Empresarial,Biobío,Básico,21,19.5,5.3,3,sí
+CLI0076,anual,Pyme,Biobío,Premium,12,69.5,4.6,3,sí
+CLI0077,mensual,Pyme,Valparaíso,Premium,16,71.5,4.4,4,no
+CLI0078,semestral,Empresarial,Los Lagos,Estándar,21,44.7,4.8,3,no
+CLI0079,semestral,Empresarial,Antofagasta,Estándar,15,39.9,6.5,3,no
+CLI0080,anual,Residencial,Valparaíso,Básico,59,25.1,5.6,3,no
+CLI0081,semestral,Empresarial,Metropolitana,Básico,15,16.1,6.7,2,sí
+CLI0082,anual,Pyme,Biobío,Premium,20,78.0,4.4,2,sí
+CLI0083,mensual,Empresarial,Antofagasta,Estándar,15,23.2,9.0,2,no
+CLI0084,mensual,Empresarial,Metropolitana,Premium,2,75.5,6.7,4,no
+CLI0085,mensual,Residencial,Metropolitana,Premium,14,63.3,4.1,2,sí
+CLI0086,mensual,Pyme,Antofagasta,Estándar,2,38.1,3.2,3,no
+CLI0087,mensual,Residencial,Biobío,Premium,3,84.1,5.9,4,sí
+CLI0088,semestral,Empresarial,Metropolitana,Básico,15,15.2,5.1,1,SI
+CLI0089,semestral,Empresarial,Los Lagos,Premium,31,91.5,5.9,1,no
+CLI0090,anual,Residencial,Metropolitana,Básico,31,1,4.2,2,no
+CLI0091,mensual,Empresarial,Biobío,Premium,13,93.2,5.0,3,no
+CLI0092,mensual,Empresarial,Los Lagos,Estándar,1,41.7,8.3,3,no
+CLI0093,semestral,Residencial,Biobío,Premium,7,80.6,4.4,2,no
+CLI0094,anual,Empresarial,Antofagasta,Básico,42,18.4,6.3,3,no
+CLI0095,anual,Empresarial,Antofagasta,Premium,43,73.1,10,0,no
+CLI0096,mensual,Empresarial,Metropolitana,Estándar,17,35.9,5.9,3,no
+CLI0097,semestral,Residencial,Valparaíso,Premium,17,69.9,4.6,4,no
+CLI0098,mensual,Empresarial,Antofagasta,Premium,16,83.0,8.7,3,no
+CLI0099,mensual,Residencial,Biobío,Premium,1,75.0,4.8,4,no
+CLI0100,mensual,Residencial,Antofagasta,Premium,10,73.1,4.3,3,no
+CLI0101,anual,Residencial,Antofagasta,Premium,21,59.8,8.3,3,no
+CLI0102,mensual,Empresarial,Biobío,Premium,9,63.5,6.0,2,no
+CLI0103,semestral,Pyme,Antofagasta,Básico,20,4.3,5.7,2,no
+CLI0104,mensual,Residencial,Valparaíso,Premium,13,76.4,5.9,4,sí
+CLI0105,anual,Pyme,Antofagasta,Estándar,54,44.6,5.6,3,sí
+CLI0106,anual,Empresarial,Metropolitana,Estándar,18,38.6,4.3,3,no
+CLI0107,mensual,Pyme,Valparaíso,Básico,16,16.9,4.6,3,no
+CLI0108,mensual,Pyme,Los Lagos,Estándar,11,42.9,3.4,2,sí
+CLI0109,semestral,Pyme,Metropolitana,Básico,26,11.0,5.2,5,sí
+CLI0110,anual,Pyme,Metropolitana,Estándar,22,57.9,5.0,1,sí
+CLI0111,anual,Empresarial,Biobío,Estándar,39,49.0,8.4,2,no
+CLI0112,mensual,Empresarial,Los Lagos,Premium,8,72.9,3.4,4,sí
+CLI0113,semestral,Empresarial,Biobío,Premium,6,90.8,4.3,3,no
+CLI0114,anual,Pyme,Biobío,Premium,39,78.6,6.3,1,no
+CLI0115,anual,Empresarial,Metropolitana,Básico,36,1,5.9,2,no
+CLI0116,semestral,Empresarial,Metropolitana,Premium,33,111.8,5.7,1,sí
+CLI0117,semestral,Empresarial,Biobío,Básico,25,17.7,5.3,3,sí
+CLI0118,anual,Pyme,Valparaíso,Premium,18,100.1,7.7,1,no
+CLI0119,mensual,Pyme,Biobío,Premium,5,88.5,5.9,3,no
+CLI0120,semestral,Empresarial,Los Lagos,Premium,35,85.7,6.6,3,no
+CLI0121,anual,Empresarial,Biobío,Básico,41,21.4,6.9,3,no
+CLI0122,anual,Pyme,Biobío,Básico,37,1,8.7,2,no
+CLI0123,semestral,Pyme,Biobío,Premium,18,92.5,2.7,4,sí
+CLI0124,anual,Pyme,Biobío,Premium,26,82.7,5.0,2,no
+CLI0125,anual,Pyme,Antofagasta,Básico,20,18.2,6.1,3,no
+CLI0126,semestral,Empresarial,Antofagasta,Estándar,27,45.9,8.6,1,no
+CLI0127,semestral,Pyme,Valparaíso,Estándar,26,51.3,7.3,2,no
+CLI0128,mensual,Empresarial,Antofagasta,Básico,12,14.1,7.5,3,no
+CLI0129,anual,Empresarial,Metropolitana,Estándar,29,42.3,7.2,1,no
+CLI0130,semestral,Pyme,Metropolitana,Básico,31,20.0,4.3,6,no
+CLI0131,mensual,Pyme,Valparaíso,Premium,7,83.4,4.3,4,no
+CLI0132,mensual,Residencial,Valparaíso,Premium,9,64.3,5.7,2,no
+CLI0133,MENSUAL,Empresarial,Valparaíso,Premium,11,89.4,5.7,2,sí
+CLI0134,mensual,Empresarial,Biobío,Premium,4,82.8,4.2,4,no
+CLI0135,anual,Pyme,Los Lagos,Estándar,41,38.1,6.8,3,no
+CLI0136,mensual,Pyme,Antofagasta,Básico,3,4.6,4.8,4,sí
+CLI0137,semestral,Pyme,Los Lagos,Premium,16,68.1,7.2,1,no
+CLI0138,anual,Residencial,Los Lagos,Premium,25,79.6,3.4,5,no
+CLI0139,anual,Empresarial,Antofagasta,Premium,18,76.0,7.1,4,no
+CLI0140,semestral,Residencial,Metropolitana,Básico,19,9.7,8.0,3,no
+CLI0141,semestral,Pyme,Los Lagos,Premium,16,74.1,4.4,4,no
+CLI0142,anual,Residencial,Biobío,Premium,31,75.5,5.4,4,sí
+CLI0143,semestral,Residencial,Metropolitana,Estándar,33,34.4,6.4,3,no
+CLI0144,semestral,Pyme,Los Lagos,Premium,26,92.6,4.4,3,no
+CLI0145,semestral,Residencial,Valparaíso,Estándar,28,42.1,3.0,4,no
+CLI0146,semestral,Residencial,Valparaíso,Premium,26,86.1,6.9,2,no
+CLI0147,mensual,Empresarial,Biobío,Básico,12,11.0,6.8,1,no
+CLI0148,mensual,Pyme,Metropolitana,Premium,3,65.9,4.8,5,sí
+CLI0149,mensual,Empresarial,Valparaíso,Premium,4,76.7,5.8,2,no
+CLI0150,mensual,Residencial,Antofagasta,Premium,2,71.9,6.4,2,no
+CLI0151,mensual,Empresarial,Biobío,Estándar,4,59.9,5.3,2,sí
+CLI0152,semestral,Pyme,Biobío,Básico,18,27.8,6.2,2,sí
+CLI0153,anual,Empresarial,Los Lagos,Estándar,48,25.8,8.6,0,no
+CLI0154,mensual,Pyme,Antofagasta,Premium,12,97.6,8.1,3,no
+CLI0155,semestral,Pyme,Metropolitana,Estándar,33,36.0,7.9,2,no
+CLI0156,mensual,Pyme,Valparaíso,Estándar,12,52.5,5.2,1,no
+CLI0157,mensual,Residencial,Biobío,Básico,6,1,3.8,4,no
+CLI0158,semestral,Pyme,Los Lagos,Estándar,27,58.5,8.1,1,no
+CLI0159,semestral,Pyme,Biobío,Básico,20,26.8,6.7,2,no
+CLI0160,semestral,Empresarial,Antofagasta,Estándar,7,44.0,8.0,2,no
+CLI0161,anual,Residencial,Los Lagos,Premium,44,68.2,8.5,2,no
+CLI0162,anual,Pyme,Valparaíso,Estándar,50,36.5,6.7,2,no
+CLI0163,mensual,Empresarial,Metropolitana,Premium,6,98.3,5.9,1,no
+CLI0164,mensual,Empresarial,Antofagasta,Estándar,11,37.5,5.3,3,no
+CLI0165,mensual,Empresarial,Metropolitana,Premium,13,75.9,8.0,3,no
+CLI0166,mensual,Pyme,Valparaíso,Estándar,10,26.5,7.8,2,no
+CLI0167,semestral,Residencial,Biobío,Premium,18,73.4,4.9,2,sí
+CLI0168,anual,Pyme,Metropolitana,Premium,54,52.2,6.4,3,no
+CLI0169,mensual,Residencial,Biobío,Estándar,7,41.0,6.2,3,sí
+CLI0170,anual,Pyme,Los Lagos,Básico,54,10.4,6.4,4,no
+CLI0171,mensual,Residencial,Valparaíso,Premium,6,79.4,4.9,3,sí
+CLI0172,semestral,Pyme,Antofagasta,Básico,23,1,6.4,5,no
+CLI0173,anual,Residencial,Biobío,Premium,48,93.3,7.2,1,no
+CLI0174,anual,Residencial,Los Lagos,Básico,28,24.9,8.0,2,no
+CLI0175,anual,Pyme,Los Lagos,Básico,30,21.1,6.9,0,no
+CLI0176,mensual,Residencial,Antofagasta,Estándar,1,38.1,3.8,4,sí
+CLI0177,mensual,Residencial,Biobío,Básico,1,12.7,5.7,2,no
+CLI0178,mensual,Empresarial,Valparaíso,Premium,16,85.8,5.7,3,sí
+CLI0179,mensual,Residencial,Los Lagos,Premium,17,61.6,7.1,3,no
+CLI0180,semestral,Pyme,Antofagasta,Básico,9,21.1,6.4,1,no
+CLI0181,semestral,Pyme,Valparaíso,Premium,10,79.8,5.6,2,no
+CLI0182,semestral,Pyme,Biobío,Básico,36,11.7,5.0,3,no
+CLI0183,semestral,Empresarial,Antofagasta,Básico,26,6.2,7.2,2,no
+CLI0184,mensual,Pyme,Metropolitana,Premium,11,83.5,6.5,3,no
+CLI0185,semestral,Pyme,Antofagasta,Premium,21,65.2,4.0,4,sí
+CLI0186,mensual,Residencial,Valparaíso,Básico,11,1.9,7.2,2,no
+CLI0187,semestral,Empresarial,Metropolitana,Premium,12,74.6,8.5,1,sí
+CLI0188,anual,Empresarial,Antofagasta,Premium,40,72.0,8.2,1,no
+CLI0189,semestral,Empresarial,Biobío,Premium,14,86.1,3.4,2,sí
+CLI0190,semestral,Empresarial,Metropolitana,Básico,16,1.6,5.1,2,no
+CLI0191,mensual,Pyme,Antofagasta,Estándar,15,63.4,6.5,3,no
+CLI0192,anual,Residencial,Metropolitana,Premium,52,79.9,6.1,3,no
+CLI0193,mensual,Residencial,Valparaíso,Premium,15,84.4,5.9,2,no
+CLI0194,semestral,Pyme,Valparaíso,Premium,20,88.8,7.4,2,no
+CLI0195,semestral,Pyme,Biobío,Estándar,16,34.6,4.9,3,sí
+CLI0196,mensual,Pyme,Metropolitana,Estándar,9,25.9,5.2,2,no
+CLI0197,semestral,Empresarial,Valparaíso,Básico,10,22.9,4.2,3,no
+CLI0198,semestral,Empresarial,Biobío,Premium,8,81.7,4.2,3,no
+CLI0199,mensual,Pyme,Valparaíso,Estándar,17,45.6,10,1,no
+CLI0200,mensual,Pyme,Biobío,Estándar,18,54.0,8.0,3,sí
+CLI0201,mensual,Pyme,Antofagasta,Premium,14,82.7,2.9,5,sí
+CLI0202,mensual,Pyme,Los Lagos,Estándar,5,37.0,7.1,1,no
+CLI0203,mensual,Residencial,Antofagasta,Premium,2,87.1,3.5,5,sí
+CLI0204,mensual,Pyme,Biobío,Básico,9,38.9,6.7,5,no
+CLI0205,semestral,Pyme,Los Lagos,Básico,22,4.8,4.5,4,no
+CLI0206,anual,Empresarial,Los Lagos,Básico,13,29.8,8.8,3,no
+CLI0207,mensual,Residencial,Los Lagos,Estándar,1,23.1,5.1,4,sí
+CLI0208,anual,Pyme,Antofagasta,Estándar,41,36.3,7.5,2,no
+CLI0209,semestral,Residencial,Biobío,Premium,10,72.7,7.7,4,no
+CLI0210,mensual,Empresarial,Los Lagos,Premium,4,54.9,4.5,4,sí
+CLI0211,mensual,Residencial,Metropolitana,Estándar,13,48.2,4.5,5,no
+CLI0212,anual,Pyme,Biobío,Básico,60,2.3,10,4,no
+CLI0213,anual,Empresarial,Metropolitana,Básico,37,1,6.7,2,no
+CLI0214,semestral,Pyme,Antofagasta,Estándar,23,43.1,6.9,2,no
+CLI0215,mensual,Empresarial,Antofagasta,Estándar,2,27.3,6.2,2,no
+CLI0216,semestral,Pyme,Biobío,Premium,27,78.5,5.7,2,sí
+CLI0217,mensual,Empresarial,Los Lagos,Estándar,5,44.5,6.9,3,no
+CLI0218,mensual,Empresarial,Los Lagos,Estándar,5,41.8,3.8,3,sí
+CLI0219,semestral,Residencial,Antofagasta,Premium,29,88.9,4.8,2,no
+CLI0220,semestral,Empresarial,Metropolitana,Estándar,16,39.2,3.9,1,no
+CLI0221,anual,Pyme,Metropolitana,Premium,42,78.3,9.3,1,no
+CLI0222,mensual,Empresarial,Valparaíso,Premium,13,75.9,7.0,3,sí
+CLI0223,anual,Residencial,Valparaíso,Básico,40,12.3,7.8,0,no
+CLI0224,anual,Pyme,Metropolitana,Premium,20,91.1,4.1,3,no
+CLI0225,semestral,Empresarial,Biobío,Básico,20,24.4,5.3,3,no
+CLI0226,semestral,Pyme,Biobío,Premium,21,61.0,6.5,3,no
+CLI0227,mensual,Empresarial,Biobío,Premium,7,74.9,3.7,1,sí
+CLI0228,anual,Empresarial,Metropolitana,Premium,55,69.6,4.7,3,no
+CLI0229,mensual,Residencial,Biobío,Básico,10,19.7,5.3,2,no
+CLI0230,mensual,Pyme,Biobío,Premium,9,63.5,6.8,3,no
+CLI0231,mensual,Pyme,Los Lagos,Básico,8,26.7,5.9,4,no
+CLI0232,mensual,Pyme,Valparaíso,Estándar,16,52.2,4.8,3,no
+CLI0233,mensual,Pyme,Metropolitana,Básico,8,1,4.9,4,no
+CLI0234,anual,Residencial,Metropolitana,Estándar,43,36.1,8.1,3,no
+CLI0235,mensual,Residencial,Metropolitana,Estándar,4,49.8,4.6,2,sí
+CLI0236,anual,Residencial,Los Lagos,Estándar,29,28.7,6.7,3,no
+CLI0237,semestral,Empresarial,Valparaíso,Básico,29,9.8,7.5,2,no
+CLI0238,semestral,Empresarial,Antofagasta,Premium,16,95.4,7.7,3,no
+CLI0239,mensual,Empresarial,Valparaíso,Básico,9,5.3,6.5,2,no
+CLI0240,semestral,Empresarial,Biobío,Premium,13,93.9,6.3,3,no
+CLI0241,mensual,Pyme,Biobío,Premium,4,61.6,2.5,4,sí
+CLI0242,semestral,Empresarial,Los Lagos,Estándar,19,69.6,5.0,1,no
+CLI0243,anual,Residencial,Valparaíso,Premium,60,62.6,6.5,1,no
+CLI0244,anual,Residencial,Metropolitana,Premium,44,78.0,7.8,3,no
+CLI0245,anual,Empresarial,Metropolitana,Premium,25,77.1,4.5,3,no
+CLI0246,mensual,Empresarial,Antofagasta,Premium,2,81.4,3.0,3,sí
+CLI0247,mensual,Empresarial,Metropolitana,Premium,7,76.8,5.1,6,sí
+CLI0248,anual,Residencial,Antofagasta,Básico,30,30.0,4.3,4,no
+CLI0249,anual,Pyme,Antofagasta,Estándar,36,14.6,7.9,4,no
+CLI0250,anual,Residencial,Biobío,Básico,23,30.0,7.6,2,no
+CLI0251,anual,Residencial,Metropolitana,Estándar,41,33.0,5.4,3,no
+CLI0252,mensual,Empresarial,Valparaíso,Premium,4,71.9,7.4,2,no
+CLI0253,anual,Residencial,Valparaíso,Básico,16,17.5,6.0,3,no
+CLI0254,anual,Empresarial,Antofagasta,Básico,46,11.4,7.9,4,no
+CLI0255,semestral,Empresarial,Valparaíso,Premium,24,73.2,8.0,1,no
+CLI0256,mensual,Pyme,Los Lagos,Básico,14,24.2,5.5,3,no
+CLI0257,anual,Residencial,Antofagasta,Premium,43,90.6,7.6,1,no
+CLI0258,semestral,Empresarial,Valparaíso,Estándar,18,49.9,6.7,3,no
+CLI0259,mensual,Pyme,Valparaíso,Estándar,2,10.9,3.6,4,sí
+CLI0260,mensual,Pyme,Metropolitana,Estándar,12,46.7,7.6,3,no
+CLI0261,mensual,Pyme,Los Lagos,Premium,2,85.4,4.4,3,no
+CLI0262,semestral,Empresarial,Biobío,Básico,12,1,9.1,0,no
+CLI0263,anual,Empresarial,Valparaíso,Premium,50,76.5,6.1,2,no
+CLI0264,semestral,Pyme,Biobío,Estándar,14,48.8,3.7,5,no
+CLI0265,anual,Pyme,Antofagasta,Estándar,25,31.5,7.4,2,no
+CLI0266,mensual,Pyme,Los Lagos,Premium,14,86.6,5.4,3,sí
+CLI0267,semestral,Residencial,Antofagasta,Premium,26,90.2,5.8,1,no
+CLI0268,anual,Empresarial,Valparaíso,Premium,34,81.4,7.9,3,no
+CLI0269,anual,Pyme,Metropolitana,Premium,14,82.5,5.2,3,no
+CLI0270,mensual,Pyme,Valparaíso,Básico,5,15.4,7.0,2,no
+CLI0271,semestral,Pyme,Los Lagos,Estándar,27,38.6,6.4,4,no
+CLI0272,mensual,Empresarial,Metropolitana,Premium,14,81.1,6.8,0,sí
+CLI0273,mensual,Residencial,Valparaíso,Básico,17,14.8,7.3,4,no
+CLI0274,semestral,Residencial,Valparaíso,Estándar,27,54.5,6.6,2,no
+CLI0275,semestral,Residencial,Metropolitana,Estándar,18,30.2,7.1,2,no
+CLI0276,anual,Pyme,Biobío,Premium,18,75.2,8.6,0,no
+CLI0277,anual,Pyme,Los Lagos,Estándar,29,44.5,6.6,3,no
+CLI0278,mensual,Empresarial,Metropolitana,Básico,5,5.9,5.3,1,sí
+CLI0279,mensual,Residencial,Los Lagos,Básico,13,8.4,4.0,3,sí
+CLI0280,semestral,Residencial,Los Lagos,Premium,17,58.8,7.4,2,no
+CLI0281,mensual,Pyme,Los Lagos,Estándar,11,49.4,5.8,2,no
+CLI0282,anual,Empresarial,Valparaíso,Premium,49,80.7,7.1,2,no
+CLI0283,anual,Pyme,Metropolitana,Básico,29,25.7,8.4,2,no
+CLI0284,mensual,Residencial,Biobío,Estándar,12,29.5,5.6,2,sí
+CLI0285,mensual,Pyme,Los Lagos,Premium,14,84.1,6.1,1,no
+CLI0286,anual,Residencial,Biobío,Estándar,36,28.0,7.2,1,no
+CLI0287,anual,Residencial,Los Lagos,Premium,22,77.1,5.3,3,no
+CLI0288,mensual,Empresarial,Antofagasta,Estándar,16,46.7,6.1,2,no
+CLI0289,anual,Empresarial,Los Lagos,Premium,24,73.8,6.4,1,sí
+CLI0290,mensual,Empresarial,Antofagasta,Estándar,14,54.0,6.9,0,no
+CLI0291,mensual,Empresarial,Los Lagos,Premium,7,72.6,5.5,2,sí
+CLI0292,semestral,Pyme,Valparaíso,Estándar,18,57.7,5.4,5,no
+CLI0293,anual,Residencial,Los Lagos,Premium,23,73.7,4.4,2,no
+CLI0294,mensual,Empresarial,Metropolitana,Estándar,16,44.5,6.6,3,no
+CLI0295,mensual,Empresarial,Antofagasta,Básico,15,28.7,5.6,1,no
+CLI0296,semestral,Pyme,Metropolitana,Estándar,28,38.9,7.9,1,no
+CLI0297,mensual,Residencial,Biobío,Básico,2,1,4.3,4,no
+CLI0298,anual,Residencial,Metropolitana,Básico,28,12.8,6.8,4,no
+CLI0299,semestral,Residencial,Antofagasta,Estándar,18,22.4,6.4,4,no
+CLI0300,semestral,Empresarial,Antofagasta,Básico,9,49.0,6.6,1,no

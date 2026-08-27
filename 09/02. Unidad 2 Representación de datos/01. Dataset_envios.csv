@@ -1,0 +1,11 @@
+ID_envio,Zona,Categoria_producto,Fecha_envio,Tiempo_entrega_dias,Costo_envio
+1,Norte,Electrónica,2024-01-07,2,1500
+2,Sur,Ropa,2024-01-14,5,2000
+3,Centro,Alimentos,2024-01-21,3,1200
+4,Norte,Electrónica,2024-01-28,2,1600
+5,Centro,Alimentos,2024-02-04,4,1400
+6,Sur,Ropa,2024-02-11,6,2200
+7,Norte,Ropa,2024-02-18,3,1300
+8,Centro,Electrónica,2024-02-25,2,1500
+9,Sur,Alimentos,2024-03-03,5,2100
+10,Norte,Ropa,2024-03-10,4,1800

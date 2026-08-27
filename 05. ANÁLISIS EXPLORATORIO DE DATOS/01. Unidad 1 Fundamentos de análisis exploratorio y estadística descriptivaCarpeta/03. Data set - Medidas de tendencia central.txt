@@ -1,0 +1,780 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📏 Clase 4 — Medidas de dispersión y conceptos de muestreo\n",
+    "## Fundamentos de análisis exploratorio y estadística descriptiva\n",
+    "\n",
+    "**Situación:** La empresa **ExpressLog** declara un promedio de 48 horas de entrega, pero recibe constantes quejas. El promedio no refleja toda la realidad. Necesitas medidas que describan la **variabilidad** del servicio.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Calcular e interpretar **rango**, **varianza** y **desviación estándar**\n",
+    "- Distinguir cálculos **poblacionales** vs **muestrales** (corrección de Bessel)\n",
+    "- Visualizar dispersión con bandas `±1σ` sobre histograma\n",
+    "- Comparar grupos con distintas variabilidades\n",
+    "- Decidir cuándo el promedio es o no representativo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Librerías cargadas')\n",
+    "print(f'numpy {np.__version__} | pandas {pd.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Concepto de dispersión\n",
+    "\n",
+    "### 1.1 La misma media, distintas historias"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ejemplo exacto de la presentación\n",
+    "A = pd.Series([10, 10, 10])   # sin variabilidad\n",
+    "B = pd.Series([5, 10, 15])    # con variabilidad\n",
+    "\n",
+    "print(f'Dataset A: {A.values}  → Media: {A.mean()} | Rango: {A.max()-A.min()} | Desv.Std: {A.std(ddof=1):.2f}')\n",
+    "print(f'Dataset B: {B.values} → Media: {B.mean()} | Rango: {B.max()-B.min()} | Desv.Std: {B.std(ddof=1):.2f}')\n",
+    "print()\n",
+    "print('Misma media (10), diferente dispersión. Sin medidas de dispersión los datasets parecen idénticos.')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración ampliada con distribuciones reales\n",
+    "np.random.seed(42)\n",
+    "baja_disp  = pd.Series(np.random.normal(48, 2,  200).round(1))  # desv=2h\n",
+    "alta_disp  = pd.Series(np.random.normal(48, 20, 200).round(1))  # desv=20h\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Misma media (48h) — distintas dispersiones', fontweight='bold')\n",
+    "\n",
+    "for ax, datos, titulo, color in zip(\n",
+    "    axes,\n",
+    "    [baja_disp, alta_disp],\n",
+    "    ['BAJA dispersión (σ≈2h)', 'ALTA dispersión (σ≈20h)'],\n",
+    "    ['#BDD7EE', '#FCE4D6']\n",
+    "):\n",
+    "    m = datos.mean()\n",
+    "    s = datos.std(ddof=1)\n",
+    "    sns.histplot(datos, bins=25, kde=True, ax=ax, color=color, edgecolor='white')\n",
+    "    ax.axvline(m,   color='blue',  linewidth=2.5, label=f'Media {m:.1f}h')\n",
+    "    ax.axvline(m+s, color='green', linestyle='--', linewidth=2, label=f'+1σ ({m+s:.1f}h)')\n",
+    "    ax.axvline(m-s, color='green', linestyle='--', linewidth=2, label=f'-1σ ({m-s:.1f}h)')\n",
+    "    ax.set_title(titulo, fontweight='bold')\n",
+    "    ax.set_xlabel('Horas de entrega')\n",
+    "    ax.set_ylabel('Frecuencia')\n",
+    "    ax.legend(fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1.1 — Reflexiona:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué el promedio solo no es suficiente para evaluar la calidad de un servicio?\n",
+    "r1 = \"\"\n",
+    "\n",
+    "# ✏️ ¿En qué situación de tu contexto laboral sería importante medir la dispersión?\n",
+    "r2 = \"\"\n",
+    "\n",
+    "# ✏️ Con alta dispersión en tiempos de entrega, ¿qué problemas operacionales podrían ocurrir?\n",
+    "r3 = \"\"\n",
+    "\n",
+    "print(f'1. {r1}')\n",
+    "print(f'2. {r2}')\n",
+    "print(f'3. {r3}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Las tres medidas de dispersión\n",
+    "\n",
+    "### 2.1 Rango: la medida más simple"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ejemplo exacto de la presentación\n",
+    "valores = pd.Series([8, 11, 9, 5, 13, 7, 10])\n",
+    "\n",
+    "rango = valores.max() - valores.min()\n",
+    "print(f'Serie: {valores.values}')\n",
+    "print(f'Máximo: {valores.max()} | Mínimo: {valores.min()}')\n",
+    "print(f'Rango = {valores.max()} - {valores.min()} = {rango}')\n",
+    "print()\n",
+    "print('Interpretación: todos los valores se distribuyen dentro de una ventana de 8 unidades.')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración de la limitación del rango ante outliers\n",
+    "sin_outlier = pd.Series([2, 3, 3, 4, 4, 4, 4, 3, 3, 2])   # rango 2\n",
+    "con_outlier = pd.Series([2, 3, 3, 4, 4, 4, 4, 3, 3, 18])  # rango 16\n",
+    "\n",
+    "print('Sin outlier:')\n",
+    "print(f'  Valores: {sin_outlier.values}')\n",
+    "print(f'  Rango: {sin_outlier.max()-sin_outlier.min()} | Media: {sin_outlier.mean():.1f}')\n",
+    "print()\n",
+    "print('Con outlier (18 en lugar del último 2):')\n",
+    "print(f'  Valores: {con_outlier.values}')\n",
+    "print(f'  Rango: {con_outlier.max()-con_outlier.min()} | Media: {con_outlier.mean():.1f}')\n",
+    "print()\n",
+    "print('⚠️  El rango pasó de 2 a 16 por un solo valor extremo.')\n",
+    "print('   Por eso el rango no debe usarse como única medida de dispersión.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Varianza: dispersión promedio al cuadrado"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ejemplo exacto de la presentación\n",
+    "valores_np = np.array([4, 8, 6, 5, 10])\n",
+    "media = np.mean(valores_np)\n",
+    "\n",
+    "var_poblacional = np.var(valores_np, ddof=0)\n",
+    "var_muestral    = np.var(valores_np, ddof=1)\n",
+    "\n",
+    "print(f'Valores: {valores_np}')\n",
+    "print(f'Media:   {media}')\n",
+    "print()\n",
+    "print(f'Varianza poblacional (ddof=0): {var_poblacional:.4f}')\n",
+    "print(f'Varianza muestral    (ddof=1): {var_muestral:.4f}')\n",
+    "print()\n",
+    "\n",
+    "# Mostrar el cálculo paso a paso\n",
+    "diferencias = valores_np - media\n",
+    "cuadrados   = diferencias ** 2\n",
+    "print('Cálculo paso a paso:')\n",
+    "print(f'  Diferencias (xi - media): {diferencias}')\n",
+    "print(f'  Cuadrados (xi - media)²:  {cuadrados}')\n",
+    "print(f'  Suma de cuadrados:        {cuadrados.sum()}')\n",
+    "print(f'  Dividido n   (población): {cuadrados.sum()/len(valores_np):.4f}')\n",
+    "print(f'  Dividido n-1 (muestra):   {cuadrados.sum()/(len(valores_np)-1):.4f}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Desviación estándar: dispersión en las mismas unidades"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "desv_est_pobl = np.std(valores_np, ddof=0)\n",
+    "desv_est_mues = np.std(valores_np, ddof=1)\n",
+    "\n",
+    "print(f'Desviación estándar poblacional (ddof=0): {desv_est_pobl:.4f}')\n",
+    "print(f'Desviación estándar muestral    (ddof=1): {desv_est_mues:.4f}')\n",
+    "print()\n",
+    "print(f'√ de varianza muestral: {np.sqrt(var_muestral):.4f}  ← igual a desv.std muestral ✅')\n",
+    "print()\n",
+    "print('Interpretación:')\n",
+    "print(f'  Media = {media:.1f}')\n",
+    "print(f'  La mayoría de los valores está entre {media - desv_est_mues:.1f} y {media + desv_est_mues:.1f}')\n",
+    "print(f'  Rango ±1σ representa ~68% de los datos en distribución normal')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualización de la presentación: histograma con media y ±1 desv.std\n",
+    "datos_vis = np.array([4, 8, 6, 5, 10, 7, 9, 6, 8, 5, 7, 9, 6, 8, 7])\n",
+    "m_vis = np.mean(datos_vis)\n",
+    "s_vis = np.std(datos_vis, ddof=1)\n",
+    "\n",
+    "plt.figure(figsize=(8, 4))\n",
+    "sns.histplot(datos_vis, kde=True, bins=6, color='#BDD7EE', edgecolor='white')\n",
+    "plt.axvline(m_vis,       color='blue',  linewidth=2.5,  label=f'Media {m_vis:.1f}')\n",
+    "plt.axvline(m_vis + s_vis, color='green', linestyle='--', linewidth=2,\n",
+    "            label=f'+1 Desv.Est. ({m_vis+s_vis:.1f})')\n",
+    "plt.axvline(m_vis - s_vis, color='green', linestyle='--', linewidth=2,\n",
+    "            label=f'-1 Desv.Est. ({m_vis-s_vis:.1f})')\n",
+    "plt.axvspan(m_vis - s_vis, m_vis + s_vis, alpha=0.08, color='green')\n",
+    "plt.legend(fontsize=9)\n",
+    "plt.title('Distribución con media y desviación estándar', fontweight='bold')\n",
+    "plt.xlabel('Valor')\n",
+    "plt.ylabel('Frecuencia')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ventas = np.array([80, 82, 81, 150, 79, 83, 80, 85, 78, 82])\n",
+    "\n",
+    "# ✏️ Calcula rango, varianza muestral y desviación estándar muestral:\n",
+    "rango_v  = ???\n",
+    "var_v    = np.var(ventas, ddof=???)\n",
+    "desv_v   = np.std(ventas, ddof=???)\n",
+    "media_v  = np.mean(ventas)\n",
+    "\n",
+    "print(f'Media:           {media_v:.2f} unidades')\n",
+    "print(f'Rango:           {rango_v}')\n",
+    "print(f'Varianza:        {var_v:.2f}')\n",
+    "print(f'Desv. estándar:  {desv_v:.2f}')\n",
+    "\n",
+    "# ✏️ ¿El valor 150 parece coherente? ¿Cómo afecta a la media y a la desv.std?\n",
+    "r_ventas = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué pasaría si elimináramos el 150 del análisis?\n",
+    "sin_outlier_v = ventas[ventas != 150]\n",
+    "print(f'\\nSin outlier → Media: {sin_outlier_v.mean():.2f} | Desv.std: {sin_outlier_v.std(ddof=1):.2f}')\n",
+    "print('Respuesta:', r_ventas)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Población, muestra y corrección de Bessel\n",
+    "\n",
+    "### 3.1 ¿Por qué importa la diferencia?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración con tabla comparativa\n",
+    "datos_demo = np.array([4, 8, 6, 5, 10])\n",
+    "n = len(datos_demo)\n",
+    "\n",
+    "tabla_bessel = pd.DataFrame({\n",
+    "    'Fórmula': ['Var poblacional (÷n)', 'Var muestral (÷n-1)', 'Desv.Std pobl.', 'Desv.Std muestral'],\n",
+    "    'ddof': [0, 1, 0, 1],\n",
+    "    'Denominador': [n, n-1, n, n-1],\n",
+    "    'Resultado': [\n",
+    "        np.var(datos_demo, ddof=0),\n",
+    "        np.var(datos_demo, ddof=1),\n",
+    "        np.std(datos_demo, ddof=0),\n",
+    "        np.std(datos_demo, ddof=1)\n",
+    "    ],\n",
+    "    'Función Python': [\n",
+    "        'np.var(x, ddof=0)',\n",
+    "        'np.var(x, ddof=1)',\n",
+    "        'np.std(x, ddof=0)',\n",
+    "        'np.std(x, ddof=1)'\n",
+    "    ]\n",
+    "})\n",
+    "tabla_bessel['Resultado'] = tabla_bessel['Resultado'].round(4)\n",
+    "print('=== Corrección de Bessel: ddof=0 (población) vs ddof=1 (muestra) ===')\n",
+    "print(tabla_bessel.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualizar el impacto de Bessel en función del tamaño de muestra\n",
+    "tamanios = range(3, 101)\n",
+    "np.random.seed(42)\n",
+    "poblacion_real = np.random.normal(50, 10, 10000)  # población real, σ=10\n",
+    "\n",
+    "diffs = []\n",
+    "for n_s in tamanios:\n",
+    "    muestra = np.random.choice(poblacion_real, size=n_s, replace=False)\n",
+    "    diff = abs(np.std(muestra, ddof=1) - np.std(muestra, ddof=0))\n",
+    "    diffs.append(diff)\n",
+    "\n",
+    "plt.figure(figsize=(9, 4))\n",
+    "plt.plot(list(tamanios), diffs, color='#2E75B6', linewidth=2)\n",
+    "plt.axhline(0, color='gray', linestyle='--', alpha=0.5)\n",
+    "plt.title('Diferencia entre desv.std muestral y poblacional vs tamaño de muestra',\n",
+    "          fontweight='bold')\n",
+    "plt.xlabel('Tamaño de muestra (n)')\n",
+    "plt.ylabel('Diferencia |ddof=1 − ddof=0|')\n",
+    "plt.grid(linestyle='--', alpha=0.4)\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "print('→ A mayor tamaño de muestra, menor diferencia entre ambas fórmulas.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3 — Responde:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Cuándo usarías ddof=0 y cuándo ddof=1?\n",
+    "r_ddof = \"\"\n",
+    "\n",
+    "# ✏️ ¿Por qué en ciencia de datos casi siempre usamos ddof=1?\n",
+    "r_bessel = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué error se comete si usas ddof=0 con datos muestrales?\n",
+    "r_error = \"\"\n",
+    "\n",
+    "print('ddof=0 vs ddof=1:', r_ddof)\n",
+    "print('Por qué ddof=1:  ', r_bessel)\n",
+    "print('Error ddof=0:    ', r_error)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad guiada: ExpressLog\n",
+    "\n",
+    "### 4.1 Cargar y explorar el dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('entregas_express.csv')\n",
+    "\n",
+    "print(f'Registros: {len(df)}')\n",
+    "print()\n",
+    "print(df.head(8))\n",
+    "print()\n",
+    "print('=== Resumen estadístico ===')\n",
+    "print(df['tiempo_entrega'].describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Calcular rango, varianza y desviación estándar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datos = df['tiempo_entrega']\n",
+    "\n",
+    "rango           = datos.max() - datos.min()\n",
+    "var_poblacional = np.var(datos, ddof=0)\n",
+    "var_muestral    = np.var(datos, ddof=1)\n",
+    "desv_est        = np.std(datos, ddof=1)\n",
+    "media           = np.mean(datos)\n",
+    "\n",
+    "print('=== Medidas de dispersión — Tiempos de entrega (horas) ===')\n",
+    "print(f'  Media:                   {media:.2f} h')\n",
+    "print(f'  Rango:                   {rango} h')\n",
+    "print(f'  Varianza poblacional:    {var_poblacional:.2f} h²')\n",
+    "print(f'  Varianza muestral:       {var_muestral:.2f} h²')\n",
+    "print(f'  Desv. estándar muestral: {desv_est:.2f} h')\n",
+    "print()\n",
+    "print(f'  Rango ±1σ: [{media-desv_est:.1f}h — {media+desv_est:.1f}h]')\n",
+    "pct_dentro = ((datos >= media-desv_est) & (datos <= media+desv_est)).mean() * 100\n",
+    "print(f'  % de pedidos dentro de ±1σ: {pct_dentro:.1f}%')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Visualización con media y ±1σ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(15, 5))\n",
+    "fig.suptitle('ExpressLog — Análisis de Dispersión en Tiempos de Entrega', fontweight='bold')\n",
+    "\n",
+    "# Histograma + KDE con bandas\n",
+    "sns.histplot(datos, bins=8, kde=True, ax=axes[0], color='#BDD7EE', edgecolor='white')\n",
+    "axes[0].axvline(media,             color='blue',   linewidth=2.5,  label=f'Media {media:.1f}h')\n",
+    "axes[0].axvline(media + desv_est,  color='green',  linestyle='--', linewidth=2,\n",
+    "                label=f'+1σ ({media+desv_est:.1f}h)')\n",
+    "axes[0].axvline(media - desv_est,  color='green',  linestyle='--', linewidth=2,\n",
+    "                label=f'-1σ ({media-desv_est:.1f}h)')\n",
+    "axes[0].axvspan(media - desv_est, media + desv_est, alpha=0.08, color='green')\n",
+    "axes[0].axvline(48, color='orange', linestyle=':', linewidth=2, label='SLA 48h')\n",
+    "axes[0].set_title('Distribución del tiempo de entrega')\n",
+    "axes[0].set_xlabel('Horas')\n",
+    "axes[0].set_ylabel('Frecuencia')\n",
+    "axes[0].legend(fontsize=8)\n",
+    "\n",
+    "# Boxplot + swarm\n",
+    "sns.boxplot(y=datos, ax=axes[1], color='#BDD7EE')\n",
+    "axes[1].axhline(media,   color='blue',  linestyle='--', linewidth=2, label=f'Media {media:.1f}h')\n",
+    "axes[1].axhline(48,      color='orange',linestyle=':',  linewidth=2, label='SLA 48h')\n",
+    "axes[1].set_title('Boxplot — outliers y dispersión')\n",
+    "axes[1].set_ylabel('Horas')\n",
+    "axes[1].legend(fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Análisis por región"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "disp_region = df.groupby('region')['tiempo_entrega'].agg(\n",
+    "    media='mean',\n",
+    "    desv_std=lambda x: np.std(x, ddof=1),\n",
+    "    rango=lambda x: x.max() - x.min(),\n",
+    "    n='count'\n",
+    ").round(2)\n",
+    "disp_region['cv_pct'] = (disp_region['desv_std'] / disp_region['media'] * 100).round(1)\n",
+    "disp_region = disp_region.sort_values('desv_std', ascending=False)\n",
+    "\n",
+    "print('=== Dispersión por región (ordenada por desv.std) ===')\n",
+    "print(disp_region.to_string())\n",
+    "print()\n",
+    "print('cv_pct = Coeficiente de Variación (%) = desv.std/media × 100')\n",
+    "print('→ Mayor CV = mayor inconsistencia relativa del servicio')\n",
+    "\n",
+    "plt.figure(figsize=(10, 4))\n",
+    "orden = disp_region.index\n",
+    "sns.boxplot(data=df, x='region', y='tiempo_entrega', order=orden, palette='Blues_r')\n",
+    "plt.axhline(48, color='orange', linestyle='--', linewidth=2, label='SLA 48h')\n",
+    "plt.title('Dispersión por región (ordenada por desv.std)', fontweight='bold')\n",
+    "plt.xlabel('Región')\n",
+    "plt.ylabel('Horas')\n",
+    "plt.xticks(rotation=20)\n",
+    "plt.legend()\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 4 — Concluye:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Es el promedio de 48h representativo del servicio? ¿Por qué?\n",
+    "r_repr = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué región tiene mayor inconsistencia en sus tiempos?\n",
+    "r_region = disp_region.index[0]   # modifica si quieres\n",
+    "\n",
+    "# ✏️ ¿Qué acción operacional recomendarías basándote en la dispersión?\n",
+    "r_accion = \"\"\n",
+    "\n",
+    "# ✏️ ¿Usarías varianza poblacional o muestral en este caso? ¿Por qué?\n",
+    "r_pob_mues = \"\"\n",
+    "\n",
+    "print('--- CONCLUSIONES ACTIVIDAD GUIADA ---')\n",
+    "print(f'¿Promedio representativo? {r_repr}')\n",
+    "print(f'Región más inconsistente: {r_region}')\n",
+    "print(f'Acción recomendada:       {r_accion}')\n",
+    "print(f'Pobl. vs Muestral:        {r_pob_mues}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Actividad autónoma: Prueba técnica de diagnóstico\n",
+    "\n",
+    "### 5.1 Cargar el dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df2  = pd.read_csv('calificaciones_autonomo.csv')\n",
+    "calif = df2['calificaciones']\n",
+    "\n",
+    "print(f'Registros: {len(df2)}')\n",
+    "print()\n",
+    "print(df2.head(8))\n",
+    "print()\n",
+    "print('=== Resumen estadístico ===')\n",
+    "print(calif.describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.2 Calcular las medidas de dispersión"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "media2        = np.mean(calif)\n",
+    "rango2        = calif.max() - calif.min()\n",
+    "var_muestra2  = np.var(calif, ddof=1)\n",
+    "var_pobl2     = np.var(calif, ddof=0)\n",
+    "desv_est2     = np.std(calif, ddof=1)\n",
+    "\n",
+    "print('=== Medidas de dispersión — Calificaciones ===')\n",
+    "print(f'  Media:                   {media2:.2f}')\n",
+    "print(f'  Rango:                   {rango2:.1f}')\n",
+    "print(f'  Varianza poblacional:    {var_pobl2:.4f}')\n",
+    "print(f'  Varianza muestral:       {var_muestra2:.4f}')\n",
+    "print(f'  Desv. estándar muestral: {desv_est2:.4f}')\n",
+    "print()\n",
+    "print(f'  Rango ±1σ: [{media2-desv_est2:.2f} — {media2+desv_est2:.2f}]')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.3 Visualización"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(15, 5))\n",
+    "fig.suptitle('Calificaciones — Prueba Técnica de Diagnóstico', fontweight='bold')\n",
+    "\n",
+    "sns.histplot(calif, bins=8, kde=True, ax=axes[0], color='#E2EFDA', edgecolor='white')\n",
+    "axes[0].axvline(media2,              color='blue',  linewidth=2.5,  label=f'Media {media2:.2f}')\n",
+    "axes[0].axvline(media2 + desv_est2,  color='green', linestyle='--', linewidth=2,\n",
+    "                label=f'+1σ ({media2+desv_est2:.2f})')\n",
+    "axes[0].axvline(media2 - desv_est2,  color='green', linestyle='--', linewidth=2,\n",
+    "                label=f'-1σ ({media2-desv_est2:.2f})')\n",
+    "axes[0].axvline(4.0, color='red', linestyle=':', linewidth=2, label='Mínimo aprobación 4.0')\n",
+    "axes[0].axvspan(media2-desv_est2, media2+desv_est2, alpha=0.08, color='green')\n",
+    "axes[0].set_title('Distribución de calificaciones')\n",
+    "axes[0].set_xlabel('Calificación')\n",
+    "axes[0].set_ylabel('Frecuencia')\n",
+    "axes[0].legend(fontsize=8)\n",
+    "\n",
+    "sns.boxplot(y=calif, ax=axes[1], color='#E2EFDA')\n",
+    "axes[1].axhline(media2, color='blue',  linestyle='--', linewidth=2, label=f'Media {media2:.2f}')\n",
+    "axes[1].axhline(4.0,    color='red',   linestyle=':',  linewidth=2, label='Mínimo 4.0')\n",
+    "axes[1].set_title('Boxplot — outliers y dispersión')\n",
+    "axes[1].set_ylabel('Calificación')\n",
+    "axes[1].legend(fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.4 Dispersión por módulo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "disp_modulo = df2.groupby('modulo')['calificaciones'].agg(\n",
+    "    media='mean',\n",
+    "    desv_std=lambda x: np.std(x, ddof=1),\n",
+    "    rango=lambda x: x.max()-x.min(),\n",
+    "    n='count'\n",
+    ").round(3).sort_values('desv_std', ascending=False)\n",
+    "\n",
+    "print('=== Dispersión por módulo ===')\n",
+    "print(disp_modulo.to_string())\n",
+    "\n",
+    "plt.figure(figsize=(10, 4))\n",
+    "sns.boxplot(data=df2, x='modulo', y='calificaciones',\n",
+    "            order=disp_modulo.index, palette='Blues_r')\n",
+    "plt.axhline(4.0, color='red', linestyle='--', linewidth=2, label='Mínimo 4.0')\n",
+    "plt.title('Calificaciones por módulo', fontweight='bold')\n",
+    "plt.xlabel('')\n",
+    "plt.ylabel('Calificación')\n",
+    "plt.xticks(rotation=20)\n",
+    "plt.legend()\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 5 — Concluye:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿El promedio refleja con precisión el desempeño del grupo? ¿Por qué?\n",
+    "c1 = \"\"\n",
+    "\n",
+    "# ✏️ ¿Hay alta variabilidad en las calificaciones? ¿Qué la indica?\n",
+    "c2 = \"\"\n",
+    "\n",
+    "# ✏️ ¿Corresponde usar varianza muestral o poblacional aquí? Justifica.\n",
+    "c3 = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué módulo presenta el rendimiento más irregular? ¿Qué harías al respecto?\n",
+    "c4 = \"\"\n",
+    "\n",
+    "print('--- CONCLUSIONES ACTIVIDAD AUTÓNOMA ---')\n",
+    "for i, c in enumerate([c1, c2, c3, c4], 1):\n",
+    "    print(f'{i}. {c}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de funciones y buenas prácticas\n",
+    "\n",
+    "| Medida | Función | ddof | Cuándo usarla |\n",
+    "|--------|---------|------|---------------|\n",
+    "| Rango | `max - min` | — | Vista rápida, complementar siempre |\n",
+    "| Varianza poblacional | `np.var(x, ddof=0)` | 0 | Tienes **toda** la población |\n",
+    "| Varianza muestral | `np.var(x, ddof=1)` | 1 | Trabajas con una **muestra** |\n",
+    "| Desv.std poblacional | `np.std(x, ddof=0)` | 0 | Tienes **toda** la población |\n",
+    "| Desv.std muestral | `np.std(x, ddof=1)` | 1 | Trabajas con una **muestra** |\n",
+    "\n",
+    "**Señales de alerta en dispersión:**\n",
+    "\n",
+    "| Situación | Qué indica | Acción |\n",
+    "|-----------|-----------|--------|\n",
+    "| Media ≠ Mediana (diferencia grande) | Sesgo + outliers | Usar mediana como valor típico |\n",
+    "| Desv.std > Media | Muy alta variabilidad | Revisar outliers, segmentar grupos |\n",
+    "| Rango muy grande, desv.std baja | Pocos outliers extremos | Tratar outliers por separado |\n",
+    "| Coeficiente de variación > 30% | Inconsistencia alta | Investigar causas de variabilidad |\n",
+    "\n",
+    "> 💡 **Corrección de Bessel:** En ciencia de datos **casi siempre** usamos `ddof=1` porque trabajamos con muestras, no con poblaciones completas. Pandas `.std()` usa `ddof=1` por defecto.\n",
+    "\n",
+    "> 💡 **Regla práctica:** Compara `desv.std / media × 100` (Coeficiente de Variación). Si supera el 30%, el promedio no representa bien al grupo."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

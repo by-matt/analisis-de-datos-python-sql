@@ -1,0 +1,728 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 🎲 Clase 2 — Distribuciones discretas\n",
+    "## Distribuciones de probabilidad y muestreo\n",
+    "\n",
+    "**Desafío inicial:** Un equipo de ciencia de datos optimiza logística de última milla. Debe modelar fallas en vehículos, disponibilidad de clientes y volumen de llamadas al call center. Para automatizar decisiones, necesitan elegir la distribución correcta para cada fenómeno.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Aplicar la distribución de **Bernoulli** (evento binario único)\n",
+    "- Aplicar la distribución **Binomial** (n ensayos independientes)\n",
+    "- Aplicar la distribución de **Poisson** (eventos raros en intervalo fijo)\n",
+    "- Aplicar la **Uniforme discreta** (equiprobabilidad)\n",
+    "- Elegir la distribución correcta según el fenómeno"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from scipy.stats import bernoulli, binom, poisson, randint\n",
+    "import pandas as pd\n",
+    "\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "plt.style.use('seaborn-v0_8-whitegrid')\n",
+    "\n",
+    "print('✅ Librerías cargadas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Distribuciones discretas: contexto general\n",
+    "\n",
+    "### 1.1 Tabla comparativa discreta vs continua — slide 7"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tabla_comp = pd.DataFrame({\n",
+    "    'Característica':    ['Tipo de variable','Probabilidad puntual',\n",
+    "                          'Ejemplo típico','Función asociada','Visualización'],\n",
+    "    'Discreta':          ['Entera (0, 1, 2...)',\n",
+    "                          'Puede calcularse directamente',\n",
+    "                          'Número de clics por día',\n",
+    "                          'Función de masa de probabilidad (PMF)',\n",
+    "                          'Barras / stem'],\n",
+    "    'Continua':          ['Real (números con decimales)',\n",
+    "                          'Siempre es 0, se calcula en rangos',\n",
+    "                          'Tiempo en completar una tarea',\n",
+    "                          'Función de densidad de probabilidad (PDF)',\n",
+    "                          'Curva suave']\n",
+    "})\n",
+    "print('=== Discreta vs Continua (slide 7) ===')\n",
+    "print(tabla_comp.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Resumen de las 4 distribuciones — slide 8\n",
+    "tabla_4 = pd.DataFrame({\n",
+    "    'Distribución':    ['Bernoulli','Binomial','Poisson','Uniforme discreta'],\n",
+    "    'Uso principal':   [\n",
+    "        'Un solo evento con dos posibles resultados (éxito/fracaso)',\n",
+    "        'Conteo de éxitos en múltiples ensayos independientes',\n",
+    "        'Número de eventos en un intervalo de tiempo o espacio',\n",
+    "        'Todos los valores posibles tienen igual probabilidad'\n",
+    "    ],\n",
+    "    'Ejemplo aplicado':[\n",
+    "        '¿Un cliente hizo clic en una campaña?',\n",
+    "        '¿Cuántos correos fueron abiertos de 100 enviados?',\n",
+    "        '¿Cuántas llamadas entran por hora?',\n",
+    "        'Sorteos, generación aleatoria de IDs'\n",
+    "    ],\n",
+    "    'Parámetros':['p','n, p','λ','a, b (o n)'],\n",
+    "    'scipy.stats':['bernoulli','binom','poisson','randint']\n",
+    "})\n",
+    "print('=== Cuatro distribuciones discretas principales (slide 8) ===')\n",
+    "print(tabla_4.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Distribución de Bernoulli (slides 15-20)\n",
+    "\n",
+    "### 2.1 Definición y parámetros"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Parámetros de Bernoulli — slide 16\n",
+    "p_ber = 0.3\n",
+    "media_ber  = p_ber\n",
+    "var_ber    = p_ber * (1 - p_ber)\n",
+    "\n",
+    "print('=== Distribución de Bernoulli — slide 16 ===')\n",
+    "print(f'p (prob. éxito):     {p_ber}')\n",
+    "print(f'1-p (prob. fracaso): {1-p_ber}')\n",
+    "print(f'E[X] = p:            {media_ber}')\n",
+    "print(f'Var(X) = p(1-p):     {var_ber:.4f}')\n",
+    "print()\n",
+    "print('PMF:')\n",
+    "print(f'  P(X = 1) = p = {p_ber}  (éxito)')\n",
+    "print(f'  P(X = 0) = 1-p = {1-p_ber}  (fracaso)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Ejemplo aplicado — código exacto slide 17"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 17\n",
+    "from scipy.stats import bernoulli\n",
+    "\n",
+    "# Probabilidad de éxito\n",
+    "p = 0.3\n",
+    "\n",
+    "# Crear distribución de Bernoulli\n",
+    "dist = bernoulli(p)\n",
+    "\n",
+    "print(\"Probabilidad de respuesta:\", dist.pmf(1))\n",
+    "print(\"Probabilidad de no respuesta:\", dist.pmf(0))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualización y simulación de Bernoulli\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n",
+    "fig.suptitle('Distribución de Bernoulli — Respuesta a encuesta por email (p=0.3)',\n",
+    "             fontweight='bold')\n",
+    "\n",
+    "# PMF\n",
+    "x_ber = [0, 1]\n",
+    "p_vals = [dist.pmf(0), dist.pmf(1)]\n",
+    "colores = ['#FC4E4E','#70AD47']\n",
+    "bars = axes[0].bar(x_ber, p_vals, color=colores, edgecolor='white', width=0.4)\n",
+    "axes[0].set_xticks([0, 1])\n",
+    "axes[0].set_xticklabels(['0 (No responde)', '1 (Responde)'])\n",
+    "axes[0].set_title('Función de masa de probabilidad (PMF)')\n",
+    "axes[0].set_ylabel('P(X=x)')\n",
+    "for bar, v in zip(bars, p_vals):\n",
+    "    axes[0].text(bar.get_x()+bar.get_width()/2, v+0.01, f'{v:.2f}',\n",
+    "                 ha='center', fontweight='bold', fontsize=11)\n",
+    "\n",
+    "# Simulación de 200 ensayos\n",
+    "np.random.seed(42)\n",
+    "sim = dist.rvs(size=200)\n",
+    "p_empirica = sim.mean()\n",
+    "axes[1].bar([0, 1],\n",
+    "            [(sim==0).mean(), (sim==1).mean()],\n",
+    "            color=colores, edgecolor='white', width=0.4)\n",
+    "axes[1].set_xticks([0, 1])\n",
+    "axes[1].set_xticklabels(['0 (No responde)', '1 (Responde)'])\n",
+    "axes[1].set_title(f'Frecuencia en 200 simulaciones\\n(p empírica = {p_empirica:.3f})')\n",
+    "axes[1].set_ylabel('Frecuencia relativa')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Distribución Binomial (slides 9-11)\n",
+    "\n",
+    "### 3.1 Ejemplo aplicado — código exacto slide 10"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 10\n",
+    "from scipy.stats import binom\n",
+    "\n",
+    "# Parámetros\n",
+    "n = 10\n",
+    "p = 0.3\n",
+    "\n",
+    "# Probabilidad de obtener exactamente 4 compras\n",
+    "grafico = binom.pmf(4, n, p)\n",
+    "print(\"Probabilidad de obtener 4 compras:\", round(grafico, 4))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Análisis completo de la distribución binomial\n",
+    "n_bin, p_bin = 10, 0.3\n",
+    "x_bin = np.arange(0, n_bin+1)\n",
+    "pmf_bin = binom.pmf(x_bin, n_bin, p_bin)\n",
+    "cdf_bin = binom.cdf(x_bin, n_bin, p_bin)\n",
+    "\n",
+    "media_bin = n_bin * p_bin\n",
+    "var_bin   = n_bin * p_bin * (1 - p_bin)\n",
+    "\n",
+    "print('=== Distribución Binomial (n=10, p=0.3) ===')\n",
+    "print(f'E[X] = n·p = {media_bin:.2f}  (compras esperadas por notificación)')\n",
+    "print(f'Var(X) = n·p·(1-p) = {var_bin:.4f}')\n",
+    "print(f'σ = {var_bin**0.5:.4f}')\n",
+    "print()\n",
+    "print('Probabilidades clave:')\n",
+    "print(f'  P(X = 4) = {binom.pmf(4, n_bin, p_bin):.4f}')\n",
+    "print(f'  P(X ≤ 3) = {binom.cdf(3, n_bin, p_bin):.4f}  (acumulada hasta 3)')\n",
+    "print(f'  P(X ≥ 5) = {1 - binom.cdf(4, n_bin, p_bin):.4f}  (al menos 5 compras)')\n",
+    "print(f'  P(2 ≤ X ≤ 5) = {binom.cdf(5, n_bin, p_bin) - binom.cdf(1, n_bin, p_bin):.4f}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualización — efecto de variar p manteniendo n fijo\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(15, 4))\n",
+    "fig.suptitle('Distribución Binomial (n=10) — Efecto de p sobre la forma',\n",
+    "             fontweight='bold')\n",
+    "\n",
+    "for ax, p_val, color in zip(axes, [0.2, 0.5, 0.8], ['#2E75B6','#70AD47','#ED7D31']):\n",
+    "    pmf = binom.pmf(x_bin, 10, p_val)\n",
+    "    markerline, stemlines, _ = ax.stem(x_bin, pmf, basefmt=' ')\n",
+    "    plt.setp(stemlines, color=color, linewidth=2)\n",
+    "    plt.setp(markerline, color=color, markersize=7)\n",
+    "    ax.axvline(10*p_val, color='red', linestyle='--', linewidth=2,\n",
+    "               label=f'Media = {10*p_val:.1f}')\n",
+    "    ax.set_title(f'p = {p_val}', fontsize=11, fontweight='bold')\n",
+    "    ax.set_xlabel('k (éxitos)')\n",
+    "    ax.set_ylabel('P(X=k)')\n",
+    "    ax.legend(fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Distribución Uniforme Discreta (slides 12-14)\n",
+    "\n",
+    "### 4.1 Código exacto slide 13"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 13\n",
+    "import numpy as np\n",
+    "\n",
+    "valores = np.arange(1, 7)\n",
+    "probabilidades = np.full_like(valores, 1/6, dtype=float)\n",
+    "print(dict(zip(valores, probabilidades)))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualización y propiedades de la uniforme discreta\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n",
+    "fig.suptitle('Distribución Uniforme Discreta — Dado justo (n=6)',\n",
+    "             fontweight='bold')\n",
+    "\n",
+    "# PMF\n",
+    "axes[0].bar(valores, probabilidades, color='#7030A0', edgecolor='white', width=0.6)\n",
+    "axes[0].axhline(1/6, color='red', linestyle='--', linewidth=2, label=f'P = 1/6 ≈ {1/6:.4f}')\n",
+    "axes[0].set_title('PMF: cada cara equiprobable')\n",
+    "axes[0].set_xlabel('Cara del dado')\n",
+    "axes[0].set_ylabel('P(X=x)')\n",
+    "axes[0].set_xticks(valores)\n",
+    "axes[0].legend()\n",
+    "\n",
+    "# CDF\n",
+    "cdf_unif = np.cumsum(probabilidades)\n",
+    "axes[1].step(valores, cdf_unif, where='post', color='#7030A0', linewidth=2.5)\n",
+    "axes[1].scatter(valores, cdf_unif, color='#7030A0', s=80, zorder=5)\n",
+    "axes[1].set_title('CDF acumulada')\n",
+    "axes[1].set_xlabel('Cara del dado')\n",
+    "axes[1].set_ylabel('F(x) = P(X ≤ x)')\n",
+    "axes[1].set_xticks(valores)\n",
+    "axes[1].set_ylim(0, 1.05)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('=== Propiedades uniforme discreta (dado) ===')\n",
+    "print(f'E[X] = (1+6)/2 = {(1+6)/2:.1f}')\n",
+    "print(f'Var(X) = (n²-1)/12 = {(6**2-1)/12:.4f}')\n",
+    "print(f'P(X=3) = {1/6:.4f}')\n",
+    "print(f'P(X≤4) = {4/6:.4f}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Distribución de Poisson (slides 21-24)\n",
+    "\n",
+    "### 5.1 Código exacto slide 22"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 22\n",
+    "from scipy.stats import poisson\n",
+    "\n",
+    "# Parámetro lambda\n",
+    "lam = 5\n",
+    "\n",
+    "# Probabilidad de recibir 7 solicitudes\n",
+    "prob = poisson.pmf(7, lam)\n",
+    "print(\"Probabilidad de recibir exactamente 7 solicitudes:\", round(prob, 4))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Análisis completo de la distribución de Poisson\n",
+    "lam_pois = 5\n",
+    "x_pois = np.arange(0, 20)\n",
+    "pmf_pois = poisson.pmf(x_pois, lam_pois)\n",
+    "\n",
+    "print('=== Distribución de Poisson (λ=5) ===')\n",
+    "print(f'E[X] = λ = {lam_pois}  (igual a la media)')\n",
+    "print(f'Var(X) = λ = {lam_pois}  (igual a la varianza)')\n",
+    "print()\n",
+    "print('Probabilidades clave:')\n",
+    "print(f'  P(X = 7) = {poisson.pmf(7, lam_pois):.4f}')\n",
+    "print(f'  P(X = 0) = {poisson.pmf(0, lam_pois):.4f}  (ningún evento)')\n",
+    "print(f'  P(X ≤ 3) = {poisson.cdf(3, lam_pois):.4f}  (a lo sumo 3)')\n",
+    "print(f'  P(X > 8) = {1 - poisson.cdf(8, lam_pois):.4f}  (más de 8 — posible alerta)')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Efecto de λ sobre la forma de Poisson\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(15, 4))\n",
+    "fig.suptitle('Distribución de Poisson — Efecto de λ', fontweight='bold')\n",
+    "\n",
+    "for ax, lam_val, color in zip(axes, [2, 5, 10], ['#2E75B6','#ED7D31','#FC4E4E']):\n",
+    "    x = np.arange(0, max(25, lam_val*3))\n",
+    "    pmf = poisson.pmf(x, lam_val)\n",
+    "    markerline, stemlines, _ = ax.stem(x, pmf, basefmt=' ')\n",
+    "    plt.setp(stemlines, color=color, linewidth=1.5)\n",
+    "    plt.setp(markerline, color=color, markersize=6)\n",
+    "    ax.axvline(lam_val, color='red', linestyle='--', linewidth=2,\n",
+    "               label=f'λ = {lam_val}')\n",
+    "    ax.set_title(f'λ = {lam_val}', fontweight='bold')\n",
+    "    ax.set_xlabel('k eventos')\n",
+    "    ax.set_ylabel('P(X=k)')\n",
+    "    ax.legend(fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 6 — Panel comparativo de las 4 distribuciones"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(2, 2, figsize=(14, 9))\n",
+    "fig.suptitle('Las 4 distribuciones discretas — Comparativa visual', fontweight='bold', fontsize=13)\n",
+    "\n",
+    "# 1. Bernoulli\n",
+    "x_b = [0, 1]\n",
+    "p_b = [0.7, 0.3]\n",
+    "axes[0,0].bar(x_b, p_b, color=['#FC4E4E','#70AD47'], edgecolor='white', width=0.35)\n",
+    "axes[0,0].set_xticks([0,1])\n",
+    "axes[0,0].set_xticklabels(['0 (fracaso)','1 (éxito)'])\n",
+    "axes[0,0].set_title('Bernoulli (p=0.3)\\nUn solo ensayo binario', fontsize=10)\n",
+    "axes[0,0].set_ylabel('P(X=x)')\n",
+    "for xi, pi in zip(x_b, p_b):\n",
+    "    axes[0,0].text(xi, pi+0.01, f'{pi}', ha='center', fontweight='bold')\n",
+    "\n",
+    "# 2. Binomial\n",
+    "x_bin2 = np.arange(0, 11)\n",
+    "ml2, sl2, _ = axes[0,1].stem(x_bin2, binom.pmf(x_bin2, 10, 0.3), basefmt=' ')\n",
+    "plt.setp(sl2, color='#2E75B6', linewidth=2)\n",
+    "plt.setp(ml2, color='#2E75B6', markersize=7)\n",
+    "axes[0,1].axvline(3, color='red', linestyle='--', label='Media=3')\n",
+    "axes[0,1].set_title('Binomial (n=10, p=0.3)\\nn ensayos independientes', fontsize=10)\n",
+    "axes[0,1].set_xlabel('k éxitos')\n",
+    "axes[0,1].legend(fontsize=8)\n",
+    "\n",
+    "# 3. Poisson\n",
+    "x_pois2 = np.arange(0, 16)\n",
+    "ml3, sl3, _ = axes[1,0].stem(x_pois2, poisson.pmf(x_pois2, 5), basefmt=' ')\n",
+    "plt.setp(sl3, color='#ED7D31', linewidth=2)\n",
+    "plt.setp(ml3, color='#ED7D31', markersize=7)\n",
+    "axes[1,0].axvline(5, color='red', linestyle='--', label='λ=5')\n",
+    "axes[1,0].set_title('Poisson (λ=5)\\nEventos en intervalo fijo', fontsize=10)\n",
+    "axes[1,0].set_xlabel('k eventos')\n",
+    "axes[1,0].legend(fontsize=8)\n",
+    "\n",
+    "# 4. Uniforme discreta\n",
+    "x_u = np.arange(1, 7)\n",
+    "axes[1,1].bar(x_u, np.full(6, 1/6), color='#7030A0', edgecolor='white', width=0.6)\n",
+    "axes[1,1].axhline(1/6, color='red', linestyle='--', label=f'P=1/6={1/6:.3f}')\n",
+    "axes[1,1].set_title('Uniforme discreta (n=6)\\nTodos equiprobables', fontsize=10)\n",
+    "axes[1,1].set_xlabel('Valor del dado')\n",
+    "axes[1,1].set_ylabel('P(X=x)')\n",
+    "axes[1,1].legend(fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 7 — Actividad guiada: E-commerce (slides 25-28)\n",
+    "\n",
+    "### 7.1 Cargar los casos — slide 29"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_casos = pd.read_csv('Casos_distribuciones.csv')\n",
+    "print(df_casos.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 7.2 Caso 1 — Bernoulli: clic en campaña (slide 28)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# CASO 1 — Bernoulli: email marketing\n",
+    "print('=== CASO 1: Bernoulli — Email marketing (slide 28) ===')\n",
+    "p_clic = 0.25\n",
+    "dist_caso1 = bernoulli(p_clic)\n",
+    "\n",
+    "print(f'Distribución: Bernoulli(p={p_clic})')\n",
+    "print(f'P(clic = 1):   {dist_caso1.pmf(1):.4f}  ({dist_caso1.pmf(1)*100:.1f}%)')\n",
+    "print(f'P(no clic = 0):{dist_caso1.pmf(0):.4f}  ({dist_caso1.pmf(0)*100:.1f}%)')\n",
+    "print(f'E[X] = p = {p_clic}')\n",
+    "print(f'Var(X) = {p_clic*(1-p_clic):.4f}')\n",
+    "print()\n",
+    "print('Justificación: Es un único evento con 2 resultados posibles (clic/no clic).')\n",
+    "print('El parámetro p=0.25 se estima de la tasa histórica de clics.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 7.3 Caso 2 — Poisson: reclamos por hora (slide 28)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# CASO 2 — Poisson: reclamos por hora (contexto slide 28)\n",
+    "print('=== CASO 2: Poisson — Reclamos por hora ===')\n",
+    "lam_caso2 = 8\n",
+    "\n",
+    "p_exactamente_3 = poisson.pmf(3, lam_caso2)\n",
+    "p_mas_de_10     = 1 - poisson.cdf(10, lam_caso2)\n",
+    "p_exactamente_10 = poisson.pmf(10, lam_caso2)\n",
+    "\n",
+    "print(f'Distribución: Poisson(λ={lam_caso2})')\n",
+    "print(f'P(exactamente 3 reclamos)  = {p_exactamente_3:.4f}')\n",
+    "print(f'P(exactamente 10 reclamos) = {p_exactamente_10:.4f}')\n",
+    "print(f'P(más de 10 reclamos)      = {p_mas_de_10:.4f}')\n",
+    "print()\n",
+    "print('Justificación: Conteo de eventos en un intervalo fijo (1 hora).')\n",
+    "print('Los reclamos ocurren de forma independiente con tasa constante λ=8.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 7.4 Caso 3 — Binomial: correos abiertos (slide 28)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# CASO 3 — Binomial: correos abiertos\n",
+    "print('=== CASO 3: Binomial — Correos abiertos (slide 28) ===')\n",
+    "n_caso3, p_caso3 = 10, 0.15\n",
+    "\n",
+    "p_exactamente_2 = binom.pmf(2, n_caso3, p_caso3)\n",
+    "p_al_menos_1    = 1 - binom.pmf(0, n_caso3, p_caso3)\n",
+    "media_caso3     = n_caso3 * p_caso3\n",
+    "\n",
+    "print(f'Distribución: Binomial(n={n_caso3}, p={p_caso3})')\n",
+    "print(f'Media (correos esperados): {media_caso3:.1f}')\n",
+    "print(f'P(exactamente 2 abiertos) = {p_exactamente_2:.4f}')\n",
+    "print(f'P(al menos 1 abierto)     = {p_al_menos_1:.4f}')\n",
+    "print(f'P(ninguno abierto)        = {binom.pmf(0, n_caso3, p_caso3):.4f}')\n",
+    "print()\n",
+    "print('Justificación: n=10 ensayos independientes con p=0.15 constante.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 7.5 Caso 4 — Uniforme discreta: entregas por zona (slide 28)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# CASO 4 — Uniforme discreta: zonas de reparto\n",
+    "print('=== CASO 4: Uniforme discreta — Zonas de reparto ===')\n",
+    "n_zonas = 5\n",
+    "p_zona = 1 / n_zonas\n",
+    "\n",
+    "print(f'Distribución: Uniforme discreta (1 a {n_zonas})')\n",
+    "print(f'P(zona 3) = 1/{n_zonas} = {p_zona:.4f}')\n",
+    "print(f'P(zona 1 o 2) = 2/{n_zonas} = {2*p_zona:.4f}')\n",
+    "print(f'E[X] = (1+{n_zonas})/2 = {(1+n_zonas)/2:.1f}')\n",
+    "print()\n",
+    "print('Justificación: No hay preferencia entre zonas → todos con igual probabilidad.')\n",
+    "\n",
+    "# Visualización de los 4 casos\n",
+    "fig, axes = plt.subplots(1, 4, figsize=(17, 4))\n",
+    "fig.suptitle('Casos e-commerce — Distribución correcta para cada fenómeno',\n",
+    "             fontweight='bold')\n",
+    "\n",
+    "# C1: Bernoulli\n",
+    "axes[0].bar([0,1],[1-p_clic,p_clic], color=['#FC4E4E','#70AD47'], edgecolor='white', width=0.4)\n",
+    "axes[0].set_xticks([0,1])\n",
+    "axes[0].set_xticklabels(['No clic','Clic'])\n",
+    "axes[0].set_title(f'Caso 1\\nBernoulli(p={p_clic})', fontsize=9)\n",
+    "\n",
+    "# C2: Poisson\n",
+    "x_c2 = np.arange(0, 20)\n",
+    "ml, sl, _ = axes[1].stem(x_c2, poisson.pmf(x_c2, lam_caso2), basefmt=' ')\n",
+    "plt.setp(sl, color='#ED7D31', linewidth=1.5)\n",
+    "plt.setp(ml, color='#ED7D31', markersize=5)\n",
+    "axes[1].axvline(lam_caso2, color='red', linestyle='--', linewidth=1.5)\n",
+    "axes[1].set_title(f'Caso 2\\nPoisson(λ={lam_caso2})', fontsize=9)\n",
+    "axes[1].set_xlabel('k')\n",
+    "\n",
+    "# C3: Binomial\n",
+    "x_c3 = np.arange(0, n_caso3+1)\n",
+    "ml2, sl2, _ = axes[2].stem(x_c3, binom.pmf(x_c3, n_caso3, p_caso3), basefmt=' ')\n",
+    "plt.setp(sl2, color='#2E75B6', linewidth=1.5)\n",
+    "plt.setp(ml2, color='#2E75B6', markersize=5)\n",
+    "axes[2].set_title(f'Caso 3\\nBinomial(n={n_caso3},p={p_caso3})', fontsize=9)\n",
+    "axes[2].set_xlabel('k')\n",
+    "\n",
+    "# C4: Uniforme\n",
+    "axes[3].bar(range(1,n_zonas+1), [p_zona]*n_zonas, color='#7030A0', edgecolor='white', width=0.6)\n",
+    "axes[3].set_xticks(range(1,n_zonas+1))\n",
+    "axes[3].set_xticklabels([f'Z{i}' for i in range(1,n_zonas+1)])\n",
+    "axes[3].set_title(f'Caso 4\\nUnif. discreta(n={n_zonas})', fontsize=9)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas de cierre — slide 32:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "p1 = \"\"  # ¿Condiciones para Bernoulli?\n",
+    "p2 = \"\"  # ¿Diferencia binomial vs Poisson?\n",
+    "p3 = \"\"  # ¿Cómo interpretar λ?\n",
+    "p4 = \"\"  # ¿Qué problemas modela la uniforme discreta?\n",
+    "p5 = \"\"  # ¿Por qué ajustar la distribución al tipo de variable?\n",
+    "\n",
+    "preguntas = [\n",
+    "    '¿Qué condiciones deben cumplirse para aplicar una distribución de Bernoulli?',\n",
+    "    '¿En qué se diferencia una distribución binomial de una de Poisson?',\n",
+    "    '¿Cómo interpretarías el parámetro λ en un modelo basado en Poisson?',\n",
+    "    '¿Qué tipo de problemas reales se pueden modelar con una distribución uniforme discreta?',\n",
+    "    '¿Por qué es importante ajustar el modelo a una distribución adecuada al tipo de variable?'\n",
+    "]\n",
+    "\n",
+    "print('--- PREGUNTAS DE CIERRE (slide 32) ---')\n",
+    "for i, (preg, resp) in enumerate(zip(preguntas, [p1,p2,p3,p4,p5]), 1):\n",
+    "    print(f'\\n{i}. {preg}')\n",
+    "    print(f'   R: {resp}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen\n",
+    "\n",
+    "### Las 4 distribuciones discretas\n",
+    "\n",
+    "| Distribución | Condición | Parámetros | Media | Varianza | Código |\n",
+    "|-------------|-----------|------------|-------|----------|--------|\n",
+    "| Bernoulli | 1 ensayo, 2 resultados | p | p | p(1-p) | `bernoulli(p).pmf(1)` |\n",
+    "| Binomial | n ensayos, p constante, independientes | n, p | np | np(1-p) | `binom.pmf(k, n, p)` |\n",
+    "| Poisson | Eventos raros, λ constante, independientes | λ | λ | λ | `poisson.pmf(k, lam)` |\n",
+    "| Uniforme discreta | n resultados equiprobables | n | (1+n)/2 | (n²-1)/12 | `randint(a, b+1)` |\n",
+    "\n",
+    "### ¿Cuál elegir?\n",
+    "\n",
+    "| Pregunta | Distribución |\n",
+    "|----------|-------------|\n",
+    "| ¿Ocurrirá o no este evento único? | Bernoulli |\n",
+    "| ¿Cuántos éxitos de N intentos? | Binomial |\n",
+    "| ¿Cuántos eventos en un intervalo? | Poisson |\n",
+    "| ¿Todos los resultados son igual de probables? | Uniforme discreta |\n",
+    "\n",
+    "> 💡 **Bernoulli vs Binomial:** Bernoulli es un caso especial de Binomial con n=1. Si tienes múltiples ensayos independientes del mismo experimento binario, usa Binomial.\n",
+    "\n",
+    "> 💡 **Binomial vs Poisson:** usa Poisson cuando n es muy grande y p muy pequeña (eventos raros). Una regla práctica: si n > 50 y p < 0.05, Poisson aproxima bien a Binomial."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

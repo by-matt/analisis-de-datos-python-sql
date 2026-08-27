@@ -1,0 +1,536 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 2 - Identificación de tipos de variables y tratamiento de outliers"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 2 – Identificación de Tipos de Variables y Tratamiento de Outliers\n",
+    "### Limpieza y preparación de datos\n",
+    "\n",
+    "**Temas:** Variables cualitativas · Variables cuantitativas · IQR · Z-score · Boxplots · Filtrado de outliers\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from scipy import stats\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Rendimiento Académico\n",
+    "\n",
+    "Notas fuera de escala (1.0–7.0): valores como 150 o −5.5.\n",
+    "Columna `region` con más de 19 variantes distintas (errores ortográficos).\n",
+    "\n",
+    "**Archivo:** `rendimiento_academico.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('rendimiento_academico.csv')\n",
+    "print(f'Archivo cargado: {df.shape[0]} filas × {df.shape[1]} columnas')\n",
+    "print(df.head())\n",
+    "print(f'\\nRegiones únicas ({df[\"region\"].nunique()}): {sorted(df[\"region\"].unique())}')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–7 – Variables Cualitativas\n",
+    "\n",
+    "Categóricas: describen atributos, no magnitudes.\n",
+    "- **Nominales:** sin orden (color, género, región)\n",
+    "- **Ordinales:** con orden (nivel educativo: básico → medio → superior)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Representación en pandas — dtype object ─────────────────────────\n",
+    "\n",
+    "df['Modalidad'] = pd.Series(['Online', 'Presencial', 'Online'])\n",
+    "print(df['Modalidad'].dtype)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Convertir a tipo category (ahorra memoria, acelera procesos) ─────\n",
+    "\n",
+    "df['Modalidad'] = df['Modalidad'].astype('category')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 7: Buenas prácticas — value_counts() para validar categorías ────────\n",
+    "# Detecta variaciones como 'RM', 'Región Metropolitana', 'rm'\n",
+    "\n",
+    "df_real = pd.read_csv('rendimiento_academico.csv')\n",
+    "print('Distribución de regiones (con posibles errores):')\n",
+    "print(df_real['region'].value_counts())"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 10–11 – Variables Cuantitativas\n",
+    "\n",
+    "Expresan magnitudes. En pandas: `int64`, `float64`.\n",
+    "- **Continua:** cualquier valor en un rango (peso, temperatura)\n",
+    "- **Discreta:** solo enteros (número de hijos, cantidad de intentos)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Tipo de dato de una variable cuantitativa ───────────────────────\n",
+    "\n",
+    "df['Edad'] = pd.Series([24, 35, 41])\n",
+    "print(df['Edad'].dtype)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Exploración básica de variables cuantitativas ───────────────────\n",
+    "\n",
+    "df_real = pd.read_csv('rendimiento_academico.csv')\n",
+    "df_real.describe()          # Estadísticas descriptivas\n",
+    "df_real['nota'].hist()      # Histograma (si se usa con matplotlib)\n",
+    "plt.xlabel('Nota')\n",
+    "plt.title('Histograma de notas (incluye outliers)')\n",
+    "plt.show()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 14 – Detección de Outliers: Método IQR"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 14: Método de los cuartiles (IQR) ───────────────────────────────────\n",
+    "\n",
+    "Q1 = df['Nota'].quantile(0.25)\n",
+    "Q3 = df['Nota'].quantile(0.75)\n",
+    "IQR = Q3 - Q1\n",
+    "limite_inferior = Q1 - 1.5 * IQR\n",
+    "limite_superior = Q3 + 1.5 * IQR\n",
+    "outliers = df[(df['Nota'] < limite_inferior) | (df['Nota'] > limite_superior)]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 15 – Más Métodos: Z-score y Boxplot"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 15: Z-score (requiere distribución normal) ─────────────────────────\n",
+    "\n",
+    "from scipy import stats\n",
+    "import numpy as np\n",
+    "z_scores = np.abs(stats.zscore(df['Edad']))\n",
+    "df[z_scores > 3]   # Valores cuyo z-score supera 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 15: Visualización — boxplot ────────────────────────────────────────\n",
+    "\n",
+    "import matplotlib.pyplot as plt\n",
+    "df.boxplot(column='Edad')\n",
+    "plt.show()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 16 – Filtrado de Outliers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 16: Filtrar conservando solo registros dentro de los límites IQR ────\n",
+    "\n",
+    "df_filtrado = df[(df['Nota'] >= limite_inferior) & (df['Nota'] <= limite_superior)]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 17–21 – Actividad Guiada: Rendimiento Académico\n",
+    "\n",
+    "**Objetivo (Slide 18):** Clasificar variables, detectar y filtrar outliers en notas."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Crear el DataFrame base ────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.DataFrame({\n",
+    "    'Estudiante': ['Pedro', 'Laura', 'Ignacio', 'Fernanda', 'Javiera', 'Luis', 'Camila'],\n",
+    "    'Nota': [5.5, 6.2, 10.8, 4.9, 3.7, -2.0, 5.8],\n",
+    "    'Modalidad': ['Presencial', 'Online', 'Online', 'Presencial', 'Online', 'Online', 'Presencial']\n",
+    "})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20: Identificar el tipo de cada variable ────────────────────────────\n",
+    "\n",
+    "print(df.dtypes)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20: Detectar outliers con el método de los cuartiles ───────────────\n",
+    "\n",
+    "Q1 = df['Nota'].quantile(0.25)\n",
+    "Q3 = df['Nota'].quantile(0.75)\n",
+    "IQR = Q3 - Q1\n",
+    "limite_inf = Q1 - 1.5 * IQR\n",
+    "limite_sup = Q3 + 1.5 * IQR\n",
+    "outliers = df[(df['Nota'] < limite_inf) | (df['Nota'] > limite_sup)]\n",
+    "print(outliers)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: Filtrar los datos válidos ──────────────────────────────────────\n",
+    "\n",
+    "df_limpio = df[(df['Nota'] >= limite_inf) & (df['Nota'] <= limite_sup)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: Comparar antes y después ───────────────────────────────────────\n",
+    "\n",
+    "print('=== ANTES del filtrado ===')\n",
+    "print(df[['Estudiante','Nota']])\n",
+    "print(f'Promedio con outliers: {df[\"Nota\"].mean():.2f}')\n",
+    "print()\n",
+    "print('=== DESPUÉS del filtrado ===')\n",
+    "print(df_limpio[['Estudiante','Nota']])\n",
+    "print(f'Promedio sin outliers: {df_limpio[\"Nota\"].mean():.2f}')\n",
+    "print(f'\\nRegistros eliminados: {len(df) - len(df_limpio)}')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Actividad Guiada ampliada — `rendimiento_academico.csv` (n=300)\n",
+    "\n",
+    "Aplicamos clasificación de variables, IQR, z-score y boxplot al dataset real del desafío."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Clasificación de variables del dataset real\n",
+    "df_real = pd.read_csv('rendimiento_academico.csv')\n",
+    "\n",
+    "print('=== Tipos de datos ===')\n",
+    "print(df_real.dtypes)\n",
+    "print()\n",
+    "print('Variables cualitativas (object):',\n",
+    "      df_real.select_dtypes(include='object').columns.tolist())\n",
+    "print('Variables cuantitativas (numérico):',\n",
+    "      df_real.select_dtypes(include='number').columns.tolist())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Detección de outliers en 'nota' con IQR\n",
+    "Q1  = df_real['nota'].quantile(0.25)\n",
+    "Q3  = df_real['nota'].quantile(0.75)\n",
+    "IQR = Q3 - Q1\n",
+    "lim_inf = Q1 - 1.5 * IQR\n",
+    "lim_sup = Q3 + 1.5 * IQR\n",
+    "\n",
+    "print(f'Q1={Q1:.2f}  Q3={Q3:.2f}  IQR={IQR:.2f}')\n",
+    "print(f'Límite inferior: {lim_inf:.2f}  |  Límite superior: {lim_sup:.2f}')\n",
+    "\n",
+    "outliers_iqr = df_real[(df_real['nota'] < lim_inf) | (df_real['nota'] > lim_sup)]\n",
+    "print(f'\\nOutliers detectados por IQR: {len(outliers_iqr)}')\n",
+    "print(outliers_iqr[['id_estudiante','nota']])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Detección con Z-score (columna horas_estudio, distribución más normal)\n",
+    "from scipy import stats\n",
+    "import numpy as np\n",
+    "\n",
+    "z_scores = np.abs(stats.zscore(df_real['nota'].dropna()))\n",
+    "outliers_z = df_real.loc[df_real['nota'].dropna().index[z_scores > 3]]\n",
+    "print(f'Outliers detectados por Z-score (|z|>3): {len(outliers_z)}')\n",
+    "print(outliers_z[['id_estudiante','nota']])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Boxplot para visualización\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 5))\n",
+    "\n",
+    "# Con outliers\n",
+    "axes[0].boxplot(df_real['nota'].dropna())\n",
+    "axes[0].set_title('Notas — con outliers', fontsize=12)\n",
+    "axes[0].set_ylabel('Nota')\n",
+    "axes[0].axhline(7.0, color='red', linestyle='--', linewidth=1.5, label='Límite superior escala (7.0)')\n",
+    "axes[0].axhline(1.0, color='orange', linestyle='--', linewidth=1.5, label='Límite inferior escala (1.0)')\n",
+    "axes[0].legend(fontsize=8)\n",
+    "\n",
+    "# Sin outliers\n",
+    "df_limpio = df_real[(df_real['nota'] >= lim_inf) & (df_real['nota'] <= lim_sup)]\n",
+    "axes[1].boxplot(df_limpio['nota'])\n",
+    "axes[1].set_title(f'Notas — sin outliers (n={len(df_limpio)})', fontsize=12)\n",
+    "axes[1].set_ylabel('Nota')\n",
+    "\n",
+    "plt.suptitle('Impacto del filtrado de outliers en la distribución de notas', fontsize=13)\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print(f'Promedio CON outliers:  {df_real[\"nota\"].mean():.4f}')\n",
+    "print(f'Promedio SIN outliers:  {df_limpio[\"nota\"].mean():.4f}')\n",
+    "print(f'Diferencia:             {abs(df_real[\"nota\"].mean() - df_limpio[\"nota\"].mean()):.4f}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Unificar variaciones de región (Slide 7: buenas prácticas)\n",
+    "mapa_regiones = {\n",
+    "    'Región Metropolitana': 'RM', 'rm': 'RM', 'r.m.': 'RM',\n",
+    "    'V Región': 'Valparaíso', 'Valparaiso': 'Valparaíso',\n",
+    "    'Biobio': 'Bio-Bío', 'Bio Bío': 'Bio-Bío', 'bio-bio': 'Bio-Bío',\n",
+    "    'La Araucania': 'Araucanía',\n",
+    "    'Maule ': 'Maule', 'los lagos': 'Los Lagos',\n",
+    "}\n",
+    "df_limpio['region'] = df_limpio['region'].replace(mapa_regiones)\n",
+    "print(f'Regiones únicas después de unificar: {df_limpio[\"region\"].nunique()}')\n",
+    "print(df_limpio['region'].value_counts())"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 22–25 – Actividad Autónoma: Registros Financieros\n",
+    "\n",
+    "**Contexto (Slide 23):** Montos de facturación mensual por vendedor. Detectar outliers antes de calcular bonos.\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24: Crear el DataFrame de registros financieros ────────────────────\n",
+    "\n",
+    "df = pd.DataFrame({\n",
+    "    'Vendedor': ['Tomás', 'Lucía', 'Felipe', 'Romina', 'Gabriel', 'Sofía', 'Matías'],\n",
+    "    'Monto ($)': [520000, 490000, 580000, 620000, 720000, 1_250_000, 15000],\n",
+    "    'Región': ['Norte', 'Centro', 'Centro', 'Sur', 'Sur', 'Norte', 'Sur']\n",
+    "})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 25, Paso 1: Clasificar las variables ────────────────────────────────\n",
+    "# ¿Cuáles son cualitativas? ¿Cuáles cuantitativas?\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# print(df.dtypes)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 25, Paso 2: Detectar outliers con el método IQR (Slide 14) ──────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# Q1 = df['Monto ($)'].quantile(0.25)\n",
+    "# Q3 = ...\n",
+    "# IQR = ..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 25, Paso 3: Filtrar el DataFrame eliminando valores extremos ────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 25: Reflexión — comparar promedio con y sin outlier ─────────────────\n",
+    "# ¿Cómo afecta mantener el $1.250.000 al promedio?\n",
+    "# ¿Hay outliers bajos también?\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Preguntas de reflexión y cierre (Slide 21)\n",
+    "\n",
+    "1. ¿Qué otros tipos de variables podrían tener outliers?\n",
+    "2. ¿Qué pasa si no filtramos estos valores antes de graficar?\n",
+    "3. ¿Cuándo sería preferible imputar un outlier en lugar de eliminarlo?"
+   ]
+  }
+
+ ]
+}

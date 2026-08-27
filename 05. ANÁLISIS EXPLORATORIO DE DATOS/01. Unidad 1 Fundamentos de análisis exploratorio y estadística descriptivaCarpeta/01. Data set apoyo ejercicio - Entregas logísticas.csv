@@ -1,0 +1,201 @@
+id_entrega,fecha,region,ciudad_entrega,producto,distancia_km,medio_transporte,tiempo_entrega,valor_pedido,estado
+E001,2024-05-05,Los Lagos,Puerto Montt,Alimentos,50,Barcaza,14.9,129681,Entregado
+E002,2024-05-06,Metropolitana,Puente Alto,Alimentos,11,Camión,3.4,208713,Entregado
+E003,2024-05-08,Los Ríos,Valdivia,Medicamentos,60,Barcaza,17.8,112466,Entregado
+E004,2024-05-04,Antofagasta,Antofagasta,Herramientas,16,Camión,7.0,45002,Con retraso
+E005,2024-05-09,Antofagasta,Antofagasta,Medicamentos,33,Camión,8.1,60824,En tránsito
+E006,2024-05-25,Coquimbo,Coquimbo,Medicamentos,30,Camión,7.9,216850,Entregado
+E007,2024-05-01,Antofagasta,Calama,Herramientas,26,Aéreo,6.6,206498,Entregado
+E008,2024-05-04,Metropolitana,Maipú,Electrónica,4,Camión,3.6,231914,Entregado
+E009,2024-05-05,Los Lagos,Puerto Montt,Herramientas,62,Camión,15.4,54907,En tránsito
+E010,2024-05-19,Los Lagos,Puerto Montt,Muebles,63,Barcaza,18.3,222830,Entregado
+E011,2024-05-04,Metropolitana,Santiago,Electrónica,4,Camión,2.0,249457,Entregado
+E012,2024-05-06,Araucanía,Temuco,Alimentos,50,Camión,9.6,50067,Entregado
+E013,2024-05-16,Biobío,Concepción,Alimentos,19,Camión,7.8,223794,Con retraso
+E014,2024-05-10,Los Lagos,Osorno,Medicamentos,68,Barcaza,17.0,149838,En tránsito
+E015,2024-05-24,Coquimbo,La Serena,Medicamentos,37,Camión,45.0,14862,En tránsito
+E016,2024-05-25,Biobío,Los Ángeles,Electrónica,15,Camión,5.8,48560,Con retraso
+E017,2024-05-18,Araucanía,Angol,Muebles,30,Camión,8.8,261020,Entregado
+E018,2024-05-11,Araucanía,Villarrica,Ropa,32,Camión,10.1,174593,Entregado
+E019,2024-05-13,Antofagasta,Tocopilla,Herramientas,29,Aéreo,7.4,279945,En tránsito
+E020,2024-05-22,Araucanía,Angol,Medicamentos,36,Camión,10.7,148799,Entregado
+E021,2024-05-17,Valparaíso,Viña del Mar,Herramientas,12,Camión,3.6,34864,Entregado
+E022,2024-05-21,Metropolitana,Maipú,Herramientas,21,Camión,3.5,89382,Entregado
+E023,2024-05-21,Los Ríos,Valdivia,Herramientas,43,Camión,12.7,242924,Entregado
+E024,2024-05-14,Metropolitana,Maipú,Alimentos,4,Camión,2.5,45202,En tránsito
+E025,2024-05-27,Metropolitana,Puente Alto,Alimentos,6,Camión,4.2,142190,Entregado
+E026,2024-05-17,Los Lagos,Castro,Herramientas,70,Barcaza,16.6,208492,Entregado
+E027,2024-05-11,Valparaíso,Valparaíso,Medicamentos,13,Camión,5.3,174067,Con retraso
+E028,2024-05-24,Coquimbo,Coquimbo,Medicamentos,17,Camión,7.2,207717,En tránsito
+E029,2024-05-11,Antofagasta,Antofagasta,Medicamentos,37,Camión,7.9,178389,Entregado
+E030,2024-05-31,Araucanía,Angol,Alimentos,32,Camión,8.6,123346,Entregado
+E031,2024-05-08,Biobío,Talcahuano,Medicamentos,26,Camión,7.0,263270,En tránsito
+E032,2024-05-19,Valparaíso,Viña del Mar,Ropa,23,Camión,6.7,160121,Entregado
+E033,2024-05-16,Araucanía,Angol,Muebles,47,Camión,10.8,191506,Entregado
+E034,2024-05-20,Coquimbo,La Serena,Muebles,39,Camión,8.7,230230,En tránsito
+E035,2024-05-19,Los Lagos,Osorno,Muebles,31,Camión,13.1,15712,Con retraso
+E036,2024-05-12,Valparaíso,Viña del Mar,Herramientas,20,Camión,5.4,62691,Entregado
+E037,2024-05-19,Los Ríos,La Unión,Herramientas,49,Barcaza,15.4,263375,Entregado
+E038,2024-05-06,Los Lagos,Puerto Montt,Herramientas,51,Camión,14.4,76761,Entregado
+E039,2024-05-08,Los Ríos,La Unión,Medicamentos,67,Barcaza,18.6,231312,Entregado
+E040,2024-05-03,Antofagasta,Calama,Electrónica,49,Camión,9.9,16440,Con retraso
+E041,2024-05-28,Metropolitana,Puente Alto,Muebles,4,Camión,2.5,45306,Entregado
+E042,2024-05-22,Antofagasta,Tocopilla,Alimentos,44,Aéreo,,21538,Con retraso
+E043,2024-05-17,Biobío,Talcahuano,Ropa,20,Camión,5.8,50346,Entregado
+E044,2024-05-18,Antofagasta,Tocopilla,Herramientas,35,Aéreo,7.6,64929,En tránsito
+E045,2024-05-06,Coquimbo,Ovalle,Muebles,24,Camión,6.3,198859,Con retraso
+E046,2024-05-11,Valparaíso,Valparaíso,Ropa,28,Camión,7.1,143064,Con retraso
+E047,2024-05-25,Coquimbo,La Serena,Electrónica,21,Camión,4.8,135992,Entregado
+E048,2024-05-23,Metropolitana,Santiago,Herramientas,16,Camión,3.0,260240,En tránsito
+E049,2024-05-06,Antofagasta,Antofagasta,Electrónica,31,Aéreo,6.0,265458,Entregado
+E050,2024-05-06,Araucanía,Temuco,Alimentos,50,Camión,11.4,31153,Entregado
+E051,2024-05-14,Metropolitana,Puente Alto,Medicamentos,14,Camión,3.6,151695,En tránsito
+E052,2024-05-04,Valparaíso,Valparaíso,Alimentos,27,Camión,5.5,101113,Entregado
+E053,2024-05-09,Biobío,Talcahuano,Electrónica,44,Camión,10.4,278498,Entregado
+E054,2024-05-06,Metropolitana,Puente Alto,Muebles,8,Camión,2.9,183246,Entregado
+E055,2024-05-26,Metropolitana,Maipú,Alimentos,20,Camión,5.0,20828,Entregado
+E056,2024-05-27,Araucanía,Villarrica,Alimentos,44,Camión,11.3,61070,Entregado
+E057,2024-05-22,Los Ríos,Río Bueno,Medicamentos,59,Barcaza,18.8,147652,En tránsito
+E058,2024-05-05,Araucanía,Angol,Electrónica,26,Camión,8.6,19390,Entregado
+E059,2024-05-25,Los Lagos,Osorno,Ropa,56,Barcaza,15.1,84176,Con retraso
+E060,2024-05-25,Coquimbo,Ovalle,Ropa,35,Camión,8.0,123510,Con retraso
+E061,2024-05-20,Araucanía,Angol,Muebles,45,Camión,9.2,24480,Entregado
+E062,2024-05-20,Antofagasta,Antofagasta,Electrónica,37,Aéreo,5.3,192733,Con retraso
+E063,2024-05-03,Biobío,Talcahuano,Herramientas,20,Camión,8.3,38153,Entregado
+E064,2024-05-24,Metropolitana,Puente Alto,Ropa,16,Camión,5.0,126788,Entregado
+E065,2024-05-28,Coquimbo,Coquimbo,Muebles,36,Camión,7.1,193840,En tránsito
+E066,2024-05-10,Metropolitana,Puente Alto,Electrónica,6,Camión,3.3,55916,Con retraso
+E067,2024-05-10,Los Lagos,Osorno,Alimentos,36,Camión,11.8,19352,En tránsito
+E068,2024-05-12,Araucanía,Villarrica,Electrónica,40,Camión,10.3,151392,Entregado
+E069,2024-05-28,Valparaíso,Viña del Mar,Medicamentos,14,Camión,3.5,184903,En tránsito
+E070,2024-05-01,Araucanía,Villarrica,Alimentos,23,Camión,9.0,120220,Con retraso
+E071,2024-05-03,Araucanía,Villarrica,Herramientas,51,Camión,10.2,163845,En tránsito
+E072,2024-05-13,Metropolitana,Puente Alto,Medicamentos,3,Camión,4.0,135774,Entregado
+E073,2024-05-30,Los Ríos,Río Bueno,Muebles,69,Camión,16.3,225553,Con retraso
+E074,2024-05-25,Araucanía,Temuco,Medicamentos,47,Camión,11.6,53801,Entregado
+E075,2024-05-11,Coquimbo,Coquimbo,Ropa,19,Camión,5.2,98259,Entregado
+E076,2024-05-14,Biobío,Talcahuano,Medicamentos,39,Camión,7.6,74868,Entregado
+E077,2024-05-19,Araucanía,Temuco,Medicamentos,45,Camión,8.9,268516,Con retraso
+E078,2024-05-04,metropolitana,Angol,Medicamentos,28,Camión,7.6,215396,Entregado
+E079,2024-05-13,Biobío,Los Ángeles,Ropa,31,Camión,8.4,128780,Entregado
+E080,2024-05-30,Metropolitana,Maipú,Medicamentos,23,Camión,5.5,276318,En tránsito
+E081,2024-05-01,Coquimbo,La Serena,Medicamentos,25,Camión,5.5,148444,Entregado
+E082,2024-05-23,Metropolitana,Puente Alto,Electrónica,6,Camión,2.4,54056,Entregado
+E083,2024-05-09,Araucanía,Temuco,Electrónica,20,Camión,8.0,64668,Entregado
+E084,2024-05-15,Los Lagos,Osorno,Ropa,56,Camión,14.5,243179,Entregado
+E085,2024-05-14,Valparaíso,Viña del Mar,Electrónica,12,Camión,3.0,248595,Entregado
+E086,2024-05-17,Valparaíso,Valparaíso,Medicamentos,25,Camión,4.9,235731,Entregado
+E087,2024-05-31,Araucanía,Angol,Electrónica,40,Camión,8.7,101762,Con retraso
+E088,2024-05-28,Biobío,Los Ángeles,Herramientas,32,Camión,8.3,87758,Entregado
+E089,2024-05-13,Los Ríos,La Unión,Medicamentos,52,Barcaza,15.4,23989,Entregado
+E090,2024-05-25,Los Ríos,Valdivia,Herramientas,63,Barcaza,18.3,126589,Con retraso
+E091,2024-05-30,Metropolitana,Puente Alto,Alimentos,25,Camión,3.2,173022,Entregado
+E092,2024-05-02,Metropolitana,Santiago,Alimentos,4,Camión,3.9,27274,Con retraso
+E093,2024-05-03,Coquimbo,Ovalle,Ropa,15,Camión,4.5,261543,Entregado
+E094,2024-05-30,Los Lagos,Castro,Electrónica,60,Barcaza,16.3,56842,En tránsito
+E095,2024-05-12,Antofagasta,Calama,Alimentos,42,Camión,9.1,151793,En tránsito
+E096,2024-05-14,Biobío,Talcahuano,Muebles,34,Camión,8.0,98053,Con retraso
+E097,2024-05-06,Araucanía,Angol,Muebles,39,Camión,8.8,241136,Entregado
+E098,2024-05-17,Coquimbo,Ovalle,Herramientas,28,Camión,5.5,155648,Entregado
+E099,2024-05-06,Araucanía,Villarrica,Medicamentos,34,Camión,9.6,255257,Con retraso
+E100,2024-05-31,Metropolitana,Santiago,Ropa,8,Camión,3.9,249746,Entregado
+E101,2024-05-15,Araucanía,Temuco,Medicamentos,44,Camión,11.2,82242,Entregado
+E102,2024-05-31,Coquimbo,La Serena,Herramientas,36,Camión,6.9,254104,Con retraso
+E103,2024-05-07,Los Lagos,Puerto Montt,Muebles,46,CAMION,14.2,34067,En tránsito
+E104,2024-05-02,Araucanía,Angol,Muebles,33,Camión,10.3,80095,Entregado
+E105,2024-05-06,Los Lagos,Puerto Montt,Muebles,59,Barcaza,15.3,10065,Con retraso
+E106,2024-05-20,Los Lagos,Osorno,Ropa,52,Barcaza,17.1,79253,En tránsito
+E107,2024-05-03,Los Ríos,La Unión,Medicamentos,60,Barcaza,16.4,224581,En tránsito
+E108,2024-05-31,Los Lagos,Castro,Medicamentos,62,Camión,15.8,175317,Entregado
+E109,2024-05-14,Valparaíso,Quilpué,Electrónica,15,Camión,6.2,262862,Entregado
+E110,2024-05-19,Los Lagos,Osorno,Electrónica,58,Camión,15.3,181513,Entregado
+E111,2024-05-04,Antofagasta,Calama,Alimentos,30,Camión,5.8,227607,Entregado
+E112,2024-05-18,Los Ríos,Valdivia,Medicamentos,65,Camión,17.0,83781,En tránsito
+E113,2024-05-22,Los Lagos,Puerto Montt,Medicamentos,68,Camión,16.4,20130,Entregado
+E114,2024-05-03,Los Lagos,Puerto Montt,Medicamentos,33,Barcaza,12.6,75748,En tránsito
+E115,2024-05-11,Biobío,Los Ángeles,Electrónica,43,Camión,8.4,231029,Entregado
+E116,2024-05-21,Los Lagos,Puerto Montt,Alimentos,44,Barcaza,14.5,122663,Entregado
+E117,2024-05-09,Biobío,Concepción,Medicamentos,37,Camión,7.7,34498,Entregado
+E118,2024-05-21,Biobío,Los Ángeles,Herramientas,36,Camión,8.5,191806,Entregado
+E119,2024-05-10,Valparaíso,Viña del Mar,Medicamentos,33,Camión,6.9,55012,Entregado
+E120,2024-05-14,Coquimbo,Coquimbo,Alimentos,38,Camión,7.3,150515,Entregado
+E121,2024-05-28,Araucanía,Angol,Herramientas,22,Camión,8.6,261059,Con retraso
+E122,2024-05-06,Metropolitana,Santiago,Electrónica,17,Camión,3.8,28871,Entregado
+E123,2024-05-15,Antofagasta,Antofagasta,Electrónica,42,Camión,7.0,202238,Entregado
+E124,2024-05-11,Coquimbo,La Serena,Electrónica,29,Camión,5.8,43413,Con retraso
+E125,2024-05-21,Los Ríos,Río Bueno,Herramientas,45,Barcaza,14.7,117877,Entregado
+E126,2024-05-27,Metropolitana,Maipú,Ropa,8,Camión,3.0,31653,Entregado
+E127,2024-05-13,Valparaíso,Valparaíso,Electrónica,9,Camión,5.6,129058,Con retraso
+E128,2024-05-24,Los Lagos,Castro,Muebles,48,Camión,13.0,216569,En tránsito
+E129,2024-05-12,Metropolitana,Santiago,Electrónica,11,Camión,2.5,144076,Con retraso
+E130,2024-05-06,Valparaíso,Quilpué,Herramientas,19,Camión,5.8,226254,Entregado
+E131,2024-05-12,Coquimbo,Coquimbo,Medicamentos,29,Camión,6.7,233372,Entregado
+E132,2024-05-26,Metropolitana,Santiago,Electrónica,15,Camión,3.9,204400,Con retraso
+E133,2024-05-27,Metropolitana,Maipú,Electrónica,3,Camión,2.0,143389,Entregado
+E134,2024-05-28,Los Lagos,Puerto Montt,Electrónica,53,Barcaza,16.0,70267,Con retraso
+E135,2024-05-05,Los Ríos,La Unión,Ropa,50,Barcaza,15.4,68127,Entregado
+E136,2024-05-04,Los Lagos,Castro,Medicamentos,52,Camión,13.1,255882,Con retraso
+E137,2024-05-23,Metropolitana,Maipú,Herramientas,7,Camión,2.6,149386,Entregado
+E138,2024-05-20,Los Lagos,Castro,Alimentos,32,Camión,13.3,56654,Entregado
+E139,2024-05-04,Coquimbo,Ovalle,Muebles,32,Camión,5.8,174571,En tránsito
+E140,2024-05-20,Los Lagos,Puerto Montt,Medicamentos,39,Camión,12.9,277100,Entregado
+E141,2024-05-14,Los Lagos,Puerto Montt,Alimentos,60,Camión,13.6,114398,Entregado
+E142,2024-05-06,Biobío,Concepción,Alimentos,45,Camión,9.9,113247,En tránsito
+E143,2024-05-11,Valparaíso,Quilpué,Ropa,18,Camión,5.0,266860,Entregado
+E144,2024-05-22,Los Lagos,Osorno,Ropa,62,Camión,14.7,111035,En tránsito
+E145,2024-05-06,Antofagasta,Calama,Ropa,46,Camión,9.5,253666,Entregado
+E146,2024-05-04,Metropolitana,Santiago,Ropa,3,Camión,2.1,19757,En tránsito
+E147,2024-05-01,Coquimbo,La Serena,Muebles,15,Camión,5.3,107245,Con retraso
+E148,2024-05-22,Coquimbo,La Serena,Herramientas,17,Camión,6.6,225765,Entregado
+E149,2024-05-14,Los Ríos,Río Bueno,Alimentos,45,Camión,14.5,189227,Con retraso
+E150,2024-05-24,Araucanía,Angol,Electrónica,28,Camión,10.0,205040,En tránsito
+E151,2024-05-01,Los Ríos,La Unión,Electrónica,45,Camión,15.5,171802,Con retraso
+E152,2024-05-06,Valparaíso,Quilpué,Alimentos,11,Camión,5.5,180249,En tránsito
+E153,2024-05-02,Metropolitana,Santiago,Ropa,4,Camión,2.6,247446,Entregado
+E154,2024-05-10,Antofagasta,Antofagasta,Muebles,45,Aéreo,7.4,168312,Entregado
+E155,2024-05-02,Los Lagos,Castro,Muebles,45,Barcaza,14.5,239653,Entregado
+E156,2024-05-31,Valparaíso,Valparaíso,Alimentos,34,Camión,6.4,248069,Entregado
+E157,2024-05-05,Los Ríos,Valdivia,Ropa,61,Barcaza,17.9,154194,Con retraso
+E158,2024-05-22,Antofagasta,Antofagasta,Herramientas,15,Aéreo,3.8,99077,Entregado
+E159,2024-05-06,Antofagasta,Calama,Ropa,41,Aéreo,6.6,279573,Entregado
+E160,2024-05-10,Los Lagos,Puerto Montt,Muebles,37,Camión,13.6,179816,Entregado
+E161,2024-05-27,Araucanía,Villarrica,Ropa,44,Camión,8.8,171398,Entregado
+E162,2024-05-02,Antofagasta,Antofagasta,Herramientas,14,Aéreo,4.0,175746,Entregado
+E163,2024-05-20,Valparaíso,Viña del Mar,Herramientas,25,Camión,6.9,159504,En tránsito
+E164,2024-05-30,Valparaíso,Quilpué,Muebles,22,Camión,4.1,262260,Con retraso
+E165,2024-05-21,Metropolitana,Maipú,Ropa,6,Camión,3.2,58468,Entregado
+E166,2024-05-04,Biobío,Los Ángeles,Alimentos,20,Camión,7.3,229991,En tránsito
+E167,2024-05-01,Antofagasta,Antofagasta,Herramientas,29,Aéreo,7.3,178584,Entregado
+E168,2024-05-12,Valparaíso,Quilpué,Herramientas,23,Camión,6.7,185166,Con retraso
+E169,2024-05-17,Biobío,Talcahuano,Muebles,29,Camión,8.3,23899,Entregado
+E170,2024-05-19,Antofagasta,Calama,Ropa,22,Camión,5.1,164213,Entregado
+E171,2024-05-09,Metropolitana,Puente Alto,Herramientas,20,Camión,4.1,8056,Con retraso
+E172,2024-05-22,Coquimbo,Coquimbo,Herramientas,37,Camión,7.2,50616,En tránsito
+E173,2024-05-28,Biobío,Los Ángeles,Electrónica,35,Camión,8.5,142499,Entregado
+E174,2024-05-09,Los Ríos,Valdivia,Ropa,65,Camión,14.8,32207,Entregado
+E175,2024-05-19,Antofagasta,Antofagasta,Herramientas,38,Camión,7.5,239500,Con retraso
+E176,2024-05-18,Coquimbo,La Serena,Ropa,10,Camión,5.8,26166,Entregado
+E177,2024-05-24,Araucanía,Villarrica,Medicamentos,40,Camión,8.9,227302,Entregado
+E178,2024-05-09,Antofagasta,Calama,Alimentos,15,Camión,6.2,118210,Con retraso
+E179,2024-05-23,Biobío,Concepción,Electrónica,21,Camión,7.1,58092,En tránsito
+E180,2024-05-20,Los Ríos,Valdivia,Electrónica,42,Camión,14.5,253191,Entregado
+E181,2024-05-25,Biobío,Talcahuano,Alimentos,20,Camión,7.4,108222,En tránsito
+E182,2024-05-12,Los Lagos,Osorno,Ropa,33,Camión,12.5,122001,En tránsito
+E183,2024-05-19,Antofagasta,Tocopilla,Medicamentos,24,Camión,5.0,9005,Con retraso
+E184,2024-05-09,Los Lagos,Puerto Montt,Herramientas,61,Camión,15.7,199071,En tránsito
+E185,2024-05-08,Metropolitana,Maipú,Alimentos,3,Camión,4.0,106093,Entregado
+E186,2024-05-11,Los Lagos,Puerto Montt,Ropa,58,Camión,15.3,233598,Entregado
+E187,2024-05-14,Coquimbo,La Serena,Electrónica,25,Camión,5.1,217614,Entregado
+E188,2024-05-10,Coquimbo,Coquimbo,Medicamentos,18,Camión,5.8,131081,Con retraso
+E189,2024-05-05,Los Lagos,Castro,Muebles,59,Camión,13.1,227630,En tránsito
+E190,2024-05-11,Antofagasta,Antofagasta,Alimentos,35,Aéreo,7.5,125261,Entregado
+E191,2024-05-02,Los Lagos,Osorno,Herramientas,30,Barcaza,13.4,214427,Entregado
+E192,2024-05-01,Antofagasta,Calama,Herramientas,17,Camión,5.7,33831,Entregado
+E193,2024-05-12,Araucanía,Villarrica,Electrónica,50,Camión,10.4,72938,Entregado
+E194,2024-05-15,Metropolitana,Santiago,Medicamentos,5,Camión,3.3,141781,En tránsito
+E195,2024-05-22,Antofagasta,Calama,Muebles,30,Camión,6.1,232196,En tránsito
+E196,2024-05-09,Antofagasta,Tocopilla,Muebles,29,Aéreo,6.1,194692,Con retraso
+E197,2024-05-11,Los Lagos,Puerto Montt,Herramientas,65,Barcaza,18.3,178345,Entregado
+E198,2024-05-31,Los Lagos,Castro,Medicamentos,62,Barcaza,16.1,90884,En tránsito
+E199,2024-05-30,Coquimbo,Ovalle,Ropa,32,Camión,7.7,17109,Entregado
+E200,2024-05-25,Biobío,Los Ángeles,Muebles,32,Camión,7.7,95041,En tránsito

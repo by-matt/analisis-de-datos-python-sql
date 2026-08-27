@@ -1,0 +1,70 @@
+
+-- Script base para el desafío: Arquitectura relacional y consultas básicas en SQL
+
+-- Eliminar tablas si existen previamente
+DROP TABLE IF EXISTS ventas;
+DROP TABLE IF EXISTS productos;
+DROP TABLE IF EXISTS sucursales;
+DROP TABLE IF EXISTS clientes;
+
+-- Crear tabla de clientes
+CREATE TABLE clientes (
+    id_cliente INT PRIMARY KEY,
+    nombre TEXT,
+    correo TEXT,
+    ciudad TEXT
+);
+
+-- Crear tabla de productos
+CREATE TABLE productos (
+    id_producto INT PRIMARY KEY,
+    nombre_producto TEXT,
+    categoria TEXT,
+    precio NUMERIC
+);
+
+-- Crear tabla de sucursales
+CREATE TABLE sucursales (
+    id_sucursal INT PRIMARY KEY,
+    nombre_sucursal TEXT,
+    ciudad TEXT
+);1
+
+-- Crear tabla de ventas
+CREATE TABLE ventas (
+    id_venta INT PRIMARY KEY,
+    id_cliente INT,
+    id_producto INT,
+    id_sucursal INT,
+    fecha DATE,
+    cantidad INT,
+    total NUMERIC,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto),
+    FOREIGN KEY (id_sucursal) REFERENCES sucursales(id_sucursal)
+);
+
+-- Insertar datos de ejemplo en clientes
+INSERT INTO clientes VALUES
+(1, 'Camila Rojas', 'camila@mail.com', 'Valparaíso'),
+(2, 'Luis Pérez', 'luis@mail.com', 'Santiago'),
+(3, 'Daniela Soto', 'daniela@mail.com', 'Concepción');
+
+-- Insertar datos de ejemplo en productos
+INSERT INTO productos VALUES
+(1, 'Notebook Lenovo', 'Tecnología', 550000),
+(2, 'Mouse Inalámbrico', 'Accesorios', 15000),
+(3, 'Teclado Mecánico', 'Accesorios', 45000);
+
+-- Insertar datos de ejemplo en sucursales
+INSERT INTO sucursales VALUES
+(1, 'Tienda Centro', 'Santiago'),
+(2, 'Tienda Online', 'Internet'),
+(3, 'Tienda Valpo', 'Valparaíso');
+
+-- Insertar datos de ejemplo en ventas
+INSERT INTO ventas VALUES
+(1, 1, 1, 2, '2024-06-21', 1, 550000),
+(2, 2, 2, 1, '2024-06-22', 2, 30000),
+(3, 3, 3, 3, '2024-06-23', 1, 45000),
+(4, 1, 2, 2, '2024-07-01', 1, 15000);

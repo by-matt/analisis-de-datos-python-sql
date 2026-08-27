@@ -1,0 +1,201 @@
+id_cliente,edad,genero,categoria_producto,canal_compra,monto_compra,compra_recurrente,n_compras_anio
+C0001,43,No binario,Ropa,App móvil,40487,No,7
+C0002,67,No binario,Libros,App móvil,19492,Sí,14
+C0003,63,Femenino,Alimentos,Tienda física,9256,No,9
+C0004,42,Femenino,Alimentos,Online,20228,Sí,24
+C0005,36,Masculino,Hogar,App móvil,83650,Sí,2
+C0006,32,Femenino,Electrónica,Online,89694,Sí,21
+C0007,66,Masculino,Deportes,Online,52610,Sí,10
+C0008,26,Masculino,Alimentos,Tienda física,12244,Sí,7
+C0009,19,Masculino,Libros,Online,6429,No,18
+C0010,44,Masculino,Electrónica,Tienda física,90899,Sí,20
+C0011,69,Femenino,Deportes,Tienda física,46590,Sí,1
+C0012,72,Masculino,Electrónica,Online,112392,No,7
+C0013,57,No binario,Electrónica,App móvil,148613,Sí,18
+C0014,64,Masculino,Belleza,Tienda física,34723,No,11
+C0015,29,Masculino,Alimentos,Tienda física,21420,Sí,16
+C0016,61,No binario,Belleza,Online,1083,Sí,20
+C0017,49,Masculino,Alimentos,Tienda física,16318,Sí,16
+C0018,29,Masculino,Belleza,App móvil,31903,Sí,11
+C0019,59,Femenino,Hogar,App móvil,51076,Sí,18
+C0020,50,Masculino,Electrónica,App móvil,132813,Sí,2
+C0021,39,Masculino,Deportes,Online,46741,Sí,13
+C0022,54,Masculino,Alimentos,Tienda física,6843,Sí,5
+C0023,69,No binario,Hogar,Tienda física,66095,No,23
+C0024,40,No binario,Electrónica,App móvil,87468,Sí,17
+C0025,35,No binario,Deportes,Tienda física,58082,No,20
+C0026,58,Femenino,Electrónica,Tienda física,111185,No,13
+C0027,42,Femenino,Electrónica,Tienda física,178855,Sí,7
+C0028,71,Masculino,Alimentos,Tienda física,19519,No,2
+C0029,35,No binario,Alimentos,App móvil,12938,Sí,18
+C0030,70,No binario,Alimentos,Tienda física,22301,No,3
+C0031,24,Femenino,Hogar,Tienda física,86748,No,9
+C0032,38,No binario,Libros,Online,18048,Sí,9
+C0033,56,No binario,Deportes,Online,72315,No,7
+C0034,63,No binario,Belleza,App móvil,20150,Sí,13
+C0035,44,Femenino,Belleza,Online,39273,Sí,4
+C0036,32,Femenino,Ropa,Tienda física,45575,Sí,19
+C0037,64,No binario,Belleza,App móvil,35783,No,12
+C0038,56,No binario,Alimentos,Tienda física,13129,Sí,13
+C0039,35,Femenino,Hogar,Tienda física,70103,Sí,14
+C0040,64,Femenino,Libros,App móvil,28512,No,9
+C0041,29,Masculino,Hogar,Tienda física,62202,Sí,1
+C0042,64,Masculino,Deportes,Online,51299,No,5
+C0043,70,Masculino,Deportes,Online,32754,Sí,7
+C0044,20,Femenino,Belleza,Tienda física,28746,Sí,1
+C0045,54,No binario,Hogar,Tienda física,43033,Sí,6
+C0046,65,No binario,Ropa,Tienda física,31141,Sí,11
+C0047,28,Masculino,Alimentos,Tienda física,1628,No,14
+C0048,72,Femenino,Belleza,Online,29481,Sí,17
+C0049,51,No binario,Deportes,Online,63832,No,10
+C0050,22,No binario,Electrónica,App móvil,132151,No,1
+C0051,60,No binario,Belleza,Tienda física,11876,No,24
+C0052,32,Masculino,Electrónica,Tienda física,124487,Sí,17
+C0053,60,Masculino,Ropa,Tienda física,32037,No,14
+C0054,67,Masculino,Electrónica,Online,81422,Sí,2
+C0055,46,Masculino,Electrónica,App móvil,130316,No,15
+C0056,27,Femenino,Electrónica,Online,132975,No,18
+C0057,24,Femenino,Belleza,Online,46262,Sí,20
+C0058,44,Femenino,Deportes,Tienda física,29740,Sí,17
+C0059,65,No binario,Hogar,App móvil,102274,No,10
+C0060,22,No binario,Electrónica,Online,195233,No,11
+C0061,63,No binario,Deportes,Online,13865,Sí,3
+C0062,52,Masculino,Deportes,Online,57663,No,14
+C0063,22,No binario,Belleza,App móvil,26092,No,22
+C0064,32,Femenino,Deportes,Online,40403,Sí,5
+C0065,58,Masculino,Ropa,Online,30038,Sí,19
+C0066,48,Masculino,Deportes,Online,22567,Sí,23
+C0067,42,Masculino,Hogar,Tienda física,53625,Sí,15
+C0068,38,Masculino,Alimentos,Online,11997,Sí,2
+C0069,64,Masculino,Alimentos,Tienda física,19054,Sí,17
+C0070,67,Femenino,Ropa,Online,36548,Sí,8
+C0071,24,Masculino,Belleza,App móvil,30840,Sí,21
+C0072,46,Masculino,Alimentos,App móvil,25111,No,7
+C0073,62,No binario,Deportes,Tienda física,62962,No,3
+C0074,64,Femenino,Electrónica,Online,146916,Sí,1
+C0075,18,No binario,Electrónica,Online,57019,Sí,20
+C0076,72,Masculino,Belleza,Tienda física,30763,No,13
+C0077,67,Masculino,Alimentos,App móvil,20615,Sí,9
+C0078,69,No binario,Deportes,Online,74860,No,4
+C0079,65,No binario,Alimentos,App móvil,22712,Sí,17
+C0080,52,Femenino,Deportes,Tienda física,41038,Sí,19
+C0081,31,No binario,Belleza,App móvil,21188,Sí,24
+C0082,54,Masculino,Belleza,App móvil,38304,Sí,12
+C0083,42,No binario,Deportes,Online,72726,No,3
+C0084,50,No binario,Hogar,App móvil,75769,Sí,8
+C0085,60,No binario,Alimentos,Online,3126,Sí,7
+C0086,47,Masculino,Belleza,Tienda física,33019,Sí,5
+C0087,55,No binario,Ropa,App móvil,30025,Sí,5
+C0088,44,Masculino,Libros,Online,12564,Sí,24
+C0089,64,No binario,Hogar,App móvil,65067,Sí,7
+C0090,49,No binario,Ropa,Tienda física,13109,Sí,12
+C0091,55,Femenino,Libros,App móvil,18452,No,7
+C0092,64,No binario,Deportes,Tienda física,54367,No,15
+C0093,29,Masculino,Ropa,Online,55927,No,8
+C0094,61,Femenino,Libros,App móvil,22789,No,10
+C0095,20,No binario,Deportes,App móvil,49061,No,5
+C0096,45,Masculino,Libros,App móvil,25766,No,5
+C0097,61,No binario,Hogar,Tienda física,65540,No,9
+C0098,71,No binario,Electrónica,Online,101758,Sí,4
+C0099,34,Femenino,Deportes,Tienda física,66833,Sí,15
+C0100,60,Femenino,Libros,Online,22827,No,2
+C0101,70,Femenino,Ropa,App móvil,34250,Sí,16
+C0102,46,Femenino,Hogar,App móvil,56894,No,1
+C0103,61,No binario,Ropa,App móvil,45129,Sí,2
+C0104,20,Masculino,Deportes,Tienda física,51449,Sí,7
+C0105,68,No binario,Alimentos,Tienda física,4634,No,6
+C0106,26,Masculino,Belleza,App móvil,24648,No,24
+C0107,35,No binario,Ropa,App móvil,38972,Sí,13
+C0108,35,Femenino,Hogar,Online,37091,Sí,9
+C0109,21,Femenino,Alimentos,Tienda física,16384,No,4
+C0110,58,No binario,Deportes,Tienda física,31918,Sí,20
+C0111,64,Femenino,Libros,Online,6033,No,20
+C0112,46,Masculino,Ropa,Online,37167,Sí,9
+C0113,43,Femenino,Electrónica,Tienda física,177514,No,17
+C0114,25,No binario,Belleza,App móvil,26899,Sí,9
+C0115,61,No binario,Deportes,Online,35948,Sí,7
+C0116,18,Masculino,Alimentos,App móvil,6678,No,11
+C0117,71,No binario,Electrónica,Tienda física,115383,No,10
+C0118,67,Femenino,Hogar,Tienda física,27171,Sí,7
+C0119,47,Femenino,Ropa,Tienda física,46007,No,2
+C0120,38,No binario,Hogar,Tienda física,28108,No,23
+C0121,46,No binario,Belleza,Tienda física,35325,Sí,3
+C0122,45,No binario,Libros,Tienda física,18083,No,23
+C0123,59,Femenino,Hogar,Tienda física,13618,Sí,9
+C0124,62,Masculino,Electrónica,App móvil,135593,No,17
+C0125,65,Femenino,Belleza,Online,35011,Sí,12
+C0126,44,Masculino,Electrónica,Tienda física,91954,No,12
+C0127,65,Femenino,Alimentos,Tienda física,16993,No,11
+C0128,70,No binario,Deportes,Tienda física,55344,No,7
+C0129,24,Masculino,Libros,Tienda física,11347,No,20
+C0130,46,Masculino,Deportes,Online,72866,No,3
+C0131,50,Masculino,Electrónica,Tienda física,127135,Sí,1
+C0132,19,Masculino,Hogar,Online,65825,Sí,1
+C0133,58,No binario,Ropa,App móvil,56688,Sí,7
+C0134,70,No binario,Libros,Online,31317,Sí,7
+C0135,61,Masculino,Deportes,App móvil,44390,Sí,22
+C0136,65,Masculino,Libros,Tienda física,15783,No,1
+C0137,26,Femenino,Electrónica,Tienda física,175077,Sí,5
+C0138,19,Femenino,Hogar,Tienda física,79759,No,12
+C0139,61,No binario,Belleza,App móvil,22530,No,17
+C0140,23,Femenino,Deportes,Online,62492,Sí,23
+C0141,39,Femenino,Belleza,App móvil,26332,Sí,13
+C0142,50,No binario,Alimentos,App móvil,13611,Sí,24
+C0143,55,Masculino,Electrónica,Online,106366,Sí,5
+C0144,50,Femenino,Hogar,Online,47377,No,5
+C0145,28,Femenino,Belleza,Online,32471,Sí,21
+C0146,34,No binario,Ropa,Tienda física,41323,Sí,13
+C0147,54,Masculino,Electrónica,App móvil,165715,No,9
+C0148,64,Masculino,Libros,Online,17965,Sí,15
+C0149,48,Masculino,Libros,App móvil,14139,Sí,21
+C0150,34,No binario,Belleza,App móvil,34491,Sí,20
+C0151,41,No binario,Libros,Online,10416,Sí,9
+C0152,58,Masculino,Alimentos,App móvil,21601,Sí,15
+C0153,20,Masculino,Belleza,Tienda física,33327,No,19
+C0154,72,No binario,Ropa,Online,33651,No,11
+C0155,30,Femenino,Electrónica,Tienda física,113618,Sí,3
+C0156,70,Masculino,Electrónica,Online,99185,Sí,5
+C0157,55,Femenino,Libros,Tienda física,34670,No,17
+C0158,63,Femenino,Ropa,Online,31628,No,10
+C0159,29,Masculino,Ropa,Tienda física,45386,Sí,21
+C0160,61,Femenino,Electrónica,Online,40950,No,20
+C0161,24,No binario,Deportes,Tienda física,36174,No,3
+C0162,70,Femenino,Hogar,Online,19982,No,18
+C0163,68,Masculino,Deportes,Tienda física,45195,Sí,11
+C0164,60,Masculino,Alimentos,Online,20744,Sí,23
+C0165,58,No binario,Libros,Tienda física,13709,Sí,4
+C0166,18,No binario,Electrónica,Online,126276,No,6
+C0167,19,Masculino,Libros,App móvil,18072,Sí,8
+C0168,49,Masculino,Libros,App móvil,22281,Sí,18
+C0169,33,No binario,Libros,Tienda física,14754,No,13
+C0170,67,Masculino,Belleza,Online,29979,Sí,7
+C0171,25,Masculino,Alimentos,App móvil,8449,Sí,22
+C0172,45,No binario,Belleza,Online,28444,Sí,24
+C0173,72,No binario,Hogar,App móvil,37379,Sí,13
+C0174,36,Masculino,Electrónica,App móvil,129838,No,10
+C0175,33,Masculino,Electrónica,Tienda física,138168,Sí,13
+C0176,66,Femenino,Ropa,App móvil,21161,No,21
+C0177,41,Femenino,Electrónica,App móvil,116595,Sí,6
+C0178,33,No binario,Libros,App móvil,29367,No,5
+C0179,66,Masculino,Belleza,App móvil,20105,No,23
+C0180,34,Femenino,Electrónica,Online,143729,No,3
+C0181,72,Masculino,Ropa,Online,33782,No,6
+C0182,28,Masculino,Alimentos,Online,17843,No,18
+C0183,68,Femenino,Hogar,Online,51980,Sí,17
+C0184,29,Femenino,Libros,App móvil,12610,Sí,23
+C0185,31,Masculino,Ropa,Online,28740,Sí,9
+C0186,48,No binario,Ropa,Tienda física,45111,Sí,5
+C0187,33,No binario,Alimentos,Online,15652,No,17
+C0188,54,Masculino,Ropa,Online,14288,Sí,17
+C0189,31,Masculino,Ropa,Tienda física,35961,Sí,24
+C0190,27,Femenino,Deportes,App móvil,30871,Sí,1
+C0191,41,Femenino,Hogar,Tienda física,79343,No,18
+C0192,26,No binario,Deportes,Tienda física,49420,No,16
+C0193,26,No binario,Ropa,Online,37502,No,6
+C0194,25,Femenino,Deportes,Tienda física,39720,No,3
+C0195,34,Femenino,Electrónica,Online,72005,Sí,8
+C0196,61,Femenino,Hogar,App móvil,70803,Sí,9
+C0197,61,Masculino,Belleza,Tienda física,25562,No,6
+C0198,58,Masculino,Belleza,Tienda física,37772,No,5
+C0199,60,No binario,Electrónica,App móvil,115222,Sí,5
+C0200,60,Femenino,Electrónica,Tienda física,64140,Sí,15

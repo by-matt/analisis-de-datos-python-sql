@@ -1,0 +1,692 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📐 Clase 3 — Medidas de tendencia central: media, mediana y moda\n",
+    "## Fundamentos de análisis exploratorio y estadística descriptiva\n",
+    "\n",
+    "**Situación:** Estás colaborando con un equipo de operaciones que monitorea tiempos de entrega. El equipo necesita responder: ¿cuál es el tiempo típico?, ¿hay mucha variabilidad?, ¿se están cumpliendo los estándares?\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Calcular e interpretar **media**, **mediana** y **moda**\n",
+    "- Entender cuándo usar cada medida según la distribución\n",
+    "- Identificar el efecto de los valores extremos (outliers)\n",
+    "- Visualizar las tres medidas sobre un histograma\n",
+    "- Argumentar qué medida reportar a gerencia"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import matplotlib.lines as mlines\n",
+    "import seaborn as sns\n",
+    "import numpy as np\n",
+    "\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Librerías cargadas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Concepto y comparación de medidas\n",
+    "\n",
+    "### 1.1 Ejemplo introductorio: tiempos de entrega (serie pequeña)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Serie exacta de la presentación\n",
+    "entregas = pd.Series([3, 4, 5, 4, 6, 3, 20])\n",
+    "\n",
+    "print('=== Serie de tiempos de entrega ===')\n",
+    "print(entregas.values)\n",
+    "print()\n",
+    "print(entregas.describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "media   = entregas.mean()\n",
+    "mediana = entregas.median()\n",
+    "moda    = entregas.mode()[0]\n",
+    "\n",
+    "print(f'Media:   {media:.2f} días  ← influida por el valor extremo (20)')\n",
+    "print(f'Mediana: {mediana:.2f} días  ← valor central, más estable')\n",
+    "print(f'Moda:    {moda:.2f} días  ← valor más frecuente')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Ejemplo introductorio — Efecto del valor extremo (20 días)', fontweight='bold')\n",
+    "\n",
+    "# Histograma con las 3 medidas\n",
+    "sns.histplot(entregas, bins=6, kde=True, ax=axes[0], color='#BDD7EE')\n",
+    "axes[0].axvline(media,   color='red',    linestyle='--', linewidth=2, label=f'Media {media:.1f}')\n",
+    "axes[0].axvline(mediana, color='green',  linestyle='--', linewidth=2, label=f'Mediana {mediana:.1f}')\n",
+    "axes[0].axvline(moda,    color='#1F4E79',linestyle='--', linewidth=2, label=f'Moda {moda:.0f}')\n",
+    "axes[0].set_title('Con el outlier (20 días)')\n",
+    "axes[0].set_xlabel('Días')\n",
+    "axes[0].set_ylabel('Frecuencia')\n",
+    "axes[0].legend()\n",
+    "\n",
+    "# Sin el outlier para comparar\n",
+    "sin_outlier = entregas[entregas < 20]\n",
+    "axes[1].axvline(sin_outlier.mean(),   color='red',   linestyle='--', linewidth=2,\n",
+    "                label=f'Media {sin_outlier.mean():.1f}')\n",
+    "axes[1].axvline(sin_outlier.median(), color='green', linestyle='--', linewidth=2,\n",
+    "                label=f'Mediana {sin_outlier.median():.1f}')\n",
+    "axes[1].axvline(sin_outlier.mode()[0], color='#1F4E79', linestyle='--', linewidth=2,\n",
+    "                label=f'Moda {sin_outlier.mode()[0]:.0f}')\n",
+    "sns.histplot(sin_outlier, bins=5, kde=True, ax=axes[1], color='#E2EFDA')\n",
+    "axes[1].set_title('Sin el outlier (comparación)')\n",
+    "axes[1].set_xlabel('Días')\n",
+    "axes[1].legend()\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print(f'\\nDiferencia de media CON/SIN outlier: {media:.2f} vs {sin_outlier.mean():.2f} días')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1.1 — Reflexiona:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Cuánto cambia la media al incluir el valor 20? ¿Y la mediana?\n",
+    "r_efecto = \"\"\n",
+    "\n",
+    "# ✏️ ¿Por qué la mediana es más robusta que la media ante valores extremos?\n",
+    "r_robustez = \"\"\n",
+    "\n",
+    "# ✏️ Si fueras el jefe de operaciones, ¿qué medida reportarías y por qué?\n",
+    "r_decision = \"\"\n",
+    "\n",
+    "print('Efecto outlier:', r_efecto)\n",
+    "print('Robustez mediana:', r_robustez)\n",
+    "print('Decisión:', r_decision)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Cuándo usar cada medida — tabla de referencia"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Resumen de la tabla comparativa de la presentación\n",
+    "tabla = pd.DataFrame({\n",
+    "    'Medida':   ['Media', 'Mediana', 'Moda'],\n",
+    "    'Definición': [\n",
+    "        'Promedio aritmético de todos los valores',\n",
+    "        'Valor central de los datos ordenados',\n",
+    "        'Valor o valores más frecuentes'\n",
+    "    ],\n",
+    "    'Sensibilidad a outliers': ['Alta ⚠️', 'Baja ✅', 'Nula ✅'],\n",
+    "    'Cuándo usarla': [\n",
+    "        'Datos simétricos, sin valores extremos',\n",
+    "        'Datos asimétricos o con outliers',\n",
+    "        'Variables discretas o categóricas ordinales'\n",
+    "    ],\n",
+    "    'Función pandas': ['serie.mean()', 'serie.median()', 'serie.mode()[0]']\n",
+    "})\n",
+    "tabla.set_index('Medida', inplace=True)\n",
+    "print(tabla.to_string())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Demostración: datos simétricos vs asimétricos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "\n",
+    "# Distribución SIMÉTRICA → media ≈ mediana\n",
+    "simetrica = pd.Series(np.random.normal(loc=10, scale=2, size=200).round(1))\n",
+    "\n",
+    "# Distribución ASIMÉTRICA (sesgo derecho) → media > mediana\n",
+    "asimetrica = pd.Series(np.concatenate([\n",
+    "    np.random.normal(loc=5, scale=1.5, size=180),\n",
+    "    np.array([25, 30, 35, 40, 45, 50, 55, 60, 65, 70])  # cola derecha\n",
+    "]).round(1))\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Media vs Mediana: distribución simétrica vs asimétrica', fontweight='bold')\n",
+    "\n",
+    "for ax, datos, titulo in zip(axes,\n",
+    "                              [simetrica, asimetrica],\n",
+    "                              ['Distribución SIMÉTRICA', 'Distribución ASIMÉTRICA (sesgo derecho)']):\n",
+    "    sns.histplot(datos, bins=20, kde=True, ax=ax, color='#BDD7EE')\n",
+    "    ax.axvline(datos.mean(),   color='red',   linestyle='--', linewidth=2,\n",
+    "               label=f'Media {datos.mean():.1f}')\n",
+    "    ax.axvline(datos.median(), color='green', linestyle='--', linewidth=2,\n",
+    "               label=f'Mediana {datos.median():.1f}')\n",
+    "    ax.axvline(datos.mode()[0],color='#1F4E79',linestyle=':',linewidth=2,\n",
+    "               label=f'Moda {datos.mode()[0]:.1f}')\n",
+    "    ax.set_title(titulo)\n",
+    "    ax.set_xlabel('Valor')\n",
+    "    ax.legend(fontsize=9)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print(f'Simétrica  → Media: {simetrica.mean():.2f} | Mediana: {simetrica.median():.2f} | Diferencia: {abs(simetrica.mean()-simetrica.median()):.2f}')\n",
+    "print(f'Asimétrica → Media: {asimetrica.mean():.2f} | Mediana: {asimetrica.median():.2f} | Diferencia: {abs(asimetrica.mean()-asimetrica.median()):.2f}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1.3 — Responde:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué ocurre con la media en la distribución asimétrica? ¿Por qué?\n",
+    "r_asim = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cómo identificas visualmente si una distribución tiene sesgo positivo (derecho)?\n",
+    "r_sesgo = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué medida usarías para reportar ingresos de los empleados de una empresa?\n",
+    "# (considera que hay pocos ejecutivos con sueldos muy altos)\n",
+    "r_ingresos = \"\"\n",
+    "\n",
+    "print('Distribución asimétrica:', r_asim)\n",
+    "print('Sesgo positivo:', r_sesgo)\n",
+    "print('Ingresos:', r_ingresos)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Actividad guiada: Centro de atención al cliente\n",
+    "\n",
+    "**Situación:** Una cadena de centros de atención necesita evaluar el tiempo típico de atención para tomar decisiones de mejora operacional.\n",
+    "\n",
+    "### 2.1 Cargar y explorar el dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('tiempos_atencion.csv')\n",
+    "\n",
+    "print('=== Estructura del dataset ===')\n",
+    "print(df.head(10))\n",
+    "print()\n",
+    "print(df.info())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Resumen estadístico ===')\n",
+    "print(df['tiempo'].describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Calcular las tres medidas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "media   = df['tiempo'].mean()\n",
+    "mediana = df['tiempo'].median()\n",
+    "moda    = df['tiempo'].mode()[0]\n",
+    "\n",
+    "print('=== Medidas de tendencia central — Tiempo de atención (min) ===')\n",
+    "print(f'  Media:        {media:.2f} min')\n",
+    "print(f'  Mediana:      {mediana:.2f} min')\n",
+    "print(f'  Moda:         {moda:.2f} min')\n",
+    "print()\n",
+    "dif = media - mediana\n",
+    "print(f'  Diferencia media - mediana: {dif:.2f} min → {\"sesgo positivo (outliers altos)\" if dif > 1 else \"distribución aproximadamente simétrica\"}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Detectar outliers con la regla IQR\n",
+    "Q1  = df['tiempo'].quantile(0.25)\n",
+    "Q3  = df['tiempo'].quantile(0.75)\n",
+    "IQR = Q3 - Q1\n",
+    "lim_sup = Q3 + 1.5 * IQR\n",
+    "\n",
+    "outliers = df[df['tiempo'] > lim_sup]\n",
+    "print(f'Límite superior IQR: {lim_sup:.1f} min')\n",
+    "print(f'Outliers detectados: {len(outliers)}')\n",
+    "print(outliers)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Visualización con las tres medidas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(15, 5))\n",
+    "fig.suptitle('Tiempos de Atención al Cliente — Análisis de Tendencia Central', fontweight='bold')\n",
+    "\n",
+    "# Histograma + KDE con las 3 líneas\n",
+    "sns.histplot(df['tiempo'], bins=8, kde=True, ax=axes[0], color='#BDD7EE', edgecolor='white')\n",
+    "axes[0].axvline(media,   color='red',    linestyle='--', linewidth=2.5, label=f'Media {media:.1f} min')\n",
+    "axes[0].axvline(mediana, color='green',  linestyle='--', linewidth=2.5, label=f'Mediana {mediana:.1f} min')\n",
+    "axes[0].axvline(moda,    color='#1F4E79',linestyle='--', linewidth=2.5, label=f'Moda {moda:.0f} min')\n",
+    "axes[0].set_title('Distribución de tiempos de atención')\n",
+    "axes[0].set_xlabel('Minutos')\n",
+    "axes[0].set_ylabel('Frecuencia')\n",
+    "axes[0].legend()\n",
+    "\n",
+    "# Boxplot\n",
+    "sns.boxplot(y=df['tiempo'], ax=axes[1], color='#BDD7EE')\n",
+    "axes[1].axhline(media,   color='red',    linestyle='--', linewidth=2, label=f'Media {media:.1f}')\n",
+    "axes[1].axhline(mediana, color='green',  linestyle='--', linewidth=2, label=f'Mediana {mediana:.1f}')\n",
+    "axes[1].set_title('Boxplot — Detección de outliers')\n",
+    "axes[1].set_ylabel('Minutos')\n",
+    "axes[1].legend()\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4 Análisis con y sin el outlier"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_limpio = df[df['tiempo'] <= lim_sup].copy()\n",
+    "\n",
+    "comparacion = pd.DataFrame({\n",
+    "    'Con outliers': [\n",
+    "        df['tiempo'].mean().round(2),\n",
+    "        df['tiempo'].median().round(2),\n",
+    "        df['tiempo'].mode()[0]\n",
+    "    ],\n",
+    "    'Sin outliers': [\n",
+    "        df_limpio['tiempo'].mean().round(2),\n",
+    "        df_limpio['tiempo'].median().round(2),\n",
+    "        df_limpio['tiempo'].mode()[0]\n",
+    "    ]\n",
+    "}, index=['Media', 'Mediana', 'Moda'])\n",
+    "comparacion['Diferencia'] = (comparacion['Con outliers'] - comparacion['Sin outliers']).round(2)\n",
+    "\n",
+    "print('=== Impacto de los outliers en las medidas ===')\n",
+    "print(comparacion)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2 — Concluye y recomienda:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Existe un valor atípico en los tiempos de atención? ¿Cuál?\n",
+    "r_outlier = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuál de las tres medidas representa mejor el tiempo típico de atención? ¿Por qué?\n",
+    "r_medida = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué medida reportarías a la gerencia? Justifica con los números:\n",
+    "r_gerencia = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué acción operacional recomendarías basándote en el análisis?\n",
+    "r_accion = \"\"\n",
+    "\n",
+    "print('--- CONCLUSIONES ACTIVIDAD GUIADA ---')\n",
+    "print(f'Outlier detectado:  {r_outlier}')\n",
+    "print(f'Medida más representativa: {r_medida}')\n",
+    "print(f'Reporte a gerencia: {r_gerencia}')\n",
+    "print(f'Acción recomendada: {r_accion}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Actividad autónoma: Logística de distribución\n",
+    "\n",
+    "**Situación:** El equipo de análisis logístico necesita un valor típico de días de entrega para comunicar a gerencia. Se sospecha al menos un caso con demora extrema.\n",
+    "\n",
+    "### 3.1 Cargar el dataset autónomo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df2 = pd.read_csv('tiempos_entrega_autonomo.csv')\n",
+    "\n",
+    "print(f'Registros: {len(df2)}')\n",
+    "print()\n",
+    "print(df2.head(8))\n",
+    "print()\n",
+    "print('=== Resumen estadístico ===')\n",
+    "print(df2['dias_entrega'].describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Calcular las medidas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "media2   = df2['dias_entrega'].mean()\n",
+    "mediana2 = df2['dias_entrega'].median()\n",
+    "moda2    = df2['dias_entrega'].mode()[0]\n",
+    "\n",
+    "print('=== Medidas de tendencia central — Días de entrega ===')\n",
+    "print(f'  Media:        {media2:.2f} días')\n",
+    "print(f'  Mediana:      {mediana2:.2f} días')\n",
+    "print(f'  Moda:         {moda2:.2f} días')\n",
+    "print()\n",
+    "print(f'  Máximo: {df2[\"dias_entrega\"].max()} días  ← posible outlier extremo')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Visualización"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(15, 5))\n",
+    "fig.suptitle('Días de Entrega — Actividad Autónoma', fontweight='bold')\n",
+    "\n",
+    "sns.histplot(df2['dias_entrega'], bins=8, kde=True, ax=axes[0], color='#E2EFDA', edgecolor='white')\n",
+    "axes[0].axvline(media2,   color='red',    linestyle='--', linewidth=2.5, label=f'Media {media2:.1f}')\n",
+    "axes[0].axvline(mediana2, color='green',  linestyle='--', linewidth=2.5, label=f'Mediana {mediana2:.1f}')\n",
+    "axes[0].axvline(moda2,    color='#1F4E79',linestyle='--', linewidth=2.5, label=f'Moda {moda2:.0f}')\n",
+    "axes[0].set_title('Distribución de días de entrega')\n",
+    "axes[0].set_xlabel('Días')\n",
+    "axes[0].set_ylabel('Frecuencia')\n",
+    "axes[0].legend()\n",
+    "\n",
+    "sns.boxplot(y=df2['dias_entrega'], ax=axes[1], color='#E2EFDA')\n",
+    "axes[1].axhline(media2,   color='red',   linestyle='--', linewidth=2, label=f'Media {media2:.1f}')\n",
+    "axes[1].axhline(mediana2, color='green', linestyle='--', linewidth=2, label=f'Mediana {mediana2:.1f}')\n",
+    "axes[1].set_title('Boxplot — Outliers')\n",
+    "axes[1].set_ylabel('Días')\n",
+    "axes[1].legend()\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Análisis por región"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "resumen_region = df2.groupby('region')['dias_entrega'].agg(\n",
+    "    media='mean', mediana='median', maximo='max', n='count'\n",
+    ").round(2)\n",
+    "\n",
+    "print('=== Medidas por región ===')\n",
+    "print(resumen_region)\n",
+    "\n",
+    "plt.figure(figsize=(10, 4))\n",
+    "orden = resumen_region['mediana'].sort_values(ascending=False).index\n",
+    "sns.boxplot(data=df2, x='region', y='dias_entrega', order=orden, palette='Blues')\n",
+    "plt.title('Días de entrega por región (mediana ordenada)', fontweight='bold')\n",
+    "plt.xlabel('Región')\n",
+    "plt.ylabel('Días')\n",
+    "plt.xticks(rotation=20)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3 — Concluye y reporta a gerencia:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué medida representa mejor el tiempo típico de entrega? ¿Por qué?\n",
+    "r_tipico = \"\"\n",
+    "\n",
+    "# ✏️ ¿Hay valores extremos que afectan la media?\n",
+    "r_extremos = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuál medida comunicarías a gerencia y por qué?\n",
+    "r_com_gerencia = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué región tiene el desempeño más irregular? ¿Cómo lo identificaste?\n",
+    "r_region = \"\"\n",
+    "\n",
+    "print('--- CONCLUSIONES ACTIVIDAD AUTÓNOMA ---')\n",
+    "print(f'Medida típica:      {r_tipico}')\n",
+    "print(f'Valores extremos:   {r_extremos}')\n",
+    "print(f'Reporte gerencia:   {r_com_gerencia}')\n",
+    "print(f'Región irregular:   {r_region}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Consolidación: comparar las tres medidas en contextos distintos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Resumen final comparando ambos datasets\n",
+    "print('=' * 62)\n",
+    "print('         RESUMEN COMPARATIVO — MEDIDAS DE TENDENCIA CENTRAL')\n",
+    "print('=' * 62)\n",
+    "print(f'{\"\":30} {\"Atención (min)\":>15} {\"Entrega (días)\":>15}')\n",
+    "print('-' * 62)\n",
+    "print(f'{\"Media\":30} {df[\"tiempo\"].mean():>15.2f} {df2[\"dias_entrega\"].mean():>15.2f}')\n",
+    "print(f'{\"Mediana\":30} {df[\"tiempo\"].median():>15.2f} {df2[\"dias_entrega\"].median():>15.2f}')\n",
+    "print(f'{\"Moda\":30} {df[\"tiempo\"].mode()[0]:>15.2f} {df2[\"dias_entrega\"].mode()[0]:>15.2f}')\n",
+    "print(f'{\"Diferencia media-mediana\":30} {df[\"tiempo\"].mean()-df[\"tiempo\"].median():>15.2f} '\n",
+    "      f'{df2[\"dias_entrega\"].mean()-df2[\"dias_entrega\"].median():>15.2f}')\n",
+    "print(f'{\"Outliers (regla IQR)\":30} {len(df[df[\"tiempo\"] > df[\"tiempo\"].quantile(0.75)+1.5*(df[\"tiempo\"].quantile(0.75)-df[\"tiempo\"].quantile(0.25))]):>15} '\n",
+    "      f'{len(df2[df2[\"dias_entrega\"] > df2[\"dias_entrega\"].quantile(0.75)+1.5*(df2[\"dias_entrega\"].quantile(0.75)-df2[\"dias_entrega\"].quantile(0.25))]):>15}')\n",
+    "print('=' * 62)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas finales de cierre:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿En qué contexto profesional preferirías usar la moda como medida principal?\n",
+    "c1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Cómo la diferencia entre media y mediana te ayuda a detectar sesgo?\n",
+    "c2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Por qué se recomienda siempre reportar media Y mediana juntas?\n",
+    "c3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Qué harías antes de calcular la media si sospechas que hay outliers?\n",
+    "c4 = \"\"\n",
+    "\n",
+    "print('--- REFLEXIONES DE CIERRE ---')\n",
+    "for i, c in enumerate([c1, c2, c3, c4], 1):\n",
+    "    print(f'{i}. {c}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de funciones y buenas prácticas\n",
+    "\n",
+    "| Medida | Función pandas | Cuándo usarla |\n",
+    "|--------|---------------|---------------|\n",
+    "| Media | `serie.mean()` | Datos simétricos, sin outliers |\n",
+    "| Mediana | `serie.median()` | Datos asimétricos o con outliers |\n",
+    "| Moda | `serie.mode()[0]` | Variables discretas o categóricas |\n",
+    "| Todas juntas | `serie.describe()` | Vista rápida inicial |\n",
+    "| Comparación | `serie.mean() - serie.median()` | Detectar sesgo |\n",
+    "\n",
+    "**Reglas de decisión rápida:**\n",
+    "\n",
+    "| Situación | Medida recomendada |\n",
+    "|-----------|-------------------|\n",
+    "| Sueldos (pocos muy altos) | **Mediana** |\n",
+    "| Temperatura diaria | **Media** |\n",
+    "| Talla de ropa más vendida | **Moda** |\n",
+    "| Precios de propiedades | **Mediana** |\n",
+    "| Notas de un examen sin outliers | **Media** |\n",
+    "| Nivel de satisfacción (1-5) | **Mediana o Moda** |\n",
+    "\n",
+    "> 💡 **Regla de oro:** Si `media - mediana > 0` (diferencia notable), hay sesgo positivo y la mediana es más representativa. Si la diferencia es mínima, ambas funcionan.\n",
+    "\n",
+    "> 💡 **Buena práctica:** Siempre reporta media **y** mediana juntas. La brecha entre ellas es en sí misma información valiosa sobre la distribución."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

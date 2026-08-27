@@ -1,0 +1,694 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "titulo",
+   "metadata": {},
+   "source": [
+    "# Unidad 4 — Funciones y módulos"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-recordemos",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Recordemos el ejercicio \"Presentándome con Python\"\n",
+    "**Slide 5**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "presentandome",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "nombre = input('Ingrese su Nombre: ')\n",
+    "edad = input('Ingrese Edad: ')\n",
+    "ocupacion = input('Ingrese Ocupación: ')\n",
+    "print(f'''\n",
+    "Mi nombre es {nombre}, tengo {edad} años y trabajo como {ocupacion}.\n",
+    "''')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-funcion-presentacion",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Ahora podríamos mejorarlo usando una función\n",
+    "**Slide 6**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "funcion-presentacion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def crear_presentacion():\n",
+    "    \"\"\"\n",
+    "    Crea una presentación personal basada en los datos ingresados.\n",
+    "    Esta función mejora nuestro código anterior haciéndolo reutilizable.\n",
+    "    \"\"\"\n",
+    "    nombre = input('Ingrese su Nombre: ')\n",
+    "    edad = input('Ingrese Edad: ')\n",
+    "    ocupacion = input('Ingrese Ocupación: ')\n",
+    "\n",
+    "    presentacion = f'''\n",
+    "Mi nombre es {nombre}, tengo {edad} años y trabajo como {ocupacion}.\n",
+    "    '''\n",
+    "\n",
+    "    return presentacion"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-int",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Conversión de tipos: int()\n",
+    "**Slide 12**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "int-conversion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "año_texto = input(\"¿En qué año naciste? \")  # Usuario ingresa \"2000\"\n",
+    "año = int(año_texto)   # Convierte \"2000\" a 2000\n",
+    "edad = 2024 - año      # Ahora podemos hacer operaciones matemáticas\n",
+    "print(f\"Tienes {edad} años.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-float",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Conversión de tipos: float()\n",
+    "**Slide 13**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "float-conversion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "peso_texto = input(\"Peso en kg: \")      # Usuario ingresa \"70.5\"\n",
+    "altura_texto = input(\"Altura en m: \")   # Usuario ingresa \"1.75\"\n",
+    "\n",
+    "peso = float(peso_texto)     # Convierte a 70.5\n",
+    "altura = float(altura_texto) # Convierte a 1.75\n",
+    "imc = peso / (altura ** 2)\n",
+    "\n",
+    "print(f\"Tu IMC es: {imc:.2f}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-str",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Conversión de tipos: str()\n",
+    "**Slide 14**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "str-conversion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ejemplo práctico: Formato de número de teléfono\n",
+    "codigo_area = 56\n",
+    "numero = 12345678\n",
+    "telefono = str(codigo_area) + str(numero)\n",
+    "# Resultado: \"5612345678\"\n",
+    "print(f\"El número de teléfono es: {telefono}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-type",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Funciones de análisis: type()\n",
+    "**Slide 16**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "type-funcion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Imagina una aplicación de supermercado:\n",
+    "precio = \"1500\"  # El precio viene como texto desde el código de barras\n",
+    "\n",
+    "# Verificamos el tipo\n",
+    "print(f\"El precio es de tipo: {type(precio)}\")  # Resultado: <class 'str'>\n",
+    "\n",
+    "# ¡Ups! No podemos hacer cálculos con texto\n",
+    "# Necesitamos convertirlo a número\n",
+    "if type(precio) == str:\n",
+    "    precio = int(precio)\n",
+    "\n",
+    "# Ahora sí podemos calcular el descuento\n",
+    "descuento = precio * 0.1\n",
+    "print(f\"El descuento es: ${descuento:.2f}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-len",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Funciones de análisis: len()\n",
+    "**Slide 17**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "len-funcion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Verificar seguridad de la contraseña\n",
+    "contraseña = input(\"Ingresa tu contraseña: \")\n",
+    "if len(contraseña) < 8:\n",
+    "    print(\"Error: La contraseña debe tener al menos 8 caracteres\")\n",
+    "    # return False\n",
+    "\n",
+    "print(\"Datos válidos - Usuario registrado\")\n",
+    "# return True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-inspector",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## ¡Manos a la obra! Inspector de recetas de cocina — Ejercicio guiado\n",
+    "**Slides 21–22 — Crear archivo `inspector_recetas.py`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "inspector-v1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Creamos nuestra primera función\n",
+    "def revisar_receta():\n",
+    "    print(\"=== INSPECTOR DE RECETAS ===\")\n",
+    "    print(\"Analizando receta...\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "inspector-v2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 3: Agregar la entrada de usuario\n",
+    "def revisar_receta():\n",
+    "    print(\"=== INSPECTOR DE RECETAS ===\")\n",
+    "    nombre = input(\"Ingresa el nombre de la receta: \")\n",
+    "    print(f\"Analizando la receta: {nombre}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "inspector-v3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 4: Agregar un análisis básico\n",
+    "def revisar_receta():\n",
+    "    print(\"=== INSPECTOR DE RECETAS ===\")\n",
+    "    nombre = input(\"Ingresa el nombre de la receta: \")\n",
+    "\n",
+    "    # Revisamos si está vacío\n",
+    "    if len(nombre) == 0:\n",
+    "        print(\"❌ Error: La receta necesita un nombre\")\n",
+    "    else:\n",
+    "        print(f\"✅ Nombre registrado: {nombre}\")\n",
+    "\n",
+    "revisar_receta()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-round",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Funciones matemáticas: round()\n",
+    "**Slide 24**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "round-funcion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "precio = 4.6666\n",
+    "precio_redondeado = round(precio, 2)  # Resultado: 4.67\n",
+    "print(f\"Precio redondeado: {precio_redondeado}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-abs",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Funciones matemáticas: abs()\n",
+    "**Slide 25**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "abs-funcion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "temperatura_mañana = 15\n",
+    "temperatura_tarde = 22\n",
+    "\n",
+    "# ¿Cuánto cambió la temperatura?\n",
+    "cambio = abs(temperatura_mañana - temperatura_tarde)\n",
+    "print(f\"La temperatura cambió {cambio} grados\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-max-min",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones preconstruidas en Python — Funciones matemáticas: max() y min()\n",
+    "**Slide 26**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "max-min-funcion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ejemplo - Precios de un producto\n",
+    "precio_tienda1 = 15000\n",
+    "precio_tienda2 = 12000\n",
+    "precio_tienda3 = 18000\n",
+    "\n",
+    "# Encontrar el mejor precio\n",
+    "mejor_precio = min(precio_tienda1, precio_tienda2, precio_tienda3)\n",
+    "print(f\"El mejor precio es ${mejor_precio}\")\n",
+    "\n",
+    "# Encontrar el precio más alto\n",
+    "precio_mayor = max(precio_tienda1, precio_tienda2, precio_tienda3)\n",
+    "print(f\"El precio más alto es ${precio_mayor}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-func-estructura",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones personalizadas — Estructura básica\n",
+    "**Slide 29**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "func-estructura",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def nombre_funcion():\n",
+    "    # Aquí va el código que queremos que ejecute\n",
+    "    print(\"La función está haciendo algo\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-return",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones personalizadas — ¿Qué hace la palabra clave return?\n",
+    "**Slide 31**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "return-ejemplo",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def sumar(a, b):\n",
+    "    resultado = a + b\n",
+    "    return resultado\n",
+    "\n",
+    "total = sumar(3, 5)\n",
+    "print(total)  # Imprime 8"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-sin-params",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones personalizadas — Funciones sin parámetros\n",
+    "**Slide 32**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "sin-parametros",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def mostrar_menu():\n",
+    "    \"\"\"\n",
+    "    Esta función muestra un menú de opciones.\n",
+    "    No necesita parámetros porque siempre muestra lo mismo.\n",
+    "    \"\"\"\n",
+    "    print(\"=== MENÚ PRINCIPAL ===\")\n",
+    "    print(\"1. Ver datos\")\n",
+    "    print(\"2. Ingresar datos\")\n",
+    "    print(\"3. Salir\")\n",
+    "    print(\"===================\")\n",
+    "\n",
+    "mostrar_menu()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-un-param",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones personalizadas — Funciones con un parámetro\n",
+    "**Slide 33**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "un-parametro",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def verificar_edad(edad):\n",
+    "    \"\"\"\n",
+    "    Esta función verifica si una persona es mayor de edad.\n",
+    "    Parámetro:\n",
+    "        edad: número entero que representa la edad de la persona\n",
+    "    \"\"\"\n",
+    "    if edad >= 18:\n",
+    "        print(\"Puede ingresar al sitio\")\n",
+    "    else:\n",
+    "        print(\"Acceso denegado - Solo mayores de edad\")\n",
+    "\n",
+    "verificar_edad(20)\n",
+    "verificar_edad(15)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-multi-param",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones personalizadas — Funciones con múltiples parámetros\n",
+    "**Slide 34**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "multiples-parametros",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def calcular_imc(peso, altura, nombre):\n",
+    "    \"\"\"\n",
+    "    Calcula el índice de masa corporal de una persona.\n",
+    "    Parámetros:\n",
+    "        peso: peso en kilogramos\n",
+    "        altura: altura en metros\n",
+    "        nombre: nombre de la persona\n",
+    "    \"\"\"\n",
+    "    imc = peso / (altura ** 2)\n",
+    "    imc_redondeado = round(imc, 1)\n",
+    "\n",
+    "    print(f\"\\nResultados para {nombre}:\")\n",
+    "    print(f\"IMC: {imc_redondeado}\")\n",
+    "\n",
+    "    if imc < 18.5:\n",
+    "        print(\"Estado: Bajo peso\")\n",
+    "    elif imc < 25:\n",
+    "        print(\"Estado: Peso normal\")\n",
+    "    else:\n",
+    "        print(\"Estado: Sobrepeso\")\n",
+    "\n",
+    "calcular_imc(70, 1.75, \"Ana\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-params-default",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones personalizadas — Funciones con parámetros predeterminados\n",
+    "**Slides 35–36**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "params-default",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def calentar_comida(alimento, tiempo=1, potencia=\"media\"):\n",
+    "    \"\"\"\n",
+    "    Simula calentar comida en microondas.\n",
+    "    Parámetros:\n",
+    "        alimento: qué vamos a calentar\n",
+    "        tiempo: minutos de calentado (por defecto 1)\n",
+    "        potencia: nivel de potencia (por defecto \"media\")\n",
+    "    \"\"\"\n",
+    "    print(\"\\n=== CALENTANDO COMIDA ===\")\n",
+    "    print(f\"Alimento: {alimento}\")\n",
+    "    print(f\"Tiempo: {tiempo} minutos\")\n",
+    "    print(f\"Potencia: {potencia}\")\n",
+    "\n",
+    "    # Recomendaciones según el tiempo\n",
+    "    if tiempo > 3:\n",
+    "        print(\"Precaución: Tiempo prolongado\")\n",
+    "\n",
+    "    # Recomendaciones según potencia\n",
+    "    if potencia == \"alta\":\n",
+    "        print(\"¡Cuidado! Usar plato adecuado\")\n",
+    "\n",
+    "# Diferentes formas de uso\n",
+    "# 1. Solo con alimento (usa valores por defecto)\n",
+    "calentar_comida(\"Sopa\")\n",
+    "\n",
+    "# 2. Con alimento y tiempo\n",
+    "calentar_comida(\"Pizza\", 2)\n",
+    "\n",
+    "# 3. Todos los parámetros\n",
+    "calentar_comida(\"Lasaña\", 3, \"alta\")\n",
+    "\n",
+    "# 4. Especificando solo algunos parámetros\n",
+    "calentar_comida(\"Arroz\", potencia=\"baja\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-params-nombrados",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Funciones personalizadas — Funciones con parámetros nombrados\n",
+    "**Slide 38**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "params-nombrados",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def registrar_usuario(nombre, edad, ciudad=\"Santiago\", ocupacion=\"estudiante\"):\n",
+    "    \"\"\"\n",
+    "    Registra un nuevo usuario en el sistema.\n",
+    "    Parámetros:\n",
+    "        nombre: nombre del usuario\n",
+    "        edad: edad del usuario\n",
+    "        ciudad: ciudad de residencia (opcional)\n",
+    "        ocupacion: ocupación actual (opcional)\n",
+    "    \"\"\"\n",
+    "    print(\"\\n=== DATOS DE REGISTRO ===\")\n",
+    "    print(f\"Nombre: {nombre}\")\n",
+    "    print(f\"Edad: {edad}\")\n",
+    "    print(f\"Ciudad: {ciudad}\")\n",
+    "    print(f\"Ocupación: {ocupacion}\")\n",
+    "\n",
+    "# Uso de la función\n",
+    "registrar_usuario(\"Juan\", 25)  # Usando el orden normal de parámetros\n",
+    "registrar_usuario(edad=30, nombre=\"Ana\", ocupacion=\"ingeniera\", ciudad=\"Valparaíso\")  # Parámetros nombrados\n",
+    "registrar_usuario(\"Carlos\", 28, ocupacion=\"profesor\")  # Mezclando ambos métodos"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-modulos-import",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Módulos — Importación\n",
+    "**Slide 45**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "import-completo",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importación completa\n",
+    "import math\n",
+    "print(math.pi)\n",
+    "print(math.sqrt(16))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "import-especifico",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importación específica\n",
+    "from math import pi, sqrt\n",
+    "print(pi)\n",
+    "print(sqrt(16))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "import-alias",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importación con alias\n",
+    "import math as m\n",
+    "print(m.pi)\n",
+    "print(m.sqrt(16))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-math-stats",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Módulos — El módulo math y statistics\n",
+    "**Slide 46**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "modulo-math",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import math\n",
+    "\n",
+    "# pi: el número π\n",
+    "print(math.pi)\n",
+    "\n",
+    "# sqrt(): para raíces cuadradas\n",
+    "print(math.sqrt(25))\n",
+    "\n",
+    "# pow(): para potencias\n",
+    "print(math.pow(2, 10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "modulo-statistics",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import statistics\n",
+    "\n",
+    "datos = [4, 7, 2, 9, 4, 5, 4]\n",
+    "\n",
+    "# mean(): calcula el promedio\n",
+    "print(statistics.mean(datos))\n",
+    "\n",
+    "# median(): encuentra el valor del medio\n",
+    "print(statistics.median(datos))\n",
+    "\n",
+    "# mode(): encuentra el valor que más se repite\n",
+    "print(statistics.mode(datos))"
+   ]
+  }
+ ]
+}

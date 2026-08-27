@@ -1,0 +1,750 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📦 Clase 5 — Análisis de posición y valores atípicos\n",
+    "## Cuartiles, percentiles y detección de outliers\n",
+    "\n",
+    "**Situación:** Eres analista de satisfacción de clientes en una empresa de telecomunicaciones. El promedio es 7.5, pero un ejecutivo pregunta: *\"¿Ese 7.5 representa a la mayoría? ¿Y si muchas personas evalúan con 4 y unas pocas con 10 elevan el promedio?\"*\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Calcular e interpretar **cuartiles**, **percentiles**, quintiles y deciles\n",
+    "- Calcular el **IQR** y aplicar la regla de los bigotes para detectar **outliers**\n",
+    "- Comparar distribuciones entre grupos con **boxplots**\n",
+    "- Contextualizar outliers antes de tomar decisiones sobre ellos\n",
+    "- Combinar histograma y boxplot para comunicar hallazgos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import matplotlib.patches as mpatches\n",
+    "import seaborn as sns\n",
+    "\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Librerías cargadas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Medidas de posición\n",
+    "\n",
+    "### 1.1 Cuartiles: dividir los datos en cuatro partes iguales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ejemplo exacto de la presentación\n",
+    "datos = pd.Series([10, 14, 18, 21, 22, 25, 30, 35, 42])\n",
+    "\n",
+    "q1 = np.percentile(datos, 25)\n",
+    "q2 = np.percentile(datos, 50)   # = datos.median()\n",
+    "q3 = np.percentile(datos, 75)\n",
+    "iqr = q3 - q1\n",
+    "\n",
+    "print(f'Datos ordenados: {sorted(datos.values)}')\n",
+    "print()\n",
+    "print(f'Q1 (25%):          {q1}   → el 25% de los datos está por debajo')\n",
+    "print(f'Q2 (Mediana 50%):  {q2}   → el 50% de los datos está por debajo')\n",
+    "print(f'Q3 (75%):          {q3}   → el 75% de los datos está por debajo')\n",
+    "print(f'IQR (Q3 - Q1):     {iqr}  → rango del 50% central de los datos')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualizar los cuartiles sobre el boxplot\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Cuartiles — Anatomía del Boxplot', fontweight='bold')\n",
+    "\n",
+    "# Boxplot horizontal con anotaciones\n",
+    "sns.boxplot(x=datos, ax=axes[0], color='#BDD7EE')\n",
+    "for val, lbl, col in [(q1,'Q1','green'), (q2,'Q2 (Med)','blue'), (q3,'Q3','purple')]:\n",
+    "    axes[0].axvline(val, color=col, linestyle='--', linewidth=2, label=f'{lbl} = {val}')\n",
+    "axes[0].set_title('Boxplot con cuartiles')\n",
+    "axes[0].set_xlabel('Valores')\n",
+    "axes[0].legend(fontsize=8)\n",
+    "\n",
+    "# Histograma con zonas coloreadas por cuartil\n",
+    "sns.histplot(datos, bins=8, kde=True, ax=axes[1], color='#BDD7EE', edgecolor='white')\n",
+    "min_v, max_v = datos.min(), datos.max()\n",
+    "colores_q = ['#FCE4D6', '#E2EFDA', '#BDD7EE', '#DDEBF7']\n",
+    "zonas = [(min_v, q1), (q1, q2), (q2, q3), (q3, max_v)]\n",
+    "labels_q = ['0-Q1 (25%)', 'Q1-Q2 (25%)', 'Q2-Q3 (25%)', 'Q3-max (25%)']\n",
+    "for (ini, fin), col, lbl in zip(zonas, colores_q, labels_q):\n",
+    "    axes[1].axvspan(ini, fin, alpha=0.3, color=col, label=lbl)\n",
+    "for val, lbl, col in [(q1,'Q1','green'), (q2,'Q2','blue'), (q3,'Q3','purple')]:\n",
+    "    axes[1].axvline(val, color=col, linestyle='--', linewidth=1.5)\n",
+    "axes[1].set_title('Zonas de cuartil (25% cada una)')\n",
+    "axes[1].set_xlabel('Valores')\n",
+    "axes[1].legend(fontsize=7, loc='upper left')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Percentiles: más precisión en la distribución"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Percentiles clave sobre la misma serie\n",
+    "percentiles_clave = [10, 25, 50, 75, 90, 95]\n",
+    "print('=== Percentiles clave ===')\n",
+    "for p in percentiles_clave:\n",
+    "    val = np.percentile(datos, p)\n",
+    "    print(f'  P{p:>2}:  {val:>6.1f}  → el {p}% de los datos está por debajo de este valor')\n",
+    "\n",
+    "print()\n",
+    "p10 = np.percentile(datos, 10)\n",
+    "p90 = np.percentile(datos, 90)\n",
+    "print(f'Rango P10-P90 (80% central): [{p10:.1f} — {p90:.1f}]')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Quintiles y deciles"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Quintiles (20% cada parte) y Deciles (10% cada parte)\n",
+    "print('=== Quintiles (divisiones cada 20%) ===')\n",
+    "for i, p in enumerate([20, 40, 60, 80], 1):\n",
+    "    print(f'  Quintil {i} (P{p}): {np.percentile(datos, p):.1f}')\n",
+    "\n",
+    "print()\n",
+    "print('=== Deciles (divisiones cada 10%) ===')\n",
+    "for i, p in enumerate(range(10, 100, 10), 1):\n",
+    "    print(f'  Decil {i:>2} (P{p:>2}): {np.percentile(datos, p):.1f}')\n",
+    "\n",
+    "# Uso práctico desde la presentación\n",
+    "print()\n",
+    "quintil_1 = np.percentile(datos, 20)\n",
+    "decil_3   = np.percentile(datos, 30)\n",
+    "print(f'Quintil 1 (P20): {quintil_1}')\n",
+    "print(f'Decil 3   (P30): {decil_3}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1 — Completa y reflexiona:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ventas_equipo = pd.Series([45, 52, 61, 70, 72, 75, 80, 85, 90, 95,\n",
+    "                           100, 102, 108, 115, 120, 130, 145, 160, 200, 350])\n",
+    "\n",
+    "# ✏️ Calcula Q1, Q2, Q3 e IQR\n",
+    "q1_v = np.percentile(ventas_equipo, ???)\n",
+    "q2_v = np.percentile(ventas_equipo, ???)\n",
+    "q3_v = np.percentile(ventas_equipo, ???)\n",
+    "iqr_v = ???\n",
+    "\n",
+    "print(f'Q1: {q1_v} | Q2: {q2_v} | Q3: {q3_v} | IQR: {iqr_v}')\n",
+    "\n",
+    "# ✏️ ¿Cuál es el percentil 90? (vendedor de alto desempeño)\n",
+    "p90_v = np.percentile(ventas_equipo, ???)\n",
+    "print(f'Percentil 90 (alto desempeño): {p90_v}')\n",
+    "\n",
+    "# ✏️ ¿Qué porcentaje del equipo vende más de 120 unidades?\n",
+    "pct_sobre_120 = (ventas_equipo > 120).mean() * 100\n",
+    "print(f'% que vende más de 120: {pct_sobre_120:.1f}%')\n",
+    "\n",
+    "# ✏️ ¿Para qué usarías deciles en lugar de cuartiles en este análisis de ventas?\n",
+    "r_deciles = \"\"\n",
+    "print('Ventaja deciles:', r_deciles)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Detección de outliers con IQR\n",
+    "\n",
+    "### 2.1 Regla de los bigotes (Tukey)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ejemplo exacto de la presentación\n",
+    "valores_out = [5, 6, 6, 7, 8, 9, 10, 11, 12, 30]  # 30 parece outlier\n",
+    "\n",
+    "q1_o = np.percentile(valores_out, 25)\n",
+    "q3_o = np.percentile(valores_out, 75)\n",
+    "iqr_o = q3_o - q1_o\n",
+    "lim_inf = q1_o - 1.5 * iqr_o\n",
+    "lim_sup = q3_o + 1.5 * iqr_o\n",
+    "\n",
+    "outliers_det = [x for x in valores_out if x < lim_inf or x > lim_sup]\n",
+    "\n",
+    "print('=== Detección de outliers por IQR ===')\n",
+    "print(f'Datos: {valores_out}')\n",
+    "print(f'Q1: {q1_o} | Q3: {q3_o} | IQR: {iqr_o}')\n",
+    "print(f'Límite inferior: Q1 - 1.5×IQR = {q1_o} - {1.5*iqr_o} = {lim_inf:.2f}')\n",
+    "print(f'Límite superior: Q3 + 1.5×IQR = {q3_o} + {1.5*iqr_o} = {lim_sup:.2f}')\n",
+    "print(f'Outliers detectados: {outliers_det}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualización: histograma + boxplot (igual que en la presentación)\n",
+    "valores_vis = [3, 4, 5, 5, 6, 6, 7, 7, 8, 9, 10, 25]  # incluye outlier\n",
+    "\n",
+    "fig, axes = plt.subplots(2, 1, figsize=(10, 7))\n",
+    "fig.suptitle('Histograma + Boxplot — Detección visual de outliers', fontweight='bold')\n",
+    "\n",
+    "# Histograma\n",
+    "sns.histplot(valores_vis, bins=8, kde=True, ax=axes[0], color='#BDD7EE', edgecolor='white')\n",
+    "axes[0].set_title('Histograma de tiempos de atención')\n",
+    "axes[0].set_xlabel('Minutos')\n",
+    "axes[0].set_ylabel('Frecuencia')\n",
+    "\n",
+    "# Boxplot\n",
+    "sns.boxplot(x=valores_vis, ax=axes[1], color='#BDD7EE')\n",
+    "axes[1].set_title('Boxplot de tiempos de atención — el punto a la derecha es el outlier (25 min)')\n",
+    "axes[1].set_xlabel('Minutos')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Comparación: con y sin outlier"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "serie = pd.Series(valores_vis)\n",
+    "sin   = serie[serie <= lim_sup]\n",
+    "\n",
+    "comp = pd.DataFrame({\n",
+    "    'Con outlier':  [serie.mean(), serie.median(), serie.std(ddof=1),\n",
+    "                     serie.quantile(0.25), serie.quantile(0.75)],\n",
+    "    'Sin outlier':  [sin.mean(),   sin.median(),   sin.std(ddof=1),\n",
+    "                     sin.quantile(0.25),   sin.quantile(0.75)]\n",
+    "}, index=['Media','Mediana','Desv.std','Q1','Q3']).round(2)\n",
+    "comp['Diferencia'] = (comp['Con outlier'] - comp['Sin outlier']).round(2)\n",
+    "\n",
+    "print('=== Impacto del outlier en las métricas ===')\n",
+    "print(comp)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2 — Responde:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué medida se ve más afectada por el outlier (media o mediana)? ¿Por qué?\n",
+    "r_impacto = \"\"\n",
+    "\n",
+    "# ✏️ ¿Siempre se debe eliminar un outlier detectado? ¿Qué preguntas deberías hacerte?\n",
+    "r_eliminar = \"\"\n",
+    "\n",
+    "# ✏️ Da un ejemplo de un outlier que NO debería eliminarse y uno que SÍ:\n",
+    "r_no_elim = \"\"\n",
+    "r_si_elim = \"\"\n",
+    "\n",
+    "print('Impacto outlier:', r_impacto)\n",
+    "print('¿Eliminar?:     ', r_eliminar)\n",
+    "print('No eliminar:    ', r_no_elim)\n",
+    "print('Sí eliminar:    ', r_si_elim)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Actividad guiada: ExpressLog\n",
+    "\n",
+    "**Reutilizamos `entregas_express.csv` de la clase anterior para aplicar cuartiles, percentiles y detección de outliers.**\n",
+    "\n",
+    "### 3.1 Cargar y explorar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('entregas_express.csv')\n",
+    "\n",
+    "print(f'Registros: {len(df)}')\n",
+    "print()\n",
+    "print(df.head(8))\n",
+    "print()\n",
+    "print('=== Resumen estadístico ===')\n",
+    "print(df['tiempo_entrega'].describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Cuartiles y percentiles del tiempo de entrega"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "t = df['tiempo_entrega']\n",
+    "\n",
+    "q1  = t.quantile(0.25)\n",
+    "q2  = t.quantile(0.50)\n",
+    "q3  = t.quantile(0.75)\n",
+    "p10 = t.quantile(0.10)\n",
+    "p90 = t.quantile(0.90)\n",
+    "p95 = t.quantile(0.95)\n",
+    "iqr = q3 - q1\n",
+    "\n",
+    "print('=== Medidas de posición — Tiempo de entrega (horas) ===')\n",
+    "print(f'  P10 (10% más rápido):   {p10:.1f} h')\n",
+    "print(f'  Q1  (25%):              {q1:.1f} h')\n",
+    "print(f'  Q2  (Mediana):          {q2:.1f} h')\n",
+    "print(f'  Q3  (75%):              {q3:.1f} h')\n",
+    "print(f'  P90 (90%):              {p90:.1f} h')\n",
+    "print(f'  P95 (SLA empresarial):  {p95:.1f} h')\n",
+    "print(f'  IQR (Q3-Q1):            {iqr:.1f} h')\n",
+    "print()\n",
+    "print(f'  El 50% central de las entregas tarda entre {q1:.1f}h y {q3:.1f}h')\n",
+    "print(f'  El 90% de las entregas se completa antes de {p90:.1f}h')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Detectar outliers con IQR"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lim_inf = q1 - 1.5 * iqr\n",
+    "lim_sup = q3 + 1.5 * iqr\n",
+    "\n",
+    "outliers_df = df[(t < lim_inf) | (t > lim_sup)]\n",
+    "\n",
+    "print(f'Límite inferior: Q1 - 1.5×IQR = {q1:.1f} - {1.5*iqr:.1f} = {lim_inf:.1f}h')\n",
+    "print(f'Límite superior: Q3 + 1.5×IQR = {q3:.1f} + {1.5*iqr:.1f} = {lim_sup:.1f}h')\n",
+    "print(f'Outliers detectados: {len(outliers_df)} de {len(df)} registros '\n",
+    "      f'({len(outliers_df)/len(df)*100:.1f}%)')\n",
+    "print()\n",
+    "print(outliers_df[['id_pedido','tiempo_entrega','region','canal']].to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Visualización completa"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(2, 2, figsize=(15, 9))\n",
+    "fig.suptitle('ExpressLog — Análisis de Posición y Outliers', fontweight='bold', fontsize=13)\n",
+    "\n",
+    "# 1. Histograma con percentiles\n",
+    "sns.histplot(t, bins=10, kde=True, ax=axes[0,0], color='#BDD7EE', edgecolor='white')\n",
+    "for val, lbl, col, ls in [\n",
+    "    (q1, f'Q1 {q1:.0f}h', 'green', '--'),\n",
+    "    (q2, f'Q2 {q2:.0f}h', 'blue', '-'),\n",
+    "    (q3, f'Q3 {q3:.0f}h', 'purple', '--'),\n",
+    "    (p90, f'P90 {p90:.0f}h', 'orange', ':'),\n",
+    "    (lim_sup, f'Límite IQR {lim_sup:.0f}h', 'red', '-.')\n",
+    "]:\n",
+    "    axes[0,0].axvline(val, color=col, linestyle=ls, linewidth=1.8, label=lbl)\n",
+    "axes[0,0].set_title('Histograma con cuartiles y límite IQR')\n",
+    "axes[0,0].set_xlabel('Horas')\n",
+    "axes[0,0].legend(fontsize=7)\n",
+    "\n",
+    "# 2. Boxplot global\n",
+    "sns.boxplot(x=t, ax=axes[0,1], color='#BDD7EE')\n",
+    "axes[0,1].axvline(48, color='orange', linestyle='--', linewidth=2, label='SLA 48h')\n",
+    "axes[0,1].set_title('Boxplot global')\n",
+    "axes[0,1].set_xlabel('Horas')\n",
+    "axes[0,1].legend(fontsize=8)\n",
+    "\n",
+    "# 3. Boxplot por región\n",
+    "orden_reg = df.groupby('region')['tiempo_entrega'].median().sort_values().index\n",
+    "sns.boxplot(data=df, x='region', y='tiempo_entrega', order=orden_reg,\n",
+    "            palette='Blues_r', ax=axes[1,0])\n",
+    "axes[1,0].axhline(48, color='orange', linestyle='--', linewidth=2, label='SLA 48h')\n",
+    "axes[1,0].axhline(lim_sup, color='red', linestyle=':', linewidth=1.5,\n",
+    "                  label=f'Límite IQR {lim_sup:.0f}h')\n",
+    "axes[1,0].set_title('Boxplot por región')\n",
+    "axes[1,0].set_xlabel('')\n",
+    "axes[1,0].set_ylabel('Horas')\n",
+    "axes[1,0].tick_params(axis='x', rotation=20)\n",
+    "axes[1,0].legend(fontsize=7)\n",
+    "\n",
+    "# 4. Outliers coloreados en scatter\n",
+    "df['es_outlier'] = (t > lim_sup) | (t < lim_inf)\n",
+    "colores = df['es_outlier'].map({True: '#FC4E4E', False: '#2E75B6'})\n",
+    "axes[1,1].scatter(range(len(df)), df['tiempo_entrega'],\n",
+    "                  c=colores, alpha=0.6, s=40)\n",
+    "axes[1,1].axhline(lim_sup, color='red', linestyle='--', linewidth=1.5,\n",
+    "                  label=f'Límite IQR {lim_sup:.0f}h')\n",
+    "axes[1,1].axhline(48, color='orange', linestyle=':', linewidth=1.5, label='SLA 48h')\n",
+    "normal_p = mpatches.Patch(color='#2E75B6', label='Normal')\n",
+    "outlier_p = mpatches.Patch(color='#FC4E4E', label='Outlier')\n",
+    "axes[1,1].legend(handles=[normal_p, outlier_p], fontsize=8)\n",
+    "axes[1,1].set_title('Scatter: outliers coloreados en rojo')\n",
+    "axes[1,1].set_xlabel('Índice pedido')\n",
+    "axes[1,1].set_ylabel('Horas')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.5 Segmentación por deciles para gerencia"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Asignar decil a cada pedido\n",
+    "df['decil'] = pd.qcut(df['tiempo_entrega'], q=10,\n",
+    "                       labels=[f'D{i}' for i in range(1,11)],\n",
+    "                       duplicates='drop')\n",
+    "\n",
+    "resumen_decil = df.groupby('decil', observed=True)['tiempo_entrega'].agg(\n",
+    "    min_h='min', max_h='max', n='count'\n",
+    ")\n",
+    "resumen_decil['% acumulado'] = (resumen_decil['n'].cumsum() / len(df) * 100).round(1)\n",
+    "\n",
+    "print('=== Distribución por deciles — Tiempos de entrega ===')\n",
+    "print(resumen_decil.to_string())\n",
+    "print()\n",
+    "print(f'D1 (10% más rápido): hasta {resumen_decil.iloc[0][\"max_h\"]:.0f}h')\n",
+    "print(f'D10 (10% más lento): desde {resumen_decil.iloc[-1][\"min_h\"]:.0f}h')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3 — Concluye:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué región tiene los tiempos más inconsistentes según el boxplot?\n",
+    "r_region = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué porcentaje de pedidos cumple el SLA de 48h?\n",
+    "pct_sla = (df['tiempo_entrega'] <= 48).mean() * 100\n",
+    "print(f'% pedidos dentro de SLA 48h: {pct_sla:.1f}%')\n",
+    "\n",
+    "# ✏️ ¿Deberías eliminar los outliers antes de reportar la mediana a gerencia?\n",
+    "r_outliers_ger = \"\"\n",
+    "\n",
+    "# ✏️ ¿Por qué es más útil el P90 que la media para definir tiempos máximos de entrega?\n",
+    "r_p90 = \"\"\n",
+    "\n",
+    "print('Región inconsistente:', r_region)\n",
+    "print('¿Eliminar outliers?: ', r_outliers_ger)\n",
+    "print('P90 vs Media:        ', r_p90)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad autónoma: Satisfacción de clientes\n",
+    "\n",
+    "**Situación:** Analizar las calificaciones de clientes de una empresa de telecomunicaciones. El promedio es 7.5, pero el ejecutivo sospecha que no es representativo.\n",
+    "\n",
+    "### 4.1 Cargar y explorar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df2 = pd.read_csv('calificaciones_satisfaccion.csv')\n",
+    "\n",
+    "print(f'Registros: {len(df2)}')\n",
+    "print()\n",
+    "print(df2.head(8))\n",
+    "print()\n",
+    "print('=== Resumen estadístico ===')\n",
+    "print(df2[['calificacion','tiempo_resolucion_min']].describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Medidas de posición y outliers — calificación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "c = df2['calificacion']\n",
+    "\n",
+    "q1_c  = c.quantile(0.25)\n",
+    "q2_c  = c.quantile(0.50)\n",
+    "q3_c  = c.quantile(0.75)\n",
+    "iqr_c = q3_c - q1_c\n",
+    "lim_i_c = q1_c - 1.5 * iqr_c\n",
+    "lim_s_c = q3_c + 1.5 * iqr_c\n",
+    "\n",
+    "print('=== Medidas de posición — Calificación (1-10) ===')\n",
+    "for p in [10, 25, 50, 75, 90]:\n",
+    "    print(f'  P{p:>2}: {c.quantile(p/100):.1f}')\n",
+    "print(f'  IQR: {iqr_c:.1f}')\n",
+    "print(f'  Límites IQR: [{lim_i_c:.1f} — {lim_s_c:.1f}]')\n",
+    "print()\n",
+    "\n",
+    "out_c = df2[(c < lim_i_c) | (c > lim_s_c)]\n",
+    "print(f'Outliers detectados: {len(out_c)} ({len(out_c)/len(df2)*100:.1f}%)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Visualización completa"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(2, 2, figsize=(15, 9))\n",
+    "fig.suptitle('Satisfacción de Clientes — Análisis de Posición y Outliers',\n",
+    "             fontweight='bold', fontsize=13)\n",
+    "\n",
+    "# 1. Histograma calificación\n",
+    "sns.histplot(c, bins=10, kde=True, ax=axes[0,0], color='#E2EFDA', edgecolor='white')\n",
+    "axes[0,0].axvline(c.mean(),   color='red',   linestyle='--', linewidth=2,\n",
+    "                  label=f'Media {c.mean():.1f}')\n",
+    "axes[0,0].axvline(c.median(), color='blue',  linestyle='--', linewidth=2,\n",
+    "                  label=f'Mediana {c.median():.1f}')\n",
+    "axes[0,0].axvline(q1_c, color='green', linestyle=':', linewidth=1.5, label=f'Q1 {q1_c:.1f}')\n",
+    "axes[0,0].axvline(q3_c, color='purple',linestyle=':', linewidth=1.5, label=f'Q3 {q3_c:.1f}')\n",
+    "axes[0,0].set_title('Distribución de calificaciones')\n",
+    "axes[0,0].set_xlabel('Calificación')\n",
+    "axes[0,0].legend(fontsize=8)\n",
+    "\n",
+    "# 2. Boxplot por segmento\n",
+    "orden_seg = df2.groupby('segmento')['calificacion'].median().sort_values().index\n",
+    "sns.boxplot(data=df2, x='segmento', y='calificacion',\n",
+    "            order=orden_seg, palette='Blues_r', ax=axes[0,1])\n",
+    "axes[0,1].axhline(7.5, color='orange', linestyle='--', linewidth=2, label='Promedio 7.5')\n",
+    "axes[0,1].set_title('Calificación por segmento')\n",
+    "axes[0,1].set_xlabel('')\n",
+    "axes[0,1].set_ylabel('Calificación')\n",
+    "axes[0,1].legend(fontsize=8)\n",
+    "\n",
+    "# 3. Boxplot por canal\n",
+    "orden_can = df2.groupby('canal')['calificacion'].median().sort_values().index\n",
+    "sns.boxplot(data=df2, x='canal', y='calificacion',\n",
+    "            order=orden_can, palette='Set2', ax=axes[1,0])\n",
+    "axes[1,0].set_title('Calificación por canal de atención')\n",
+    "axes[1,0].set_xlabel('')\n",
+    "axes[1,0].set_ylabel('Calificación')\n",
+    "axes[1,0].tick_params(axis='x', rotation=15)\n",
+    "\n",
+    "# 4. Percentiles visualizados como barras\n",
+    "pcts = [10, 20, 30, 40, 50, 60, 70, 80, 90]\n",
+    "vals = [c.quantile(p/100) for p in pcts]\n",
+    "axes[1,1].bar(pcts, vals, width=8, color='#2E75B6', alpha=0.75, edgecolor='white')\n",
+    "axes[1,1].axhline(7.5, color='orange', linestyle='--', linewidth=2, label='Media 7.5')\n",
+    "axes[1,1].set_title('Percentiles de calificación')\n",
+    "axes[1,1].set_xlabel('Percentil')\n",
+    "axes[1,1].set_ylabel('Calificación')\n",
+    "axes[1,1].set_xticks(pcts)\n",
+    "axes[1,1].legend()\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 4 — Concluye y responde al ejecutivo:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Datos para responder\n",
+    "pct_bajo_6 = (c < 6).mean() * 100\n",
+    "pct_sobre_8 = (c >= 8).mean() * 100\n",
+    "print(f'% clientes con calificación < 6:  {pct_bajo_6:.1f}%')\n",
+    "print(f'% clientes con calificación >= 8: {pct_sobre_8:.1f}%')\n",
+    "print(f'Media: {c.mean():.2f} | Mediana: {c.median():.2f} | Q1: {q1_c} | Q3: {q3_c}')\n",
+    "print()\n",
+    "\n",
+    "# ✏️ ¿El promedio de 7.5 representa a la mayoría de los clientes? Justifica con los cuartiles.\n",
+    "r_repr = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué canal de atención tiene más variabilidad en las calificaciones?\n",
+    "r_canal = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué segmento de clientes muestra calificaciones más bajas?\n",
+    "r_segmento = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué le dirías al ejecutivo sobre el promedio de 7.5?\n",
+    "r_ejecutivo = \"\"\n",
+    "\n",
+    "print('--- RESPUESTAS AL EJECUTIVO ---')\n",
+    "print(f'¿Promedio representativo?: {r_repr}')\n",
+    "print(f'Canal más variable:        {r_canal}')\n",
+    "print(f'Segmento más bajo:         {r_segmento}')\n",
+    "print(f'Mensaje al ejecutivo:      {r_ejecutivo}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de funciones y buenas prácticas\n",
+    "\n",
+    "| Medida | Función | Descripción |\n",
+    "|--------|---------|-------------|\n",
+    "| Cuartiles Q1/Q2/Q3 | `serie.quantile(0.25/0.50/0.75)` | Divide en 4 partes iguales |\n",
+    "| Percentil P | `np.percentile(datos, P)` | Divide en 100 partes |\n",
+    "| Quintil | `np.percentile(datos, 20/40/60/80)` | Divide en 5 partes |\n",
+    "| Decil | `np.percentile(datos, 10..90)` | Divide en 10 partes |\n",
+    "| IQR | `Q3 - Q1` | Rango del 50% central |\n",
+    "| Límite IQR inferior | `Q1 - 1.5 × IQR` | Umbral bajo para outliers |\n",
+    "| Límite IQR superior | `Q3 + 1.5 × IQR` | Umbral alto para outliers |\n",
+    "| Asignar decil | `pd.qcut(serie, q=10)` | Etiqueta cada valor con su decil |\n",
+    "\n",
+    "**Boxplot vs Histograma:**\n",
+    "\n",
+    "| Criterio | Histograma | Boxplot |\n",
+    "|----------|-----------|--------|\n",
+    "| Forma de distribución | ✅ Muy claro | ❌ No muestra |\n",
+    "| Outliers | ❌ Difícil detectar | ✅ Muy claro |\n",
+    "| Comparar grupos | ❌ Complejo | ✅ Ideal |\n",
+    "| Cuartiles explícitos | ❌ No muestra | ✅ Sí muestra |\n",
+    "| Espacio visual | ❌ Ocupa más | ✅ Compacto |\n",
+    "\n",
+    "> 💡 **P90 para SLA:** En logística, usar el percentil 90 como tiempo máximo garantizado es más honesto que la media, porque asegura que el 90% de los clientes recibirá su pedido dentro de ese tiempo.\n",
+    "\n",
+    "> 💡 **Nunca eliminar outliers automáticamente.** Siempre pregunta: ¿es un error de captura, un evento real extraordinario o un problema operacional que merece atención?"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

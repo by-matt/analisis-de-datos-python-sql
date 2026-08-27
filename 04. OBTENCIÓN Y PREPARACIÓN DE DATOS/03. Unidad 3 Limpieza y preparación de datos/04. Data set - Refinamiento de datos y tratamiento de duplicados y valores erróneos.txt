@@ -1,0 +1,440 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 4 - Refinamiento de datos y tratamiento de duplicados y valores erróneos"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 4 – Refinamiento de Datos y Tratamiento de Duplicados y Valores Erróneos\n",
+    "### Limpieza y preparación de datos\n",
+    "\n",
+    "**Temas:** Permutación · `sort_values()` múltiple · `duplicated()` · `drop_duplicates()` · `replace()`\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Base de Datos de Fidelización\n",
+    "\n",
+    "Problemas detectados: clientes repetidos, mismos nombres con distinta región, filas desordenadas,\n",
+    "valores de contacto como `None` e inconsistencias como `'altaa'`.\n",
+    "\n",
+    "**Archivo:** `clientes_registros.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('clientes_registros.csv')\n",
+    "print(f'Filas: {df.shape[0]} | Columnas: {list(df.columns)}')\n",
+    "print(df.head(8))\n",
+    "print(f'\\nDuplicados completos: {df.duplicated().sum()}')\n",
+    "print(f'Duplicados por cliente_id: {df.duplicated(subset=[\"cliente_id\"]).sum()}')\n",
+    "print(f'\\nValores en frecuencia_contacto:')\n",
+    "print(df['frecuencia_contacto'].value_counts(dropna=False))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–6 – Permutación de la Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Permutación — frac=1 reorganiza el 100% de las filas ─────────────\n",
+    "# reset_index(drop=True): reindexa y elimina el índice anterior\n",
+    "\n",
+    "df.sample(frac=1).reset_index(drop=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Ejemplo aplicado — permutación reproducible con random_state ──────\n",
+    "# Garantiza resultados repetibles (útil en producción o pruebas)\n",
+    "\n",
+    "clientes_permutado = df.sample(frac=1, random_state=42).reset_index(drop=True)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 7 – Ordenamiento por Una o Múltiples Columnas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 7: sort_values() por una columna ────────────────────────────────────\n",
+    "\n",
+    "df.sort_values(by='compras', ascending=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 7: sort_values() por múltiples columnas ─────────────────────────────\n",
+    "\n",
+    "df.sort_values(by=['region', 'nombre'], ascending=[True, False])"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 11 – Detección y Eliminación de Duplicados"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: duplicated() — serie booleana (True = duplicado) ────────────────\n",
+    "\n",
+    "df.duplicated()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: drop_duplicates() — eliminar filas repetidas completas ──────────\n",
+    "\n",
+    "df_sin_duplicados = df.drop_duplicates()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: drop_duplicates(subset) — por columnas específicas ──────────────\n",
+    "# Elimina entradas donde cliente_id se repite, manteniendo la primera\n",
+    "\n",
+    "df.drop_duplicates(subset=['cliente_id'])"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 15 – Reemplazo de Valores"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 15: Reemplazar un valor específico ──────────────────────────────────\n",
+    "\n",
+    "df['frecuencia_contacto'].replace('altaa', 'alta', inplace=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 15: Reemplazar múltiples valores simultáneamente ───────────────────\n",
+    "\n",
+    "df.replace({'altaa': 'alta', None: 'desconocido'}, inplace=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 15: Reemplazar con condiciones (loc) ────────────────────────────────\n",
+    "# Corrige datos inválidos sin eliminar el registro\n",
+    "\n",
+    "df.loc[df['compras'] == 0, 'compras'] = 1"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 17–19 – Actividad Guiada: Limpieza Final de Registros de Clientes\n",
+    "\n",
+    "**Objetivo (Slide 18):** Permutar, ordenar, eliminar duplicados y corregir valores.\n",
+    "\n",
+    "**Archivo:** `clientes_registros.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Cargar el archivo ───────────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('clientes_registros.csv')\n",
+    "print(f'Filas originales: {len(df)}')\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19, Paso 1: Permutar el orden de las filas ─────────────────────────\n",
+    "\n",
+    "df = df.sample(frac=1, random_state=42).reset_index(drop=True)\n",
+    "print('DataFrame permutado:')\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19, Paso 2: Ordenar por 'compras' de mayor a menor ─────────────────\n",
+    "\n",
+    "df = df.sort_values(by='compras', ascending=False)\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19, Paso 3: Eliminar duplicados por cliente_id ──────────────────────\n",
+    "\n",
+    "df = df.drop_duplicates(subset=['cliente_id'])\n",
+    "print(f'Filas después de eliminar duplicados por cliente_id: {len(df)}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19, Paso 4: Reemplazar nulos en 'frecuencia_contacto' ───────────────\n",
+    "\n",
+    "df['frecuencia_contacto'] = df['frecuencia_contacto'].fillna('desconocido')\n",
+    "\n",
+    "# ── Slide 19, Paso 5: Corregir todas las variantes de 'alta' ──────────────────\n",
+    "# Incluye: 'altaa', 'Altaa', 'ALTA', '  alta ' (con espacios)\n",
+    "\n",
+    "df['frecuencia_contacto'] = df['frecuencia_contacto'].str.strip().str.lower()\n",
+    "df['frecuencia_contacto'] = df['frecuencia_contacto'].replace({\n",
+    "    'altaa': 'alta',\n",
+    "    'medía': 'media',\n",
+    "})\n",
+    "\n",
+    "print('Valores únicos después de corregir:')\n",
+    "print(df['frecuencia_contacto'].value_counts(dropna=False))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19, Paso 6: Guardar resultado como clientes_limpios.csv ─────────────\n",
+    "\n",
+    "df.to_csv('clientes_limpios.csv', index=False)\n",
+    "print(f'✅ clientes_limpios.csv exportado: {len(df)} registros')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Resumen del proceso de limpieza ─────────────────────────────────\n",
+    "\n",
+    "df_orig = pd.read_csv('clientes_registros.csv')\n",
+    "print('=== RESUMEN DE LIMPIEZA ===')\n",
+    "print(f'Filas originales:             {len(df_orig)}')\n",
+    "print(f'Filas después de limpieza:    {len(df)}')\n",
+    "print(f'Registros eliminados:         {len(df_orig) - len(df)}')\n",
+    "print(f'Duplicados completos:         {df_orig.duplicated().sum()}')\n",
+    "print(f'Duplicados por cliente_id:    {df_orig.duplicated(subset=[\"cliente_id\"]).sum()}')\n",
+    "print(f'Nulos en frecuencia_contacto: {df_orig[\"frecuencia_contacto\"].isna().sum()}')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 21–23 – Actividad Autónoma: Depuración de Reclamos de Productos\n",
+    "\n",
+    "**Contexto (Slide 22):** Archivo con duplicados y etiquetas inconsistentes (`'electrónicco'`, `'sin categ.'`).\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23: Crear el DataFrame de reclamos ──────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.DataFrame({\n",
+    "    'reclamo_id': [11, 12, 13, 14, 15, 13],\n",
+    "    'producto': ['TV', 'Celular', 'Tablet', 'TV', 'Celular', 'Tablet'],\n",
+    "    'categoria_defecto': ['electrónico', 'electrónicco', 'electrónico',\n",
+    "                          'electrónico', 'sin categ.', 'electrónico']\n",
+    "})\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23, Paso 1: Eliminar duplicados por reclamo_id ──────────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df = df.drop_duplicates(subset=[...])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23, Paso 2: Reemplazar 'electrónicco' → 'electrónico' ───────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df['categoria_defecto'].replace(..., inplace=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23, Paso 3: Reemplazar 'sin categ.' → 'desconocido' ────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23, Paso 4: Ordenar por 'producto' ─────────────────────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df = df.sort_values(by=...)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23, Paso 5: Guardar como reclamos_limpios.csv ──────────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df.to_csv('reclamos_limpios.csv', index=False)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Preguntas de reflexión y cierre (Slide 20)\n",
+    "\n",
+    "1. ¿Qué criterio usaste para decidir qué duplicado mantener (`keep='first'` o `keep='last'`)?\n",
+    "2. ¿Qué impacto tienen los errores de ortografía o valores vacíos en una campaña comercial?\n",
+    "3. ¿Qué diferencia hay entre eliminar un duplicado y reemplazar su valor?"
+   ]
+  }
+
+ ]
+}

@@ -1,0 +1,740 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📊 Clase 1 — Distribución de probabilidad\n",
+    "## Distribuciones de probabilidad y muestreo\n",
+    "\n",
+    "**Desafío inicial:** Eres parte del equipo de analítica de una compañía de seguros que diseña productos personalizados según el riesgo. Necesitas modelar fenómenos como la cantidad de accidentes anuales, el tiempo entre siniestros y el costo de una reclamación. ¿Cómo representar matemáticamente estos fenómenos para calcular probabilidades y tomar decisiones informadas?\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Identificar y definir **variables aleatorias**\n",
+    "- Clasificar variables en **discretas** y **continuas**\n",
+    "- Comprender las **propiedades de una distribución de probabilidad**\n",
+    "- Visualizar distribuciones con `scipy.stats` y `matplotlib`\n",
+    "- Elegir la distribución correcta para cada fenómeno"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from scipy.stats import binom, norm, poisson\n",
+    "\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "plt.style.use('seaborn-v0_8-whitegrid')\n",
+    "\n",
+    "print('✅ Librerías cargadas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Variables aleatorias\n",
+    "\n",
+    "### 1.1 Definición y tipos — slides 5-8"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "# Tabla de tipos de variables — slide 8\n",
+    "tabla_tipos = pd.DataFrame({\n",
+    "    'Fenómeno': [\n",
+    "        'Número de productos defectuosos',\n",
+    "        'Tiempo de descarga de un archivo',\n",
+    "        'Cantidad de reclamos por cliente',\n",
+    "        'Peso de paquetes enviados'\n",
+    "    ],\n",
+    "    'Variable': ['X = 0, 1, 2, 3...','T = 2.4, 3.1, 4.6...','R = 0, 1, 2, 3...','W = 1.2, 3.6, 5.0...'],\n",
+    "    'Tipo': ['Discreta','Continua','Discreta','Continua']\n",
+    "})\n",
+    "print('=== Clasificación de variables aleatorias (slide 8) ===')\n",
+    "print(tabla_tipos.to_string(index=False))\n",
+    "print()\n",
+    "\n",
+    "# Tabla comparativa discretas vs continuas\n",
+    "tabla_comp = pd.DataFrame({\n",
+    "    'Característica': ['Valores posibles','Espacio','Herramienta matemática',\n",
+    "                       'Visualización','Ejemplo seguros'],\n",
+    "    'Discreta': [\n",
+    "        'Finitos o contablemente infinitos','Separados (no hay decimales intermedios)',\n",
+    "        'Función de masa de probabilidad (PMF)','Gráfico de barras / stem',\n",
+    "        'Número de accidentes en un mes'\n",
+    "    ],\n",
+    "    'Continua': [\n",
+    "        'Cualquier valor en un intervalo','Sin brechas (cualquier decimal posible)',\n",
+    "        'Función de densidad de probabilidad (PDF)','Línea suave / curva',\n",
+    "        'Tiempo entre dos siniestros'\n",
+    "    ]\n",
+    "})\n",
+    "print('=== Discretas vs Continuas ===')\n",
+    "print(tabla_comp.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Buenas prácticas y errores comunes — slide 7\n",
+    "tabla_bp = pd.DataFrame({\n",
+    "    'Categoría': ['Buena práctica','Buena práctica','Error común','Error común'],\n",
+    "    'Descripción': [\n",
+    "        'Definir claramente el espacio muestral antes de formular la variable',\n",
+    "        'Distinguir si es numérica o categórica antes de clasificarla',\n",
+    "        'Confundir variable aleatoria con dato observado',\n",
+    "        'Suponer que toda variable numérica es continua'\n",
+    "    ]\n",
+    "})\n",
+    "print('=== Buenas prácticas y errores comunes (slide 7) ===')\n",
+    "print(tabla_bp.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Visualización de variable discreta — código exacto slide 9"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 9\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from scipy.stats import binom\n",
+    "\n",
+    "x = np.arange(0, 11)\n",
+    "p = 0.5\n",
+    "n = 10\n",
+    "binomial = binom.pmf(x, n, p)\n",
+    "\n",
+    "plt.stem(x, binomial, basefmt=\" \")\n",
+    "plt.title(\"Distribución Binomial\")\n",
+    "plt.xlabel(\"Número de éxitos\")\n",
+    "plt.ylabel(\"Probabilidad\")\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1 — Clasifica:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Clasifica cada variable como Discreta (D) o Continua (C) y justifica:\n",
+    "clasificaciones = {\n",
+    "    'Número de llamadas que recibe un call center en 1 hora':     {'Tipo': '', 'Justificación': ''},\n",
+    "    'Tiempo que tarda en procesarse un pedido (en horas)':        {'Tipo': '', 'Justificación': ''},\n",
+    "    'Número de siniestros reportados en un mes':                  {'Tipo': '', 'Justificación': ''},\n",
+    "    'Temperatura de un servidor al momento de falla':             {'Tipo': '', 'Justificación': ''},\n",
+    "    'Cantidad de clics en un banner publicitario':                {'Tipo': '', 'Justificación': ''},\n",
+    "    'Monto de una reclamación de seguro':                         {'Tipo': '', 'Justificación': ''},\n",
+    "}\n",
+    "\n",
+    "print('--- CLASIFICACIÓN DE VARIABLES ---')\n",
+    "for fenomeno, v in clasificaciones.items():\n",
+    "    print(f'[{v[\"Tipo\"]}] {fenomeno}')\n",
+    "    print(f'     Justificación: {v[\"Justificación\"]}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Distribuciones de probabilidad\n",
+    "\n",
+    "### 2.1 Propiedades fundamentales — slide 10"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de propiedades\n",
+    "tabla_prop = pd.DataFrame({\n",
+    "    'Propiedad': [\n",
+    "        'No negatividad',\n",
+    "        'Suma = 1 (discreta)',\n",
+    "        'Área = 1 (continua)',\n",
+    "        'P(a ≤ X ≤ b) continua'\n",
+    "    ],\n",
+    "    'Descripción': [\n",
+    "        'P(X=x) ≥ 0  para todo x',\n",
+    "        'Σ P(X=x) = 1  (suma de todas las probabilidades)',\n",
+    "        '∫ f(x)dx = 1  (área total bajo la curva)',\n",
+    "        'P(X en [a,b]) = área bajo f(x) entre a y b'\n",
+    "    ],\n",
+    "    'Error al violar': [\n",
+    "        'Probabilidades negativas no tienen sentido físico',\n",
+    "        'Distribucion incompleta o con solapamiento',\n",
+    "        'No es una función de densidad válida',\n",
+    "        'No calcular áreas, sino puntos (error clásico)'\n",
+    "    ]\n",
+    "})\n",
+    "print('=== Propiedades de una distribución de probabilidad (slide 10) ===')\n",
+    "print(tabla_prop.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Verificar distribución discreta válida — ejemplo slide 12\n",
+    "x_accidentes = [0, 1, 2, 3]\n",
+    "p_accidentes  = [0.2, 0.4, 0.3, 0.1]\n",
+    "\n",
+    "print('=== Distribución para número de accidentes en un día (slide 12) ===')\n",
+    "print(f'{\"x (accidentes)\":<20} {\"P(X=x)\"}')\n",
+    "for xi, pi in zip(x_accidentes, p_accidentes):\n",
+    "    print(f'{xi:<20} {pi}')\n",
+    "print(f'{\"Suma:\":<20} {sum(p_accidentes)}')\n",
+    "print()\n",
+    "\n",
+    "es_valida = all(p >= 0 for p in p_accidentes) and abs(sum(p_accidentes) - 1.0) < 1e-9\n",
+    "print(f'¿Es una distribución válida? {\"✅ Sí\" if es_valida else \"❌ No\"}')\n",
+    "print(f'  Todas P(X=x) ≥ 0: {all(p >= 0 for p in p_accidentes)}')\n",
+    "print(f'  Suma = 1:          {abs(sum(p_accidentes) - 1.0) < 1e-9}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualizar la distribución del ejemplo slide 12\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n",
+    "fig.suptitle('Distribución de número de accidentes diarios (slide 12)', fontweight='bold')\n",
+    "\n",
+    "# Barras\n",
+    "axes[0].bar(x_accidentes, p_accidentes, color='#2E75B6', edgecolor='white', width=0.5)\n",
+    "axes[0].set_title('Distribución de probabilidad (barras)')\n",
+    "axes[0].set_xlabel('x (accidentes)')\n",
+    "axes[0].set_ylabel('P(X=x)')\n",
+    "axes[0].set_xticks(x_accidentes)\n",
+    "for xi, pi in zip(x_accidentes, p_accidentes):\n",
+    "    axes[0].text(xi, pi+0.01, f'{pi}', ha='center', fontweight='bold')\n",
+    "\n",
+    "# Función de distribución acumulada (CDF)\n",
+    "cdf = np.cumsum(p_accidentes)\n",
+    "axes[1].step(x_accidentes + [x_accidentes[-1]+1], [0] + list(cdf),\n",
+    "             where='post', color='#ED7D31', linewidth=2.5)\n",
+    "axes[1].scatter(x_accidentes, cdf, color='#ED7D31', s=80, zorder=5)\n",
+    "axes[1].set_title('Función de distribución acumulada F(x)')\n",
+    "axes[1].set_xlabel('x')\n",
+    "axes[1].set_ylabel('F(x) = P(X ≤ x)')\n",
+    "axes[1].set_ylim(0, 1.05)\n",
+    "axes[1].axhline(1, color='gray', linestyle=':', alpha=0.5)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Distribución normal estándar — código exacto slide 13"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 13\n",
+    "from scipy.stats import norm\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "x = np.linspace(-4, 4, 1000)\n",
+    "plt.plot(x, norm.pdf(x))\n",
+    "plt.title(\"Distribución Normal Estándar\")\n",
+    "plt.xlabel(\"Valores\")\n",
+    "plt.ylabel(\"Densidad de probabilidad\")\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Explicación del área bajo la curva (propiedad de distribuciones continuas)\n",
+    "from scipy import stats as sp_stats\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(10, 4))\n",
+    "\n",
+    "x_plot = np.linspace(-4, 4, 1000)\n",
+    "ax.plot(x_plot, norm.pdf(x_plot), color='#2E75B6', linewidth=2.5)\n",
+    "\n",
+    "# Área entre -1 y 1 (≈68%)\n",
+    "x_fill1 = np.linspace(-1, 1, 200)\n",
+    "ax.fill_between(x_fill1, norm.pdf(x_fill1), alpha=0.4, color='#70AD47', label='μ ± 1σ ≈ 68%')\n",
+    "\n",
+    "# Área entre -2 y 2 (≈95%)\n",
+    "for a, b, color, lbl in [(-2,-1,'#FFC000',''), (1,2,'#FFC000','μ ± 2σ ≈ 95%')]:\n",
+    "    x_f = np.linspace(a, b, 100)\n",
+    "    ax.fill_between(x_f, norm.pdf(x_f), alpha=0.4, color=color, label=lbl)\n",
+    "\n",
+    "ax.axvline(0, color='red', linestyle='--', linewidth=2, label='Media μ = 0')\n",
+    "ax.set_title('Distribución Normal Estándar — Área bajo la curva = 1', fontweight='bold')\n",
+    "ax.set_xlabel('x')\n",
+    "ax.set_ylabel('f(x) — Densidad de probabilidad')\n",
+    "ax.legend(fontsize=9)\n",
+    "\n",
+    "# Mostrar área total\n",
+    "area_total = sp_stats.norm.cdf(100) - sp_stats.norm.cdf(-100)\n",
+    "ax.text(2, 0.35, f'Área total = {area_total:.4f} ✅', fontsize=11,\n",
+    "        color='#7030A0', fontweight='bold')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('P(μ ± 1σ) = P(-1 ≤ X ≤ 1):', round(norm.cdf(1)-norm.cdf(-1), 4))\n",
+    "print('P(μ ± 2σ) = P(-2 ≤ X ≤ 2):', round(norm.cdf(2)-norm.cdf(-2), 4))\n",
+    "print('P(μ ± 3σ) = P(-3 ≤ X ≤ 3):', round(norm.cdf(3)-norm.cdf(-3), 4))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Errores comunes — slide 11"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tabla_err = pd.DataFrame({\n",
+    "    'Error': [\n",
+    "        'Sumar probabilidades en continuas',\n",
+    "        'Usar distribución incorrecta',\n",
+    "        'No verificar suma = 1'\n",
+    "    ],\n",
+    "    'Descripción': [\n",
+    "        'En vars. continuas P(X=x)=0. Se debe calcular áreas, no puntos.',\n",
+    "        'Usar normal en conteos pequeños o binomial en tiempos.',\n",
+    "        'Distribución inválida si no suma 1 → inferencias erróneas.'\n",
+    "    ],\n",
+    "    'Solución': [\n",
+    "        'Usar integral o norm.cdf(b)-norm.cdf(a)',\n",
+    "        'Verificar si la var. es discreta/continua antes de elegir',\n",
+    "        'Siempre verificar sum(p)==1 antes de usar la distribución'\n",
+    "    ]\n",
+    "})\n",
+    "print('=== Errores comunes al modelar con distribuciones (slide 11) ===')\n",
+    "print(tabla_err.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Actividad guiada: Empresa de transporte urbano (slides 14-17)\n",
+    "\n",
+    "### 3.1 Paso 1 — Determinar tipo de variable"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 1 — instrucciones slide 16\n",
+    "print('=== PASO 1: Clasificación de variables ===')\n",
+    "print()\n",
+    "print('Variable 1: Número de pasajeros por parada')\n",
+    "print('  Tipo: DISCRETA')\n",
+    "print('  Razón: es un conteo (0, 1, 2, 3...). No puede ser 2.7 pasajeros.')\n",
+    "print('  Distribución sugerida: Binomial (si hay capacidad máxima n y p de subir)')\n",
+    "print()\n",
+    "print('Variable 2: Tiempo de trayecto entre paradas (minutos)')\n",
+    "print('  Tipo: CONTINUA')\n",
+    "print('  Razón: puede tomar cualquier valor real (14.3, 15.7, 16.01...)')\n",
+    "print('  Distribución sugerida: Normal (si hay variabilidad simétrica alrededor de la media)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Paso 2 — Distribución binomial para pasajeros — código exacto slide 17"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Distribución binomial para pasajeros — código exacto slide 17\n",
+    "from scipy.stats import binom\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "x = np.arange(0, 11)\n",
+    "binomial = binom.pmf(x, 10, 0.3)\n",
+    "\n",
+    "plt.stem(x, binomial, basefmt=\" \")\n",
+    "plt.title(\"Distribución Binomial: Número de pasajeros\")\n",
+    "plt.xlabel(\"Pasajeros por parada\")\n",
+    "plt.ylabel(\"Probabilidad\")\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Paso 3 — Distribución normal para tiempo de trayecto — código exacto slide 17"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Distribución normal para tiempo de trayecto — código exacto slide 17\n",
+    "from scipy.stats import norm\n",
+    "\n",
+    "x = np.linspace(5, 25, 500)\n",
+    "y = norm.pdf(x, loc=15, scale=3)\n",
+    "\n",
+    "plt.plot(x, y)\n",
+    "plt.title(\"Distribución Normal: Tiempo de trayecto\")\n",
+    "plt.xlabel(\"Minutos\")\n",
+    "plt.ylabel(\"Densidad de probabilidad\")\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Panel comparativo de ambas distribuciones (visión ejecutiva)\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(13, 5))\n",
+    "fig.suptitle('Transporte urbano — Modelado con distribuciones de probabilidad',\n",
+    "             fontweight='bold', fontsize=12)\n",
+    "\n",
+    "# Binomial — pasajeros\n",
+    "x_pas = np.arange(0, 11)\n",
+    "p_bin = binom.pmf(x_pas, n=10, p=0.3)\n",
+    "markerline, stemlines, baseline = axes[0].stem(x_pas, p_bin, basefmt=\" \")\n",
+    "plt.setp(stemlines, color='#2E75B6', linewidth=2)\n",
+    "plt.setp(markerline, color='#2E75B6', markersize=8)\n",
+    "axes[0].set_title('Variable DISCRETA\\nPasajeros por parada\\n(Binomial n=10, p=0.3)', fontsize=10)\n",
+    "axes[0].set_xlabel('Número de pasajeros')\n",
+    "axes[0].set_ylabel('P(X=x)')\n",
+    "\n",
+    "# Calcular probabilidades clave\n",
+    "p_mas_5 = sum(binom.pmf(k, 10, 0.3) for k in range(6, 11))\n",
+    "axes[0].axvline(5.5, color='red', linestyle='--', linewidth=2,\n",
+    "                label=f'P(X>5) = {p_mas_5:.3f}')\n",
+    "axes[0].legend(fontsize=8)\n",
+    "\n",
+    "# Normal — tiempo\n",
+    "x_tray = np.linspace(5, 25, 500)\n",
+    "y_norm = norm.pdf(x_tray, loc=15, scale=3)\n",
+    "axes[1].plot(x_tray, y_norm, color='#ED7D31', linewidth=2.5)\n",
+    "# Resaltar área de retraso (> 18 min)\n",
+    "x_retraso = np.linspace(18, 25, 200)\n",
+    "axes[1].fill_between(x_retraso, norm.pdf(x_retraso, 15, 3),\n",
+    "                      alpha=0.4, color='#FC4E4E',\n",
+    "                      label=f'P(T>18) = {1-norm.cdf(18,15,3):.3f}')\n",
+    "axes[1].axvline(15, color='gray', linestyle='--', linewidth=2, label='Media 15 min')\n",
+    "axes[1].set_title('Variable CONTINUA\\nTiempo de trayecto\\n(Normal μ=15, σ=3)', fontsize=10)\n",
+    "axes[1].set_xlabel('Minutos')\n",
+    "axes[1].set_ylabel('Densidad f(x)')\n",
+    "axes[1].legend(fontsize=8)\n",
+    "axes[1].grid(True, alpha=0.3)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Paso 4 — Decisiones operativas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 4 — cálculos de decisiones operativas\n",
+    "print('=== PASO 4: Decisiones operativas basadas en los modelos ===')\n",
+    "print()\n",
+    "\n",
+    "# Binomial: probabilidad de que suban más de 5 pasajeros\n",
+    "p_mas_5_cal = sum(binom.pmf(k, 10, 0.3) for k in range(6, 11))\n",
+    "p_exactamente_3 = binom.pmf(3, 10, 0.3)\n",
+    "p_max_2 = sum(binom.pmf(k, 10, 0.3) for k in range(3))\n",
+    "media_binomial = 10 * 0.3\n",
+    "\n",
+    "print('Modelo binomial (pasajeros, n=10, p=0.3):')\n",
+    "print(f'  Media esperada de pasajeros: {media_binomial:.1f}')\n",
+    "print(f'  P(exactamente 3 pasajeros):  {p_exactamente_3:.4f}  ({p_exactamente_3*100:.1f}%)')\n",
+    "print(f'  P(más de 5 pasajeros):        {p_mas_5_cal:.4f}  ({p_mas_5_cal*100:.1f}%)')\n",
+    "print(f'  P(2 o menos pasajeros):       {p_max_2:.4f}  ({p_max_2*100:.1f}%)')\n",
+    "print()\n",
+    "print('  → Decisión operativa: si P(X>5) es alta, programar buses de mayor capacidad')\n",
+    "print()\n",
+    "\n",
+    "# Normal: probabilidades de retraso\n",
+    "mu_tray, sigma_tray = 15, 3\n",
+    "p_retraso_18 = 1 - norm.cdf(18, mu_tray, sigma_tray)\n",
+    "p_rapido_10  = norm.cdf(10, mu_tray, sigma_tray)\n",
+    "p_normal     = norm.cdf(18, mu_tray, sigma_tray) - norm.cdf(12, mu_tray, sigma_tray)\n",
+    "\n",
+    "print('Modelo normal (tiempo de trayecto, μ=15, σ=3):')\n",
+    "print(f'  P(trayecto > 18 min — retraso): {p_retraso_18:.4f}  ({p_retraso_18*100:.1f}%)')\n",
+    "print(f'  P(trayecto < 10 min — muy rápido): {p_rapido_10:.4f}  ({p_rapido_10*100:.1f}%)')\n",
+    "print(f'  P(trayecto entre 12 y 18 min):  {p_normal:.4f}  ({p_normal*100:.1f}%)')\n",
+    "print()\n",
+    "print('  → Decisión operativa: diseñar horarios con 18 min como buffer (cubrir 84% de casos)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad autónoma: Modelando tu propio fenómeno (slides 19-23)\n",
+    "\n",
+    "### Código base sugerido — código exacto slide 22"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 22\n",
+    "# Ajustar valores según el fenómeno elegido\n",
+    "from scipy.stats import poisson, norm\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "# Distribución discreta (ejemplo: Poisson)\n",
+    "x = np.arange(0, 15)\n",
+    "poisson_dist = poisson.pmf(x, mu=5)\n",
+    "plt.stem(x, poisson_dist, basefmt=\" \")\n",
+    "plt.title(\"Distribución Poisson\")\n",
+    "plt.xlabel(\"Eventos por unidad de tiempo\")\n",
+    "plt.ylabel(\"Probabilidad\")\n",
+    "plt.show()\n",
+    "\n",
+    "# Distribución continua (ejemplo: Normal)\n",
+    "x = np.linspace(0, 20, 500)\n",
+    "y = norm.pdf(x, loc=10, scale=2)\n",
+    "plt.plot(x, y)\n",
+    "plt.title(\"Distribución Normal\")\n",
+    "plt.xlabel(\"Duración de la tarea (min)\")\n",
+    "plt.ylabel(\"Densidad\")\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ══════════════════════════════════════════════════════════\n",
+    "#  PLANTILLA AUTÓNOMA — Completa según tu fenómeno elegido\n",
+    "#  Instrucciones: slides 21-23\n",
+    "# ══════════════════════════════════════════════════════════\n",
+    "\n",
+    "# 1. ¿Qué fenómeno estás modelando?\n",
+    "fenomeno = \"\"\n",
+    "\n",
+    "# 2. ¿Qué variable aleatoria lo representa?\n",
+    "variable_aleatoria = \"\"\n",
+    "\n",
+    "# 3. ¿Es discreta o continua? ¿Por qué?\n",
+    "tipo_variable = \"\"\n",
+    "justificacion_tipo = \"\"\n",
+    "\n",
+    "# 4. ¿Qué distribución eliges y por qué?\n",
+    "distribucion_elegida = \"\"\n",
+    "justificacion_dist   = \"\"\n",
+    "\n",
+    "# 5. Parámetros de tu distribución\n",
+    "# Ajusta los parámetros a tu caso:\n",
+    "# Para Poisson: mu = promedio de eventos\n",
+    "# Para Binomial: n = intentos, p = probabilidad de éxito\n",
+    "# Para Normal: loc = media, scale = desv.std\n",
+    "\n",
+    "from scipy.stats import poisson, norm, binom\n",
+    "\n",
+    "# ✏️ MODIFICA ESTE BLOQUE con tu distribución y parámetros:\n",
+    "x_auto = np.arange(0, 15)                  # ← ajustar rango\n",
+    "dist_auto = poisson.pmf(x_auto, mu=5)      # ← ajustar distribución y parámetros\n",
+    "\n",
+    "plt.figure(figsize=(8, 4))\n",
+    "plt.stem(x_auto, dist_auto, basefmt=\" \")\n",
+    "plt.title(f'Distribución de: {fenomeno if fenomeno else \"[Completa el fenómeno]\"}')\n",
+    "plt.xlabel(variable_aleatoria if variable_aleatoria else '[Variable]')\n",
+    "plt.ylabel('Probabilidad')\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print(f'Fenómeno: {fenomeno}')\n",
+    "print(f'Variable: {variable_aleatoria}')\n",
+    "print(f'Tipo:     {tipo_variable} — {justificacion_tipo}')\n",
+    "print(f'Dist.:    {distribucion_elegida} — {justificacion_dist}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Reflexión final (slide 21, paso 5):\n",
+    "\n",
+    "# ¿Qué decisiones podrían tomarse a partir de este modelo?\n",
+    "decisiones = \"\"\n",
+    "\n",
+    "# ¿Qué supuestos estás realizando al usar esta distribución?\n",
+    "supuestos = \"\"\n",
+    "\n",
+    "# ¿Qué pasaría si los supuestos no se cumplen?\n",
+    "riesgo_supuestos = \"\"\n",
+    "\n",
+    "print('=== REFLEXIÓN ===')\n",
+    "print(f'Decisiones posibles: {decisiones}')\n",
+    "print(f'Supuestos del modelo: {supuestos}')\n",
+    "print(f'Riesgo si supuestos fallan: {riesgo_supuestos}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas de cierre — slide 26:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "p1 = \"\"  # ¿Diferencia entre variable aleatoria y valor observado?\n",
+    "p2 = \"\"  # ¿Cómo saber si una variable es discreta o continua?\n",
+    "p3 = \"\"  # ¿Qué condiciones debe cumplir una distribución válida?\n",
+    "p4 = \"\"  # ¿Qué representa el área bajo la curva en continua?\n",
+    "p5 = \"\"  # ¿Qué errores evitar al modelar con distribuciones?\n",
+    "\n",
+    "preguntas = [\n",
+    "    '¿Cuál es la diferencia entre una variable aleatoria y un valor observado?',\n",
+    "    '¿Cómo puedes saber si una variable es discreta o continua?',\n",
+    "    '¿Qué condiciones debe cumplir una función para ser una distribución válida?',\n",
+    "    '¿Qué representa el área bajo la curva en una distribución continua?',\n",
+    "    '¿Qué errores comunes se deben evitar al modelar fenómenos con distribuciones?'\n",
+    "]\n",
+    "\n",
+    "print('--- PREGUNTAS DE CIERRE (slide 26) ---')\n",
+    "for i, (preg, resp) in enumerate(zip(preguntas, [p1,p2,p3,p4,p5]), 1):\n",
+    "    print(f'\\n{i}. {preg}')\n",
+    "    print(f'   R: {resp}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen\n",
+    "\n",
+    "### Variables aleatorias\n",
+    "\n",
+    "| | Discreta | Continua |\n",
+    "|-|---------|----------|\n",
+    "| Valores | Finitos o contables | Cualquier real en un intervalo |\n",
+    "| Herramienta | PMF — `dist.pmf(x)` | PDF — `dist.pdf(x)` |\n",
+    "| Probabilidad en un punto | P(X=x) puede ser > 0 | P(X=x) = 0 siempre |\n",
+    "| Probabilidad en intervalo | `sum(pmf(x) for x in rango)` | `dist.cdf(b) - dist.cdf(a)` |\n",
+    "| Gráfico | `plt.stem()` / barras | `plt.plot()` curva suave |\n",
+    "\n",
+    "### Distribuciones y cuándo usarlas (preview)\n",
+    "\n",
+    "| Distribución | Tipo | Cuándo | Parámetros |\n",
+    "|-------------|------|--------|------------|\n",
+    "| Binomial | Discreta | N intentos, p de éxito | n, p |\n",
+    "| Poisson | Discreta | Conteo de eventos en tiempo/espacio | μ |\n",
+    "| Normal | Continua | Fenómenos con variabilidad simétrica | μ, σ |\n",
+    "| Exponencial | Continua | Tiempo entre eventos | λ |\n",
+    "\n",
+    "> 💡 **Regla rápida:** ¿Puedo contar los valores posibles? → Discreta. ¿Puedo medir con cualquier precisión? → Continua.\n",
+    "\n",
+    "> 💡 **Error clásico en continuas:** `norm.pdf(x=15, loc=15, scale=3)` no es una probabilidad — es densidad. Para obtener P(14 ≤ X ≤ 16): `norm.cdf(16, 15, 3) - norm.cdf(14, 15, 3)`."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,101 @@
+id_entrega,dias_entrega,region,medio_transporte
+E001,6,Antofagasta,Aéreo
+E002,7,Valparaíso,Camión
+E003,5,Antofagasta,Aéreo
+E004,5,Antofagasta,Barcaza
+E005,5,Biobío,Camión
+E006,4,Metropolitana,Camión
+E007,9,Metropolitana,Camión
+E008,11,Valparaíso,Camión
+E009,5,Valparaíso,Camión
+E010,2,Biobío,Camión
+E011,5,Biobío,Aéreo
+E012,7,Metropolitana,Barcaza
+E013,4,Antofagasta,Aéreo
+E014,3,Antofagasta,Aéreo
+E015,4,Biobío,Camión
+E016,7,Valparaíso,Camión
+E017,6,Biobío,Camión
+E018,4,Antofagasta,Camión
+E019,6,Biobío,Camión
+E020,7,Metropolitana,Camión
+E021,11,Antofagasta,Camión
+E022,8,Valparaíso,Barcaza
+E023,5,Metropolitana,Camión
+E024,8,Valparaíso,Aéreo
+E025,10,Valparaíso,Barcaza
+E026,8,Los Lagos,Camión
+E027,7,Los Lagos,Barcaza
+E028,6,Valparaíso,Camión
+E029,5,Antofagasta,Camión
+E030,8,Biobío,Barcaza
+E031,6,Biobío,Barcaza
+E032,7,Valparaíso,Aéreo
+E033,4,Antofagasta,Barcaza
+E034,3,Antofagasta,Barcaza
+E035,4,Metropolitana,Camión
+E036,6,Antofagasta,Camión
+E037,6,Biobío,Camión
+E038,4,Metropolitana,Camión
+E039,4,Valparaíso,Camión
+E040,10,Antofagasta,Camión
+E041,3,Antofagasta,Camión
+E042,10,Antofagasta,Camión
+E043,7,Valparaíso,Camión
+E044,6,Valparaíso,Aéreo
+E045,60,Antofagasta,Camión
+E046,6,Los Lagos,Aéreo
+E047,2,Metropolitana,Barcaza
+E048,10,Metropolitana,Aéreo
+E049,5,Los Lagos,Barcaza
+E050,9,Antofagasta,Camión
+E051,8,Los Lagos,Camión
+E052,3,Antofagasta,Barcaza
+E053,2,Valparaíso,Aéreo
+E054,2,Biobío,Camión
+E055,7,Los Lagos,Aéreo
+E056,7,Antofagasta,Camión
+E057,4,Los Lagos,Barcaza
+E058,3,Valparaíso,Barcaza
+E059,5,Biobío,Camión
+E060,7,Biobío,Camión
+E061,7,Antofagasta,Camión
+E062,8,Metropolitana,Camión
+E063,11,Biobío,Camión
+E064,7,Biobío,Barcaza
+E065,8,Metropolitana,Camión
+E066,2,Biobío,Aéreo
+E067,2,Antofagasta,Aéreo
+E068,8,Biobío,Camión
+E069,6,Metropolitana,Camión
+E070,4,Metropolitana,Barcaza
+E071,3,Biobío,Camión
+E072,4,Los Lagos,Camión
+E073,4,Los Lagos,Aéreo
+E074,5,Biobío,Camión
+E075,5,Biobío,Camión
+E076,4,Biobío,Camión
+E077,3,Valparaíso,Aéreo
+E078,4,Valparaíso,Camión
+E079,3,Biobío,Camión
+E080,3,Antofagasta,Aéreo
+E081,4,Biobío,Camión
+E082,4,Metropolitana,Barcaza
+E083,5,Los Lagos,Camión
+E084,5,Biobío,Camión
+E085,5,Valparaíso,Camión
+E086,6,Los Lagos,Camión
+E087,6,Los Lagos,Aéreo
+E088,7,Antofagasta,Camión
+E089,3,Biobío,Barcaza
+E090,3,Biobío,Camión
+E091,4,Biobío,Barcaza
+E092,4,Los Lagos,Camión
+E093,5,Valparaíso,Barcaza
+E094,4,Valparaíso,Camión
+E095,6,Valparaíso,Camión
+E096,5,Antofagasta,Camión
+E097,4,Biobío,Camión
+E098,4,Biobío,Camión
+E099,60,Biobío,Aéreo
+E100,35,Metropolitana,Camión

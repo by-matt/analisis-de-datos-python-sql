@@ -1,0 +1,589 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📊 Clase 2 — Lectura y escritura de archivos Excel\n",
+    "## Obtención de datos y fundamentos de Numpy\n",
+    "\n",
+    "**Situación:** Trabajas en el área de planificación energética de una empresa que gestiona el consumo eléctrico residencial en distintas regiones del país. Cada mes recibes el archivo `consumo_electrico_mensual.xlsx` con varias hojas — una por ciudad.\n",
+    "\n",
+    "Tu jefatura necesita un **informe consolidado** con el total de consumo por ciudad y por tipo de cliente, y espera que el proceso esté **automatizado** para reutilizarlo cada mes.\n",
+    "\n",
+    "> ⚠️ La hoja **Santiago** contiene errores intencionales para practicar diagnóstico."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📦 Librerías necesarias\n",
+    "\n",
+    "> Si `openpyxl` no está instalado, ejecuta: `pip install openpyxl`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import matplotlib.ticker as mticker\n",
+    "import os\n",
+    "\n",
+    "print('✅ Librerías cargadas')\n",
+    "print(f'pandas versión: {pd.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PASO 1 — Explorar el archivo Excel\n",
+    "\n",
+    "### 1.1 Identificar las hojas disponibles antes de leer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "archivo = pd.ExcelFile('consumo_electrico_mensual.xlsx', engine='openpyxl')\n",
+    "\n",
+    "print('=== Hojas disponibles en el archivo ===')\n",
+    "print(archivo.sheet_names)\n",
+    "print(f'\\nTotal de hojas: {len(archivo.sheet_names)}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1.1 — Responde:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Cuántas hojas tiene el archivo? ¿Coincide con las ciudades que esperabas?\n",
+    "respuesta_hojas = \"\"\n",
+    "print(respuesta_hojas)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Leer una hoja específica y revisar su estructura"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Leer solo la hoja de Santiago\n",
+    "df_stgo = pd.read_excel('consumo_electrico_mensual.xlsx',\n",
+    "                         sheet_name='Santiago',\n",
+    "                         engine='openpyxl')\n",
+    "\n",
+    "print('=== Primeras filas ===')\n",
+    "print(df_stgo.head(10))\n",
+    "print()\n",
+    "print('=== Información general ===')\n",
+    "df_stgo.info()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Detectar errores en la hoja Santiago"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Valores únicos en Tipo Cliente ===')\n",
+    "print(df_stgo['Tipo Cliente'].unique())\n",
+    "\n",
+    "print()\n",
+    "print('=== Valores no numéricos en Consumo (kWh) ===')\n",
+    "print(df_stgo[pd.to_numeric(df_stgo['Consumo (kWh)'], errors='coerce').isna()])\n",
+    "\n",
+    "print()\n",
+    "print('=== Valores faltantes por columna ===')\n",
+    "print(df_stgo.isnull().sum())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1.3 — Identifica y describe los errores:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Describe los errores encontrados en la hoja Santiago:\n",
+    "errores = \"\"\"\n",
+    "Error 1 (valor no numérico):     \n",
+    "Error 2 (inconsistencia texto):  \n",
+    "Error 3 (valor faltante):        \n",
+    "\"\"\"\n",
+    "print(errores)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PASO 2 — Leer todas las hojas y consolidar\n",
+    "\n",
+    "### 2.1 Cargar todas las hojas con `sheet_name=None`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "hojas = pd.read_excel('consumo_electrico_mensual.xlsx',\n",
+    "                       sheet_name=None,\n",
+    "                       engine='openpyxl')\n",
+    "\n",
+    "print('=== Hojas cargadas y sus dimensiones ===')\n",
+    "for nombre, df in hojas.items():\n",
+    "    print(f'  {nombre:<15} → {df.shape[0]} filas x {df.shape[1]} columnas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Consolidar todas las hojas en un único DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_list = []\n",
+    "\n",
+    "for nombre_hoja, df in hojas.items():\n",
+    "    df = df.copy()\n",
+    "    df['ciudad'] = nombre_hoja       # Agregar columna con nombre de ciudad\n",
+    "    df_list.append(df)\n",
+    "\n",
+    "consolidado = pd.concat(df_list, ignore_index=True)\n",
+    "\n",
+    "print(f'Dataset consolidado: {consolidado.shape[0]} filas x {consolidado.shape[1]} columnas')\n",
+    "print()\n",
+    "print(consolidado.head(8))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Limpiar el dataset consolidado"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Normalizar nombres de columna\n",
+    "consolidado.columns = consolidado.columns.str.strip()\n",
+    "\n",
+    "# Estandarizar 'Tipo Cliente' (capitalizar)\n",
+    "consolidado['Tipo Cliente'] = consolidado['Tipo Cliente'].str.title()\n",
+    "\n",
+    "# Convertir consumo a numérico (errores → NaN)\n",
+    "consolidado['Consumo (kWh)'] = pd.to_numeric(consolidado['Consumo (kWh)'], errors='coerce')\n",
+    "consolidado['Tarifa ($/kWh)'] = pd.to_numeric(consolidado['Tarifa ($/kWh)'], errors='coerce')\n",
+    "\n",
+    "# Eliminar filas sin consumo válido\n",
+    "n_antes = len(consolidado)\n",
+    "consolidado = consolidado.dropna(subset=['Consumo (kWh)'])\n",
+    "n_despues = len(consolidado)\n",
+    "\n",
+    "print(f'Filas antes de limpieza:  {n_antes}')\n",
+    "print(f'Filas después de limpieza: {n_despues}')\n",
+    "print(f'Filas eliminadas:          {n_antes - n_despues}')\n",
+    "print()\n",
+    "print('Tipos de cliente únicos:', consolidado['Tipo Cliente'].unique())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2.3 — Reflexión:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué es importante agregar la columna 'ciudad' antes de consolidar?\n",
+    "respuesta_ciudad = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué pasaría si no estandarizáramos 'Tipo Cliente' antes de agrupar?\n",
+    "respuesta_estandar = \"\"\n",
+    "\n",
+    "print(respuesta_ciudad)\n",
+    "print(respuesta_estandar)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PASO 3 — Agrupar y analizar\n",
+    "\n",
+    "### 3.1 Total de consumo por ciudad y tipo de cliente"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "resumen = (\n",
+    "    consolidado\n",
+    "    .groupby(['ciudad', 'Tipo Cliente'])['Consumo (kWh)']\n",
+    "    .sum()\n",
+    "    .reset_index()\n",
+    "    .rename(columns={'Consumo (kWh)': 'consumo_total_kWh'})\n",
+    ")\n",
+    "\n",
+    "print('=== Consumo total por ciudad y tipo de cliente ===')\n",
+    "print(resumen.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3.1 — Analiza:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué ciudad tiene el mayor consumo comercial?\n",
+    "mayor_comercial = resumen[resumen['Tipo Cliente'] == 'Comercial'].nlargest(1, 'consumo_total_kWh')\n",
+    "print('Ciudad con mayor consumo comercial:')\n",
+    "print(mayor_comercial.to_string(index=False))\n",
+    "\n",
+    "print()\n",
+    "\n",
+    "# ✏️ ¿Hay diferencia importante entre tipos de cliente?\n",
+    "diferencia = resumen.groupby('Tipo Cliente')['consumo_total_kWh'].sum()\n",
+    "print('Consumo total por tipo:')\n",
+    "print(diferencia)\n",
+    "\n",
+    "# ✏️ Escribe tu conclusión:\n",
+    "conclusion = \"\"\n",
+    "print('\\nConclusión:', conclusion)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Visualización"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pivot_vis = resumen.pivot(index='ciudad', columns='Tipo Cliente', values='consumo_total_kWh').fillna(0)\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(16, 5))\n",
+    "fig.suptitle('Análisis de Consumo Eléctrico — Mayo 2024', fontsize=13, fontweight='bold')\n",
+    "\n",
+    "# Gráfico 1: Barras apiladas por ciudad\n",
+    "pivot_vis.plot(kind='bar', ax=axes[0], color=['#2E75B6','#ED7D31'], edgecolor='white')\n",
+    "axes[0].set_title('Consumo por Ciudad y Tipo de Cliente', fontweight='bold')\n",
+    "axes[0].set_xlabel('Ciudad')\n",
+    "axes[0].set_ylabel('kWh')\n",
+    "axes[0].tick_params(axis='x', rotation=30)\n",
+    "axes[0].yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x/1000:.0f}K'))\n",
+    "axes[0].legend(title='Tipo Cliente')\n",
+    "axes[0].grid(axis='y', linestyle='--', alpha=0.4)\n",
+    "\n",
+    "# Gráfico 2: Pie por tipo de cliente\n",
+    "totales = resumen.groupby('Tipo Cliente')['consumo_total_kWh'].sum()\n",
+    "axes[1].pie(totales.values, labels=totales.index, autopct='%1.1f%%',\n",
+    "             colors=['#2E75B6','#ED7D31'], startangle=90)\n",
+    "axes[1].set_title('Distribución por Tipo de Cliente', fontweight='bold')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('consumo_grafico.png', dpi=150, bbox_inches='tight')\n",
+    "plt.show()\n",
+    "print('✅ Gráfico guardado como consumo_grafico.png')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PASO 4 — Exportar a Excel con múltiples hojas\n",
+    "\n",
+    "### 4.1 Exportación básica"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Exportación básica del resumen\n",
+    "resumen.to_excel('resumen_consumo.xlsx', index=False, engine='openpyxl')\n",
+    "print('✅ resumen_consumo.xlsx generado')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Exportar con múltiples hojas usando `ExcelWriter`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Resumen por ciudad (total general)\n",
+    "resumen_ciudad = (\n",
+    "    consolidado.groupby('ciudad')['Consumo (kWh)']\n",
+    "    .agg(total_kWh='sum', promedio_kWh='mean', registros='count')\n",
+    "    .round(1)\n",
+    "    .reset_index()\n",
+    "    .sort_values('total_kWh', ascending=False)\n",
+    ")\n",
+    "\n",
+    "# Generar nombre con fecha dinámica\n",
+    "from datetime import datetime\n",
+    "nombre_archivo = f\"informe_consumo_{datetime.today().strftime('%Y-%m-%d')}.xlsx\"\n",
+    "\n",
+    "# Verificar si ya existe\n",
+    "if os.path.exists(nombre_archivo):\n",
+    "    print(f'⚠️  Atención: {nombre_archivo} ya existe. Se sobreescribirá.')\n",
+    "\n",
+    "with pd.ExcelWriter(nombre_archivo, engine='openpyxl') as writer:\n",
+    "    resumen.to_excel(writer, sheet_name='Por Ciudad y Tipo', index=False)\n",
+    "    resumen_ciudad.to_excel(writer, sheet_name='Resumen Ciudades', index=False)\n",
+    "    consolidado.to_excel(writer, sheet_name='Datos Consolidados', index=False)\n",
+    "\n",
+    "print(f'✅ {nombre_archivo} generado con 3 hojas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Verificar el archivo generado"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "archivo_check = pd.ExcelFile(nombre_archivo, engine='openpyxl')\n",
+    "print('=== Hojas en el archivo exportado ===')\n",
+    "print(archivo_check.sheet_names)\n",
+    "\n",
+    "print()\n",
+    "print('=== Verificación hoja \"Por Ciudad y Tipo\" ===')\n",
+    "df_check = pd.read_excel(nombre_archivo, sheet_name='Por Ciudad y Tipo', engine='openpyxl')\n",
+    "print(df_check)\n",
+    "\n",
+    "print()\n",
+    "print('=== Verificación hoja \"Resumen Ciudades\" ===')\n",
+    "df_check2 = pd.read_excel(nombre_archivo, sheet_name='Resumen Ciudades', engine='openpyxl')\n",
+    "print(df_check2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Exportar columnas específicas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Solo las columnas esenciales para gerencia\n",
+    "consolidado[['ciudad', 'Tipo Cliente', 'Consumo (kWh)', 'Monto Total ($)']].to_excel(\n",
+    "    'reporte_gerencia.xlsx',\n",
+    "    index=False,\n",
+    "    engine='openpyxl'\n",
+    ")\n",
+    "print('✅ reporte_gerencia.xlsx generado (solo columnas clave)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PASO 5 — Preguntas de reflexión"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué ventajas tiene este enfoque vs. copiar y pegar en Excel manualmente?\n",
+    "ventajas = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Cómo cambiarías el código si el archivo tuviera más de 10 hojas o nombres no estandarizados?\n",
+    "adaptacion = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Qué otras variables podrían ser relevantes para la jefatura en este tipo de reportes?\n",
+    "otras_variables = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Qué errores podrían ocurrir si no verificamos el contenido antes de escribir?\n",
+    "riesgos = \"\"\n",
+    "\n",
+    "print('--- REFLEXIONES ---')\n",
+    "print(f'1. Ventajas: {ventajas}')\n",
+    "print(f'2. Adaptación: {adaptacion}')\n",
+    "print(f'3. Otras variables: {otras_variables}')\n",
+    "print(f'4. Riesgos: {riesgos}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PASO 6 — Desafío: leer columnas específicas\n",
+    "\n",
+    "Practica los parámetros avanzados de `read_excel()`:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Lee SOLO las columnas ID Cliente, Tipo Cliente y Consumo (kWh) de la hoja Valparaíso\n",
+    "# Usa el parámetro usecols\n",
+    "\n",
+    "# df_valpo = pd.read_excel(\n",
+    "#     'consumo_electrico_mensual.xlsx',\n",
+    "#     sheet_name='???',\n",
+    "#     usecols=['???', '???', '???'],\n",
+    "#     engine='openpyxl'\n",
+    "# )\n",
+    "# print(df_valpo.head())\n",
+    "# print(f'Shape: {df_valpo.shape}')\n",
+    "\n",
+    "print('Descomenta y completa el código para ejecutar el desafío.')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ DESAFÍO EXTRA: Crea un loop que lea solo las 5 primeras filas de cada hoja\n",
+    "# y muestre el promedio de consumo por hoja\n",
+    "\n",
+    "# for hoja in archivo.sheet_names:\n",
+    "#     df_temp = pd.read_excel(..., sheet_name=hoja, nrows=5, engine='openpyxl')\n",
+    "#     print(f'{hoja}: promedio consumo = {df_temp[\"Consumo (kWh)\"].mean():.1f} kWh')\n",
+    "\n",
+    "print('Descomenta y completa el código para ejecutar el desafío extra.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de parámetros y buenas prácticas\n",
+    "\n",
+    "| Función | Parámetro | Uso |\n",
+    "|---------|-----------|-----|\n",
+    "| `ExcelFile()` | `engine='openpyxl'` | Leer .xlsx de forma segura |\n",
+    "| `.sheet_names` | — | Listar hojas antes de cargar |\n",
+    "| `read_excel()` | `sheet_name='Nombre'` | Leer hoja específica |\n",
+    "| `read_excel()` | `sheet_name=None` | Leer todas las hojas (dict) |\n",
+    "| `read_excel()` | `usecols=['col1','col2']` | Cargar solo columnas necesarias |\n",
+    "| `read_excel()` | `nrows=10` | Leer solo N filas (vista previa) |\n",
+    "| `to_excel()` | `index=False` | No escribir el índice |\n",
+    "| `ExcelWriter` | `sheet_name='Hoja'` | Múltiples hojas en un archivo |\n",
+    "\n",
+    "> 💡 **Regla de oro:** Siempre declara `engine='openpyxl'` explícitamente para archivos `.xlsx`. Evita `xlrd` con archivos modernos — solo sirve para `.xls` legados.\n",
+    "\n",
+    "> 💡 **Automatización mensual:** Envuelve todo el flujo en una función `def procesar_consumo(ruta_archivo):` y llámala con el nuevo archivo cada mes."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

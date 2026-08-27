@@ -1,0 +1,364 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 3 - Data Wrangling y manipulación de datos"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 3 – Data Wrangling y Manipulación de Datos\n",
+    "### Limpieza y preparación de datos\n",
+    "\n",
+    "**Temas:** Qué es data wrangling · Principales tareas · `sort_values()` · `sort_index()` · Reordenar columnas · `sample()`\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Datos de Transporte Desorganizados\n",
+    "\n",
+    "Dataset con filas desordenadas, columnas mal etiquetadas y estructura poco útil.\n",
+    "**Objetivo:** transformar datos crudos en un dataset limpio, ordenado y representativo.\n",
+    "\n",
+    "**Archivo:** `ventas_sin_orden.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('ventas_sin_orden.csv')\n",
+    "print(f'Filas: {df.shape[0]} | Columnas: {list(df.columns)}')\n",
+    "print('\\nPrimeras filas (nótese el orden caótico de fechas):')\n",
+    "print(df.head(8))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–6 – ¿Qué es Data Wrangling?\n",
+    "\n",
+    "Proceso de preparar datos crudos para análisis: limpiar, reorganizar, convertir formatos, corregir inconsistencias.\n",
+    "\n",
+    "> Esta etapa consume entre el **60% y el 80%** del tiempo de un proyecto de ciencia de datos *(Lohr, 2014)*."
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 7–9 – Principales Tareas del Data Wrangling\n",
+    "\n",
+    "| Tarea | Descripción |\n",
+    "|---|---|\n",
+    "| Evaluación de calidad | Diagnóstico de datos ausentes, formatos inconsistentes |\n",
+    "| Limpieza | Imputación, filtrado de outliers, eliminación de duplicados |\n",
+    "| Transformación | Conversión de tipos, renombrar columnas, normalización |\n",
+    "| Enriquecimiento | Agregación, combinación con otras fuentes, nuevas variables |\n",
+    "| Reformateo estructural | Reordenar, pivotear, cambiar índices |\n",
+    "| Reducción / muestreo | Filtrado, segmentación, muestras representativas |"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 11 – Ordenamiento con `sort_values()` y `sort_index()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: sort_values() — ordenar por valores de una columna ──────────────\n",
+    "# by: columna de referencia | ascending: True=ascendente, False=descendente\n",
+    "\n",
+    "df.sort_values(by='precio', ascending=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: sort_index() — ordenar por índice ───────────────────────────────\n",
+    "# Útil con índices jerárquicos o antes de groupby\n",
+    "\n",
+    "df.sort_index(ascending=True)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 12 – Reordenar Columnas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 12: Reordenar columnas manualmente ──────────────────────────────────\n",
+    "# ¡Importante! Usar df.copy() para no modificar el DataFrame original\n",
+    "\n",
+    "df = df[['fecha', 'producto', 'precio', 'cantidad']]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 13 – Muestreo Aleatorio: `sample(n)`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Muestreo simple aleatorio — n filas ─────────────────────────────\n",
+    "\n",
+    "df.sample(n=10)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 14 – Muestreo con Porcentaje y Semilla de Reproducibilidad"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 14: Muestreo con porcentaje — frac ──────────────────────────────────\n",
+    "# Extrae el 20% del total de filas\n",
+    "\n",
+    "df.sample(frac=0.2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 14: Fijar semilla para reproducibilidad — random_state ──────────────\n",
+    "# Garantiza que siempre se obtenga la misma muestra en cada ejecución\n",
+    "\n",
+    "df.sample(n=5, random_state=42)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 15–17 – Actividad Guiada: Informe de Ventas\n",
+    "\n",
+    "**Objetivo (Slide 16):** Ordenar, reordenar columnas y muestrear para preparar un informe ejecutivo.\n",
+    "\n",
+    "**Archivo:** `ventas_sin_orden.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Cargar el archivo ───────────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('ventas_sin_orden.csv')\n",
+    "print('Estado inicial:')\n",
+    "print(df.head())\n",
+    "print(f'\\nColumnas actuales: {list(df.columns)}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Ordenar por 'fecha' en orden ascendente ────────────────────────\n",
+    "\n",
+    "df = df.sort_values(by='fecha', ascending=True)\n",
+    "print('Primeras filas después de ordenar por fecha:')\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Reordenar columnas ──────────────────────────────────────────────\n",
+    "\n",
+    "df = df[['producto', 'cantidad', 'precio_unitario', 'fecha', 'vendedor']]\n",
+    "print('Columnas reordenadas:')\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Muestra aleatoria del 25% ──────────────────────────────────────\n",
+    "\n",
+    "muestra_ventas = df.sample(frac=0.25, random_state=42)\n",
+    "print(f'Muestra generada: {len(muestra_ventas)} filas ({len(muestra_ventas)/len(df)*100:.0f}% del total)')\n",
+    "print(muestra_ventas.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Exportar la muestra como informe_semana.csv ────────────────────\n",
+    "\n",
+    "muestra_ventas.to_csv('informe_semana.csv', index=False)\n",
+    "print('✅ informe_semana.csv exportado correctamente')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 18–20 – Actividad Autónoma: Control de Calidad en Producción de Alimentos\n",
+    "\n",
+    "**Contexto (Slide 19):** Planta de producción. Solo se pueden evaluar algunas unidades por tiempo.\n",
+    "Tu tarea: extraer una muestra aleatoria controlada y exportarla.\n",
+    "\n",
+    "**Archivo:** `lote_produccion.csv`\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20, Paso 1: Cargar lote_produccion.csv con pandas ──────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df_lote = pd.read_csv('lote_produccion.csv')\n",
+    "# print(f'Total de unidades: {len(df_lote)}')\n",
+    "# print(df_lote.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20, Paso 2: Obtener una muestra del 10% (frac=0.1, random_state=123) ─\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# muestra_control = df_lote.sample(frac=0.1, random_state=123)\n",
+    "# print(f'Muestra generada: {len(muestra_control)} unidades')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20, Paso 3: Guardar el resultado como muestra_control.csv ───────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# muestra_control.to_csv('muestra_control.csv', index=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Ejercicio adicional: ordenar lote_produccion.csv ─────────────────────────\n",
+    "# Ordena por 'peso_g' de mayor a menor y muestra las 10 unidades más pesadas\n",
+    "# Luego reordena las columnas: 'id_unidad', 'lote', 'producto', 'peso_g', 'estado_control'\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Pregunta de cierre\n",
+    "\n",
+    "¿Por qué es importante usar `random_state` al generar una muestra?\n",
+    "¿Qué diferencia hay entre `sample(n=10)` y `sample(frac=0.1)` con un DataFrame de 100 filas?"
+   ]
+  }
+
+ ]
+}

@@ -1,0 +1,852 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 🔢 Clase 3 — Fundamentos de NumPy: vectores, matrices y funciones de creación\n",
+    "## Obtención de datos y fundamentos de NumPy\n",
+    "\n",
+    "**Situación:** Formas parte de un equipo de ingeniería que monitorea dispositivos electrónicos en tiempo real. Cada segundo se generan lecturas de **temperatura**, **humedad** y **concentración de partículas**. Necesitas estructuras eficientes que permitan almacenar y calcular con estos datos sin escribirlos manualmente.\n",
+    "\n",
+    "**Objetivos de la clase:**\n",
+    "- Crear vectores y matrices con `np.array()`\n",
+    "- Explorar propiedades: `ndim`, `shape`, `size`, `dtype`\n",
+    "- Generar secuencias con `np.arange()`\n",
+    "- Crear plantillas con `np.zeros()` y `np.ones()`\n",
+    "- Aplicar operaciones vectorizadas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📦 Importar NumPy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import timeit\n",
+    "\n",
+    "print('✅ NumPy importado correctamente')\n",
+    "print(f'Versión: {np.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — NumPy vs. Listas de Python\n",
+    "\n",
+    "### 1.1 ¿Por qué NumPy y no listas?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Con listas tradicionales: necesitamos un bucle\n",
+    "lista = [1, 2, 3, 4, 5]\n",
+    "doble_lista = [x * 2 for x in lista]\n",
+    "print('Lista duplicada (bucle):', doble_lista)\n",
+    "\n",
+    "# Con NumPy: operación directa (vectorización)\n",
+    "arreglo = np.array([1, 2, 3, 4, 5])\n",
+    "doble_numpy = arreglo * 2\n",
+    "print('Arreglo duplicado (NumPy):', doble_numpy)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Comparación de rendimiento"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tiempo_lista = timeit.timeit('[x*2 for x in range(10000)]', number=1000)\n",
+    "tiempo_numpy = timeit.timeit('import numpy as np; np.arange(10000)*2', number=1000)\n",
+    "\n",
+    "print(f'Lista  → {tiempo_lista:.4f} segundos')\n",
+    "print(f'NumPy  → {tiempo_numpy:.4f} segundos')\n",
+    "print(f'NumPy es {tiempo_lista/tiempo_numpy:.1f}x más rápido')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1.2 — Reflexiona:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué NumPy es más rápido que las listas de Python?\n",
+    "respuesta_velocidad = \"\"\n",
+    "\n",
+    "# ✏️ ¿En qué situación seguirías usando una lista en vez de un arreglo NumPy?\n",
+    "respuesta_lista = \"\"\n",
+    "\n",
+    "print(respuesta_velocidad)\n",
+    "print(respuesta_lista)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Creación de vectores\n",
+    "\n",
+    "### 2.1 Vector básico con `np.array()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Vector de temperaturas registradas por un sensor\n",
+    "vector = np.array([10, 20, 30, 40])\n",
+    "print('Vector:', vector)\n",
+    "\n",
+    "# Explorar propiedades\n",
+    "print()\n",
+    "print(f'ndim  → {vector.ndim}    (número de dimensiones)')\n",
+    "print(f'shape → {vector.shape}  (cantidad de elementos por dimensión)')\n",
+    "print(f'dtype → {vector.dtype}  (tipo de dato)')\n",
+    "print(f'size  → {vector.size}   (total de elementos)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Operaciones vectorizadas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('Vector original:     ', vector)\n",
+    "print('Sumar 5 a cada elem: ', vector + 5)\n",
+    "print('Multiplicar por 2:   ', vector * 2)\n",
+    "print('Elevar al cuadrado:  ', vector ** 2)\n",
+    "print('Dividir entre 10:    ', vector / 10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Indexación y slicing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('Primer elemento:      ', vector[0])    # índice 0\n",
+    "print('Último elemento:      ', vector[-1])   # índice -1\n",
+    "print('Elementos 1 al 2:     ', vector[1:3])  # slicing\n",
+    "print('Desde el índice 2:    ', vector[2:])   # desde índice 2\n",
+    "print('Hasta el índice 2:    ', vector[:2])   # hasta índice 2 (excluido)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4 Conversión desde listas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Lista de mediciones de temperatura recibida como input\n",
+    "lista_temp = [22.5, 23.0, 21.8, 22.3, 24.1, 21.5, 23.7]\n",
+    "\n",
+    "# Convertir a arreglo NumPy\n",
+    "temp_array = np.array(lista_temp)\n",
+    "print('Arreglo de temperaturas:', temp_array)\n",
+    "print('dtype:', temp_array.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2.4 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Crea un vector con 5 lecturas de humedad (valores entre 40% y 80%)\n",
+    "humedad = np.array([???])   # completa con tus propios valores\n",
+    "\n",
+    "# ✏️ Calcula la temperatura en Fahrenheit: F = C * 9/5 + 32\n",
+    "temp_fahrenheit = ???\n",
+    "\n",
+    "# ✏️ ¿Cuál es el primer y último valor del vector de humedad?\n",
+    "print('Primer valor:', humedad[???])\n",
+    "print('Último valor:', humedad[???])\n",
+    "print('Temperatura en Fahrenheit:', temp_fahrenheit)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Creación de matrices\n",
+    "\n",
+    "### 3.1 Matriz básica"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Matriz de lecturas: cada fila = 1 medición, columnas = [temperatura, humedad, partículas]\n",
+    "matriz = np.array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6]\n",
+    "])\n",
+    "\n",
+    "print('Matriz:')\n",
+    "print(matriz)\n",
+    "\n",
+    "print()\n",
+    "print(f'ndim  → {matriz.ndim}     (dimensiones)')\n",
+    "print(f'shape → {matriz.shape}  (filas x columnas)')\n",
+    "print(f'size  → {matriz.size}     (total elementos)')\n",
+    "print(f'dtype → {matriz.dtype}  (tipo de dato)')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Operaciones vectorizadas en matrices"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('Multiplicar por 10:')\n",
+    "print(matriz * 10)\n",
+    "\n",
+    "print()\n",
+    "print('Sumar filas con distintos valores (broadcasting):')\n",
+    "print(matriz + np.array([[10, 10, 10], [0, 0, 0]]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Acceso a filas y columnas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('Elemento [0,1] (fila 0, columna 1):', matriz[0, 1])   # → 2\n",
+    "print('Fila completa [0]:                 ', matriz[0])       # → [1 2 3]\n",
+    "print('Columna completa [:, 1]:           ', matriz[:, 1])    # → [2 5]\n",
+    "print('Submatriz filas 0:0, cols 1:3:     ')\n",
+    "print(matriz[0:1, 1:3])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3.3 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Matriz de lecturas ambientales: 4 sensores × 3 variables\n",
+    "lecturas = np.array([\n",
+    "    [22.5, 55.0, 83.1],\n",
+    "    [23.0, 54.5, 80.2],\n",
+    "    [21.8, 56.2, 84.7],\n",
+    "    [22.3, 55.8, 81.4]\n",
+    "])\n",
+    "\n",
+    "# ✏️ ¿Cuántos sensores y cuántas variables hay? (usa .shape)\n",
+    "n_sensores, n_variables = ???\n",
+    "print(f'Sensores: {n_sensores} | Variables: {n_variables}')\n",
+    "\n",
+    "# ✏️ Extrae solo la columna de partículas (columna índice 2)\n",
+    "particulas = lecturas[???, ???]\n",
+    "print('Lecturas de partículas:', particulas)\n",
+    "\n",
+    "# ✏️ ¿En qué fila (sensor) se registró el mayor nivel de partículas?\n",
+    "fila_mayor = ???\n",
+    "print('Sensor con mayor nivel de partículas: fila', fila_mayor)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Generación automática con `np.arange()`\n",
+    "\n",
+    "### 4.1 Sintaxis y ejemplos básicos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# np.arange(inicio, fin, paso)  →  fin es EXCLUIDO\n",
+    "\n",
+    "# Ejemplo básico: de 0 a 20 de 5 en 5\n",
+    "rango = np.arange(0, 20, 5)\n",
+    "print('De 0 a 20 paso 5:', rango)\n",
+    "\n",
+    "# Secuencia de minutos del 0 al 9\n",
+    "tiempo = np.arange(0, 10, 1)\n",
+    "print('Minutos [0-9]:   ', tiempo)\n",
+    "\n",
+    "# Pasos decimales\n",
+    "fracciones = np.arange(0, 1, 0.2)\n",
+    "print('Fracciones:      ', fracciones)\n",
+    "\n",
+    "# Verificar tipos de dato\n",
+    "print()\n",
+    "print('dtype enteros:  ', np.arange(0, 5, 1).dtype)\n",
+    "print('dtype decimales:', np.arange(0, 1, 0.1).dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Aplicación práctica: eje temporal"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Eje temporal: lecturas cada 30 segundos durante 5 minutos (300 segundos)\n",
+    "eje_tiempo = np.arange(0, 300, 30)\n",
+    "print('Eje temporal (segundos):', eje_tiempo)\n",
+    "print('Total de lecturas:', len(eje_tiempo))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 4.2 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Crea una secuencia de tiempo para sensores que miden cada 15 segundos durante 2 minutos (120s)\n",
+    "tiempo_15s = np.arange(???)\n",
+    "print('Lecturas cada 15 segundos:', tiempo_15s)\n",
+    "\n",
+    "# ✏️ ¿Cuántas lecturas hay en 2 minutos midiendo cada 15 segundos?\n",
+    "print('Total lecturas:', len(tiempo_15s))\n",
+    "\n",
+    "# ✏️ ¿Qué valor tiene el último elemento? ¿Por qué no es 120?\n",
+    "respuesta_fin = \"\"\n",
+    "print('Último elemento:', tiempo_15s[???])\n",
+    "print('Explicación:', respuesta_fin)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Plantillas con `np.zeros()` y `np.ones()`\n",
+    "\n",
+    "### 5.1 Matrices de ceros"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Plantilla vacía: 3 filas × 4 columnas\n",
+    "plantilla = np.zeros((3, 4))\n",
+    "print('Plantilla de ceros (3×4):')\n",
+    "print(plantilla)\n",
+    "print('dtype:', plantilla.dtype)\n",
+    "\n",
+    "print()\n",
+    "# Plantilla entera\n",
+    "plantilla_int = np.zeros((3, 4), dtype=int)\n",
+    "print('Plantilla entera:')\n",
+    "print(plantilla_int)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.2 Vectores y matrices de unos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Vector de unos: calibración de 5 sensores\n",
+    "calibracion = np.ones(5)\n",
+    "print('Vector de calibración inicial:', calibracion)\n",
+    "\n",
+    "# Matriz de unos 2×3\n",
+    "estructura = np.ones((2, 3))\n",
+    "print()\n",
+    "print('Matriz de unos (2×3):')\n",
+    "print(estructura)\n",
+    "\n",
+    "# Multiplicar por un escalar\n",
+    "print()\n",
+    "print('Estructura inicializada en 100:')\n",
+    "print(np.ones((2, 3)) * 100)\n",
+    "\n",
+    "# Cambiar dtype\n",
+    "print()\n",
+    "print('Matriz entera (3×3):')\n",
+    "print(np.ones((3, 3), dtype=int))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.3 Comparación: `zeros`, `ones`, `full`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "forma = (2, 3)\n",
+    "\n",
+    "print('np.zeros((2,3)):')\n",
+    "print(np.zeros(forma))\n",
+    "\n",
+    "print()\n",
+    "print('np.ones((2,3)):')\n",
+    "print(np.ones(forma))\n",
+    "\n",
+    "print()\n",
+    "print('np.full((2,3), fill_value=7):')\n",
+    "print(np.full(forma, fill_value=7))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 5.3 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Crea una plantilla vacía para almacenar 10 futuras mediciones de 3 variables\n",
+    "plantilla_futura = np.zeros(???)\n",
+    "print('Plantilla futura:', plantilla_futura.shape)\n",
+    "\n",
+    "# ✏️ Crea un vector de calibración de 3 sensores inicializado en 1\n",
+    "cal_sensores = np.ones(???)\n",
+    "print('Calibración inicial:', cal_sensores)\n",
+    "\n",
+    "# ✏️ Modifica el tercer sensor (índice 2) con un factor de corrección de 0.98\n",
+    "cal_sensores[???] = ???\n",
+    "print('Calibración ajustada:', cal_sensores)\n",
+    "\n",
+    "# ✏️ ¿Por qué es útil tener estructuras vacías antes de que lleguen los datos reales?\n",
+    "respuesta = \"\"\n",
+    "print('Respuesta:', respuesta)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 6 — Ejercicio guiado: Simulación de monitoreo ambiental\n",
+    "\n",
+    "**Situación:** Tu jefatura pide construir la estructura base del sistema de monitoreo con los 5 pasos del ejercicio."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 1 — Vector con lectura individual (3 variables)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lectura = np.array([22.5, 55.0, 83.1])   # [temperatura, humedad, partículas]\n",
+    "print('Lectura individual:', lectura)\n",
+    "print('Forma:', lectura.shape, '→', lectura.ndim, 'dimensión')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Pregunta Paso 1:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué representa cada número del vector?\n",
+    "repr_vector = \"\"\"\n",
+    "Índice 0 (22.5) →  \n",
+    "Índice 1 (55.0) →  \n",
+    "Índice 2 (83.1) →  \n",
+    "\"\"\"\n",
+    "print(repr_vector)\n",
+    "\n",
+    "# ✏️ ¿Qué pasaría si agregáramos una cuarta variable como presión? Crea el nuevo vector:\n",
+    "lectura_4vars = np.array([22.5, 55.0, 83.1, ???])   # agrega la presión\n",
+    "print('Lectura con 4 variables:', lectura_4vars)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 2 — Matriz con lecturas múltiples (4 sensores)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lecturas = np.array([\n",
+    "    [22.5, 55.0, 83.1],\n",
+    "    [23.0, 54.5, 80.2],\n",
+    "    [21.8, 56.2, 84.7],\n",
+    "    [22.3, 55.8, 81.4]\n",
+    "])\n",
+    "\n",
+    "print('Lecturas múltiples:')\n",
+    "print(lecturas)\n",
+    "print(f'\\nShape: {lecturas.shape} → {lecturas.shape[0]} sensores × {lecturas.shape[1]} variables')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Pregunta Paso 2:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Cómo identifies la lectura con mayor nivel de partículas?\n",
+    "particulas = lecturas[:, 2]          # columna de partículas\n",
+    "print('Partículas por sensor:', particulas)\n",
+    "\n",
+    "# Completa: usa np.argmax() para encontrar el índice del mayor valor\n",
+    "sensor_max = np.argmax(???)\n",
+    "print(f'Sensor con mayor nivel de partículas: sensor {sensor_max} → {particulas[sensor_max]} µg/m³')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 3 — Secuencia temporal con `arange()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tiempo = np.arange(0, 4, 1)   # 4 instantes de tiempo (minutos)\n",
+    "print('Tiempos de lectura (minutos):', tiempo)\n",
+    "\n",
+    "# Asociar tiempo con lecturas\n",
+    "print()\n",
+    "print('Sensor | Temp  | Humedad | Partículas | Tiempo (min)')\n",
+    "print('-' * 55)\n",
+    "for i in range(len(lecturas)):\n",
+    "    t, h, p = lecturas[i]\n",
+    "    print(f'  {i}    | {t:5.1f} | {h:7.1f} | {p:10.1f} | {tiempo[i]}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Pregunta Paso 3:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Y si los sensores midieran cada 15 segundos en vez de cada minuto?\n",
+    "# Crea el nuevo vector de tiempo (4 lecturas cada 15 segundos, en segundos)\n",
+    "tiempo_15s = np.arange(???)\n",
+    "print('Tiempos cada 15 segundos:', tiempo_15s)\n",
+    "\n",
+    "# ✏️ ¿Qué cambiaría en el análisis?\n",
+    "respuesta_15s = \"\"\n",
+    "print('Respuesta:', respuesta_15s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 4 — Plantilla vacía para futuras mediciones"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plantilla = np.zeros((10, 3))   # 10 futuras observaciones × 3 variables\n",
+    "print('Plantilla vacía para nuevas mediciones:')\n",
+    "print(plantilla)\n",
+    "print(f'Shape: {plantilla.shape}')\n",
+    "\n",
+    "# Simular que llega una nueva lectura y se almacena en la fila 0\n",
+    "plantilla[0] = np.array([23.5, 57.1, 79.4])\n",
+    "print()\n",
+    "print('Plantilla después de registrar primera lectura:')\n",
+    "print(plantilla)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Pregunta Paso 4:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué es útil tener estructuras vacías antes de que lleguen los datos reales?\n",
+    "respuesta_plantilla = \"\"\n",
+    "print(respuesta_plantilla)\n",
+    "\n",
+    "# ✏️ Registra la segunda lectura (fila 1) con valores: temp=24.0, humedad=53.2, partículas=78.9\n",
+    "plantilla[???] = np.array([???])\n",
+    "print('Plantilla actualizada:')\n",
+    "print(plantilla)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 5 — Vector de calibración con `np.ones()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "calibracion = np.ones(3)   # un factor por cada variable (temp, humedad, partículas)\n",
+    "print('Vector de calibración inicial:', calibracion)\n",
+    "print('Aplicar calibración a primera lectura:', lecturas[0] * calibracion)\n",
+    "\n",
+    "# Ajustar calibración en terreno: el sensor de partículas fue revisado\n",
+    "calibracion[2] = 0.97   # factor de corrección del sensor 3\n",
+    "print()\n",
+    "print('Calibración ajustada:', calibracion)\n",
+    "print('Lectura calibrada:   ', lecturas[0] * calibracion)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Pregunta Paso 5:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué función cumple la calibración en el monitoreo? \n",
+    "respuesta_cal = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cómo la modificarías si un sensor en terreno mostrara lecturas un 5% más altas?\n",
+    "# Aplica la corrección al vector:\n",
+    "calibracion_nueva = calibracion.copy()\n",
+    "calibracion_nueva[???] = ???   # corrige el sensor que lee 5% más alto\n",
+    "\n",
+    "print('Respuesta:', respuesta_cal)\n",
+    "print('Nueva calibración:', calibracion_nueva)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 7 — Preguntas de reflexión y cierre"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué ventajas tiene construir datos automáticamente en vez de definirlos uno a uno?\n",
+    "r1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Cómo te ayuda NumPy a simular estructuras más cercanas a un caso real?\n",
+    "r2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Qué tipo de operaciones podrías aplicar sobre estas estructuras en una etapa posterior?\n",
+    "r3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Qué problemas tendrías si usaras listas anidadas en lugar de arreglos NumPy?\n",
+    "r4 = \"\"\n",
+    "\n",
+    "print('--- REFLEXIONES ---')\n",
+    "print(f'1. {r1}')\n",
+    "print(f'2. {r2}')\n",
+    "print(f'3. {r3}')\n",
+    "print(f'4. {r4}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de funciones vistas\n",
+    "\n",
+    "| Función | Sintaxis | Descripción |\n",
+    "|---------|----------|-------------|\n",
+    "| `np.array()` | `np.array([1,2,3])` | Crear vector o matriz desde lista |\n",
+    "| `.ndim` | `arr.ndim` | Número de dimensiones |\n",
+    "| `.shape` | `arr.shape` | Forma (filas × columnas) |\n",
+    "| `.dtype` | `arr.dtype` | Tipo de dato |\n",
+    "| `.size` | `arr.size` | Total de elementos |\n",
+    "| `np.arange()` | `np.arange(ini, fin, paso)` | Secuencia numérica automática |\n",
+    "| `np.zeros()` | `np.zeros((f, c))` | Matriz llena de ceros |\n",
+    "| `np.ones()` | `np.ones((f, c))` | Matriz llena de unos |\n",
+    "| `np.full()` | `np.full((f,c), val)` | Matriz llena con valor fijo |\n",
+    "\n",
+    "> 💡 **Recuerda:** En `np.arange(inicio, fin, paso)`, el valor `fin` **no se incluye** en el resultado.\n",
+    "\n",
+    "> 💡 **Recuerda:** Los arreglos NumPy son **homogéneos**: todos los elementos deben ser del mismo tipo de dato."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

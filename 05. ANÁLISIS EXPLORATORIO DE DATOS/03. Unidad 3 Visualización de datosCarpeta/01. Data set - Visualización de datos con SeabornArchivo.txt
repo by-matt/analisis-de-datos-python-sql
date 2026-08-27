@@ -1,0 +1,725 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📊 Clase 1 — Visualización de datos con Seaborn\n",
+    "## Unidad: Visualización de datos\n",
+    "\n",
+    "**Situación:** Eres parte del equipo de inteligencia de datos de una startup de logística. El área de operaciones necesita comprender visualmente cómo se comportan las entregas, cómo varía el tiempo promedio por tipo de envío y si existen patrones estacionales.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Conocer las características de **Seaborn** y por qué es preferida\n",
+    "- Importar y configurar Seaborn correctamente\n",
+    "- Conocer la clasificación de gráficos por propósito\n",
+    "- Aplicar los gráficos más usados: `histplot`, `scatterplot`, `barplot`, `boxplot`, `countplot`, `pairplot`, `heatmap`\n",
+    "- Elegir el tipo correcto según el tipo de variable y el objetivo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Características de Seaborn e importación\n",
+    "\n",
+    "### 1.1 Instalación e importación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Instalación (si es necesario):\n",
+    "# En terminal:     pip install seaborn\n",
+    "# En Google Colab: !pip install seaborn\n",
+    "\n",
+    "# Importación correcta — código exacto de la presentación\n",
+    "import seaborn as sns\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "# Configurar estilo visual — buena práctica desde el inicio\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Seaborn importado correctamente')\n",
+    "print(f'Versión de Seaborn: {sns.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Seaborn vs Matplotlib — ejemplo comparativo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — comparación\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n",
+    "fig.suptitle('Seaborn vs Matplotlib — mismo gráfico, diferente código', fontweight='bold')\n",
+    "\n",
+    "# Con Matplotlib:\n",
+    "axes[0].plot([1, 2, 3], [4, 5, 6])\n",
+    "axes[0].set_title('Con Matplotlib')\n",
+    "axes[0].set_xlabel('X')\n",
+    "axes[0].set_ylabel('Y')\n",
+    "\n",
+    "# Con Seaborn:\n",
+    "sns.lineplot(x=[1, 2, 3], y=[4, 5, 6], ax=axes[1])\n",
+    "axes[1].set_title('Con Seaborn')\n",
+    "axes[1].set_xlabel('X')\n",
+    "axes[1].set_ylabel('Y')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('Seaborn: menos código, estilo integrado, mejor presentación predeterminada.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Estilos disponibles en Seaborn"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "estilos = ['white', 'whitegrid', 'dark', 'darkgrid', 'ticks']\n",
+    "np.random.seed(42)\n",
+    "datos = np.random.normal(50, 15, 100)\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 5, figsize=(18, 3))\n",
+    "fig.suptitle('Estilos disponibles en sns.set_theme(style=...)', fontweight='bold')\n",
+    "\n",
+    "for ax, estilo in zip(axes, estilos):\n",
+    "    with sns.axes_style(estilo):\n",
+    "        ax.hist(datos, bins=15, color='#2E75B6', edgecolor='white')\n",
+    "        ax.set_title(f'style=\"{estilo}\"', fontsize=9)\n",
+    "        ax.set_xlabel('')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "print('Recomendado para análisis profesional: \"whitegrid\"')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Clasificación de gráficos\n",
+    "\n",
+    "### 2.1 Tabla de gráficos por propósito (de la presentación)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tabla_graficos = pd.DataFrame({\n",
+    "    'Propósito':      ['Distribución','Distribución','Comparación','Comparación',\n",
+    "                       'Relación','Relación','Composición','Composición',\n",
+    "                       'Multivariado','Multivariado'],\n",
+    "    'Tipo de gráfico':['Histograma','Gráfico de densidad','Boxplot','Violin plot',\n",
+    "                       'Dispersión (scatter)','Regresión lineal','Barras','Conteo',\n",
+    "                       'Gráfico de pares','Mapa de calor'],\n",
+    "    'Función Seaborn': ['sns.histplot()','sns.kdeplot()','sns.boxplot()',\n",
+    "                        'sns.violinplot()','sns.scatterplot()','sns.regplot()',\n",
+    "                        'sns.barplot()','sns.countplot()',\n",
+    "                        'sns.pairplot()','sns.heatmap()'],\n",
+    "    'Variables':       ['Numérica','Numérica','Num + Cat','Num + Cat',\n",
+    "                        'Num + Num','Num + Num','Cat + Num','Categórica',\n",
+    "                        'Múltiples','Correlación']\n",
+    "})\n",
+    "print(tabla_graficos.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Galería visual de todos los tipos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Datos de demostración\n",
+    "np.random.seed(42)\n",
+    "df_demo = pd.DataFrame({\n",
+    "    'valor':     np.random.normal(50, 12, 120),\n",
+    "    'grupo':     np.random.choice(['A','B','C'], 120),\n",
+    "    'variable2': np.random.normal(30, 8, 120),\n",
+    "    'categoria': np.random.choice(['X','Y'], 120)\n",
+    "})\n",
+    "\n",
+    "fig, axes = plt.subplots(2, 4, figsize=(18, 8))\n",
+    "fig.suptitle('Galería de tipos de gráficos en Seaborn', fontweight='bold', fontsize=13)\n",
+    "\n",
+    "# 1. histplot\n",
+    "sns.histplot(df_demo['valor'], bins=15, kde=True, ax=axes[0,0], color='#2E75B6')\n",
+    "axes[0,0].set_title('histplot\\n(Distribución numérica)', fontsize=9)\n",
+    "\n",
+    "# 2. kdeplot\n",
+    "for g, col in zip(['A','B','C'], ['#2E75B6','#ED7D31','#70AD47']):\n",
+    "    sns.kdeplot(df_demo[df_demo['grupo']==g]['valor'], ax=axes[0,1],\n",
+    "                color=col, label=g, linewidth=2)\n",
+    "axes[0,1].set_title('kdeplot\\n(Densidad por grupo)', fontsize=9)\n",
+    "axes[0,1].legend(fontsize=7)\n",
+    "\n",
+    "# 3. boxplot\n",
+    "sns.boxplot(data=df_demo, x='grupo', y='valor', ax=axes[0,2], palette='Set2')\n",
+    "axes[0,2].set_title('boxplot\\n(Comparación por categoría)', fontsize=9)\n",
+    "\n",
+    "# 4. violinplot\n",
+    "sns.violinplot(data=df_demo, x='grupo', y='valor', ax=axes[0,3], palette='Set2')\n",
+    "axes[0,3].set_title('violinplot\\n(Distribución + comparación)', fontsize=9)\n",
+    "\n",
+    "# 5. scatterplot\n",
+    "sns.scatterplot(data=df_demo, x='variable2', y='valor', hue='grupo',\n",
+    "                ax=axes[1,0], palette='Set1', s=40, alpha=0.7)\n",
+    "axes[1,0].set_title('scatterplot\\n(Relación num-num)', fontsize=9)\n",
+    "\n",
+    "# 6. barplot\n",
+    "sns.barplot(data=df_demo, x='grupo', y='valor', ax=axes[1,1],\n",
+    "            palette='Blues_r', errorbar='sd')\n",
+    "axes[1,1].set_title('barplot\\n(Promedio por categoría)', fontsize=9)\n",
+    "\n",
+    "# 7. countplot\n",
+    "sns.countplot(data=df_demo, x='grupo', hue='categoria', ax=axes[1,2], palette='Set2')\n",
+    "axes[1,2].set_title('countplot\\n(Conteo categórico)', fontsize=9)\n",
+    "\n",
+    "# 8. heatmap\n",
+    "corr = df_demo[['valor','variable2']].corr()\n",
+    "sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm',\n",
+    "            ax=axes[1,3], vmin=-1, vmax=1)\n",
+    "axes[1,3].set_title('heatmap\\n(Correlación)', fontsize=9)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2 — Elige el gráfico correcto:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Para cada pregunta, indica qué tipo de gráfico usarías y por qué:\n",
+    "decisiones = {\n",
+    "    '¿Cómo se distribuye el tiempo de entrega?':               '',\n",
+    "    '¿Hay diferencia de ventas entre regiones?':               '',\n",
+    "    '¿Existe relación entre distancia y costo de envío?':      '',\n",
+    "    '¿Qué tipo de transporte es más frecuente?':               '',\n",
+    "    '¿Cómo se relacionan 5 variables numéricas entre sí?':     '',\n",
+    "}\n",
+    "\n",
+    "print('--- SELECCIÓN DE GRÁFICOS ---')\n",
+    "for pregunta, respuesta in decisiones.items():\n",
+    "    print(f'\\n{pregunta}')\n",
+    "    print(f'  Gráfico elegido: {respuesta}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Actividad guiada: Plataforma de streaming\n",
+    "\n",
+    "### 3.1 Cargar el dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "df = pd.read_csv('comportamiento_usuarios_streaming.csv')\n",
+    "print(f'Dimensiones: {df.shape}')\n",
+    "print()\n",
+    "print(df.head(10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Exploración inicial\n",
+    "print('=== Tipos de variable ===')\n",
+    "print(df.dtypes)\n",
+    "print()\n",
+    "print('=== Estadísticas descriptivas ===')\n",
+    "print(df.describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Identifica las variables:\n",
+    "clasificacion = \"\"\"\n",
+    "Variables cuantitativas:\n",
+    "  - \n",
+    "  - \n",
+    "  - \n",
+    "\n",
+    "Variables categóricas:\n",
+    "  - \n",
+    "  - \n",
+    "  - \n",
+    "\"\"\"\n",
+    "print(clasificacion)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Gráfico a — Distribución de horas de visualización (`histplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(9, 4))\n",
+    "sns.histplot(df['horas_visualizacion'], bins=15, kde=True, color='#2E75B6')\n",
+    "plt.title('Distribución de horas de visualización semanal', fontweight='bold')\n",
+    "plt.xlabel('Horas por semana')\n",
+    "plt.ylabel('Frecuencia')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué elegiste histplot?\n",
+    "r_a = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué observas en la distribución?\n",
+    "obs_a = \"\"\n",
+    "\n",
+    "print(f'Por qué histplot: {r_a}')\n",
+    "print(f'Observación:      {obs_a}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Gráfico b — Relación entre edad y horas de visualización (`scatterplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(9, 4))\n",
+    "sns.scatterplot(data=df, x='edad', y='horas_visualizacion',\n",
+    "                hue='suscripcion_activa',\n",
+    "                palette={'Sí': '#2E75B6', 'No': '#ED7D31'},\n",
+    "                s=60, alpha=0.7)\n",
+    "plt.title('Relación entre edad y horas de visualización', fontweight='bold')\n",
+    "plt.xlabel('Edad')\n",
+    "plt.ylabel('Horas por semana')\n",
+    "plt.legend(title='Suscripción activa')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "r_b = df['edad'].corr(df['horas_visualizacion'])\n",
+    "print(f'Correlación edad ↔ horas_visualizacion: r = {r_b:.3f}')\n",
+    "\n",
+    "# ✏️ ¿Qué patrón observas?\n",
+    "obs_b = \"\"\n",
+    "print(f'Observación: {obs_b}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Gráfico c — Promedio de horas por tipo de dispositivo (`barplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "orden_disp = df.groupby('dispositivo')['horas_visualizacion'].mean().sort_values(ascending=False).index\n",
+    "\n",
+    "plt.figure(figsize=(9, 4))\n",
+    "sns.barplot(data=df, x='dispositivo', y='horas_visualizacion',\n",
+    "            order=orden_disp, palette='Blues_r', errorbar='sd')\n",
+    "plt.title('Promedio de horas de visualización por tipo de dispositivo', fontweight='bold')\n",
+    "plt.xlabel('Dispositivo')\n",
+    "plt.ylabel('Horas promedio por semana')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Promedio y std por dispositivo ===')\n",
+    "print(df.groupby('dispositivo')['horas_visualizacion'].agg(['mean','std','count']).round(2))\n",
+    "\n",
+    "# ✏️ ¿Qué dispositivo muestra mayor uso? ¿Qué estrategia recomendarías?\n",
+    "obs_c = \"\"\n",
+    "print(f'Observación: {obs_c}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.5 Gráfico d — Géneros vistos por suscripción (`boxplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(8, 4))\n",
+    "sns.boxplot(data=df, x='suscripcion_activa', y='generos_distintos',\n",
+    "            palette={'Sí': '#2E75B6', 'No': '#ED7D31'})\n",
+    "plt.title('Comparación de géneros consumidos por estado de suscripción', fontweight='bold')\n",
+    "plt.xlabel('Suscripción activa')\n",
+    "plt.ylabel('Géneros distintos')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Géneros distintos por suscripción ===')\n",
+    "print(df.groupby('suscripcion_activa')['generos_distintos'].describe().round(2))\n",
+    "\n",
+    "# ✏️ ¿Los usuarios con suscripción activa consumen más géneros?\n",
+    "obs_d = \"\"\n",
+    "print(f'Observación: {obs_d}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.6 Gráfico extra — Conteo de usuarios por dispositivo y suscripción (`countplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(10, 4))\n",
+    "sns.countplot(data=df, x='dispositivo',\n",
+    "              hue='suscripcion_activa',\n",
+    "              palette={'Sí': '#2E75B6', 'No': '#ED7D31'},\n",
+    "              order=orden_disp)\n",
+    "plt.title('Cantidad de usuarios por dispositivo y suscripción', fontweight='bold')\n",
+    "plt.xlabel('Dispositivo')\n",
+    "plt.ylabel('Cantidad de usuarios')\n",
+    "plt.legend(title='Suscripción activa')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad autónoma: Patrones de compra en clientes\n",
+    "\n",
+    "### 4.1 Cargar el dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "df2 = pd.read_csv('ventas_clientes_autonomo.csv')\n",
+    "print(df2.head(8))\n",
+    "print()\n",
+    "print(df2.dtypes)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Gráfico 1 — Distribución de montos de compra (`sns.histplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(9, 4))\n",
+    "sns.histplot(df2['monto_compra'], bins=20, kde=True, color='#70AD47')\n",
+    "plt.title('Distribución de montos de compra', fontweight='bold')\n",
+    "plt.xlabel('Monto ($)')\n",
+    "plt.ylabel('Frecuencia')\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# ✏️ ¿Qué observas?\n",
+    "obs_1 = \"\"\n",
+    "print(f'Observación: {obs_1}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Gráfico 2 — Relación entre edad y monto de compra (`sns.scatterplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(9, 4))\n",
+    "sns.scatterplot(data=df2, x='edad', y='monto_compra',\n",
+    "                hue='categoria_producto', alpha=0.5, s=30)\n",
+    "plt.title('Relación entre edad y monto de compra por categoría', fontweight='bold')\n",
+    "plt.xlabel('Edad')\n",
+    "plt.ylabel('Monto de compra ($)')\n",
+    "plt.legend(title='Categoría', fontsize=7, ncol=2)\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# ✏️ ¿Existe relación entre edad y monto?\n",
+    "r_edad_monto = df2['edad'].corr(df2['monto_compra'])\n",
+    "print(f'r = {r_edad_monto:.3f}')\n",
+    "obs_2 = \"\"\n",
+    "print(f'Observación: {obs_2}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Gráfico 3 — Monto de compra por género (`sns.boxplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(8, 4))\n",
+    "sns.boxplot(data=df2, x='genero', y='monto_compra', palette='Set2')\n",
+    "plt.title('Comparación de monto de compra por género', fontweight='bold')\n",
+    "plt.xlabel('Género')\n",
+    "plt.ylabel('Monto de compra ($)')\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# ✏️ ¿Hay diferencias notables entre géneros?\n",
+    "obs_3 = \"\"\n",
+    "print(f'Observación: {obs_3}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.5 Gráfico 4 — Promedio de compra por categoría (`sns.barplot`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "orden_cat = df2.groupby('categoria_producto')['monto_compra'].mean().sort_values(ascending=False).index\n",
+    "\n",
+    "plt.figure(figsize=(10, 4))\n",
+    "sns.barplot(data=df2, x='categoria_producto', y='monto_compra',\n",
+    "            order=orden_cat, palette='Blues_r', errorbar='sd')\n",
+    "plt.title('Promedio de monto de compra por categoría de producto', fontweight='bold')\n",
+    "plt.xlabel('Categoría')\n",
+    "plt.ylabel('Monto promedio ($)')\n",
+    "plt.xticks(rotation=20)\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# ✏️ ¿Qué categoría tiene el ticket promedio más alto?\n",
+    "obs_4 = \"\"\n",
+    "print(f'Observación: {obs_4}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.6 Gráfico 5 — Compras recurrentes por categoría (`sns.countplot` con `hue`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.figure(figsize=(11, 4))\n",
+    "sns.countplot(data=df2, x='categoria_producto',\n",
+    "              hue='compra_recurrente',\n",
+    "              order=orden_cat,\n",
+    "              palette={'Sí': '#2E75B6', 'No': '#ED7D31'})\n",
+    "plt.title('Proporción de compras recurrentes por categoría', fontweight='bold')\n",
+    "plt.xlabel('Categoría')\n",
+    "plt.ylabel('Cantidad de clientes')\n",
+    "plt.legend(title='Compra recurrente')\n",
+    "plt.xticks(rotation=20)\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# ✏️ ¿Qué categoría tiene más clientes recurrentes?\n",
+    "obs_5 = \"\"\n",
+    "print(f'Observación: {obs_5}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Conclusiones de la actividad autónoma:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Completa tus conclusiones:\n",
+    "c1 = \"\"  # ¿Qué patrones observas en los datos?\n",
+    "c2 = \"\"  # ¿Qué gráfico fue más útil para responder preguntas del negocio?\n",
+    "c3 = \"\"  # ¿Qué mejorarías en la visualización?\n",
+    "\n",
+    "print('--- CONCLUSIONES ---')\n",
+    "print(f'Patrones observados:  {c1}')\n",
+    "print(f'Gráfico más útil:     {c2}')\n",
+    "print(f'Mejoras posibles:     {c3}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de tipos de gráficos y cuándo usarlos\n",
+    "\n",
+    "| Función | Propósito | Variables | ¿Cuándo usarla? |\n",
+    "|---------|-----------|-----------|----------------|\n",
+    "| `sns.histplot()` | Distribución | 1 numérica | Ver forma, sesgo, outliers |\n",
+    "| `sns.kdeplot()` | Distribución | 1 numérica | Comparar distribuciones entre grupos |\n",
+    "| `sns.boxplot()` | Comparación | Num + Cat | Detectar outliers y comparar medianas |\n",
+    "| `sns.violinplot()` | Comparación | Num + Cat | Ver distribución completa por grupo |\n",
+    "| `sns.scatterplot()` | Relación | Num + Num | Ver asociación entre dos variables |\n",
+    "| `sns.regplot()` | Relación | Num + Num | Visualizar tendencia lineal |\n",
+    "| `sns.barplot()` | Composición | Cat + Num | Comparar promedios por grupo |\n",
+    "| `sns.countplot()` | Composición | Categórica | Frecuencia de categorías |\n",
+    "| `sns.pairplot()` | Multivariado | Múltiples | Explorar relaciones entre varias vars |\n",
+    "| `sns.heatmap()` | Multivariado | Correlación | Visualizar matriz de correlación |\n",
+    "\n",
+    "> 💡 **Regla práctica:** Antes de elegir el gráfico, responde: ¿Cuántas variables? ¿De qué tipo? ¿Quiero ver distribución, comparación, relación o composición?\n",
+    "\n",
+    "> 💡 **Siempre incluir:** título descriptivo, etiquetas de ejes X e Y, leyenda si hay `hue`, y verificar que los datos estén limpios antes de graficar."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

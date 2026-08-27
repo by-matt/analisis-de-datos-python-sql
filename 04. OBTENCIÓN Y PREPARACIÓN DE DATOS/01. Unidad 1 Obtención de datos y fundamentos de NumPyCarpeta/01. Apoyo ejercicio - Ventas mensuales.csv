@@ -1,0 +1,1197 @@
+fecha,sucursal,vendedor,producto,categoria,cantidad,precio
+2024-05-01,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,9,862
+2024-05-01,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,5,2076
+2024-05-01,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,18,1452
+2024-05-02,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,2,1757
+2024-05-02,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,7,959
+2024-05-02,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,20,1606
+2024-05-02,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,7,1739
+2024-05-02,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,8,1864
+2024-05-02,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,9,541
+2024-05-02,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,14,1237
+2024-05-03,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,7,
+2024-05-03,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,3,997
+2024-05-03,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,12,988
+2024-05-03,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,9,551
+2024-05-03,Santiago Centro,Carlos Soto,Tomate en Lata 400g,Conservas,15,907
+2024-05-04,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,3,1891
+2024-05-04,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,20,1392
+2024-05-04,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,7,557
+2024-05-05,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,8,1504
+2024-05-05,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,8,925
+2024-05-05,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,9,1866
+2024-05-06,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,12,1240
+2024-05-06,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,9,2068
+2024-05-06,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,6,676
+2024-05-06,Santiago Centro,Carlos Soto,Tomate en Lata 400g,Conservas,8,811
+2024-05-06,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,diez,3219
+2024-05-07,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,11,2064
+2024-05-07,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,2,2130
+2024-05-07,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,9,1766
+2024-05-07,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,19,2130
+2024-05-07,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,16,2151
+2024-05-07,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,15,1466
+2024-05-07,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,5,1363
+2024-05-08,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,9,1749
+2024-05-08,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,19,1852
+2024-05-08,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,8,675
+2024-05-08,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,16,1623
+2024-05-08,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,4,839
+2024-05-08,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,6,1538
+2024-05-08,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,3,638
+2024-05-09,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,15,675
+2024-05-09,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,18,1302
+2024-05-09,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,4,1567
+2024-05-09,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,11,1328
+2024-05-09,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,14,1340
+2024-05-09,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,1,3217
+2024-05-10,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,17,1177
+2024-05-10,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,10,1559
+2024-05-10,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,7,579
+2024-05-10,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,6,778
+2024/05/03,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,1,1682
+2024-05-10,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,1,3178
+2024-05-10,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,10,701
+2024-05-11,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,19,2070
+2024-05-11,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,16,917
+2024-05-11,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,5,1632
+2024-05-12,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,6,1667
+2024-05-12,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,20,1708
+2024-05-12,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,18,2101
+2024-05-12,Santiago Centro,Carlos Soto,Tomate en Lata 400g,Conservas,10,872
+2024-05-12,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,12,1542
+2024-05-12,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,15,1630
+2024-05-13,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,3,2136
+2024-05-13,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,19,941
+2024-05-13,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,19,2106
+2024-05-13,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,3,815
+2024-05-14,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,2,984
+2024-05-14,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,17,960
+2024-05-14,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,16,1354
+2024-05-14,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,5,1746
+2024-05-15,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,8,3271
+2024-05-15,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,7,1774
+2024-05-15,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,14,990
+2024-05-15,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,14,1869
+2024-05-15,Santiago Centro,Carlos Soto,Tomate en Lata 400g,Conservas,2,795
+2024-05-15,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,13,886
+2024-05-15,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,8,949
+2024-05-16,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,15,1635
+2024-05-16,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,6,1821
+2024-05-16,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,8,3169
+2024-05-16,santiago centro,Carlos Soto,Detergente 1kg,Limpieza,18,3175
+2024-05-17,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,18,1433
+2024-05-17,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,8,942
+2024-05-17,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,16,1873
+2024-05-18,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,2,1792
+2024-05-18,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,1,1849
+2024-05-18,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,15,1373
+2024-05-18,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,18,1874
+2024-05-19,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,10,2105
+2024-05-19,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,19,938
+2024-05-19,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,11,814
+2024-05-19,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,19,922
+2024-05-20,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,6,1614
+2024-05-20,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,3,1647
+2024-05-20,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,20,917
+2024-05-20,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,8,1533
+2024-05-20,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,19,963
+2024-05-20,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,20,550
+2024-05-20,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,3,647
+2024-05-21,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,17,620
+2024-05-21,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,7,1380
+2024-05-21,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,9,2151
+2024-05-21,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,10,1267
+2024-05-21,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,3,642
+2024-05-21,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,20,3294
+2024-05-21,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,3,1037
+2024-05-22,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,9,1633
+2024-05-22,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,3,702
+2024-05-22,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,10,680
+2024-05-22,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,18,3227
+2024-05-23,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,17,1432
+2024-05-23,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,18,1506
+2024-05-23,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,4,1464
+2024-05-23,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,4,1327
+2024-05-23,Santiago Centro,Carlos Soto,Tomate en Lata 400g,Conservas,18,809
+2024-05-23,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,10,1353
+2024-05-23,Santiago Centro,Carlos Soto,Tomate en Lata 400g,Conservas,11,822
+2024-05-24,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,16,1664
+2024-05-24,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,3,908
+2024-05-24,Santiago Centro,Carlos Soto,Arroz Grano Largo 1kg,Abarrotes,2,1300
+2024-05-24,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,5,707
+2024-05-24,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,15,1291
+2024-05-25,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,1,1628
+2024-05-25,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,5,1039
+2024-05-25,Santiago Centro,Carlos Soto,Pan Molde 550g,Panadería,12,949
+2024-05-25,Santiago Centro,Carlos Soto,Jugo Natural 1L,Bebidas,5,1710
+2024-05-25,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,2,1228
+2024-05-25,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,2,731
+2024-05-26,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,8,1456
+2024-05-26,Santiago Centro,Carlos Soto,Fideos Spaghetti 400g,Abarrotes,18,744
+2024-05-26,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,5,600
+2024-05-26,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,6,1255
+2024-05-27,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,11,1255
+2024-05-27,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,8,1498
+2024-05-27,Santiago Centro,Carlos Soto,Yogurt Natural 500g,Lácteos,4,1247
+2024-05-28,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,8,3201
+2024-05-28,Santiago Centro,Carlos Soto,Detergente 1kg,Limpieza,12,3228
+2024-05-28,Santiago Centro,Carlos Soto,Aceite Vegetal 1L,Abarrotes,8,2056
+2024-05-29,Santiago Centro,Carlos Soto,Jabón Barra x3,Limpieza,11,1821
+2024-05-29,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,9,989
+2024-05-29,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,17,1532
+2024-05-29,Santiago Centro,Carlos Soto,Atún en Lata 170g,Conservas,18,1514
+2024-05-30,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,9,945
+2024-05-30,Santiago Centro,Carlos Soto,Agua Mineral 1.5L,Bebidas,9,549
+2024-05-30,Santiago Centro,Carlos Soto,Leche Entera 1L,Lácteos,20,1011
+2024-05-01,Valparaíso,María González,Tomate en Lata 400g,Conservas,11,881
+2024-05-01,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,17,569
+2024-05-01,Valparaíso,María González,Jabón Barra x3,Limpieza,19,1798
+2024-05-01,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,2,1411
+2024-05-01,Valparaíso,María González,Pan Molde 550g,Panadería,17,937
+2024-05-02,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,14,657
+2024-05-02,Valparaíso,María González,Atún en Lata 170g,Conservas,11,1510
+2024-05-02,Valparaíso,María González,Atún en Lata 170g,Conservas,4,1506
+2024-05-02,Valparaíso,María González,Jugo Natural 1L,Bebidas,10,1704
+2024-05-03,Valparaíso,María González,Jabón Barra x3,Limpieza,10,1891
+2024-05-03,Valparaíso,María González,Yogurt Natural 500g,Lácteos,7,1257
+2024-05-03,Valparaíso,María González,Atún en Lata 170g,Conservas,13,1474
+2024-05-03,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,19,617
+2024-05-03,Valparaíso,María González,Jabón Barra x3,Limpieza,18,1750
+2024-05-04,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,7,1410
+2024-05-04,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,20,622
+2024-05-04,Valparaíso,María González,Detergente 1kg,Limpieza,15,3263
+2024-05-04,Valparaíso,María González,Atún en Lata 170g,Conservas,7,1560
+2024-05-04,Valparaíso,María González,Detergente 1kg,Limpieza,6,3171
+2024-05-05,Valparaíso,María González,Jugo Natural 1L,Bebidas,20,1685
+2024-05-05,Valparaíso,María González,Leche Entera 1L,Lácteos,8,979
+2024-05-05,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,7,2087
+2024-05-05,Valparaíso,María González,Pan Molde 550g,Panadería,2,862
+2024-05-05,Valparaíso,María González,Detergente 1kg,Limpieza,20,3168
+2024-05-06,Valparaíso,María González,Jabón Barra x3,Limpieza,19,1799
+2024-05-06,Valparaíso,María González,Tomate en Lata 400g,Conservas,13,896
+2024-05-06,Valparaíso,María González,Jabón Barra x3,Limpieza,8,1787
+2024-05-06,Valparaíso,María González,Atún en Lata 170g,Conservas,1,1457
+2024-05-06,Valparaíso,María González,Jabón Barra x3,Limpieza,8,1795
+2024-05-06,Valparaíso,María González,Tomate en Lata 400g,Conservas,17,888
+2024-05-07,Valparaíso,María González,Jugo Natural 1L,Bebidas,8,1631
+2024-05-07,Valparaíso,María González,Detergente 1kg,Limpieza,5,3268
+2024-05-07,Valparaíso,María González,Atún en Lata 170g,Conservas,17,1573
+2024-05-08,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,15,769
+2024-05-08,Valparaíso,María González,Jabón Barra x3,Limpieza,18,1864
+2024-05-08,Valparaíso,María González,Yogurt Natural 500g,Lácteos,16,1265
+2024-05-08,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,8,1370
+2024-05-08,Valparaíso,María González,Jugo Natural 1L,Bebidas,16,1661
+2024-05-08,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,15,1319
+2024-05-08,Valparaíso,María González,Tomate en Lata 400g,Conservas,10,830
+2024-05-09,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,11,778
+2024-05-09,Valparaíso,María González,Leche Entera 1L,Lácteos,5,938
+2024-05-09,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,13,2089
+2024-05-09,Valparaíso,María González,Tomate en Lata 400g,Conservas,7,786
+2024-05-09,Valparaíso,María González,Jabón Barra x3,Limpieza,14,1834
+2024-05-10,Valparaíso,María González,Detergente 1kg,Limpieza,14,3165
+2024-05-10,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,14,2149
+2024-05-10,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,1,687
+2024-05-10,Valparaíso,María González,Jabón Barra x3,Limpieza,16,1751
+2024-05-10,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,10,739
+2024-05-10,Valparaíso,María González,Jabón Barra x3,Limpieza,18,1889
+2024-05-10,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,8,664
+2024-05-11,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,14,1424
+2024-05-11,Valparaíso,María González,Pan Molde 550g,Panadería,13,886
+2024-05-11,Valparaíso,María González,Atún en Lata 170g,Conservas,13,1472
+2024-05-11,Valparaíso,María González,Detergente 1kg,Limpieza,5,3286
+2024-05-12,Valparaíso,María González,Jabón Barra x3,Limpieza,19,1894
+2024-05-12,Valparaíso,María González,Atún en Lata 170g,Conservas,1,1451
+2024-05-12,Valparaíso,María González,Atún en Lata 170g,Conservas,14,1464
+2024-05-13,Valparaíso,María González,Yogurt Natural 500g,Lácteos,2,1216
+2024-05-13,Valparaíso,María González,Jabón Barra x3,Limpieza,11,1804
+2024-05-13,Valparaíso,María González,Detergente 1kg,Limpieza,11,3236
+2024-05-13,Valparaíso,María González,Jabón Barra x3,Limpieza,9,1857
+2024-05-13,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,3,1420
+2024-05-13,Valparaíso,María González,Pan Molde 550g,Panadería,18,813
+2024-05-14,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,3,2060
+2024-05-14,Valparaíso,María González,Pan Molde 550g,Panadería,8,851
+2024-05-14,Valparaíso,María González,Pan Molde 550g,Panadería,20,839
+2024-05-14,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,5,2171
+2024-05-14,Valparaíso,María González,Atún en Lata 170g,Conservas,4,1574
+2024-05-15,Valparaíso,María González,Detergente 1kg,Limpieza,9,3244
+2024-05-15,Valparaíso,María González,Yogurt Natural 500g,Lácteos,20,1179
+2024-05-15,Valparaíso,María González,Yogurt Natural 500g,Lácteos,10,1177
+2024-05-15,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,1,619
+2024-05-16,Valparaíso,María González,Atún en Lata 170g,Conservas,13,1531
+2024-05-16,Valparaíso,María González,Tomate en Lata 400g,Conservas,7,789
+2024-05-16,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,8,566
+2024-05-16,Valparaíso,María González,Tomate en Lata 400g,Conservas,10,800
+2024-05-16,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,2,628
+2024-05-16,Valparaíso,María González,Jugo Natural 1L,Bebidas,14,1694
+2024-05-16,Valparaíso,María González,Leche Entera 1L,Lácteos,17,987
+2024-05-17,Valparaíso,María González,Jabón Barra x3,Limpieza,16,1777
+2024-05-17,Valparaíso,María González,Jabón Barra x3,Limpieza,12,1867
+2024-05-17,Valparaíso,María González,Tomate en Lata 400g,Conservas,5,881
+2024-05-18,Valparaíso,María González,Tomate en Lata 400g,Conservas,17,839
+2024-05-18,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,18,663
+2024-05-18,Valparaíso,María González,Detergente 1kg,Limpieza,14,3218
+2024-05-18,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,8,662
+2024-05-19,Valparaíso,María González,Detergente 1kg,Limpieza,8,3268
+2024-05-19,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,20,637
+2024-05-19,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,1,766
+2024-05-19,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,6,764
+2024-05-19,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,12,2116
+2024-05-20,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,20,1370
+2024-05-20,Valparaíso,María González,Jugo Natural 1L,Bebidas,1,1732
+2024-05-20,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,3,2111
+2024-05-20,Valparaíso,María González,Tomate en Lata 400g,Conservas,14,895
+2024-05-20,Valparaíso,María González,Jugo Natural 1L,Bebidas,8,1721
+2024-05-21,Valparaíso,María González,Detergente 1kg,Limpieza,1,3173
+2024-05-21,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,8,1403
+2024-05-21,Valparaíso,María González,Tomate en Lata 400g,Conservas,8,848
+2024-05-21,Valparaíso,María González,Atún en Lata 170g,Conservas,19,1524
+2024-05-21,Valparaíso,María González,Detergente 1kg,Limpieza,18,3285
+2024-05-21,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,14,780
+2024-05-22,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,15,709
+2024-05-22,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,9,1359
+2024-05-22,Valparaíso,María González,Leche Entera 1L,Lácteos,7,980
+2024-05-22,Valparaíso,María González,Leche Entera 1L,Lácteos,18,947
+2024-05-22,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,7,2173
+2024-05-23,Valparaíso,María González,Tomate en Lata 400g,Conservas,19,904
+2024-05-23,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,10,565
+2024-05-23,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,10,2108
+2024-05-23,Valparaíso,María González,Fideos Spaghetti 400g,Abarrotes,6,717
+2024-05-23,Valparaíso,María González,Pan Molde 550g,Panadería,18,832
+2024-05-24,Valparaíso,María González,Pan Molde 550g,Panadería,2,941
+2024-05-24,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,5,1425
+2024-05-24,Valparaíso,María González,Leche Entera 1L,Lácteos,1,1046
+2024-05-24,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,16,1422
+2024-05-24,Valparaíso,María González,Detergente 1kg,Limpieza,11,3197
+2024-05-25,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,16,1329
+2024-05-25,Valparaíso,María González,Leche Entera 1L,Lácteos,13,1025
+2024-05-25,Valparaíso,María González,Leche Entera 1L,Lácteos,19,913
+2024-05-26,Valparaíso,María González,Yogurt Natural 500g,Lácteos,19,1227
+2024-05-26,Valparaíso,María González,Leche Entera 1L,Lácteos,8,930
+2024-05-26,Valparaíso,María González,Jugo Natural 1L,Bebidas,14,1657
+2024-05-26,Valparaíso,María González,Jugo Natural 1L,Bebidas,13,1715
+2024-05-27,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,19,1409
+2024-05-27,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,19,1315
+2024-05-27,Valparaíso,María González,Agua Mineral 1.5L,Bebidas,4,593
+2024-05-27,Valparaíso,María González,Atún en Lata 170g,Conservas,7,1497
+2024-05-27,Valparaíso,María González,Atún en Lata 170g,Conservas,3,1470
+2024-05-27,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,6,2191
+2024-05-28,Valparaíso,María González,Yogurt Natural 500g,Lácteos,1,1254
+2024-05-28,Valparaíso,María González,Detergente 1kg,Limpieza,20,3270
+2024-05-28,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,2,1359
+2024-05-29,Valparaíso,María González,Tomate en Lata 400g,Conservas,10,886
+2024-05-29,Valparaíso,María González,Leche Entera 1L,Lácteos,8,967
+2024-05-29,Valparaíso,María González,Atún en Lata 170g,Conservas,19,1480
+2024-05-29,Valparaíso,María González,Jabón Barra x3,Limpieza,4,1889
+2024-05-29,Valparaíso,María González,Aceite Vegetal 1L,Abarrotes,5,2118
+2024-05-30,Valparaíso,María González,Leche Entera 1L,Lácteos,2,942
+2024-05-30,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,20,1445
+2024-05-30,Valparaíso,María González,Arroz Grano Largo 1kg,Abarrotes,15,1331
+2024-05-30,Valparaíso,María González,Detergente 1kg,Limpieza,10,3253
+2024-05-01,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,18,1726
+2024-05-01,Concepción,Ana Torres,Detergente 1kg,Limpieza,3,3160
+2024-05-01,Concepción,Ana Torres,Jabón Barra x3,Limpieza,11,1814
+2024-05-01,Concepción,Ana Torres,Pan Molde 550g,Panadería,3,858
+2024-05-01,Concepción,Ana Torres,Atún en Lata 170g,Conservas,19,1580
+2024-05-02,Concepción,Ana Torres,Atún en Lata 170g,Conservas,9,1577
+2024-05-02,Concepción,Ana Torres,Pan Molde 550g,Panadería,6,920
+2024-05-02,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,15,1671
+2024-05-03,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,14,665
+2024-05-03,Concepción,Ana Torres,Leche Entera 1L,Lácteos,16,989
+2024-05-03,Concepción,Ana Torres,Jabón Barra x3,Limpieza,11,1832
+2024-05-03,Concepción,Ana Torres,Atún en Lata 170g,Conservas,4,1471
+2024-05-04,Concepción,Ana Torres,Jabón Barra x3,Limpieza,16,1823
+2024-05-04,Concepción,Ana Torres,Atún en Lata 170g,Conservas,13,1570
+2024-05-04,Concepción,Ana Torres,Pan Molde 550g,Panadería,15,822
+2024-05-04,Concepción,Ana Torres,Fideos Spaghetti 400g,Abarrotes,9,722
+2024-05-04,Concepción,Ana Torres,Leche Entera 1L,Lácteos,13,1031
+2024-05-05,Concepción,Ana Torres,Atún en Lata 170g,Conservas,18,1548
+2024-05-05,Concepción,Ana Torres,Jabón Barra x3,Limpieza,2,1798
+2024-05-05,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,12,1727
+2024-05-06,Concepción,Ana Torres,Pan Molde 550g,Panadería,7,868
+2024-05-06,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,5,1673
+2024-05-06,Concepción,Ana Torres,Detergente 1kg,Limpieza,16,3181
+2024-05-06,Concepción,Ana Torres,Pan Molde 550g,Panadería,20,861
+2024-05-06,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,6,849
+2024-05-06,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,1,1741
+2024-05-07,Concepción,Ana Torres,Leche Entera 1L,Lácteos,8,929
+2024-05-07,Concepción,Ana Torres,Detergente 1kg,Limpieza,4,3189
+2024-05-07,Concepción,Ana Torres,Detergente 1kg,Limpieza,10,3280
+2024-05-07,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,9,876
+2024-05-07,Concepción,Ana Torres,Detergente 1kg,Limpieza,16,3212
+2024-05-07,Concepción,Ana Torres,Detergente 1kg,Limpieza,18,3187
+2024-05-08,Concepción,Ana Torres,Aceite Vegetal 1L,Abarrotes,20,2180
+2024-05-08,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,5,787
+2024-05-08,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,14,1387
+2024-05-08,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,9,1600
+2024-05-08,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,10,1450
+2024-05-08,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,16,578
+2024-05-09,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,16,1688
+2024-05-09,Concepción,Ana Torres,Fideos Spaghetti 400g,Abarrotes,18,779
+2024-05-09,Concepción,Ana Torres,Jabón Barra x3,Limpieza,15,1832
+2024-05-09,Concepción,Ana Torres,Aceite Vegetal 1L,Abarrotes,8,2196
+2024-05-09,Concepción,Ana Torres,Jabón Barra x3,Limpieza,8,1855
+2024-05-09,Concepción,Ana Torres,Pan Molde 550g,Panadería,11,921
+2024-05-10,Concepción,Ana Torres,Jabón Barra x3,Limpieza,5,1876
+2024-05-10,Concepción,Ana Torres,Pan Molde 550g,Panadería,5,928
+2024-05-10,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,11,565
+2024-05-10,Concepción,Ana Torres,Detergente 1kg,Limpieza,4,3284
+2024-05-10,Concepción,Ana Torres,Detergente 1kg,Limpieza,1,3186
+2024-05-10,Concepción,Ana Torres,Jabón Barra x3,Limpieza,5,1769
+2024-05-11,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,11,1401
+2024-05-11,Concepción,Ana Torres,Atún en Lata 170g,Conservas,3,1514
+2024-05-11,Concepción,Ana Torres,Atún en Lata 170g,Conservas,18,1527
+2024-05-11,Concepción,Ana Torres,Fideos Spaghetti 400g,Abarrotes,16,778
+2024-05-11,Concepción,Ana Torres,Pan Molde 550g,Panadería,20,817
+2024-05-11,Concepción,Ana Torres,Aceite Vegetal 1L,Abarrotes,10,2108
+2024-05-12,Concepción,Ana Torres,Jabón Barra x3,Limpieza,4,1775
+2024-05-12,Concepción,Ana Torres,Detergente 1kg,Limpieza,6,3226
+2024-05-12,Concepción,Ana Torres,Pan Molde 550g,Panadería,2,883
+2024-05-13,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,12,1395
+2024-05-13,Concepción,Ana Torres,Jabón Barra x3,Limpieza,5,1812
+2024-05-13,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,14,1744
+2024-05-14,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,6,1170
+2024-05-14,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,13,601
+2024-05-14,Concepción,Ana Torres,Detergente 1kg,Limpieza,19,3186
+2024-05-14,Concepción,Ana Torres,Aceite Vegetal 1L,Abarrotes,15,2115
+2024-05-15,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,1,1419
+2024-05-15,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,18,1340
+2024-05-15,Concepción,Ana Torres,Leche Entera 1L,Lácteos,15,988
+2024-05-15,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,10,648
+2024-05-15,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,9,886
+2024-05-15,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,7,1398
+2024-05-16,Concepción,Ana Torres,Leche Entera 1L,Lácteos,8,997
+2024-05-16,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,12,687
+2024-05-16,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,10,1305
+2024-05-16,Concepción,Ana Torres,Atún en Lata 170g,Conservas,13,1500
+2024-05-16,Concepción,Ana Torres,Pan Molde 550g,Panadería,19,812
+2024-05-16,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,16,613
+2024-05-17,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,12,596
+2024-05-17,Concepción,Ana Torres,Atún en Lata 170g,Conservas,7,1494
+2024-05-17,Concepción,Ana Torres,Atún en Lata 170g,Conservas,5,1454
+2024-05-17,Concepción,Ana Torres,Atún en Lata 170g,Conservas,2,1509
+2024-05-18,Concepción,Ana Torres,Pan Molde 550g,Panadería,19,893
+2024-05-18,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,5,793
+2024-05-18,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,11,1406
+2024-05-18,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,7,1183
+2024-05-18,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,12,1735
+2024-05-18,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,9,1642
+2024-05-19,Concepción,Ana Torres,Detergente 1kg,Limpieza,10,3236
+2024-05-19,Concepción,Ana Torres,Leche Entera 1L,Lácteos,15,919
+2024-05-19,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,8,1251
+2024-05-19,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,12,1623
+2024-05-19,Concepción,Ana Torres,Jabón Barra x3,Limpieza,1,1817
+2024-05-20,Concepción,Ana Torres,Leche Entera 1L,Lácteos,15,994
+2024-05-20,Concepción,Ana Torres,Atún en Lata 170g,Conservas,9,1579
+2024-05-20,Concepción,Ana Torres,Jabón Barra x3,Limpieza,12,1777
+2024-05-20,Concepción,Ana Torres,Atún en Lata 170g,Conservas,8,1550
+2024-05-20,Concepción,Ana Torres,Pan Molde 550g,Panadería,20,943
+2024-05-20,Concepción,Ana Torres,Fideos Spaghetti 400g,Abarrotes,20,696
+2024-05-20,Concepción,Ana Torres,Atún en Lata 170g,Conservas,3,1548
+2024-05-21,Concepción,Ana Torres,Atún en Lata 170g,Conservas,14,1459
+2024-05-21,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,2,1159
+2024-05-21,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,16,1329
+2024-05-21,Concepción,Ana Torres,Leche Entera 1L,Lácteos,8,1037
+2024-05-21,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,13,1266
+2024-05-22,Concepción,Ana Torres,Atún en Lata 170g,Conservas,18,1537
+2024-05-22,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,5,646
+2024-05-22,Concepción,Ana Torres,Atún en Lata 170g,Conservas,4,1555
+2024-05-22,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,14,611
+2024-05-22,Concepción,Ana Torres,Pan Molde 550g,Panadería,12,855
+2024-05-23,Concepción,Ana Torres,Detergente 1kg,Limpieza,8,3242
+2024-05-23,Concepción,Ana Torres,Leche Entera 1L,Lácteos,12,1039
+2024-05-23,Concepción,Ana Torres,Atún en Lata 170g,Conservas,12,1445
+2024-05-23,Concepción,Ana Torres,Jabón Barra x3,Limpieza,9,1798
+2024-05-23,Concepción,Ana Torres,Leche Entera 1L,Lácteos,15,923
+2024-05-23,Concepción,Ana Torres,Atún en Lata 170g,Conservas,7,1435
+2024-05-24,Concepción,Ana Torres,Fideos Spaghetti 400g,Abarrotes,8,672
+2024-05-24,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,7,557
+2024-05-24,Concepción,Ana Torres,Jugo Natural 1L,Bebidas,7,1750
+2024-05-25,Concepción,Ana Torres,Aceite Vegetal 1L,Abarrotes,11,2087
+2024-05-25,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,1,610
+2024-05-25,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,5,1288
+2024-05-25,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,6,1328
+2024-05-26,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,1,1241
+2024-05-26,Concepción,Ana Torres,Aceite Vegetal 1L,Abarrotes,19,2132
+2024-05-26,Concepción,Ana Torres,Pan Molde 550g,Panadería,6,867
+2024-05-27,Concepción,Ana Torres,Yogurt Natural 500g,Lácteos,14,1284
+2024-05-27,Concepción,Ana Torres,Leche Entera 1L,Lácteos,3,1021
+2024-05-27,Concepción,Ana Torres,Detergente 1kg,Limpieza,12,3281
+2024-05-28,Concepción,Ana Torres,Leche Entera 1L,Lácteos,15,1028
+2024-05-28,Concepción,Ana Torres,Aceite Vegetal 1L,Abarrotes,20,2061
+2024-05-28,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,17,847
+2024-05-28,Concepción,Ana Torres,Detergente 1kg,Limpieza,1,3165
+2024-05-28,Concepción,Ana Torres,Detergente 1kg,Limpieza,13,3259
+2024-05-28,Concepción,Ana Torres,Atún en Lata 170g,Conservas,4,1555
+2024-05-28,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,15,788
+2024-05-29,Concepción,Ana Torres,Fideos Spaghetti 400g,Abarrotes,20,677
+2024-05-29,Concepción,Ana Torres,Leche Entera 1L,Lácteos,5,970
+2024-05-29,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,19,680
+2024-05-30,Concepción,Ana Torres,Jabón Barra x3,Limpieza,20,1885
+2024-05-30,Concepción,Ana Torres,Arroz Grano Largo 1kg,Abarrotes,15,1429
+2024-05-30,Concepción,Ana Torres,Agua Mineral 1.5L,Bebidas,14,565
+2024-05-30,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,4,911
+2024-05-30,Concepción,Ana Torres,Tomate en Lata 400g,Conservas,7,880
+2024-05-01,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,14,2136
+2024-05-01,La Serena,Luis Reyes,Detergente 1kg,Limpieza,13,3256
+2024-05-01,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,4,850
+2024-05-01,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,11,1815
+2024-05-01,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,5,761
+2024-05-01,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,3,921
+2024-05-02,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,4,1845
+2024-05-02,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,18,1165
+2024-05-02,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,18,683
+2024-05-03,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,4,1535
+2024-05-03,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,14,653
+2024-05-03,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,20,1379
+2024-05-03,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,4,787
+2024-05-03,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,7,1639
+2024-05-04,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,4,2139
+2024-05-04,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,12,1629
+2024-05-04,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,19,1357
+2024-05-04,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,18,1892
+2024-05-04,La Serena,Luis Reyes,Pan Molde 550g,Panadería,20,868
+2024-05-04,La Serena,Luis Reyes,Pan Molde 550g,Panadería,6,869
+2024-05-05,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,12,641
+2024-05-05,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,5,1294
+2024-05-05,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,13,1447
+2024-05-05,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,1,1173
+2024-05-05,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,17,825
+2024-05-06,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,15,1837
+2024-05-06,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,12,1229
+2024-05-06,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,11,915
+2024-05-06,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,3,553
+2024-05-06,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,6,1162
+2024-05-06,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,3,1499
+2024-05-07,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,14,1554
+2024-05-07,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,15,646
+2024-05-07,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,7,1431
+2024-05-07,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,12,1010
+2024-05-07,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,10,1024
+2024-05-07,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,10,1611
+2024-05-08,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,20,1764
+2024-05-08,La Serena,Luis Reyes,Pan Molde 550g,Panadería,7,877
+2024-05-08,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,5,2115
+2024-05-08,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,11,1330
+2024-05-09,La Serena,Luis Reyes,Detergente 1kg,Limpieza,14,3194
+2024-05-09,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,13,1286
+2024-05-09,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,8,898
+2024-05-10,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,12,1448
+2024-05-10,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,2,1861
+2024-05-10,La Serena,Luis Reyes,Pan Molde 550g,Panadería,15,819
+2024-05-10,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,19,749
+2024-05-10,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,13,646
+2024-05-10,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,4,1403
+2024-05-10,La Serena,Luis Reyes,Pan Molde 550g,Panadería,11,843
+2024-05-11,La Serena,Luis Reyes,Detergente 1kg,Limpieza,12,3172
+2024-05-11,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,4,1812
+2024-05-11,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,19,1852
+2024-05-11,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,3,1701
+2024-05-11,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,11,1356
+2024-05-11,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,6,659
+2024-05-11,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,4,1735
+2024-05-12,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,12,2139
+2024-05-12,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,5,830
+2024-05-12,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,5,965
+2024-05-12,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,6,2089
+2024-05-12,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,3,1475
+2024-05-12,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,16,1548
+2024-05-12,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,19,654
+2024-05-13,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,20,1512
+2024-05-13,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,11,1468
+2024-05-13,La Serena,Luis Reyes,Detergente 1kg,Limpieza,3,3270
+2024-05-13,La Serena,Luis Reyes,Detergente 1kg,Limpieza,10,3220
+2024-05-13,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,2,630
+2024-05-13,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,3,1679
+2024-05-13,La Serena,Luis Reyes,Detergente 1kg,Limpieza,15,3159
+2024-05-14,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,10,659
+2024-05-14,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,3,1559
+2024-05-14,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,15,1898
+2024-05-15,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,2,885
+2024-05-15,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,7,622
+2024-05-15,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,16,668
+2024-05-15,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,2,1265
+2024-05-15,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,11,921
+2024-05-15,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,6,1610
+2024-05-15,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,15,2162
+2024-05-16,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,20,1640
+2024-05-16,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,12,712
+2024-05-16,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,14,1836
+2024-05-16,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,20,1443
+2024-05-16,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,11,1446
+2024-05-16,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,4,782
+2024-05-16,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,13,1502
+2024-05-17,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,20,808
+2024-05-17,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,3,789
+2024-05-17,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,5,1519
+2024-05-17,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,13,1333
+2024-05-17,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,3,619
+2024-05-18,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,11,1782
+2024-05-18,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,17,1453
+2024-05-18,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,14,1560
+2024-05-18,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,1,732
+2024-05-18,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,6,1354
+2024-05-18,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,16,689
+2024-05-18,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,5,2089
+2024-05-19,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,4,1429
+2024-05-19,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,17,1609
+2024-05-19,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,11,1463
+2024-05-20,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,5,1791
+2024-05-20,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,20,1192
+2024-05-20,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,15,781
+2024-05-20,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,12,1810
+2024-05-20,La Serena,Luis Reyes,Detergente 1kg,Limpieza,20,3222
+2024-05-20,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,15,829
+2024-05-20,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,8,1679
+2024-05-21,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,12,2196
+2024-05-21,La Serena,Luis Reyes,Detergente 1kg,Limpieza,15,3222
+2024-05-21,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,17,1885
+2024-05-21,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,6,1801
+2024-05-21,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,5,604
+2024-05-21,La Serena,Luis Reyes,Pan Molde 550g,Panadería,16,895
+2024-05-22,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,17,931
+2024-05-22,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,3,1341
+2024-05-22,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,15,1431
+2024-05-22,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,14,1173
+2024-05-22,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,15,2139
+2024-05-22,La Serena,Luis Reyes,Pan Molde 550g,Panadería,14,813
+2024-05-22,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,17,1845
+2024-05-23,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,3,1845
+2024-05-23,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,1,2131
+2024-05-23,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,11,937
+2024-05-23,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,2,1223
+2024-05-24,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,5,890
+2024-05-24,La Serena,Luis Reyes,Detergente 1kg,Limpieza,20,3151
+2024-05-24,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,1,965
+2024-05-24,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,5,2190
+2024-05-24,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,20,905
+2024-05-24,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,4,1823
+2024-05-25,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,4,1312
+2024-05-25,La Serena,Luis Reyes,Aceite Vegetal 1L,Abarrotes,14,2167
+2024-05-25,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,4,1027
+2024-05-25,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,18,544
+2024-05-26,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,8,576
+2024-05-26,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,14,1300
+2024-05-26,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,12,601
+2024-05-26,La Serena,Luis Reyes,Agua Mineral 1.5L,Bebidas,14,587
+2024-05-26,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,3,1564
+2024-05-26,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,3,774
+2024-05-26,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,17,1729
+2024-05-27,La Serena,Luis Reyes,Pan Molde 550g,Panadería,13,920
+2024-05-27,La Serena,Luis Reyes,Pan Molde 550g,Panadería,13,895
+2024-05-27,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,1,1391
+2024-05-27,La Serena,Luis Reyes,Leche Entera 1L,Lácteos,12,961
+2024-05-27,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,4,918
+2024-05-27,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,11,804
+2024-05-27,La Serena,Luis Reyes,Pan Molde 550g,Panadería,12,939
+2024-05-28,La Serena,Luis Reyes,Atún en Lata 170g,Conservas,6,1548
+2024-05-28,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,16,816
+2024-05-28,La Serena,Luis Reyes,Yogurt Natural 500g,Lácteos,3,1267
+2024-05-28,La Serena,Luis Reyes,Pan Molde 550g,Panadería,10,851
+2024-05-28,La Serena,Luis Reyes,Pan Molde 550g,Panadería,7,810
+2024-05-29,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,17,1401
+2024-05-29,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,16,1664
+2024-05-29,La Serena,Luis Reyes,Pan Molde 550g,Panadería,7,873
+2024-05-29,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,2,724
+2024-05-29,La Serena,Luis Reyes,Arroz Grano Largo 1kg,Abarrotes,4,1394
+2024-05-30,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,15,1848
+2024-05-30,La Serena,Luis Reyes,Fideos Spaghetti 400g,Abarrotes,6,767
+2024-05-30,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,16,864
+2024-05-30,La Serena,Luis Reyes,Jugo Natural 1L,Bebidas,9,1621
+2024-05-30,La Serena,Luis Reyes,Tomate en Lata 400g,Conservas,14,790
+2024-05-30,La Serena,Luis Reyes,Jabón Barra x3,Limpieza,20,1796
+2024-05-01,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,11,1326
+2024-05-01,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,11,975
+2024-05-01,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,15,1409
+2024-05-01,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,15,1239
+2024-05-01,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,2,3240
+2024-05-01,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,14,610
+2024-05-01,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,2,1449
+2024-05-02,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,17,680
+2024-05-02,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,5,912
+2024-05-02,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,5,817
+2024-05-02,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,12,2142
+2024-05-02,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,19,1758
+2024-05-02,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,5,655
+2024-05-03,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,15,659
+2024-05-03,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,5,675
+2024-05-03,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,13,720
+2024-05-03,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,9,1493
+2024-05-03,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,1,947
+2024-05-04,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,13,1743
+2024-05-04,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,9,966
+2024-05-04,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,15,824
+2024-05-04,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,10,665
+2024-05-04,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,4,2084
+2024-05-04,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,15,944
+2024-05-05,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,11,988
+2024-05-05,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,3,910
+2024-05-05,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,10,1676
+2024-05-05,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,6,1242
+2024-05-05,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,8,1631
+2024-05-05,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,5,2110
+2024-05-06,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,12,941
+2024-05-06,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,12,659
+2024-05-06,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,5,1622
+2024-05-06,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,10,1001
+2024-05-06,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,16,904
+2024-05-06,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,14,1897
+2024-05-07,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,11,1168
+2024-05-07,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,15,3282
+2024-05-07,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,5,781
+2024-05-08,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,5,1260
+2024-05-08,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,2,1631
+2024-05-08,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,5,1677
+2024-05-08,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,6,1232
+2024-05-08,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,8,858
+2024-05-08,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,10,1620
+2024-05-08,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,7,1441
+2024-05-09,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,10,1286
+2024-05-09,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,17,943
+2024-05-09,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,19,579
+2024-05-09,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,20,1236
+2024-05-09,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,2,547
+2024-05-10,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,19,867
+2024-05-10,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,7,1576
+2024-05-10,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,20,1757
+2024-05-11,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,18,1504
+2024-05-11,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,10,1553
+2024-05-11,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,13,2126
+2024-05-11,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,3,3165
+2024-05-11,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,15,1256
+2024-05-11,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,15,3202
+2024-05-12,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,5,620
+2024-05-12,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,11,858
+2024-05-12,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,5,1844
+2024-05-12,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,18,1627
+2024-05-12,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,8,759
+2024-05-13,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,15,1363
+2024-05-13,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,4,1162
+2024-05-13,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,13,1407
+2024-05-14,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,11,1297
+2024-05-14,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,11,818
+2024-05-14,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,16,1281
+2024-05-14,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,16,3228
+2024-05-15,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,3,900
+2024-05-15,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,15,1661
+2024-05-15,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,19,2140
+2024-05-15,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,2,872
+2024-05-15,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,20,3270
+2024-05-15,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,18,1302
+2024-05-16,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,5,1817
+2024-05-16,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,12,873
+2024-05-16,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,2,742
+2024-05-17,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,18,589
+2024-05-17,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,18,713
+2024-05-17,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,13,1029
+2024-05-18,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,9,1630
+2024-05-18,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,4,1250
+2024-05-18,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,11,782
+2024-05-18,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,5,690
+2024-05-18,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,17,642
+2024-05-18,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,2,1611
+2024-05-19,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,11,1271
+2024-05-19,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,15,1638
+2024-05-19,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,17,575
+2024-05-20,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,11,581
+2024-05-20,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,20,1826
+2024-05-20,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,11,669
+2024-05-20,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,18,1725
+2024-05-20,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,19,846
+2024-05-21,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,12,884
+2024-05-21,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,4,1536
+2024-05-21,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,10,546
+2024-05-21,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,16,607
+2024-05-21,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,19,1577
+2024-05-21,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,2,2199
+2024-05-22,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,17,1247
+2024-05-22,Antofagasta,Paola Muñoz,Yogurt Natural 500g,Lácteos,8,1158
+2024-05-22,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,4,588
+2024-05-22,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,15,880
+2024-05-22,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,5,1855
+2024-05-22,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,7,875
+2024-05-23,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,16,555
+2024-05-23,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,5,902
+2024-05-23,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,18,2133
+2024-05-23,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,16,1564
+2024-05-23,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,11,1794
+2024-05-23,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,18,3237
+2024-05-23,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,12,1667
+2024-05-24,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,7,3213
+2024-05-24,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,18,1376
+2024-05-24,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,10,2123
+2024-05-24,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,7,895
+2024-05-24,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,16,729
+2024-05-24,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,9,1673
+2024-05-24,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,19,1039
+2024-05-25,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,12,1787
+2024-05-25,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,2,1373
+2024-05-25,Antofagasta,Paola Muñoz,Tomate en Lata 400g,Conservas,3,858
+2024-05-25,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,9,3272
+2024-05-25,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,7,2187
+2024-05-25,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,18,1369
+2024-05-26,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,20,1050
+2024-05-26,Antofagasta,Paola Muñoz,Aceite Vegetal 1L,Abarrotes,8,2062
+2024-05-26,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,17,1487
+2024-05-26,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,8,1443
+2024-05-27,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,11,1870
+2024-05-27,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,5,901
+2024-05-27,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,6,1704
+2024-05-28,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,7,3223
+2024-05-28,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,10,655
+2024-05-28,Antofagasta,Paola Muñoz,Leche Entera 1L,Lácteos,19,959
+2024-05-28,Antofagasta,Paola Muñoz,Jugo Natural 1L,Bebidas,2,1644
+2024-05-28,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,6,1759
+2024-05-28,Antofagasta,Paola Muñoz,Jabón Barra x3,Limpieza,16,1797
+2024-05-29,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,1,876
+2024-05-29,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,20,567
+2024-05-29,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,10,756
+2024-05-29,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,18,1564
+2024-05-29,Antofagasta,Paola Muñoz,Detergente 1kg,Limpieza,5,3279
+2024-05-30,Antofagasta,Paola Muñoz,Arroz Grano Largo 1kg,Abarrotes,7,1328
+2024-05-30,Antofagasta,Paola Muñoz,Fideos Spaghetti 400g,Abarrotes,6,757
+2024-05-30,Antofagasta,Paola Muñoz,Atún en Lata 170g,Conservas,9,1477
+2024-05-30,Antofagasta,Paola Muñoz,Pan Molde 550g,Panadería,11,875
+2024-05-30,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,7,584
+2024-05-30,Antofagasta,Paola Muñoz,Agua Mineral 1.5L,Bebidas,13,649
+2024-05-01,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,3,742
+2024-05-01,Temuco,Roberto Díaz,Atún en Lata 170g,Conservas,4,1477
+2024-05-01,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,16,1232
+2024-05-01,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,1,2116
+2024-05-01,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,8,1864
+2024-05-01,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,11,1377
+2024-05-01,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,19,542
+2024-05-02,Temuco,Roberto Díaz,Atún en Lata 170g,Conservas,12,1490
+2024-05-02,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,4,919
+2024-05-02,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,6,1403
+2024-05-02,Temuco,Roberto Díaz,Atún en Lata 170g,Conservas,17,1509
+2024-05-02,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,4,845
+2024-05-03,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,8,596
+2024-05-03,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,16,1189
+2024-05-03,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,20,3245
+2024-05-03,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,18,1870
+2024-05-03,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,7,1663
+2024-05-04,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,17,1014
+2024-05-04,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,12,1619
+2024-05-04,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,4,555
+2024-05-04,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,17,1651
+2024-05-04,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,18,578
+2024-05-04,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,11,1283
+2024-05-04,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,4,3202
+2024-05-05,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,3,3280
+2024-05-05,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,2,3266
+2024-05-05,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,17,1256
+2024-05-05,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,19,3164
+2024-05-05,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,15,1678
+2024-05-05,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,1,871
+2024-05-05,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,1,1355
+2024-05-06,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,2,1008
+2024-05-06,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,3,778
+2024-05-06,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,3,920
+2024-05-06,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,10,904
+2024-05-06,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,5,1257
+2024-05-06,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,13,754
+2024-05-06,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,13,1770
+2024-05-07,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,12,1180
+2024-05-07,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,18,1250
+2024-05-07,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,5,1657
+2024-05-07,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,1,876
+2024-05-07,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,18,3258
+2024-05-07,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,13,1658
+2024-05-07,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,15,2138
+2024-05-08,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,7,1328
+2024-05-08,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,14,804
+2024-05-08,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,7,2067
+2024-05-08,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,20,908
+2024-05-09,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,2,602
+2024-05-09,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,2,872
+2024-05-09,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,8,3288
+2024-05-09,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,2,2085
+2024-05-09,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,10,1659
+2024-05-09,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,19,851
+2024-05-10,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,11,600
+2024-05-10,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,5,1433
+2024-05-10,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,14,2126
+2024-05-10,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,2,1442
+2024-05-10,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,6,649
+2024-05-10,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,16,1612
+2024-05-10,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,13,774
+2024-05-11,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,14,874
+2024-05-11,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,10,1246
+2024-05-11,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,18,1271
+2024-05-11,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,8,2126
+2024-05-11,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,5,888
+2024-05-12,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,14,1706
+2024-05-12,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,17,1634
+2024-05-12,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,8,1815
+2024-05-13,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,3,755
+2024-05-13,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,3,777
+2024-05-13,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,7,783
+2024-05-13,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,13,1310
+2024-05-14,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,19,2193
+2024-05-14,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,16,2103
+2024-05-14,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,10,643
+2024-05-15,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,4,2172
+2024-05-15,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,20,2102
+2024-05-15,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,8,1891
+2024-05-15,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,10,737
+2024-05-16,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,12,1678
+2024-05-16,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,12,1431
+2024-05-16,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,15,3175
+2024-05-16,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,16,851
+2024-05-16,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,12,2130
+2024-05-16,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,2,1894
+2024-05-17,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,5,774
+2024-05-17,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,18,1449
+2024-05-17,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,14,615
+2024-05-17,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,7,1234
+2024-05-18,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,19,1812
+2024-05-18,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,18,3236
+2024-05-18,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,16,1425
+2024-05-18,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,6,3240
+2024-05-19,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,18,1275
+2024-05-19,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,18,1165
+2024-05-19,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,2,1619
+2024-05-19,Temuco,Roberto Díaz,Atún en Lata 170g,Conservas,2,1431
+2024-05-20,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,8,1167
+2024-05-20,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,5,772
+2024-05-20,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,17,2166
+2024-05-20,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,2,763
+2024-05-20,Temuco,Roberto Díaz,Atún en Lata 170g,Conservas,16,1434
+2024-05-20,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,18,941
+2024-05-21,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,1,935
+2024-05-21,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,9,907
+2024-05-21,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,1,1428
+2024-05-21,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,14,815
+2024-05-21,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,4,1034
+2024-05-21,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,8,1199
+2024-05-22,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,9,1690
+2024-05-22,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,13,1320
+2024-05-22,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,13,757
+2024-05-22,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,8,597
+2024-05-22,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,3,1308
+2024-05-22,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,13,997
+2024-05-22,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,18,1871
+2024-05-23,Temuco,Roberto Díaz,Atún en Lata 170g,Conservas,1,1473
+2024-05-23,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,16,1011
+2024-05-23,Temuco,Roberto Díaz,Atún en Lata 170g,Conservas,11,1574
+2024-05-24,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,2,1658
+2024-05-24,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,19,2171
+2024-05-24,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,2,1319
+2024-05-25,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,19,1608
+2024-05-25,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,11,1154
+2024-05-25,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,19,2086
+2024-05-25,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,13,789
+2024-05-25,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,6,1444
+2024-05-26,Temuco,Roberto Díaz,Agua Mineral 1.5L,Bebidas,13,678
+2024-05-26,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,13,675
+2024-05-26,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,3,898
+2024-05-26,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,12,783
+2024-05-27,Temuco,Roberto Díaz,Jabón Barra x3,Limpieza,8,1769
+2024-05-27,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,20,741
+2024-05-27,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,1,709
+2024-05-28,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,8,3241
+2024-05-28,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,13,1710
+2024-05-28,Temuco,Roberto Díaz,Yogurt Natural 500g,Lácteos,19,1247
+2024-05-28,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,20,975
+2024-05-28,Temuco,Roberto Díaz,Aceite Vegetal 1L,Abarrotes,3,2071
+2024-05-28,Temuco,Roberto Díaz,Arroz Grano Largo 1kg,Abarrotes,5,1397
+2024-05-29,Temuco,Roberto Díaz,Tomate en Lata 400g,Conservas,13,851
+2024-05-29,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,4,663
+2024-05-29,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,10,913
+2024-05-29,Temuco,Roberto Díaz,Fideos Spaghetti 400g,Abarrotes,9,666
+2024-05-30,Temuco,Roberto Díaz,Leche Entera 1L,Lácteos,6,1010
+2024-05-30,Temuco,Roberto Díaz,Detergente 1kg,Limpieza,18,3292
+2024-05-30,Temuco,Roberto Díaz,Jugo Natural 1L,Bebidas,14,1626
+2024-05-30,Temuco,Roberto Díaz,Pan Molde 550g,Panadería,3,890
+2024-05-01,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,20,983
+2024-05-01,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,1,1824
+2024-05-01,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,13,1771
+2024-05-01,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,18,832
+2024-05-01,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,17,583
+2024-05-01,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,13,1473
+2024-05-01,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,9,1227
+2024-05-02,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,5,3166
+2024-05-02,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,14,1220
+2024-05-02,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,10,1873
+2024-05-02,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,12,964
+2024-05-02,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,16,2100
+2024-05-03,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,5,977
+2024-05-03,Puerto Montt,Carmen López,Pan Molde 550g,Panadería,13,885
+2024-05-03,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,13,624
+2024-05-03,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,11,3260
+2024-05-03,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,20,1464
+2024-05-03,Puerto Montt,Carmen López,Arroz Grano Largo 1kg,Abarrotes,11,1351
+2024-05-04,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,6,741
+2024-05-04,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,10,765
+2024-05-04,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,8,623
+2024-05-04,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,9,1850
+2024-05-04,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,4,784
+2024-05-04,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,19,2189
+2024-05-05,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,18,1436
+2024-05-05,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,15,823
+2024-05-05,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,10,3167
+2024-05-05,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,16,1785
+2024-05-06,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,9,2089
+2024-05-06,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,14,866
+2024-05-06,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,15,1022
+2024-05-06,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,13,676
+2024-05-06,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,14,1739
+2024-05-07,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,18,661
+2024-05-07,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,8,990
+2024-05-07,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,20,1161
+2024-05-08,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,13,1514
+2024-05-08,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,4,1752
+2024-05-08,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,9,956
+2024-05-08,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,17,1742
+2024-05-08,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,19,596
+2024-05-08,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,12,3250
+2024-05-08,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,19,3278
+2024-05-09,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,1,763
+2024-05-09,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,10,1006
+2024-05-09,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,4,936
+2024-05-09,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,10,727
+2024-05-10,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,17,2173
+2024-05-10,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,16,664
+2024-05-10,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,15,3231
+2024-05-10,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,10,911
+2024-05-10,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,4,775
+2024-05-10,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,4,682
+2024-05-11,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,6,1741
+2024-05-11,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,11,1293
+2024-05-11,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,15,1809
+2024-05-11,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,6,1797
+2024-05-12,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,1,1800
+2024-05-12,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,19,3259
+2024-05-12,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,1,1804
+2024-05-12,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,9,2066
+2024-05-12,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,4,677
+2024-05-12,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,12,1233
+2024-05-13,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,4,3217
+2024-05-13,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,16,1565
+2024-05-13,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,11,1529
+2024-05-13,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,13,690
+2024-05-14,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,12,757
+2024-05-14,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,6,616
+2024-05-14,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,19,561
+2024-05-15,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,4,701
+2024-05-15,Puerto Montt,Carmen López,Arroz Grano Largo 1kg,Abarrotes,4,1346
+2024-05-15,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,5,770
+2024-05-15,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,14,1785
+2024-05-16,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,14,1797
+2024-05-16,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,18,3194
+2024-05-16,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,6,1725
+2024-05-16,Puerto Montt,Carmen López,Arroz Grano Largo 1kg,Abarrotes,5,1347
+2024-05-16,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,15,653
+2024-05-16,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,1,764
+2024-05-16,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,7,1248
+2024-05-17,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,16,1704
+2024-05-17,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,16,1536
+2024-05-17,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,15,895
+2024-05-17,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,3,1294
+2024-05-17,Puerto Montt,Carmen López,Pan Molde 550g,Panadería,8,874
+2024-05-17,Puerto Montt,Carmen López,Pan Molde 550g,Panadería,9,857
+2024-05-17,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,10,1643
+2024-05-18,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,16,680
+2024-05-18,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,4,1746
+2024-05-18,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,9,1039
+2024-05-18,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,18,650
+2024-05-18,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,15,909
+2024-05-18,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,14,2076
+2024-05-19,Puerto Montt,Carmen López,Arroz Grano Largo 1kg,Abarrotes,2,1415
+2024-05-19,Puerto Montt,Carmen López,Arroz Grano Largo 1kg,Abarrotes,12,1322
+2024-05-19,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,4,3210
+2024-05-19,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,19,2139
+2024-05-20,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,14,1472
+2024-05-20,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,5,592
+2024-05-20,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,2,2195
+2024-05-20,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,18,711
+2024-05-20,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,18,583
+2024-05-20,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,10,714
+2024-05-20,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,9,671
+2024-05-21,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,14,1165
+2024-05-21,Puerto Montt,Carmen López,Arroz Grano Largo 1kg,Abarrotes,5,1333
+2024-05-21,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,5,2132
+2024-05-22,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,13,1555
+2024-05-22,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,19,1218
+2024-05-22,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,14,1526
+2024-05-22,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,3,3173
+2024-05-23,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,9,1694
+2024-05-23,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,16,3233
+2024-05-23,Puerto Montt,Carmen López,Agua Mineral 1.5L,Bebidas,1,563
+2024-05-23,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,15,861
+2024-05-23,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,18,1001
+2024-05-23,Puerto Montt,Carmen López,Aceite Vegetal 1L,Abarrotes,14,2104
+2024-05-24,Puerto Montt,Carmen López,Arroz Grano Largo 1kg,Abarrotes,11,1372
+2024-05-24,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,18,787
+2024-05-24,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,19,1274
+2024-05-24,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,2,651
+2024-05-24,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,15,904
+2024-05-24,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,6,1012
+2024-05-25,Puerto Montt,Carmen López,Pan Molde 550g,Panadería,14,851
+2024-05-25,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,5,847
+2024-05-25,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,9,1173
+2024-05-25,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,12,1494
+2024-05-25,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,12,942
+2024-05-25,Puerto Montt,Carmen López,Pan Molde 550g,Panadería,13,878
+2024-05-26,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,3,1774
+2024-05-26,Puerto Montt,Carmen López,Pan Molde 550g,Panadería,7,922
+2024-05-26,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,5,957
+2024-05-26,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,15,1602
+2024-05-27,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,11,800
+2024-05-27,Puerto Montt,Carmen López,Jabón Barra x3,Limpieza,5,1872
+2024-05-27,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,8,998
+2024-05-28,Puerto Montt,Carmen López,Tomate en Lata 400g,Conservas,4,796
+2024-05-28,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,12,716
+2024-05-28,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,13,1184
+2024-05-29,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,17,1044
+2024-05-29,Puerto Montt,Carmen López,Pan Molde 550g,Panadería,20,842
+2024-05-29,Puerto Montt,Carmen López,Detergente 1kg,Limpieza,12,3204
+2024-05-29,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,5,1535
+2024-05-30,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,15,1485
+2024-05-30,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,4,935
+2024-05-30,Puerto Montt,Carmen López,Leche Entera 1L,Lácteos,19,998
+2024-05-30,Puerto Montt,Carmen López,Fideos Spaghetti 400g,Abarrotes,14,720
+2024-05-30,Puerto Montt,Carmen López,Yogurt Natural 500g,Lácteos,8,1220
+2024-05-30,Puerto Montt,Carmen López,Atún en Lata 170g,Conservas,3,1493
+2024-05-30,Puerto Montt,Carmen López,Jugo Natural 1L,Bebidas,20,1672
+2024-05-01,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,10,1482
+2024-05-01,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,20,1730
+2024-05-01,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,13,2125
+2024-05-02,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,16,2148
+2024-05-02,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,8,1027
+2024-05-02,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,20,1448
+2024-05-03,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,12,881
+2024-05-03,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,13,1295
+2024-05-03,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,12,1889
+2024-05-03,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,6,1550
+2024-05-03,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,1,1050
+2024-05-03,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,1,967
+2024-05-03,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,2,2065
+2024-05-04,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,10,1728
+2024-05-04,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,14,1852
+2024-05-04,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,18,1037
+2024-05-04,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,5,611
+2024-05-04,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,10,920
+2024-05-04,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,7,1639
+2024-05-05,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,13,790
+2024-05-05,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,3,1509
+2024-05-05,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,14,831
+2024-05-05,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,8,822
+2024-05-05,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,4,1866
+2024-05-05,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,20,554
+2024-05-05,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,6,1330
+2024-05-06,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,5,772
+2024-05-06,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,16,1238
+2024-05-06,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,17,1666
+2024-05-07,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,5,708
+2024-05-07,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,4,777
+2024-05-07,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,14,709
+2024-05-07,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,3,1667
+2024-05-08,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,3,1557
+2024-05-08,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,17,3242
+2024-05-08,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,16,945
+2024-05-08,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,12,1190
+2024-05-08,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,4,1446
+2024-05-08,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,4,1488
+2024-05-08,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,17,770
+2024-05-09,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,8,811
+2024-05-09,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,12,3248
+2024-05-09,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,6,1159
+2024-05-10,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,14,827
+2024-05-10,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,8,746
+2024-05-10,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,11,839
+2024-05-10,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,19,995
+2024-05-10,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,17,913
+2024-05-10,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,8,1282
+2024-05-10,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,13,817
+2024-05-11,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,10,1383
+2024-05-11,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,18,1016
+2024-05-11,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,12,851
+2024-05-11,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,19,1377
+2024-05-11,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,20,832
+2024-05-11,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,12,3276
+2024-05-12,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,18,832
+2024-05-12,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,1,1254
+2024-05-12,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,8,938
+2024-05-12,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,1,725
+2024-05-13,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,13,1508
+2024-05-13,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,7,1035
+2024-05-13,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,14,2175
+2024-05-14,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,9,1173
+2024-05-14,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,8,933
+2024-05-14,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,12,1867
+2024-05-15,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,4,669
+2024-05-15,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,13,1169
+2024-05-15,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,19,555
+2024-05-16,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,5,1490
+2024-05-16,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,9,1380
+2024-05-16,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,11,1831
+2024-05-16,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,9,3209
+2024-05-16,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,7,934
+2024-05-16,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,4,579
+2024-05-17,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,15,1269
+2024-05-17,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,14,670
+2024-05-17,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,12,1653
+2024-05-18,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,15,1367
+2024-05-18,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,3,940
+2024-05-18,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,10,1440
+2024-05-18,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,11,2087
+2024-05-18,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,8,991
+2024-05-18,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,17,1762
+2024-05-19,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,6,1307
+2024-05-19,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,15,1892
+2024-05-19,Rancagua,Felipe Herrera,Tomate en Lata 400g,Conservas,18,833
+2024-05-19,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,15,926
+2024-05-19,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,4,1153
+2024-05-20,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,5,2100
+2024-05-20,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,12,1771
+2024-05-20,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,19,606
+2024-05-21,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,3,850
+2024-05-21,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,15,1462
+2024-05-21,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,11,931
+2024-05-22,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,2,3193
+2024-05-22,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,14,641
+2024-05-22,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,1,3247
+2024-05-23,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,12,1204
+2024-05-23,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,9,1221
+2024-05-23,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,5,3158
+2024-05-23,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,20,602
+2024-05-23,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,10,1557
+2024-05-23,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,18,1872
+2024-05-24,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,9,998
+2024-05-24,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,14,1201
+2024-05-24,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,17,1493
+2024-05-25,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,13,891
+2024-05-25,Rancagua,Felipe Herrera,Detergente 1kg,Limpieza,18,3274
+2024-05-25,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,19,768
+2024-05-25,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,13,709
+2024-05-25,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,1,1231
+2024-05-25,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,8,547
+2024-05-25,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,2,1420
+2024-05-26,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,19,699
+2024-05-26,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,4,1213
+2024-05-26,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,8,1498
+2024-05-26,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,2,1656
+2024-05-26,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,13,630
+2024-05-26,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,6,1210
+2024-05-26,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,11,631
+2024-05-27,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,12,945
+2024-05-27,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,5,684
+2024-05-27,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,16,2188
+2024-05-27,Rancagua,Felipe Herrera,Arroz Grano Largo 1kg,Abarrotes,6,1425
+2024-05-27,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,3,814
+2024-05-27,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,20,2106
+2024-05-27,Rancagua,Felipe Herrera,Pan Molde 550g,Panadería,17,922
+2024-05-28,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,20,691
+2024-05-28,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,11,1195
+2024-05-28,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,2,645
+2024-05-29,Rancagua,Felipe Herrera,Agua Mineral 1.5L,Bebidas,5,568
+2024-05-29,Rancagua,Felipe Herrera,Jugo Natural 1L,Bebidas,12,1618
+2024-05-29,Rancagua,Felipe Herrera,Fideos Spaghetti 400g,Abarrotes,13,790
+2024-05-29,Rancagua,Felipe Herrera,Leche Entera 1L,Lácteos,11,977
+2024-05-30,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,6,1261
+2024-05-30,Rancagua,Felipe Herrera,Atún en Lata 170g,Conservas,16,1511
+2024-05-30,Rancagua,Felipe Herrera,Yogurt Natural 500g,Lácteos,18,1241
+2024-05-30,Rancagua,Felipe Herrera,Aceite Vegetal 1L,Abarrotes,19,2094
+2024-05-30,Rancagua,Felipe Herrera,Jabón Barra x3,Limpieza,10,1825

@@ -1,0 +1,166 @@
+cliente_id,nombre,region,segmento,compras,frecuencia_contacto,email
+1136,Ignacio Castro,RM,Estándar,6,alta,ignacio.castro1136@mail.com
+1116,Jorge Leiva,Araucanía,Estándar,28,alta,jorge.leiva1116@mail.com
+1132,Rodrigo Núñez,RM,Premium,22,alta,rodrigo.núñez1132@mail.com
+1056,Luis Soto,Valparaíso,Estándar,24,media,luis.soto1056@mail.com
+1096,Ignacio Castro,Coquimbo,Básico,26,alta,ignacio.castro1096@mail.com
+1030,Pablo Morales,Valparaíso,Básico,39,ALTA,pablo.morales1030@mail.com
+1078,Ana González,Los Lagos,Estándar,5,baja,ana.gonzález1078@mail.com
+1052,Valentina Muñoz,RM,Estándar,12,Altaa,valentina.muñoz1052@mail.com
+1102,Carolina Espinoza,RM,Básico,19,  alta ,carolina.espinoza1102@mail.com
+1146,Daniela Lagos,Araucanía,Básico,30,media,daniela.lagos1146@mail.com
+1020,Ana González,Maule,Estándar,38,baja,ana.gonzález1020@mail.com
+1086,Felipe Reyes,RM,Premium,16,alta,felipe.reyes1086@mail.com
+1016,Daniela Lagos,Valparaíso,Estándar,28,ALTA,daniela.lagos1016@mail.com
+1067,Carolina Espinoza,Coquimbo,Básico,41,medía,carolina.espinoza1067@mail.com
+1025,Constanza Medina,RM,Estándar,36,baja,constanza.medina1025@mail.com
+1031,Jorge Leiva,Bio-Bío,Estándar,32,alta,jorge.leiva1031@mail.com
+1133,Martín Fuentes,RM,Premium,11,media,martín.fuentes1133@mail.com
+1106,Javiera Torres,Maule,Estándar,51,media,javiera.torres1106@mail.com
+1031,Jorge Leiva,Bio-Bío,Estándar,32,alta,jorge.leiva1031@mail.com
+1017,Valentina Muñoz,Maule,Estándar,16,altaa,valentina.muñoz1017@mail.com
+1076,Tomás Flores,RM,Estándar,25,baja,tomás.flores1076@mail.com
+1019,Jorge Leiva,Araucanía,Premium,44,alta,jorge.leiva1019@mail.com
+1013,Camila Rojas,Bio-Bío,Básico,18,alta,camila.rojas1013@mail.com
+1010,Daniela Lagos,Coquimbo,Premium,26,alta,daniela.lagos1010@mail.com
+1032,Tomás Flores,Bio-Bío,Básico,31,media,tomás.flores1032@mail.com
+1038,Jorge Leiva,Valparaíso,Básico,48,alta,jorge.leiva1038@mail.com
+1099,Luis Soto,RM,Premium,49,  alta ,luis.soto1099@mail.com
+1057,Ignacio Castro,RM,Estándar,49,Altaa,ignacio.castro1057@mail.com
+1135,Rodrigo Núñez,Maule,Estándar,3,media,rodrigo.núñez1135@mail.com
+1119,Javiera Torres,Maule,Premium,22,media,javiera.torres1119@mail.com
+1140,Diego Vega,Araucanía,Básico,11,altaa,diego.vega1140@mail.com
+1079,Ana González,Valparaíso,Estándar,18,media,ana.gonzález1079@mail.com
+1061,Fernanda Díaz,RM,Estándar,30,baja,fernanda.díaz1061@mail.com
+1085,Ignacio Castro,RM,Estándar,6,baja,ignacio.castro1085@mail.com
+1003,Sofía Herrera,RM,Estándar,51,ALTA,sofía.herrera1003@mail.com
+1095,Tomás Flores,Coquimbo,Estándar,45,Altaa,tomás.flores1095@mail.com
+1046,Romina Pérez,Valparaíso,Estándar,8,alta,romina.pérez1046@mail.com
+1043,Luis Soto,Valparaíso,Premium,36,medía,luis.soto1043@mail.com
+1070,Fernanda Díaz,RM,Estándar,41,alta,fernanda.díaz1070@mail.com
+1002,Constanza Medina,Bio-Bío,Estándar,33,baja,constanza.medina1002@mail.com
+1027,Pablo Morales,Valparaíso,Estándar,29,media,pablo.morales1027@mail.com
+1142,Ignacio Castro,RM,Estándar,5,baja,ignacio.castro1142@mail.com
+1118,Pablo Morales,RM,Estándar,10,alta,pablo.morales1118@mail.com
+1094,Diego Vega,Bio-Bío,Premium,14,media,diego.vega1094@mail.com
+1134,Andrés Vargas,Araucanía,Básico,13,media,andrés.vargas1134@mail.com
+1037,Ignacio Castro,RM,Premium,5,baja,ignacio.castro1037@mail.com
+1083,Luis Soto,RM,Básico,7,baja,luis.soto1083@mail.com
+1023,Valentina Muñoz,Maule,Premium,10,baja,valentina.muñoz1023@mail.com
+1127,Daniela Lagos,RM,Básico,15,media,daniela.lagos1127@mail.com
+1068,Felipe Reyes,Bio-Bío,Básico,42,Altaa,felipe.reyes1068@mail.com
+1098,Pablo Morales,Bio-Bío,Estándar,17,alta,pablo.morales1098@mail.com
+1012,Andrés Vargas,Valparaíso,Premium,48,alta,andrés.vargas1012@mail.com
+1066,Rodrigo Núñez,Bio-Bío,Básico,29,baja,rodrigo.núñez1066@mail.com
+1087,Tomás Flores,Valparaíso,Premium,51,baja,tomás.flores1087@mail.com
+1007,Andrés Vargas,Valparaíso,Estándar,51,Altaa,andrés.vargas1007@mail.com
+1028,Diego Vega,Bio-Bío,Estándar,49,Altaa,diego.vega1028@mail.com
+1077,Martín Fuentes,RM,Básico,43,altaa,martín.fuentes1077@mail.com
+1143,Carolina Espinoza,Bio-Bío,Estándar,31,alta,carolina.espinoza1143@mail.com
+1039,Camila Rojas,RM,Premium,17,media,camila.rojas1039@mail.com
+1042,Daniela Lagos,RM,Estándar,19,baja,daniela.lagos1042@mail.com
+1005,Pablo Morales,Coquimbo,Estándar,38,Altaa,pablo.morales1005@mail.com
+1139,Daniela Lagos,RM,Premium,43,alta,daniela.lagos1139@mail.com
+1033,Camila Rojas,Valparaíso,Estándar,3,baja,camila.rojas1033@mail.com
+1145,Felipe Reyes,RM,Estándar,38,media,felipe.reyes1145@mail.com
+1110,Constanza Medina,Valparaíso,Básico,25,altaa,constanza.medina1110@mail.com
+1069,Diego Vega,Valparaíso,Estándar,40,baja,diego.vega1069@mail.com
+1011,Valentina Muñoz,RM,Estándar,51,  alta ,valentina.muñoz1011@mail.com
+1097,Fernanda Díaz,Araucanía,Estándar,4,baja,fernanda.díaz1097@mail.com
+1112,Camila Rojas,Valparaíso,Estándar,39,media,camila.rojas1112@mail.com
+1001,Diego Vega,Valparaíso,Premium,47,media,diego.vega1001@mail.com
+1123,Rodrigo Núñez,Araucanía,Estándar,25,alta,rodrigo.núñez1123@mail.com
+1124,Jorge Leiva,RM,Premium,1,altaa,jorge.leiva1124@mail.com
+1065,Fernanda Díaz,RM,Premium,29,alta,fernanda.díaz1065@mail.com
+1045,Valentina Muñoz,Los Lagos,Estándar,26,alta,valentina.muñoz1045@mail.com
+1147,Camila Rojas,Valparaíso,Básico,42,media,camila.rojas1147@mail.com
+1029,Sofía Herrera,RM,Estándar,25,media,sofía.herrera1029@mail.com
+1041,Sofía Herrera,Los Lagos,Estándar,14,media,sofía.herrera1041@mail.com
+1115,Jorge Leiva,Valparaíso,Estándar,24,alta,jorge.leiva1115@mail.com
+1026,Javiera Torres,Maule,Premium,23,media,javiera.torres1026@mail.com
+1024,Diego Vega,Valparaíso,Básico,49,alta,diego.vega1024@mail.com
+1120,Martín Fuentes,Maule,Premium,51,media,martín.fuentes1120@mail.com
+1082,Felipe Reyes,Valparaíso,Estándar,49,baja,felipe.reyes1082@mail.com
+1080,Tomás Flores,RM,Estándar,14,media,tomás.flores1080@mail.com
+1040,Carolina Espinoza,Araucanía,Estándar,19,  alta ,carolina.espinoza1040@mail.com
+1091,Felipe Reyes,RM,Estándar,34,alta,felipe.reyes1091@mail.com
+1109,Luis Soto,Bio-Bío,Estándar,3,altaa,luis.soto1109@mail.com
+1034,Andrés Vargas,RM,Premium,27,  alta ,andrés.vargas1034@mail.com
+1138,Fernanda Díaz,RM,Estándar,23,altaa,fernanda.díaz1138@mail.com
+1048,Constanza Medina,Bio-Bío,Premium,15,alta,constanza.medina1048@mail.com
+1125,Constanza Medina,RM,Básico,4,baja,constanza.medina1125@mail.com
+1062,Felipe Reyes,Bio-Bío,Estándar,25,media,felipe.reyes1062@mail.com
+1074,Camila Rojas,Bio-Bío,Estándar,13,media,camila.rojas1074@mail.com
+1034,Andrés Vargas,Bio-Bío,Premium,27,  alta ,andrés.vargas1034@mail.com
+1113,Diego Vega,Maule,Estándar,45,baja,diego.vega1113@mail.com
+1121,Tomás Flores,RM,Estándar,7,alta,tomás.flores1121@mail.com
+1129,Andrés Vargas,Maule,Estándar,46,alta,andrés.vargas1129@mail.com
+1063,Javiera Torres,Valparaíso,Estándar,29,baja,javiera.torres1063@mail.com
+1005,Pablo Morales,Los Lagos,Estándar,38,Altaa,pablo.morales1005@mail.com
+1101,Ana González,Los Lagos,Premium,27,Altaa,ana.gonzález1101@mail.com
+1105,Javiera Torres,Valparaíso,Básico,20,alta,javiera.torres1105@mail.com
+1054,Andrés Vargas,RM,Premium,38,media,andrés.vargas1054@mail.com
+1006,Daniela Lagos,Bio-Bío,Estándar,16,baja,daniela.lagos1006@mail.com
+1119,Javiera Torres,RM,Premium,22,media,javiera.torres1119@mail.com
+1128,Romina Pérez,RM,Básico,22,alta,romina.pérez1128@mail.com
+1041,Sofía Herrera,Los Lagos,Estándar,14,media,sofía.herrera1041@mail.com
+1050,Valentina Muñoz,Valparaíso,Estándar,41,media,valentina.muñoz1050@mail.com
+1036,Camila Rojas,RM,Básico,33,baja,camila.rojas1036@mail.com
+1081,Sofía Herrera,RM,Estándar,41,media,sofía.herrera1081@mail.com
+1078,Ana González,RM,Estándar,5,baja,ana.gonzález1078@mail.com
+1035,Ignacio Castro,RM,Premium,23,media,ignacio.castro1035@mail.com
+1047,Javiera Torres,Bio-Bío,Estándar,1,media,javiera.torres1047@mail.com
+1008,Sofía Herrera,Araucanía,Estándar,21,alta,sofía.herrera1008@mail.com
+1044,Tomás Flores,RM,Premium,42,media,tomás.flores1044@mail.com
+1071,Valentina Muñoz,RM,Básico,22,baja,valentina.muñoz1071@mail.com
+1126,Andrés Vargas,Maule,Básico,50,media,andrés.vargas1126@mail.com
+1111,Ignacio Castro,Maule,Básico,40,alta,ignacio.castro1111@mail.com
+1092,Constanza Medina,RM,Estándar,33,baja,constanza.medina1092@mail.com
+1084,Constanza Medina,Los Lagos,Básico,30,ALTA,constanza.medina1084@mail.com
+1148,Constanza Medina,Los Lagos,Básico,40,baja,constanza.medina1148@mail.com
+1149,Luis Soto,RM,Estándar,29,media,luis.soto1149@mail.com
+1090,Carolina Espinoza,Los Lagos,Básico,34,alta,carolina.espinoza1090@mail.com
+1009,Ignacio Castro,RM,Estándar,4,alta,ignacio.castro1009@mail.com
+1095,Tomás Flores,Coquimbo,Estándar,45,Altaa,tomás.flores1095@mail.com
+1114,Tomás Flores,Bio-Bío,Básico,36,alta,tomás.flores1114@mail.com
+1014,Carolina Espinoza,Maule,Estándar,4,alta,carolina.espinoza1014@mail.com
+1060,Ignacio Castro,Los Lagos,Estándar,5,baja,ignacio.castro1060@mail.com
+1141,Valentina Muñoz,Bio-Bío,Premium,32,alta,valentina.muñoz1141@mail.com
+1004,Diego Vega,Coquimbo,Estándar,10,baja,diego.vega1004@mail.com
+1018,Constanza Medina,Bio-Bío,Estándar,26,alta,constanza.medina1018@mail.com
+1073,Valentina Muñoz,RM,Básico,2,baja,valentina.muñoz1073@mail.com
+1144,Daniela Lagos,Valparaíso,Estándar,1,media,daniela.lagos1144@mail.com
+1137,Camila Rojas,RM,Estándar,17,media,camila.rojas1137@mail.com
+1037,Ignacio Castro,RM,Premium,5,baja,ignacio.castro1037@mail.com
+1064,Javiera Torres,Valparaíso,Estándar,8,,javiera.torres1064@mail.com
+1055,Daniela Lagos,RM,Estándar,21,media,daniela.lagos1055@mail.com
+1108,Luis Soto,RM,Básico,34,baja,luis.soto1108@mail.com
+1051,Ana González,RM,Estándar,21,alta,ana.gonzález1051@mail.com
+1074,Camila Rojas,Araucanía,Estándar,13,media,camila.rojas1074@mail.com
+1059,Romina Pérez,Valparaíso,Estándar,14,alta,romina.pérez1059@mail.com
+1049,Constanza Medina,RM,Básico,2,baja,constanza.medina1049@mail.com
+1089,Jorge Leiva,Araucanía,Premium,43,  alta ,jorge.leiva1089@mail.com
+1022,Ana González,RM,Estándar,48,alta,ana.gonzález1022@mail.com
+1058,Tomás Flores,Maule,Básico,12,baja,tomás.flores1058@mail.com
+1080,Tomás Flores,Araucanía,Estándar,14,media,tomás.flores1080@mail.com
+1130,Felipe Reyes,Maule,Premium,26,baja,felipe.reyes1130@mail.com
+1038,Jorge Leiva,Valparaíso,Básico,48,alta,jorge.leiva1038@mail.com
+1066,Rodrigo Núñez,Bio-Bío,Básico,29,baja,rodrigo.núñez1066@mail.com
+1002,Constanza Medina,Bio-Bío,Estándar,33,baja,constanza.medina1002@mail.com
+1053,Ana González,Araucanía,Premium,25,media,ana.gonzález1053@mail.com
+1150,Carolina Espinoza,Coquimbo,Estándar,12,alta,carolina.espinoza1150@mail.com
+1131,Felipe Reyes,Maule,Básico,8,alta,felipe.reyes1131@mail.com
+1078,Ana González,RM,Estándar,5,baja,ana.gonzález1078@mail.com
+1104,Carolina Espinoza,RM,Estándar,12,media,carolina.espinoza1104@mail.com
+1100,Felipe Reyes,RM,Estándar,39,alta,felipe.reyes1100@mail.com
+1117,Camila Rojas,Valparaíso,Estándar,9,alta,camila.rojas1117@mail.com
+1088,Ignacio Castro,Araucanía,Estándar,32,alta,ignacio.castro1088@mail.com
+1075,Tomás Flores,RM,Estándar,2,media,tomás.flores1075@mail.com
+1122,Diego Vega,Bio-Bío,Estándar,35,Altaa,diego.vega1122@mail.com
+1086,Felipe Reyes,Maule,Premium,16,alta,felipe.reyes1086@mail.com
+1021,Javiera Torres,Los Lagos,Estándar,36,media,javiera.torres1021@mail.com
+1072,Andrés Vargas,Valparaíso,Estándar,3,alta,andrés.vargas1072@mail.com
+1107,Luis Soto,RM,Premium,16,altaa,luis.soto1107@mail.com
+1015,Carolina Espinoza,Coquimbo,Premium,34,media,carolina.espinoza1015@mail.com
+1093,Martín Fuentes,Bio-Bío,Básico,17,alta,martín.fuentes1093@mail.com
+1103,Romina Pérez,Valparaíso,Básico,40,alta,romina.pérez1103@mail.com

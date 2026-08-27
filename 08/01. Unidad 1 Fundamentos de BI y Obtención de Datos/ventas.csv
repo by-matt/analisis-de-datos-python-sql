@@ -1,0 +1,6 @@
+ID_Venta,Fecha,Tienda,Categoria_Producto,Producto,Cantidad,Precio_Unitario,Total
+1001,2024-07-01,Sucursal A,Lácteos,Leche Entera,20,1000,20000
+1002,2024-07-01,Sucursal B,Panadería,Pan Integral,15,800,12000
+1003,2024-07-02,Sucursal A,Bebidas,Jugo Naranja,30,1200,36000
+1004,2024-07-02,Sucursal C,Lácteos,Yogurt,25,900,22500
+1005,2024-07-03,Sucursal B,Panadería,Croissant,10,950,9500

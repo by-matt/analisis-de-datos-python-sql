@@ -1,0 +1,956 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 🎨 Clase 7 — Personalización avanzada de gráficos en Matplotlib\n",
+    "## Unidad: Visualización de datos\n",
+    "\n",
+    "**Situación:** El equipo ha recibido críticas sobre los gráficos enviados en informes anteriores: tamaños no proporcionales, colores confusos, ejes mal rotulados, sin leyendas claras.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Controlar **tamaño y posición** de la figura: `figsize`, `tight_layout`, `subplots_adjust`, `add_axes`\n",
+    "- Aplicar **colores, estilos de línea y marcadores**\n",
+    "- Configurar **ticks, etiquetas y leyendas** con precisión\n",
+    "- Responder a las 5 **preguntas de cierre** del slide 37\n",
+    "- Exportar gráficos con `savefig(bbox_inches='tight')`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "print('✅ Librerías cargadas')\n",
+    "import matplotlib\n",
+    "print(f'Matplotlib {matplotlib.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Posición y tamaño de los gráficos\n",
+    "\n",
+    "### 1.1 `figsize` — controlar el tamaño de la figura"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 6\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(10, 5))  # 10 pulgadas de ancho, 5 de alto\n",
+    "ax.plot([1, 2, 3], [10, 20, 15])\n",
+    "ax.set_title('Ejemplo de gráfico redimensionado')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración: impacto de figsize en legibilidad\n",
+    "datos_x = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']\n",
+    "datos_y = [300,320,310,340,360,350,370,390,380,400,420,410]\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(18, 4))\n",
+    "fig.suptitle('Impacto de figsize en legibilidad', fontweight='bold')\n",
+    "\n",
+    "for ax, fs, titulo in zip(\n",
+    "    axes,\n",
+    "    [(3,2), (6,3), (12,4)],\n",
+    "    ['Muy pequeño\\n(3×2)','Tamaño base\\n(6×3)','Tamaño recomendado\\n(12×4)']\n",
+    "):\n",
+    "    ax_inner = ax.inset_axes([0,0,1,1])\n",
+    "    ax_inner.plot(datos_x, datos_y, marker='o', color='#2E75B6', linewidth=2)\n",
+    "    ax_inner.set_title(titulo, fontsize=9)\n",
+    "    ax_inner.tick_params(axis='x', rotation=45, labelsize=7)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('Recomendación: 8×4 o 10×5 para gráficos simples, 12×6 para informes con subgráficos.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 `tight_layout()` y `subplots_adjust()` — ajuste de márgenes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 7\n",
+    "plt.tight_layout()              # Ajuste automático sin solapamiento\n",
+    "plt.subplots_adjust(top=0.9)    # Ajuste fino: margen superior (de 0 a 1)\n",
+    "plt.close('all')\n",
+    "\n",
+    "# Demostración práctica\n",
+    "fig, axs = plt.subplots(2, 2, figsize=(12, 8))\n",
+    "fig.suptitle('Título general que necesita espacio arriba', fontsize=14, fontweight='bold')\n",
+    "\n",
+    "for i, ax in enumerate(axs.flat):\n",
+    "    ax.plot([1,2,3], [i*10+10, i*10+20, i*10+15])\n",
+    "    ax.set_title(f'Subgráfico {i+1} con etiqueta larga en X')\n",
+    "    ax.set_xlabel('Etiqueta eje X bastante larga')\n",
+    "    ax.set_ylabel('Ventas ($)')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.subplots_adjust(top=0.90)   # Espacio para suptitle\n",
+    "plt.show()\n",
+    "\n",
+    "print('tight_layout() ajusta automáticamente para evitar solapamientos.')\n",
+    "print('subplots_adjust(top=0.90) hace espacio para el título general.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 `fig.add_axes()` — posicionamiento manual"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 8\n",
+    "fig = plt.figure(figsize=(8, 6))\n",
+    "ax = fig.add_axes([0.1, 0.1, 0.8, 0.8])  # Posición y tamaño del eje como % del lienzo\n",
+    "ax.plot([1, 2, 3], [10, 20, 15])\n",
+    "ax.set_title('Posicionamiento manual del gráfico')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Uso avanzado: gráfico principal + gráfico insertado (inset)\n",
+    "fig = plt.figure(figsize=(10, 6))\n",
+    "\n",
+    "# Gráfico principal: [left, bottom, width, height] como fracción del lienzo\n",
+    "ax_main = fig.add_axes([0.1, 0.15, 0.85, 0.75])\n",
+    "x_main = np.arange(1, 13)\n",
+    "y_main = [300,320,310,340,360,350,370,390,380,400,420,410]\n",
+    "ax_main.plot(x_main, y_main, 'b-o', linewidth=2, label='Ventas anuales')\n",
+    "ax_main.set_title('Evolución anual de ventas — con zoom de Q1', fontweight='bold')\n",
+    "ax_main.set_xlabel('Mes')\n",
+    "ax_main.set_ylabel('Ventas ($)')\n",
+    "ax_main.legend()\n",
+    "ax_main.grid(True, linestyle='--', alpha=0.4)\n",
+    "\n",
+    "# Gráfico insertado (inset): zoom en Q1\n",
+    "ax_inset = fig.add_axes([0.55, 0.2, 0.3, 0.3])   # esquina inferior derecha\n",
+    "ax_inset.plot([1,2,3], y_main[:3], 'b-o', linewidth=2)\n",
+    "ax_inset.set_title('Zoom Q1', fontsize=9)\n",
+    "ax_inset.set_xticks([1,2,3])\n",
+    "ax_inset.set_xticklabels(['Ene','Feb','Mar'], fontsize=8)\n",
+    "ax_inset.grid(True, linestyle='--', alpha=0.4)\n",
+    "ax_inset.patch.set_alpha(0.9)\n",
+    "\n",
+    "plt.show()\n",
+    "print('fig.add_axes([x0, y0, ancho, alto]) — valores como proporción del lienzo (0 a 1)')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de errores comunes — slide 10\n",
+    "tabla_err_size = pd.DataFrame({\n",
+    "    'Error': ['Texto o leyenda cortada',\n",
+    "              'Solapamiento entre elementos',\n",
+    "              'Gráfico se ve deformado'],\n",
+    "    'Causa probable': ['Tamaño de figura insuficiente',\n",
+    "                       'No ajuste de márgenes',\n",
+    "                       'Relación ancho/alto mal definida'],\n",
+    "    'Solución recomendada': [\n",
+    "        'Aumentar figsize y usar tight_layout()',\n",
+    "        'Aplicar plt.subplots_adjust()',\n",
+    "        'Probar proporciones estándar (ej. 10×5)'\n",
+    "    ]\n",
+    "})\n",
+    "print(tabla_err_size.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Cómo controlas la proporción de un gráfico para un informe impreso? (pregunta cierre 1)\n",
+    "c1 = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuándo es recomendable tight_layout() y qué problema resuelve? (pregunta cierre 3)\n",
+    "c3 = \"\"\n",
+    "\n",
+    "print(f'1. Proporción informe: {c1}')\n",
+    "print(f'3. tight_layout():     {c3}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Colores, marcadores y estilos de línea\n",
+    "\n",
+    "### 2.1 Colores — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 13\n",
+    "fig, ax = plt.subplots()\n",
+    "ax.plot([1, 2, 3], [10, 20, 15], color='darkorange')\n",
+    "ax.set_title('Color personalizado en línea')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Formas de especificar color\n",
+    "fig, axes = plt.subplots(1, 4, figsize=(16, 3))\n",
+    "fig.suptitle('Formas de especificar color en Matplotlib', fontweight='bold')\n",
+    "\n",
+    "x = [1,2,3,4,5]\n",
+    "y = [10,20,15,25,20]\n",
+    "\n",
+    "for ax, (col, titulo) in zip(axes, [\n",
+    "    ('red',        'Nombre: \"red\"'),\n",
+    "    ('#1f77b4',    'Hex: \"#1f77b4\"'),\n",
+    "    ((0.2,0.6,0.8),'RGB tuple: (0.2,0.6,0.8)'),\n",
+    "    ('C2',         'Ciclo tab10: \"C2\"'),\n",
+    "]):\n",
+    "    ax.plot(x, y, color=col, linewidth=2.5, marker='o')\n",
+    "    ax.set_title(titulo, fontsize=9)\n",
+    "    ax.grid(True, alpha=0.3)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Estilos de línea y marcadores — códigos exactos presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 14\n",
+    "fig, ax = plt.subplots()\n",
+    "ax.plot([1, 2, 3], [10, 20, 15], linestyle='--', marker='o', color='purple')\n",
+    "ax.set_title('Línea discontinua con marcadores')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Galería de estilos de línea — tabla del slide 14\n",
+    "estilos_linea = [('-',  'Línea continua'),\n",
+    "                 ('--', 'Línea discontinua'),\n",
+    "                 ('-.', 'Línea punto-guión'),\n",
+    "                 (':',  'Línea punteada')]\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 4, figsize=(16, 3))\n",
+    "fig.suptitle('Estilos de línea (linestyle=)', fontweight='bold')\n",
+    "\n",
+    "x = [1,2,3,4,5]\n",
+    "y = [10,15,12,18,14]\n",
+    "\n",
+    "for ax, (ls, desc) in zip(axes, estilos_linea):\n",
+    "    ax.plot(x, y, linestyle=ls, linewidth=2.5, color='#2E75B6', marker='o')\n",
+    "    ax.set_title(f\"'{ls}'\\n{desc}\", fontsize=9)\n",
+    "    ax.grid(True, alpha=0.3)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Galería de marcadores — tabla del slide 15\n",
+    "marcadores = [('o','Círculo'), ('s','Cuadro'), ('^','Triángulo sup.'), ('D','Diamante'),\n",
+    "              ('v','Triángulo inf.'), ('P','Cruz gruesa'), ('*','Estrella'), ('X','X gruesa')]\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 8, figsize=(18, 2.5))\n",
+    "fig.suptitle('Tipos de marcadores (marker=)', fontweight='bold')\n",
+    "\n",
+    "for ax, (mk, nombre) in zip(axes, marcadores):\n",
+    "    ax.plot([1,2,3], [2,3,2.5], marker=mk, markersize=12, linewidth=1.5,\n",
+    "            color='#2E75B6', markerfacecolor='#ED7D31')\n",
+    "    ax.set_title(f\"'{mk}'\\n{nombre}\", fontsize=8)\n",
+    "    ax.set_xticks([])\n",
+    "    ax.set_yticks([])\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Cadena combinada — código exacto slide 16\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n",
+    "fig.suptitle('Parámetros separados vs cadena combinada', fontweight='bold')\n",
+    "\n",
+    "x = [1,2,3]\n",
+    "y = [10,20,15]\n",
+    "\n",
+    "# Parámetros separados (recomendado para proyectos)\n",
+    "axes[0].plot(x, y, color='red', linestyle='--', marker='o')\n",
+    "axes[0].set_title('Parámetros separados\\n(mejor legibilidad y control)')\n",
+    "axes[0].grid(True)\n",
+    "\n",
+    "# Cadena combinada — exacta del slide\n",
+    "axes[1].plot(x, y, 'ro--')   # rojo, círculos, línea discontinua\n",
+    "axes[1].set_title('Cadena combinada: \\'ro--\\'\\n(compacta, menos explícita)')\n",
+    "axes[1].grid(True)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('Formato cadena: [color][marcador][línea]  →  \"ro--\" = rojo + círculo + discontinua')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué diferencias clave entre parámetros separados vs cadena combinada? (pregunta cierre 2)\n",
+    "c2 = \"\"\n",
+    "\n",
+    "# ✏️ Crea un gráfico con 3 series usando estilos diferentes:\n",
+    "x = [1, 2, 3, 4]\n",
+    "y1 = [10, 15, 12, 18]\n",
+    "y2 = [8, 13, 10, 16]\n",
+    "y3 = [6, 11, 8, 14]\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(8, 4))\n",
+    "ax.plot(x, y1, color=???, linestyle=???, marker=???, label='Serie A')\n",
+    "ax.plot(x, y2, color=???, linestyle=???, marker=???, label='Serie B')\n",
+    "ax.plot(x, y3, color=???, linestyle=???, marker=???, label='Serie C')\n",
+    "ax.set_title('Ejercicio: 3 series con estilos distintos')\n",
+    "ax.legend()\n",
+    "ax.grid(True)\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print(f'2. {c2}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Ticks, etiquetas y leyendas\n",
+    "\n",
+    "### 3.1 Etiquetas y títulos — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 20\n",
+    "fig, ax = plt.subplots(figsize=(8, 4))\n",
+    "ax.plot([1,2,3,4], [300,320,310,330], color='steelblue', marker='o')\n",
+    "\n",
+    "ax.set_title('Ventas mensuales por región')\n",
+    "ax.set_xlabel('Mes')\n",
+    "ax.set_ylabel('Ventas ($)')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# Con parámetros adicionales\n",
+    "fig2, ax2 = plt.subplots(figsize=(8, 4))\n",
+    "ax2.plot([1,2,3,4], [300,320,310,330], color='steelblue', marker='o')\n",
+    "\n",
+    "ax2.set_title('Ventas mensuales por región',\n",
+    "              fontsize=14, fontweight='bold', color='#1F4E79', pad=12)\n",
+    "ax2.set_xlabel('Mes', fontsize=12, color='#444444')\n",
+    "ax2.set_ylabel('Ventas ($)', fontsize=12, color='#444444')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Ticks personalizados"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 21\n",
+    "fig, ax = plt.subplots(figsize=(8, 4))\n",
+    "ax.plot([0,1,2], [300,320,310], color='steelblue', marker='o')\n",
+    "\n",
+    "ax.set_xticks([0, 1, 2])\n",
+    "ax.set_xticklabels(['Enero', 'Febrero', 'Marzo'], rotation=45)\n",
+    "\n",
+    "ax.set_title('Ventas mensuales con ticks personalizados')\n",
+    "ax.set_ylabel('Ventas ($)')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Galería de opciones de ticks\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(15, 4))\n",
+    "fig.suptitle('Personalización de ticks', fontweight='bold')\n",
+    "\n",
+    "meses  = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']\n",
+    "ventas = [300,320,310,340,360,350,370,390,380,400,420,410]\n",
+    "\n",
+    "# Sin personalización\n",
+    "axes[0].plot(range(12), ventas, 'b-o', markersize=5)\n",
+    "axes[0].set_title('Sin personalización\\n(ticks numéricos)')\n",
+    "\n",
+    "# Con etiquetas de mes — set_xticklabels\n",
+    "axes[1].plot(range(12), ventas, 'g-s', markersize=5)\n",
+    "axes[1].set_xticks(range(12))\n",
+    "axes[1].set_xticklabels(meses, rotation=45, fontsize=8)\n",
+    "axes[1].set_title('Con set_xticklabels\\n(rotation=45)')\n",
+    "\n",
+    "# Con tick_params\n",
+    "axes[2].plot(range(12), ventas, 'r-^', markersize=5)\n",
+    "axes[2].set_xticks(range(12))\n",
+    "axes[2].set_xticklabels(meses, rotation=45, fontsize=8)\n",
+    "axes[2].tick_params(axis='x', colors='navy', labelsize=8, length=6, width=1.5)\n",
+    "axes[2].tick_params(axis='y', colors='darkgreen', labelsize=9)\n",
+    "axes[2].set_title('Con tick_params\\n(color, tamaño, grosor)')\n",
+    "\n",
+    "for ax in axes:\n",
+    "    ax.grid(True, linestyle='--', alpha=0.4)\n",
+    "    ax.set_ylabel('Ventas')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Leyendas — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 22\n",
+    "x  = [1, 2, 3, 4]\n",
+    "y1 = [300, 320, 310, 340]\n",
+    "y2 = [180, 200, 190, 220]\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(8, 4))\n",
+    "ax.plot(x, y1, label='Región Norte')\n",
+    "ax.plot(x, y2, label='Región Sur')\n",
+    "ax.legend(loc='upper left')\n",
+    "ax.set_title('Leyenda básica (loc=\"upper left\")')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Posiciones disponibles para la leyenda\n",
+    "posiciones = ['upper left','upper right','lower left','lower right',\n",
+    "              'upper center','lower center','center left','center right']\n",
+    "\n",
+    "fig, axes = plt.subplots(2, 4, figsize=(17, 7))\n",
+    "fig.suptitle('Posiciones de leyenda (loc=)', fontweight='bold')\n",
+    "\n",
+    "for ax, loc in zip(axes.flat, posiciones):\n",
+    "    ax.plot([1,2,3], [10,15,12], 'b-o', label='Norte')\n",
+    "    ax.plot([1,2,3], [8,12,10],  'r--s',label='Sur')\n",
+    "    ax.legend(loc=loc, fontsize=7, title_fontsize=7,\n",
+    "              fancybox=True, shadow=True)\n",
+    "    ax.set_title(f'loc=\"{loc}\"', fontsize=8)\n",
+    "    ax.grid(True, alpha=0.3)\n",
+    "    ax.set_ylim(0, 20)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla resumen: ticks — slide 21\n",
+    "tabla_ticks = pd.DataFrame({\n",
+    "    'Función': ['set_xticks() / set_yticks()','set_xticklabels()','tick_params()'],\n",
+    "    'Uso': [\n",
+    "        'Define la posición de los ticks',\n",
+    "        'Asigna etiquetas personalizadas',\n",
+    "        'Controla apariencia (grosor, color, etc.)'\n",
+    "    ]\n",
+    "})\n",
+    "print(tabla_ticks.to_string(index=False))\n",
+    "\n",
+    "# Tabla errores — slide 24\n",
+    "print()\n",
+    "tabla_err_tick = pd.DataFrame({\n",
+    "    'Error': ['Leyenda sobre el gráfico','Ticks solapados o ilegibles','Ejes sin etiquetas'],\n",
+    "    'Causa': ['loc mal definido','Falta de rotación','Olvido de set_xlabel/ylabel'],\n",
+    "    'Solución': [\n",
+    "        'Probar loc y usar bbox_to_anchor',\n",
+    "        'Agregar rotation en set_xticklabels()',\n",
+    "        'Incluir etiquetas descriptivas obligatoriamente'\n",
+    "    ]\n",
+    "})\n",
+    "print(tabla_err_tick.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué estrategia aplicarías si los ticks se superponen? (pregunta cierre 4)\n",
+    "c4 = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cómo afecta una leyenda mal posicionada? (pregunta cierre 5)\n",
+    "c5 = \"\"\n",
+    "\n",
+    "print(f'4. Ticks solapados: {c4}')\n",
+    "print(f'5. Leyenda mal posicionada: {c5}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad guiada: Informe ejecutivo de 4 productos\n",
+    "\n",
+    "### Código exacto de la presentación — slide 29"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 29\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "meses      = ['Ene', 'Feb', 'Mar']\n",
+    "producto_a = [200, 220, 250]\n",
+    "producto_b = [180, 210, 190]\n",
+    "producto_c = [150, 180, 160]\n",
+    "producto_d = [100, 140, 130]\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(10, 6))\n",
+    "\n",
+    "ax.plot(meses, producto_a, label='Producto A', linestyle='-',  marker='o', color='blue')\n",
+    "ax.plot(meses, producto_b, label='Producto B', linestyle='--', marker='s', color='green')\n",
+    "ax.plot(meses, producto_c, label='Producto C', linestyle='-.', marker='^', color='orange')\n",
+    "ax.plot(meses, producto_d, label='Producto D', linestyle=':',  marker='D', color='red')\n",
+    "\n",
+    "ax.set_title('Ventas trimestrales por producto')\n",
+    "ax.set_xlabel('Mes')\n",
+    "ax.set_ylabel('Ventas ($)')\n",
+    "ax.set_xticks(range(len(meses)))\n",
+    "ax.set_xticklabels(meses)\n",
+    "ax.legend(loc='upper left')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('informe_ventas.png', bbox_inches='tight')\n",
+    "print('✅ Gráfico guardado como informe_ventas.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Versión profesional extendida"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Versión profesional con todos los elementos de personalización\n",
+    "fig, ax = plt.subplots(figsize=(11, 6))\n",
+    "\n",
+    "# Datos del slide\n",
+    "series = {\n",
+    "    'Producto A': (producto_a, '-',  'o', '#2E75B6'),\n",
+    "    'Producto B': (producto_b, '--', 's', '#70AD47'),\n",
+    "    'Producto C': (producto_c, '-.', '^', '#ED7D31'),\n",
+    "    'Producto D': (producto_d, ':',  'D', '#7030A0'),\n",
+    "}\n",
+    "\n",
+    "for nombre, (datos, ls, mk, col) in series.items():\n",
+    "    ax.plot(meses, datos,\n",
+    "            label=nombre, linestyle=ls, marker=mk,\n",
+    "            color=col, linewidth=2.5, markersize=9)\n",
+    "\n",
+    "# Títulos y etiquetas\n",
+    "ax.set_title('Ventas trimestrales por producto — Q1',\n",
+    "             fontsize=14, fontweight='bold', pad=15)\n",
+    "ax.set_xlabel('Mes', fontsize=12)\n",
+    "ax.set_ylabel('Ventas ($)', fontsize=12)\n",
+    "\n",
+    "# Ticks personalizados\n",
+    "ax.set_xticks(range(len(meses)))\n",
+    "ax.set_xticklabels(meses, fontsize=11)\n",
+    "ax.tick_params(axis='y', labelsize=10)\n",
+    "\n",
+    "# Leyenda con bbox_to_anchor\n",
+    "ax.legend(loc='upper left', bbox_to_anchor=(1.01, 1),\n",
+    "          fontsize=10, title='Producto', title_fontsize=10,\n",
+    "          framealpha=0.95, edgecolor='#CCCCCC')\n",
+    "\n",
+    "# Grid y anotaciones\n",
+    "ax.grid(True, linestyle='--', alpha=0.4)\n",
+    "ax.set_ylim(0, 310)\n",
+    "\n",
+    "# Anotar mejor producto\n",
+    "max_val = max(max(d) for d, *_ in series.values())\n",
+    "ax.annotate(f'Máximo: ${max_val}',\n",
+    "            xy=(2, max_val), xytext=(1, max_val + 20),\n",
+    "            arrowprops=dict(arrowstyle='->', color='navy'),\n",
+    "            fontsize=9, color='navy')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('informe_ventas_pro.png', dpi=150, bbox_inches='tight')\n",
+    "print('✅ Guardado: informe_ventas_pro.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Actividad autónoma: Ventas regionales\n",
+    "\n",
+    "### 5.1 Cargar datos — código exacto slide 32"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "df = pd.read_csv('ventas_regionales_autonomo.csv')\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.2 Gráfico de líneas personalizado — código exacto slide 34"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 34\n",
+    "meses = df['Mes']\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(10, 5))\n",
+    "\n",
+    "ax.plot(meses, df['Norte'],  label='Región Norte',  linestyle='-',  marker='o', color='navy')\n",
+    "ax.plot(meses, df['Centro'], label='Región Centro', linestyle='--', marker='s', color='green')\n",
+    "ax.plot(meses, df['Sur'],    label='Región Sur',    linestyle='-.', marker='^', color='orange')\n",
+    "\n",
+    "ax.set_title('Ventas mensuales por región', fontsize=14)\n",
+    "ax.set_xlabel('Meses', fontsize=12)\n",
+    "ax.set_ylabel('Ventas ($)', fontsize=12)\n",
+    "ax.legend(loc='lower right')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('grafico_ventas_personalizado.png', bbox_inches='tight')\n",
+    "print('✅ Guardado: grafico_ventas_personalizado.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.3 Revisión — checklist del slide 33"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Responde al checklist del slide 33:\n",
+    "\n",
+    "# ¿Las etiquetas y títulos están legibles? ¿Tamaño de fuente adecuado?\n",
+    "r_legible = \"\"\n",
+    "\n",
+    "# ¿Los estilos permiten diferenciar claramente cada región?\n",
+    "r_estilos = \"\"\n",
+    "\n",
+    "# ¿La leyenda se ubica correctamente y no interfiere con los datos?\n",
+    "r_leyenda = \"\"\n",
+    "\n",
+    "print('--- CHECKLIST DE REVISIÓN ---')\n",
+    "print(f'Legibilidad:  {r_legible}')\n",
+    "print(f'Estilos:      {r_estilos}')\n",
+    "print(f'Leyenda:      {r_leyenda}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.4 Versión mejorada para informe ejecutivo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Versión con todos los requisitos del slide 32\n",
+    "fig, ax = plt.subplots(figsize=(12, 6))\n",
+    "\n",
+    "ax.plot(meses, df['Norte'],  label='Región Norte',  linestyle='-',  marker='o',\n",
+    "        color='navy',    linewidth=2.5, markersize=8)\n",
+    "ax.plot(meses, df['Centro'], label='Región Centro', linestyle='--', marker='s',\n",
+    "        color='#2E7D32', linewidth=2.5, markersize=8)\n",
+    "ax.plot(meses, df['Sur'],    label='Región Sur',    linestyle='-.', marker='^',\n",
+    "        color='#E65100', linewidth=2.5, markersize=8)\n",
+    "\n",
+    "# Títulos y etiquetas\n",
+    "ax.set_title('Ventas mensuales por región — Anual completo',\n",
+    "             fontsize=14, fontweight='bold', pad=12)\n",
+    "ax.set_xlabel('Meses', fontsize=12)\n",
+    "ax.set_ylabel('Ventas ($)', fontsize=12)\n",
+    "\n",
+    "# Ticks legibles con rotación\n",
+    "ax.set_xticks(range(len(df['Mes'])))\n",
+    "ax.set_xticklabels(df['Mes'], rotation=45, ha='right', fontsize=10)\n",
+    "ax.tick_params(axis='y', labelsize=10)\n",
+    "\n",
+    "# Leyenda en lower right (requisito del slide)\n",
+    "ax.legend(loc='lower right', fontsize=11,\n",
+    "          framealpha=0.95, edgecolor='#CCCCCC')\n",
+    "\n",
+    "# Grid y rango\n",
+    "ax.grid(True, linestyle='--', alpha=0.4)\n",
+    "ax.set_ylim(0, df[['Norte','Centro','Sur']].max().max() * 1.2)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('grafico_ventas_ejecutivo.png', dpi=150, bbox_inches='tight')\n",
+    "print('✅ Guardado: grafico_ventas_ejecutivo.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas de cierre (slide 37):"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Completa las 5 preguntas del slide 37:\n",
+    "p1 = \"\"  # figsize para informe impreso\n",
+    "p2 = \"\"  # parámetros separados vs cadena combinada\n",
+    "p3 = \"\"  # tight_layout() cuándo y qué resuelve\n",
+    "p4 = \"\"  # ticks solapados — estrategia\n",
+    "p5 = \"\"  # leyenda mal posicionada — impacto\n",
+    "\n",
+    "print('--- PREGUNTAS DE CIERRE (slide 37) ---')\n",
+    "preguntas = [\n",
+    "    '¿Cómo controlas la proporción de un gráfico para informe impreso?',\n",
+    "    '¿Diferencias entre parámetros separados vs cadena combinada?',\n",
+    "    '¿Cuándo usar tight_layout() y qué resuelve?',\n",
+    "    '¿Qué estrategia si los ticks se superponen?',\n",
+    "    '¿Cómo afecta una leyenda mal posicionada?'\n",
+    "]\n",
+    "for i, (preg, resp) in enumerate(zip(preguntas, [p1,p2,p3,p4,p5]), 1):\n",
+    "    print(f'\\n{i}. {preg}')\n",
+    "    print(f'   R: {resp}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de personalización avanzada\n",
+    "\n",
+    "### Tamaño y posición\n",
+    "\n",
+    "| Herramienta | Código | Uso |\n",
+    "|------------|--------|-----|\n",
+    "| Tamaño figura | `plt.subplots(figsize=(10,5))` | Definir al inicio |\n",
+    "| Ajuste automático | `plt.tight_layout()` | Siempre que haya texto |\n",
+    "| Ajuste fino | `plt.subplots_adjust(top=0.9)` | Espacio para suptitle |\n",
+    "| Posición manual | `fig.add_axes([x0,y0,w,h])` | Layouts y gráficos insertados |\n",
+    "| Exportar | `fig.savefig('f.png', bbox_inches='tight')` | Sin cortar bordes |\n",
+    "\n",
+    "### Estilos visuales\n",
+    "\n",
+    "| Parámetro | Opciones clave | Ejemplo |\n",
+    "|-----------|---------------|--------|\n",
+    "| `color=` | nombre, hex, RGB, C0..Cn | `color='#2E75B6'` |\n",
+    "| `linestyle=` | `'-'`, `'--'`, `'-.'`, `':'` | `linestyle='--'` |\n",
+    "| `marker=` | `'o'`, `'s'`, `'^'`, `'D'`, `'*'` | `marker='o'` |\n",
+    "| `linewidth=` | float | `linewidth=2.5` |\n",
+    "| `markersize=` | float | `markersize=8` |\n",
+    "| Cadena compacta | `[color][marker][ls]` | `'ro--'` |\n",
+    "\n",
+    "### Ticks, etiquetas y leyendas\n",
+    "\n",
+    "| Elemento | Código | Parámetros clave |\n",
+    "|----------|--------|------------------|\n",
+    "| Título | `ax.set_title('...')` | `fontsize`, `fontweight`, `pad` |\n",
+    "| Eje X | `ax.set_xlabel('...')` | `fontsize`, `color` |\n",
+    "| Eje Y | `ax.set_ylabel('...')` | `fontsize`, `color` |\n",
+    "| Ticks posición | `ax.set_xticks([...])` | lista de valores |\n",
+    "| Ticks etiquetas | `ax.set_xticklabels([...])` | `rotation=45` |\n",
+    "| Ticks estilo | `ax.tick_params(...)` | `colors`, `labelsize`, `length` |\n",
+    "| Leyenda | `ax.legend(loc='...')` | `loc`, `bbox_to_anchor`, `fontsize` |\n",
+    "\n",
+    "> 💡 **Parámetros separados > cadena combinada** en proyectos. `color='red', linestyle='--', marker='o'` es más legible y fácil de mantener que `'ro--'`.\n",
+    "\n",
+    "> 💡 **`bbox_to_anchor=(1.01, 1)`** mueve la leyenda fuera del área del gráfico, evitando que tape los datos."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

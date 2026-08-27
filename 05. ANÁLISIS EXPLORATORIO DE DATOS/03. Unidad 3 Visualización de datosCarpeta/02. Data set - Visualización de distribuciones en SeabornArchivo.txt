@@ -1,0 +1,757 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📈 Clase 2 — Visualización de distribuciones en Seaborn\n",
+    "## De `distplot` a `histplot` y `kdeplot`\n",
+    "\n",
+    "**Situación:** El equipo pedagógico de una plataforma de cursos online quiere entender cuánto tiempo dedican los usuarios por sesión. Necesitan saber si la distribución es simétrica o sesgada, y si hay extremos que distorsionan la media.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Entender la evolución de `distplot` → `histplot` + `kdeplot`\n",
+    "- Crear histogramas con `histplot()` y controlar bins, color, stat\n",
+    "- Crear curvas de densidad con `kdeplot()` y controlar `bw_adjust`\n",
+    "- Combinar ambos con `histplot(kde=True)`\n",
+    "- Interpretar forma, sesgo, multimodalidad y outliers\n",
+    "- Comparar ambas técnicas y saber cuándo usar cada una"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import seaborn as sns\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "# Buena práctica: configurar estilo al inicio\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Librerías cargadas')\n",
+    "print(f'Seaborn {sns.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Introducción al análisis de distribuciones\n",
+    "\n",
+    "### 1.1 ¿Qué nos dice la distribución de una variable?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración: cuatro distribuciones con la misma media\n",
+    "np.random.seed(42)\n",
+    "n = 200\n",
+    "\n",
+    "normal    = np.random.normal(50, 10, n)\n",
+    "sesgada   = np.random.exponential(15, n) + 20\n",
+    "bimodal   = np.concatenate([np.random.normal(35, 5, n//2),\n",
+    "                             np.random.normal(65, 5, n//2)])\n",
+    "uniforme  = np.random.uniform(20, 80, n)\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 4, figsize=(17, 4))\n",
+    "fig.suptitle('Cuatro distribuciones — misma media, formas distintas', fontweight='bold')\n",
+    "\n",
+    "for ax, datos, titulo, color in zip(\n",
+    "    axes,\n",
+    "    [normal, sesgada, bimodal, uniforme],\n",
+    "    ['Normal (simétrica)','Sesgada (cola derecha)','Bimodal (2 picos)','Uniforme'],\n",
+    "    ['#2E75B6','#ED7D31','#70AD47','#7030A0']\n",
+    "):\n",
+    "    sns.histplot(datos, bins=20, kde=True, ax=ax, color=color, alpha=0.7)\n",
+    "    ax.axvline(np.mean(datos), color='red', linestyle='--', linewidth=2,\n",
+    "               label=f'Media {np.mean(datos):.0f}')\n",
+    "    ax.set_title(titulo, fontsize=9, fontweight='bold')\n",
+    "    ax.set_xlabel('Valor')\n",
+    "    ax.legend(fontsize=7)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('Conclusión: la media no es suficiente. La FORMA de la distribución también importa.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — De `distplot` a sus reemplazos modernos\n",
+    "\n",
+    "### 2.1 `distplot` — función deprecada (contexto histórico)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Datos exactos de la presentación\n",
+    "data = pd.DataFrame({'edad': [23,25,29,31,34,36,38,40,42,45,47,49,52]})\n",
+    "\n",
+    "# ⚠️ distplot está DEPRECADO desde Seaborn 0.11.0\n",
+    "# El siguiente código muestra el uso histórico — NO usar en proyectos nuevos\n",
+    "print('⚠️  distplot está DEPRECADO desde Seaborn 0.11.0')\n",
+    "print('   Se recomienda usar histplot() y kdeplot() de forma separada.')\n",
+    "print()\n",
+    "print('Código de la presentación (referencia histórica):')\n",
+    "print('''\n",
+    "import seaborn as sns\n",
+    "import matplotlib.pyplot as plt\n",
+    "import pandas as pd\n",
+    "\n",
+    "data = pd.DataFrame({'edad': [23,25,29,31,34,36,38,40,42,45,47,49,52]})\n",
+    "sns.distplot(data['edad'])     # ← DEPRECADO\n",
+    "plt.title(\"Distribución de Edad\")\n",
+    "plt.xlabel(\"Edad\")\n",
+    "plt.ylabel(\"Densidad\")\n",
+    "plt.show()\n",
+    "''')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 `histplot()` — el reemplazo moderno del histograma"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "sns.histplot(data=data, x='edad', bins=5, kde=False, color='skyblue')\n",
+    "plt.title('Histograma de Edad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualizar proporciones relativas — exacto de la presentación\n",
+    "sns.histplot(data=data, x='edad', stat='probability', bins=5)\n",
+    "plt.title('Histograma de Edad — stat=\"probability\"')\n",
+    "plt.ylabel('Probabilidad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Explorar parámetro stat — todos los valores posibles\n",
+    "stats_disponibles = ['count', 'frequency', 'probability', 'proportion', 'density']\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 5, figsize=(18, 3))\n",
+    "fig.suptitle('Parámetro stat= en histplot()', fontweight='bold')\n",
+    "\n",
+    "for ax, stat in zip(axes, stats_disponibles):\n",
+    "    sns.histplot(data=data, x='edad', bins=5, stat=stat, ax=ax, color='#2E75B6')\n",
+    "    ax.set_title(f'stat=\"{stat}\"', fontsize=9)\n",
+    "    ax.set_xlabel('Edad')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 `kdeplot()` — curva de densidad"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "sns.kdeplot(data=data['edad'], fill=True, color='orange')\n",
+    "plt.title('Curva de Densidad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Efecto del parámetro bw_adjust — exacto de la presentación\n",
+    "fig, axes = plt.subplots(1, 4, figsize=(16, 4))\n",
+    "fig.suptitle('Efecto de bw_adjust en kdeplot() — suavizado de la curva', fontweight='bold')\n",
+    "\n",
+    "for ax, bw in zip(axes, [0.3, 0.8, 1.5, 3.0]):\n",
+    "    sns.kdeplot(data=data['edad'], fill=True, bw_adjust=bw,\n",
+    "                color='orange', ax=ax)\n",
+    "    ax.set_title(f'bw_adjust={bw}', fontsize=10)\n",
+    "    ax.set_xlabel('Edad')\n",
+    "    ax.set_ylabel('Densidad')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "print('bw_adjust bajo  → curva muy detallada (puede sobreajustarse al ruido)')\n",
+    "print('bw_adjust alto  → curva muy suavizada (puede ocultar estructura)')\n",
+    "print('Recomendado: 0.5–1.5 para datos de tamaño mediano')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4 Gráfico combinado — histplot + kde"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "sns.histplot(data=data, x='edad', bins=5, kde=True, color='purple')\n",
+    "plt.title('Distribución combinada de Edad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.5 Tabla comparativa: histplot vs kdeplot"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de la presentación\n",
+    "tabla_comp = pd.DataFrame({\n",
+    "    'Característica':     ['Representa','Forma visual','Tipo de datos',\n",
+    "                           'Interpretación','Requiere binning','Parámetros clave'],\n",
+    "    'Histograma (histplot)': ['Frecuencia o proporción','Barras','Discretos o continuos',\n",
+    "                              'Conteo en rangos (bins)','Sí',\n",
+    "                              'bins, stat, color, kde'],\n",
+    "    'Densidad (kdeplot)':    ['Estimación continua de densidad','Línea suave','Continuos',\n",
+    "                              'Probabilidad estimada','No',\n",
+    "                              'fill, bw_adjust, color']\n",
+    "})\n",
+    "print(tabla_comp.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2 — Reflexiona:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué se deprecó distplot? ¿Qué limitaciones tenía?\n",
+    "r_distplot = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuándo preferirías kdeplot sobre histplot?\n",
+    "r_kde_vs_hist = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué pasa si aplicas kdeplot a una variable categórica?\n",
+    "r_kde_cat = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuándo podría ser problemático un bw_adjust muy bajo?\n",
+    "r_bw_bajo = \"\"\n",
+    "\n",
+    "print(f'distplot deprecado: {r_distplot}')\n",
+    "print(f'kdeplot vs histplot: {r_kde_vs_hist}')\n",
+    "print(f'kdeplot en categórica: {r_kde_cat}')\n",
+    "print(f'bw_adjust bajo: {r_bw_bajo}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Actividad guiada: Minutos de conexión diaria\n",
+    "\n",
+    "### 3.1 Cargar y explorar el dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import seaborn as sns\n",
+    "import matplotlib.pyplot as plt\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "\n",
+    "data = pd.read_csv('conexiones_diarias.csv')\n",
+    "print(data.head(10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Estadísticas descriptivas ===')\n",
+    "print(data['min_conexion_dia'].describe().round(2))\n",
+    "print()\n",
+    "print(f'Media:    {data[\"min_conexion_dia\"].mean():.2f} min')\n",
+    "print(f'Mediana:  {data[\"min_conexion_dia\"].median():.2f} min')\n",
+    "print(f'Diferencia media-mediana: {data[\"min_conexion_dia\"].mean() - data[\"min_conexion_dia\"].median():.2f}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Histograma simple (código exacto de la presentación)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 20\n",
+    "sns.histplot(data=data, x='min_conexion_dia', bins=10, color='steelblue')\n",
+    "plt.title('Histograma de minutos de conexión diaria')\n",
+    "plt.xlabel('Minutos de conexión')\n",
+    "plt.ylabel('Frecuencia')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Curva de densidad (código exacto de la presentación)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 21\n",
+    "sns.kdeplot(data=data['min_conexion_dia'], fill=True, bw_adjust=0.8, color='orange')\n",
+    "plt.title('Curva de densidad de minutos de conexión')\n",
+    "plt.xlabel('Minutos de conexión')\n",
+    "plt.ylabel('Densidad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Visualización combinada (código exacto de la presentación)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 22\n",
+    "sns.histplot(data=data, x='min_conexion_dia', bins=10, kde=True, color='purple', alpha=0.6)\n",
+    "plt.title('Distribución combinada de conexión diaria')\n",
+    "plt.xlabel('Minutos de conexión')\n",
+    "plt.ylabel('Frecuencia / Densidad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código completo del slide 24 — insumos finales\n",
+    "import pandas as pd\n",
+    "import seaborn as sns\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "df = pd.read_csv('conexiones_diarias.csv')\n",
+    "\n",
+    "# Histograma simple\n",
+    "sns.histplot(data=df, x='min_conexion_dia', bins=10)\n",
+    "plt.title('Histograma: Minutos de Conexión Diaria')\n",
+    "plt.show()\n",
+    "\n",
+    "# Curva de densidad\n",
+    "sns.kdeplot(data=df['min_conexion_dia'], fill=True, bw_adjust=0.8, color='orange')\n",
+    "plt.title('Curva de Densidad: Minutos de Conexión Diaria')\n",
+    "plt.show()\n",
+    "\n",
+    "# Gráfico combinado\n",
+    "sns.histplot(data=df, x='min_conexion_dia', kde=True, bins=10, color='skyblue')\n",
+    "plt.title('Distribución Combinada: Histograma + KDE')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.5 Interpretación (preguntas del slide 23)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Diagnóstico cuantitativo de la forma\n",
+    "from scipy.stats import skew, kurtosis\n",
+    "\n",
+    "sk = skew(df['min_conexion_dia'])\n",
+    "ku = kurtosis(df['min_conexion_dia'])\n",
+    "\n",
+    "print('=== Diagnóstico de la distribución ===')\n",
+    "print(f'Sesgo (skewness):   {sk:.3f}  → {\"sesgada a la derecha\" if sk>0.5 else \"sesgada a la izquierda\" if sk<-0.5 else \"aproximadamente simétrica\"}')\n",
+    "print(f'Curtosis:           {ku:.3f}  → {\"leptocúrtica (picos altos)\" if ku>1 else \"platocúrtica (picos bajos)\" if ku<-1 else \"mesocúrtica (normal)\"}')\n",
+    "print()\n",
+    "\n",
+    "# Detección de outliers con IQR\n",
+    "q1 = df['min_conexion_dia'].quantile(0.25)\n",
+    "q3 = df['min_conexion_dia'].quantile(0.75)\n",
+    "iqr = q3 - q1\n",
+    "outliers = df[(df['min_conexion_dia'] < q1-1.5*iqr) | (df['min_conexion_dia'] > q3+1.5*iqr)]\n",
+    "print(f'Outliers detectados (IQR): {len(outliers)}')\n",
+    "print(outliers[['usuario_id','min_conexion_dia']])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Forma de la distribución — slide 23, pregunta 1:\n",
+    "r_forma = \"\"\n",
+    "\n",
+    "# ✏️ Valores extremos — slide 23, pregunta 2:\n",
+    "r_extremos = \"\"\n",
+    "\n",
+    "# ✏️ Decisiones analíticas — slide 23, pregunta 3:\n",
+    "r_decisiones = \"\"\n",
+    "\n",
+    "print(f'Forma distribución: {r_forma}')\n",
+    "print(f'Valores extremos:   {r_extremos}')\n",
+    "print(f'Decisiones:         {r_decisiones}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad autónoma: Análisis profundo de conexiones\n",
+    "\n",
+    "### 4.1 Cargar datos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "df = pd.read_csv('conexiones_diarias.csv')\n",
+    "print(df.describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Histograma simple — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 28\n",
+    "sns.histplot(df['min_conexion_dia'], bins=8)\n",
+    "plt.title('Distribución de minutos de conexión por día')\n",
+    "plt.xlabel('Minutos')\n",
+    "plt.ylabel('Frecuencia')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Curva KDE — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 28\n",
+    "sns.kdeplot(df['min_conexion_dia'], fill=True)\n",
+    "plt.title('Curva de densidad de conexión diaria')\n",
+    "plt.xlabel('Minutos')\n",
+    "plt.ylabel('Densidad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Visualización combinada — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 29\n",
+    "sns.histplot(df['min_conexion_dia'], bins=8, kde=True)\n",
+    "plt.title('Distribución con KDE combinada')\n",
+    "plt.xlabel('Minutos')\n",
+    "plt.ylabel('Frecuencia / Densidad')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.5 Análisis adicional: distribución por día de la semana"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# KDE múltiple por día de la semana (variable adicional del dataset)\n",
+    "orden_dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo']\n",
+    "dias_presentes = [d for d in orden_dias if d in df['dia_semana'].unique()]\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(15, 5))\n",
+    "fig.suptitle('Conexión por día de la semana', fontweight='bold')\n",
+    "\n",
+    "# KDE por día\n",
+    "for dia in dias_presentes:\n",
+    "    subset = df[df['dia_semana']==dia]['min_conexion_dia']\n",
+    "    if len(subset) > 3:\n",
+    "        sns.kdeplot(subset, fill=False, ax=axes[0], label=dia, linewidth=1.8)\n",
+    "axes[0].set_title('Curvas KDE por día de la semana')\n",
+    "axes[0].set_xlabel('Minutos')\n",
+    "axes[0].legend(fontsize=7)\n",
+    "\n",
+    "# Boxplot por día\n",
+    "df_dias = df[df['dia_semana'].isin(dias_presentes)]\n",
+    "sns.boxplot(data=df_dias, x='dia_semana', y='min_conexion_dia',\n",
+    "            order=dias_presentes, palette='Blues_r', ax=axes[1])\n",
+    "axes[1].set_title('Boxplot por día de la semana')\n",
+    "axes[1].set_xlabel('')\n",
+    "axes[1].set_ylabel('Minutos')\n",
+    "axes[1].tick_params(axis='x', rotation=30)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.6 Panel completo de diagnóstico"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(2, 2, figsize=(13, 9))\n",
+    "fig.suptitle('Panel de diagnóstico de distribución — Conexiones diarias',\n",
+    "             fontweight='bold', fontsize=12)\n",
+    "\n",
+    "media   = df['min_conexion_dia'].mean()\n",
+    "mediana = df['min_conexion_dia'].median()\n",
+    "\n",
+    "# 1. Histograma con media y mediana\n",
+    "sns.histplot(df['min_conexion_dia'], bins=15, kde=False,\n",
+    "             ax=axes[0,0], color='#2E75B6', alpha=0.8)\n",
+    "axes[0,0].axvline(media,   color='red',   linestyle='--', linewidth=2, label=f'Media {media:.1f}')\n",
+    "axes[0,0].axvline(mediana, color='green', linestyle='--', linewidth=2, label=f'Mediana {mediana:.1f}')\n",
+    "axes[0,0].set_title('Histograma con media y mediana')\n",
+    "axes[0,0].set_xlabel('Minutos')\n",
+    "axes[0,0].legend(fontsize=8)\n",
+    "\n",
+    "# 2. KDE fill\n",
+    "sns.kdeplot(df['min_conexion_dia'], fill=True, bw_adjust=0.8,\n",
+    "            color='orange', ax=axes[0,1])\n",
+    "axes[0,1].axvline(media,   color='red',   linestyle='--', linewidth=2)\n",
+    "axes[0,1].axvline(mediana, color='green', linestyle='--', linewidth=2)\n",
+    "axes[0,1].set_title('Curva KDE (bw_adjust=0.8)')\n",
+    "axes[0,1].set_xlabel('Minutos')\n",
+    "\n",
+    "# 3. Combinado\n",
+    "sns.histplot(df['min_conexion_dia'], bins=12, kde=True,\n",
+    "             color='purple', alpha=0.6, ax=axes[1,0])\n",
+    "axes[1,0].set_title('Combinado: histplot + kde')\n",
+    "axes[1,0].set_xlabel('Minutos')\n",
+    "\n",
+    "# 4. Boxplot horizontal\n",
+    "sns.boxplot(x=df['min_conexion_dia'], ax=axes[1,1], color='#BDD7EE')\n",
+    "axes[1,1].set_title('Boxplot — outliers visibles')\n",
+    "axes[1,1].set_xlabel('Minutos')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Reflexiones — preguntas del slide 29:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. Forma de la distribución — ¿simétrica, sesgada, multimodal?\n",
+    "c1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Qué representa la curva KDE en comparación con el histograma?\n",
+    "c2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Hay valores extremos o agrupamientos evidentes?\n",
+    "c3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Cómo orientarías a la coordinación académica basándote en estos datos?\n",
+    "c4 = \"\"\n",
+    "\n",
+    "# ✏️ 5. ¿Qué gráfico fue más útil para tu análisis y por qué?\n",
+    "c5 = \"\"\n",
+    "\n",
+    "print('--- REFLEXIONES ---')\n",
+    "for i, c in enumerate([c1, c2, c3, c4, c5], 1):\n",
+    "    print(f'{i}. {c}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de funciones y parámetros\n",
+    "\n",
+    "### `histplot()` — parámetros clave\n",
+    "\n",
+    "| Parámetro | Valores | Descripción |\n",
+    "|-----------|---------|-------------|\n",
+    "| `bins` | int | Número de barras (prueba 10-20 primero) |\n",
+    "| `stat` | `'count'`, `'probability'`, `'density'` | Qué muestran las barras |\n",
+    "| `kde` | `True`/`False` | Superpone curva de densidad |\n",
+    "| `color` | string | Color de las barras |\n",
+    "| `alpha` | 0.0–1.0 | Transparencia |\n",
+    "| `hue` | columna | Colorear por categoría |\n",
+    "\n",
+    "### `kdeplot()` — parámetros clave\n",
+    "\n",
+    "| Parámetro | Valores | Descripción |\n",
+    "|-----------|---------|-------------|\n",
+    "| `fill` | `True`/`False` | Rellenar bajo la curva |\n",
+    "| `bw_adjust` | float | Suavizado (0.5=fino, 2.0=suave) |\n",
+    "| `color` | string | Color de la curva |\n",
+    "| `hue` | columna | Múltiples curvas por categoría |\n",
+    "| `cumulative` | `True`/`False` | Distribución acumulada |\n",
+    "\n",
+    "**Cuándo usar cada uno:**\n",
+    "\n",
+    "| Situación | Usar |\n",
+    "|-----------|------|\n",
+    "| Ver conteos en rangos | `histplot(stat='count')` |\n",
+    "| Comparar proporciones | `histplot(stat='probability')` |\n",
+    "| Ver forma continua de distribución | `kdeplot(fill=True)` |\n",
+    "| Comparar grupos en una misma escala | `kdeplot(hue='grupo')` |\n",
+    "| Vista completa de forma y conteos | `histplot(kde=True)` |\n",
+    "\n",
+    "> 💡 **`distplot` está DEPRECADO** desde Seaborn 0.11. Siempre usa `histplot()` + `kdeplot()` por separado o `histplot(kde=True)` para la combinación.\n",
+    "\n",
+    "> 💡 **Interpretación de sesgo:** si `media > mediana` → sesgo positivo (cola a la derecha). Si `media < mediana` → sesgo negativo (cola a la izquierda)."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

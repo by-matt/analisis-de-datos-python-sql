@@ -1,0 +1,611 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 2 - Estructura DataFrame y acceso a datos tabulares"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 2 – Estructura DataFrame y Acceso a Datos Tabulares\n",
+    "### Exploración de datos con Pandas\n",
+    "\n",
+    "**Temas:** ¿Qué es un DataFrame? · Creación · Selección de columnas y filas · Acceso por loc/iloc · Filtrado condicional\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Empresa de Logística\n",
+    "\n",
+    "Tu jefatura necesita saber si hubo **envíos costosos que aún no se han entregado**.\n",
+    "\n",
+    "**Archivo:** `pedidos_logistica.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "df_logistica = pd.read_csv('pedidos_logistica.csv')\n",
+    "\n",
+    "print('=== Vista inicial del DataFrame de logística ===')\n",
+    "print(f'Filas: {df_logistica.shape[0]} | Columnas: {df_logistica.shape[1]}')\n",
+    "print(f'Columnas: {list(df_logistica.columns)}')\n",
+    "print()\n",
+    "print(df_logistica.head())"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–7 – ¿Qué es un DataFrame?\n",
+    "\n",
+    "Un **DataFrame** es una estructura bidimensional (filas + columnas) como una hoja de cálculo.\n",
+    "Cada columna es internamente una **Serie**.\n",
+    "\n",
+    "| Ciudad | Producto | Costo | Entregado |\n",
+    "|--------|----------|-------|-----------|\n",
+    "| Santiago | Libros | 4500 | Sí |\n",
+    "| Valparaíso | Ropa | 6700 | No |\n",
+    "| Concepción | Calzado | 8900 | Sí |"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 8 – Creación de un DataFrame desde un Diccionario"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 8: Desde un diccionario de listas o arrays ─────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "data = {'Ciudad': ['Santiago', 'Valparaíso', 'Concepción'],\n",
+    "        'Producto': ['Libros', 'Ropa', 'Calzado'],\n",
+    "        'Costo': [4500, 6700, 8900],\n",
+    "        'Entregado': ['Sí', 'No', 'Sí']}\n",
+    "df = pd.DataFrame(data)\n",
+    "print(df)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 9 – Más Formas de Crear DataFrames"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 9: Desde una lista de diccionarios (cada dict es una fila) ──────────\n",
+    "\n",
+    "registros = [{'Ciudad': 'Temuco',  'Producto': 'Ropa',   'Costo': 7200, 'Entregado': 'Sí'},\n",
+    "             {'Ciudad': 'Iquique', 'Producto': 'Libros', 'Costo': 5300, 'Entregado': 'No'}]\n",
+    "df = pd.DataFrame(registros)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 9: Desde archivos externos ─────────────────────────────────────────\n",
+    "\n",
+    "df = pd.read_csv('pedidos_logistica.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 9: Personalizando el índice ────────────────────────────────────────\n",
+    "\n",
+    "data = {'Ciudad': ['Santiago', 'Valparaíso', 'Concepción'],\n",
+    "        'Producto': ['Libros', 'Ropa', 'Calzado'],\n",
+    "        'Costo': [4500, 6700, 8900],\n",
+    "        'Entregado': ['Sí', 'No', 'Sí']}\n",
+    "df = pd.DataFrame(data, index=['Pedido1', 'Pedido2', 'Pedido3'])\n",
+    "print(df)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 10 – Selección de Columnas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Acceso por nombre (forma preferida) ────────────────────────────\n",
+    "\n",
+    "df['Ciudad']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Notación punto (no recomendada para nombres con espacios) ───────\n",
+    "\n",
+    "df.Ciudad"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Para seleccionar múltiples columnas ────────────────────────────\n",
+    "\n",
+    "df[['Ciudad', 'Costo']]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 11 – Selección de Filas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Por posición (iloc) ────────────────────────────────────────────\n",
+    "\n",
+    "df.iloc[0]   # Primera fila"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Por etiqueta del índice (loc) ───────────────────────────────────\n",
+    "\n",
+    "df.loc['Pedido2']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Varias filas por rango ─────────────────────────────────────────\n",
+    "\n",
+    "df[1:3]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 12 – Selección de Elementos Específicos (loc / iloc)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 12: Acceso por etiqueta (loc) ──────────────────────────────────────\n",
+    "\n",
+    "df.loc[['Pedido1', 'Pedido3'], ['Ciudad', 'Costo']]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 12: Acceso por posición (iloc) ─────────────────────────────────────\n",
+    "\n",
+    "df.iloc[0, 2]   # primera fila, tercera columna"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 12: Celda específica por etiqueta ───────────────────────────────────\n",
+    "\n",
+    "df.loc['Pedido1', 'Costo']"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 14 – Selección Condicional en un DataFrame"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 14: Ejemplo — pedidos con costo mayor a $6000 ──────────────────────\n",
+    "\n",
+    "df[df['Costo'] > 6000]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 15 – Filtrado por Múltiples Condiciones"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 15: Operador & (\"y\" lógico) ────────────────────────────────────────\n",
+    "# Cada condición debe ir entre paréntesis\n",
+    "\n",
+    "df[(df['Costo'] > 6000) & (df['Entregado'] == 'No')]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 16–20 – Ejercicio Guiado: Empresa de Distribución Electrónica\n",
+    "\n",
+    "**Objetivo (Slide 17):** Identificar pedidos no entregados con valor superior a $50.000."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 18: Crear el DataFrame base ────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "data = {'ID Pedido': [1001, 1002, 1003, 1004, 1005],\n",
+    "        'Cliente': ['Juan', 'Sofía', 'Camila', 'Ignacio', 'Fernanda'],\n",
+    "        'Valor ($)': [62000, 48000, 71000, 32000, 90000],\n",
+    "        'Entregado': ['No', 'Sí', 'No', 'Sí', 'No']}\n",
+    "df = pd.DataFrame(data)\n",
+    "df.index = ['P1', 'P2', 'P3', 'P4', 'P5']   # Etiquetas personalizadas para filas\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Visualizar la tabla completa ────────────────────────────────────\n",
+    "\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Seleccionar solo la columna Cliente ─────────────────────────────\n",
+    "\n",
+    "df['Cliente']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Mostrar la fila con índice 'P3' ─────────────────────────────────\n",
+    "\n",
+    "df.loc['P3']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Obtener el valor del pedido P5 en la columna Valor ($) ──────────\n",
+    "\n",
+    "df.loc['P5', 'Valor ($)']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20: Filtrar pedidos con valor > $50.000 y no entregados ─────────────\n",
+    "\n",
+    "filtro = (df['Valor ($)'] > 50000) & (df['Entregado'] == 'No')\n",
+    "df[filtro]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Ejercicio Guiado con datos reales — `pedidos_logistica.csv`\n",
+    "\n",
+    "Aplicamos las mismas operaciones al dataset real del desafío inicial."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiado con datos reales, Paso 1: Cargar y explorar ───────────────────────\n",
+    "\n",
+    "df_log = pd.read_csv('pedidos_logistica.csv')\n",
+    "print(df_log.head())\n",
+    "print(f'\\nDimensiones: {df_log.shape}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiado, Paso 2: Selección de columnas (Slide 10) ─────────────────────────\n",
+    "\n",
+    "# Una columna\n",
+    "print(df_log['ciudad'].head())\n",
+    "print()\n",
+    "\n",
+    "# Múltiples columnas\n",
+    "print(df_log[['ciudad', 'costo', 'entregado']].head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiado, Paso 3: Selección de filas y celdas (Slides 11–12) ───────────────\n",
+    "\n",
+    "# Primera fila (posicional)\n",
+    "print('Primera fila:')\n",
+    "print(df_log.iloc[0])\n",
+    "print()\n",
+    "\n",
+    "# Filas 5 a 9 (rango)\n",
+    "print('Filas 5 a 9:')\n",
+    "print(df_log.iloc[5:10])\n",
+    "print()\n",
+    "\n",
+    "# Celda específica: fila 2, columna 'costo'\n",
+    "print('Costo del pedido en posición 2:', df_log.iloc[2, df_log.columns.get_loc('costo')])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiado, Paso 4: Filtrado condicional (Slides 14–15) ──────────────────────\n",
+    "# Misión: envíos costosos (> $50.000) que aún no se han entregado\n",
+    "\n",
+    "filtro_critico = (df_log['costo'] > 50000) & (df_log['entregado'] == 'No')\n",
+    "df_criticos    = df_log[filtro_critico]\n",
+    "\n",
+    "print(f'Total de pedidos:                          {len(df_log)}')\n",
+    "print(f'Pedidos costosos sin entregar (> $50.000): {len(df_criticos)}')\n",
+    "print()\n",
+    "print(df_criticos[['id_pedido','ciudad','producto','costo','entregado']].to_string(index=False))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 21–24 – Ejercicio Autónomo: Incidentes de Soporte Técnico\n",
+    "\n",
+    "**Contexto (Slide 22):** Control de incidentes técnicos en sucursales. Identificar los casos críticos no resueltos.\n",
+    "\n",
+    "**Archivo:** `incidentes_soporte.csv`\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23: Crear el DataFrame del ejercicio desde el slide ─────────────────\n",
+    "\n",
+    "data = {'ID Incidente': [2001, 2002, 2003, 2004, 2005],\n",
+    "        'Sucursal': ['Valparaíso', 'Santiago', 'La Serena', 'Temuco', 'Antofagasta'],\n",
+    "        'Prioridad': ['Alta', 'Media', 'Alta', 'Baja', 'Alta'],\n",
+    "        'Estado': ['Pendiente', 'Resuelto', 'Pendiente', 'Resuelto', 'Pendiente']}\n",
+    "df = pd.DataFrame(data)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24, Paso 1: Muestra el listado completo ─────────────────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24, Paso 2: Selecciona las sucursales con incidentes de Prioridad 'Alta' ──\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df[df['Prioridad'] == 'Alta']['Sucursal']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24, Paso 3: Filtra Prioridad == 'Alta' Y Estado == 'Pendiente' ──────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24, Paso 4: ¿Cuántos incidentes críticos sin resolver hay? ──────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24, Paso 5: Extrae los valores de 'Sucursal' de los casos filtrados ──\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Ejercicio ampliado: Repite el análisis con incidentes_soporte.csv (n=150) ──\n",
+    "# Carga el archivo real y responde las mismas 5 preguntas del Slide 24\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df_inc = pd.read_csv('incidentes_soporte.csv')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Preguntas de reflexión y cierre (Slide 20 y Slide 26)\n",
+    "\n",
+    "Responde en la plantilla de resolución:\n",
+    "\n",
+    "1. ¿Cómo cambia tu análisis si no aplicas condiciones múltiples con `&`?\n",
+    "2. ¿Qué ventajas observas al acceder por nombre (`loc`) en lugar de por posición (`iloc`)?\n",
+    "3. ¿Qué precauciones tomarías si este DataFrame fuera mucho más grande?\n",
+    "4. ¿Cómo seleccionas una columna específica de un DataFrame?\n",
+    "5. ¿Cómo accederías al valor de la tercera fila en la columna 'Costo'?"
+   ]
+  }
+
+ ]
+}

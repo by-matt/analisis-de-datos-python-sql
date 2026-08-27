@@ -1,0 +1,316 @@
+Ciudad,Semana,Producto,Ventas
+Concepción,2,Lácteos,81300
+Santiago,2,Lácteos,48000
+Temuco,3,Lácteos,41400
+Santiago,4,Bebidas,42300
+Valparaíso,1,Limpieza,14800
+Concepción,3,Lácteos,27400
+Santiago,2,Frutas y Verduras,61000
+Santiago,1,Carnes,42100
+Santiago,3,Bebidas,26500
+Santiago,4,Abarrotes,48100
+Temuco,3,Lácteos,51100
+Concepción,1,Carnes,28800
+Temuco,3,Abarrotes,42400
+Santiago,3,Carnes,30100
+Temuco,1,Lácteos,49300
+Concepción,2,Limpieza,38800
+Concepción,2,Limpieza,38500
+La Serena,2,Abarrotes,39700
+La Serena,1,Carnes,12400
+Santiago,2,Abarrotes,41900
+Santiago,1,Limpieza,21600
+Concepción,4,Carnes,70500
+Concepción,3,Limpieza,38200
+Temuco,3,Bebidas,34900
+La Serena,4,Bebidas,49200
+La Serena,2,Abarrotes,45900
+Valparaíso,3,Lácteos,48400
+La Serena,4,Frutas y Verduras,40900
+Santiago,4,Frutas y Verduras,96200
+Temuco,2,Limpieza,45200
+La Serena,4,Bebidas,16100
+Temuco,2,Frutas y Verduras,28200
+Santiago,3,Abarrotes,31400
+La Serena,2,Lácteos,40500
+La Serena,2,Bebidas,93200
+La Serena,4,Frutas y Verduras,38800
+Valparaíso,2,Carnes,14700
+Santiago,1,Frutas y Verduras,32300
+La Serena,4,Carnes,21700
+Valparaíso,2,Carnes,28400
+Concepción,3,Limpieza,53900
+Valparaíso,2,Frutas y Verduras,49800
+Valparaíso,1,Abarrotes,30700
+Santiago,4,Bebidas,41200
+Santiago,3,Frutas y Verduras,42200
+Santiago,2,Abarrotes,40200
+Santiago,1,Limpieza,22500
+Temuco,4,Limpieza,26100
+Temuco,4,Limpieza,42500
+Temuco,1,Lácteos,17100
+Santiago,2,Lácteos,76700
+Santiago,4,Lácteos,34400
+Concepción,2,Frutas y Verduras,19200
+Valparaíso,2,Abarrotes,31000
+Valparaíso,1,Limpieza,43500
+Valparaíso,2,Frutas y Verduras,106800
+La Serena,4,Bebidas,29800
+Santiago,1,Limpieza,35200
+La Serena,4,Abarrotes,25600
+Temuco,4,Frutas y Verduras,52300
+La Serena,1,Carnes,58800
+Temuco,4,Limpieza,21400
+La Serena,4,Frutas y Verduras,79100
+Concepción,3,Limpieza,77000
+Valparaíso,4,Lácteos,49900
+Temuco,3,Bebidas,23400
+Valparaíso,1,Carnes,68700
+Concepción,4,Lácteos,45300
+Santiago,4,Carnes,29300
+Temuco,2,Lácteos,60700
+Concepción,3,Bebidas,10100
+La Serena,1,Frutas y Verduras,49700
+Concepción,2,Abarrotes,64000
+Valparaíso,2,Frutas y Verduras,32800
+Temuco,1,Frutas y Verduras,38600
+Concepción,2,Abarrotes,21200
+Concepción,3,Bebidas,36200
+La Serena,1,Carnes,53200
+Santiago,3,Frutas y Verduras,20600
+Valparaíso,2,Lácteos,44600
+Santiago,1,Lácteos,36600
+La Serena,4,Lácteos,41600
+Santiago,2,Bebidas,28800
+Santiago,2,Frutas y Verduras,17200
+La Serena,1,Limpieza,89500
+Santiago,3,Carnes,36900
+La Serena,1,Lácteos,100800
+Concepción,2,Lácteos,27900
+Concepción,4,Abarrotes,44500
+Temuco,4,Limpieza,17600
+La Serena,1,Limpieza,51200
+La Serena,4,Frutas y Verduras,34900
+Temuco,1,Carnes,13400
+Temuco,4,Abarrotes,16600
+Valparaíso,1,Lácteos,26000
+La Serena,1,Bebidas,31600
+Santiago,3,Frutas y Verduras,40100
+Valparaíso,3,Bebidas,46100
+Santiago,1,Bebidas,28300
+Temuco,4,Abarrotes,56900
+La Serena,4,Carnes,52800
+Santiago,1,Frutas y Verduras,27100
+Temuco,2,Limpieza,59900
+Valparaíso,1,Bebidas,22100
+Santiago,4,Bebidas,15000
+Concepción,3,Limpieza,76300
+La Serena,4,Frutas y Verduras,20500
+Santiago,4,Frutas y Verduras,21400
+Valparaíso,1,Limpieza,56500
+Santiago,1,Abarrotes,19700
+Santiago,1,Lácteos,51200
+Temuco,4,Lácteos,52500
+Valparaíso,3,Lácteos,38700
+Valparaíso,1,Abarrotes,23200
+Santiago,4,Frutas y Verduras,68000
+Concepción,4,Carnes,67700
+Santiago,2,Frutas y Verduras,25700
+Santiago,1,Frutas y Verduras,45900
+Santiago,3,Limpieza,28400
+Concepción,3,Abarrotes,17800
+La Serena,3,Lácteos,50900
+Santiago,4,Abarrotes,79100
+Valparaíso,2,Frutas y Verduras,33000
+Temuco,4,Frutas y Verduras,39400
+Santiago,4,Bebidas,37900
+Santiago,2,Carnes,33100
+Concepción,2,Carnes,50400
+Temuco,3,Lácteos,38300
+Concepción,4,Abarrotes,30400
+Valparaíso,3,Limpieza,53000
+Temuco,4,Carnes,35100
+Valparaíso,1,Lácteos,57800
+La Serena,1,Bebidas,35300
+Concepción,2,Carnes,43300
+La Serena,1,Frutas y Verduras,27900
+Valparaíso,4,Lácteos,36900
+Concepción,3,Lácteos,30900
+Temuco,1,Abarrotes,36900
+Concepción,2,Bebidas,37500
+Temuco,1,Frutas y Verduras,37500
+Concepción,4,Lácteos,28200
+Valparaíso,3,Lácteos,37500
+Santiago,2,Abarrotes,27700
+La Serena,4,Limpieza,22100
+Concepción,1,Lácteos,44300
+La Serena,4,Frutas y Verduras,28300
+Valparaíso,2,Abarrotes,76000
+Concepción,1,Lácteos,35000
+Valparaíso,2,Limpieza,45000
+La Serena,3,Frutas y Verduras,38400
+La Serena,3,Limpieza,48300
+Temuco,4,Bebidas,52900
+Concepción,2,Lácteos,71000
+Concepción,2,Limpieza,25600
+Santiago,1,Abarrotes,26800
+Valparaíso,2,Limpieza,31400
+Temuco,3,Carnes,28200
+Concepción,2,Frutas y Verduras,73800
+Valparaíso,3,Frutas y Verduras,28100
+Concepción,3,Lácteos,26400
+La Serena,1,Lácteos,84100
+Valparaíso,3,Frutas y Verduras,21500
+Santiago,4,Limpieza,10800
+Santiago,2,Lácteos,26200
+Valparaíso,1,Lácteos,28600
+La Serena,1,Abarrotes,37900
+Valparaíso,2,Carnes,52000
+Temuco,3,Carnes,63600
+La Serena,1,Limpieza,70700
+Valparaíso,4,Bebidas,44200
+Concepción,2,Lácteos,25100
+Concepción,3,Lácteos,35800
+La Serena,3,Frutas y Verduras,30200
+Santiago,3,Carnes,23800
+Concepción,3,Frutas y Verduras,60000
+Valparaíso,1,Frutas y Verduras,26600
+Concepción,3,Limpieza,47800
+Temuco,3,Abarrotes,41400
+Santiago,1,Abarrotes,59000
+Santiago,2,Limpieza,46400
+Santiago,2,Lácteos,45400
+Temuco,4,Lácteos,20700
+Temuco,1,Abarrotes,33600
+Concepción,2,Abarrotes,41200
+Valparaíso,4,Lácteos,37000
+La Serena,3,Frutas y Verduras,25100
+Santiago,3,Carnes,28100
+Valparaíso,1,Bebidas,44700
+Concepción,3,Limpieza,12200
+Temuco,4,Carnes,136000
+Concepción,4,Abarrotes,42500
+Santiago,2,Limpieza,46100
+Valparaíso,1,Frutas y Verduras,34600
+Concepción,4,Abarrotes,35700
+Valparaíso,4,Carnes,55000
+Santiago,2,Limpieza,25900
+La Serena,4,Carnes,32900
+Temuco,1,Carnes,28600
+Concepción,3,Bebidas,17500
+Santiago,1,Lácteos,59200
+La Serena,3,Bebidas,31300
+La Serena,3,Bebidas,108000
+Valparaíso,1,Abarrotes,71000
+Concepción,1,Lácteos,26800
+La Serena,3,Frutas y Verduras,14400
+Valparaíso,2,Limpieza,26800
+Temuco,4,Abarrotes,54300
+Valparaíso,1,Lácteos,17000
+Santiago,2,Lácteos,37500
+Santiago,3,Abarrotes,19200
+Temuco,2,Abarrotes,20100
+Santiago,3,Abarrotes,101600
+Concepción,3,Lácteos,80000
+La Serena,1,Frutas y Verduras,37000
+Santiago,1,Lácteos,22400
+La Serena,4,Carnes,30900
+Concepción,2,Limpieza,13300
+La Serena,2,Frutas y Verduras,12800
+Santiago,2,Bebidas,38400
+Concepción,4,Abarrotes,33200
+Santiago,1,Bebidas,18500
+Valparaíso,3,Abarrotes,19200
+Santiago,2,Lácteos,35200
+Concepción,3,Lácteos,75900
+Temuco,3,Limpieza,33300
+Concepción,3,Carnes,37800
+La Serena,1,Lácteos,22600
+Valparaíso,4,Carnes,82500
+Santiago,3,Lácteos,38400
+Concepción,2,Abarrotes,34200
+Valparaíso,4,Carnes,68000
+Valparaíso,3,Bebidas,87900
+La Serena,4,Carnes,83800
+Santiago,1,Carnes,18000
+Santiago,4,Bebidas,38500
+La Serena,2,Carnes,21500
+Santiago,3,Abarrotes,49000
+Santiago,2,Abarrotes,56500
+Santiago,1,Limpieza,88200
+Temuco,3,Carnes,45300
+Santiago,2,Abarrotes,52100
+Concepción,4,Frutas y Verduras,74200
+Valparaíso,3,Bebidas,34500
+La Serena,3,Bebidas,73600
+Concepción,2,Bebidas,74600
+Temuco,2,Carnes,37800
+Santiago,2,Limpieza,60300
+La Serena,2,Bebidas,56700
+Valparaíso,2,Bebidas,49100
+Santiago,4,Frutas y Verduras,25900
+Concepción,3,Lácteos,80100
+Concepción,2,Carnes,40000
+Concepción,2,Limpieza,74000
+Santiago,2,Carnes,50800
+La Serena,3,Abarrotes,15400
+Concepción,4,Carnes,22600
+Concepción,4,Limpieza,32300
+La Serena,4,Abarrotes,32200
+Concepción,2,Bebidas,50300
+Temuco,3,Abarrotes,15400
+Santiago,2,Frutas y Verduras,29000
+Concepción,2,Frutas y Verduras,30500
+Concepción,1,Lácteos,11800
+La Serena,1,Carnes,31300
+Valparaíso,2,Frutas y Verduras,88100
+Santiago,3,Limpieza,59900
+Santiago,1,Bebidas,35000
+Santiago,3,Frutas y Verduras,28000
+Santiago,4,Bebidas,17300
+Concepción,2,Carnes,24000
+Santiago,2,Limpieza,26200
+La Serena,1,Bebidas,80600
+Valparaíso,1,Carnes,88100
+Santiago,3,Frutas y Verduras,22100
+La Serena,1,Frutas y Verduras,15700
+Concepción,4,Lácteos,44000
+Santiago,1,Lácteos,57700
+Valparaíso,1,Lácteos,28900
+La Serena,2,Abarrotes,60200
+Temuco,3,Abarrotes,73400
+La Serena,4,Limpieza,28200
+Valparaíso,4,Abarrotes,21900
+La Serena,4,Lácteos,16400
+Concepción,4,Carnes,23800
+Santiago,3,Frutas y Verduras,35400
+Santiago,3,Limpieza,44300
+Temuco,4,Bebidas,26900
+Concepción,1,Abarrotes,55600
+La Serena,4,Frutas y Verduras,21700
+Concepción,1,Carnes,53200
+Temuco,4,Frutas y Verduras,76300
+Santiago,3,Lácteos,16600
+Santiago,3,Carnes,56900
+Concepción,3,Limpieza,48800
+La Serena,1,Lácteos,17200
+Santiago,1,Bebidas,31800
+Temuco,3,Frutas y Verduras,79700
+La Serena,2,Limpieza,25000
+Concepción,1,Carnes,18800
+La Serena,4,Abarrotes,60900
+La Serena,1,Abarrotes,46500
+Temuco,2,Abarrotes,28000
+Valparaíso,3,Carnes,51200
+Temuco,2,Bebidas,42100
+Valparaíso,1,Lácteos,38800
+Valparaíso,1,Limpieza,28100
+Concepción,2,Abarrotes,12400
+Valparaíso,3,Frutas y Verduras,30200
+La Serena,4,Bebidas,51400
+Santiago,1,Lácteos,70700
+Concepción,1,Frutas y Verduras,31300
+Santiago,4,Abarrotes,37000
+Valparaíso,2,Abarrotes,19100
+La Serena,1,Abarrotes,45600
+Valparaíso,1,Carnes,101900

@@ -1,0 +1,301 @@
+id_estudiante,region,programa,modalidad,nivel,nota,horas_estudio
+EST-0001,Coquimbo,Marketing Digital,Presencial,Intermedio,4.9,10
+EST-0002,O'Higgins,Análisis de Datos,Online,Intermedio,5.3,12
+EST-0003,Valparaiso,Análisis de Datos,Online,Básico,5.6,15
+EST-0004,Antofagasta,Contabilidad,Online,Avanzado,4.0,13
+EST-0005,RM,Marketing Digital,Presencial,Básico,5.0,16
+EST-0006,Valparaíso,Marketing Digital,Híbrida,Avanzado,4.6,3
+EST-0007,rm,Marketing Digital,Presencial,Básico,5.6,9
+EST-0008,Valparaíso,Gestión de Proyectos,Presencial,Intermedio,6.0,12
+EST-0009,Región Metropolitana,Contabilidad,Online,Intermedio,5.6,15
+EST-0010,Bio-Bío,Programación,Híbrida,Básico,7.0,17
+EST-0011,Región Metropolitana,Contabilidad,Presencial,Intermedio,5.7,11
+EST-0012,RM,Análisis de Datos,Presencial,Intermedio,5.6,12
+EST-0013,RM,Marketing Digital,Presencial,Básico,6.4,14
+EST-0014,rm,Análisis de Datos,Híbrida,Básico,4.8,10
+EST-0015,Coquimbo,Gestión de Proyectos,Híbrida,Básico,4.1,15
+EST-0016,Bio Bío,Análisis de Datos,Presencial,Avanzado,3.8,11
+EST-0017,Maule,Análisis de Datos,Presencial,Básico,4.7,9
+EST-0018,Bio-Bío,Análisis de Datos,Presencial,Intermedio,4.5,18
+EST-0019,La Araucania,Programación,Online,Básico,4.5,16
+EST-0020,RM,Análisis de Datos,Presencial,Intermedio,4.8,8
+EST-0021,Maule,Análisis de Datos,Presencial,Básico,5.1,13
+EST-0022,rm,Programación,Presencial,Avanzado,5.1,17
+EST-0023,Bio-Bío,Gestión de Proyectos,Presencial,Intermedio,5.3,7
+EST-0024,Los Lagos,Gestión de Proyectos,Híbrida,Avanzado,6.5,13
+EST-0025,Valparaíso,Programación,Online,Avanzado,6.0,8
+EST-0026,Bio-Bío,Análisis de Datos,Online,Básico,5.2,9
+EST-0027,Araucanía,Gestión de Proyectos,Presencial,Básico,3.7,12
+EST-0028,V Región,Análisis de Datos,Online,Intermedio,5.0,14
+EST-0029,V Región,Marketing Digital,Híbrida,Intermedio,7.0,9
+EST-0030,Valparaiso,Marketing Digital,Online,Intermedio,4.5,11
+EST-0031,Bio Bío,Programación,Presencial,Básico,4.4,14
+EST-0032,Coquimbo,Análisis de Datos,Presencial,Intermedio,4.0,10
+EST-0033,O'Higgins,Programación,Híbrida,Intermedio,5.2,11
+EST-0034,Valparaíso,Gestión de Proyectos,Presencial,Intermedio,3.9,11
+EST-0035,Araucanía,Análisis de Datos,Presencial,Intermedio,5.1,14
+EST-0036,rm,Programación,Híbrida,Avanzado,6.1,12
+EST-0037,Región Metropolitana,Marketing Digital,Presencial,Intermedio,12.5,10
+EST-0038,La Araucania,Marketing Digital,Presencial,Avanzado,4.5,10
+EST-0039,Bio-Bío,Gestión de Proyectos,Online,Intermedio,3.9,14
+EST-0040,Bio-Bío,Programación,Presencial,Intermedio,5.2,8
+EST-0041,Bio-Bío,Marketing Digital,Online,Básico,6.1,13
+EST-0042,Valparaíso,Marketing Digital,Híbrida,Avanzado,4.7,15
+EST-0043,Bio-Bío,Contabilidad,Híbrida,Intermedio,7.0,14
+EST-0044,Atacama,Análisis de Datos,Online,Avanzado,6.0,8
+EST-0045,los lagos,Contabilidad,Online,Avanzado,5.1,12
+EST-0046,Maule ,Programación,Presencial,Avanzado,3.3,17
+EST-0047,RM,Análisis de Datos,Presencial,Intermedio,4.9,10
+EST-0048,Valparaíso,Programación,Online,Intermedio,2.7,8
+EST-0049,Coquimbo,Análisis de Datos,Híbrida,Avanzado,6.0,15
+EST-0050,Coquimbo,Programación,Presencial,Básico,6.8,17
+EST-0051,La Araucania,Marketing Digital,Online,Intermedio,5.0,13
+EST-0052,Coquimbo,Programación,Presencial,Intermedio,6.0,12
+EST-0053,Bio-Bío,Programación,Híbrida,Intermedio,5.1,13
+EST-0054,Bio-Bío,Marketing Digital,Online,Intermedio,3.9,11
+EST-0055,Araucanía,Análisis de Datos,Presencial,Avanzado,5.3,11
+EST-0056,Biobio,Programación,Online,Básico,5.6,2
+EST-0057,RM,Marketing Digital,Presencial,Intermedio,5.4,11
+EST-0058,Maule,Programación,Online,Básico,6.2,12
+EST-0059,Maule,Gestión de Proyectos,Online,Avanzado,6.1,13
+EST-0060,Maule ,Marketing Digital,Online,Avanzado,5.0,16
+EST-0061,Bio-Bío,Marketing Digital,Online,Intermedio,4.3,15
+EST-0062,Valparaíso,Contabilidad,Presencial,Intermedio,3.0,8
+EST-0063,Antofagasta,Marketing Digital,Híbrida,Básico,4.0,15
+EST-0064,RM,Programación,Presencial,Avanzado,5.2,9
+EST-0065,Región Metropolitana,Contabilidad,Híbrida,Intermedio,5.8,11
+EST-0066,Bio-Bío,Programación,Presencial,Básico,5.4,7
+EST-0067,los lagos,Análisis de Datos,Online,Intermedio,5.7,13
+EST-0068,O'Higgins,Marketing Digital,Online,Básico,4.8,14
+EST-0069,Valparaiso,Análisis de Datos,Híbrida,Intermedio,5.4,13
+EST-0070,Bio-Bío,Marketing Digital,Online,Intermedio,6.0,4
+EST-0071,Atacama,Contabilidad,Presencial,Básico,6.8,14
+EST-0072,La Araucania,Programación,Online,Intermedio,5.0,11
+EST-0073,Valparaíso,Programación,Online,Intermedio,3.8,13
+EST-0074,Valparaíso,Análisis de Datos,Híbrida,Avanzado,4.6,10
+EST-0075,RM,Marketing Digital,Híbrida,Avanzado,6.6,12
+EST-0076,Maule ,Análisis de Datos,Presencial,Básico,4.4,18
+EST-0077,Maule,Gestión de Proyectos,Híbrida,Avanzado,11.2,10
+EST-0078,Maule,Programación,Presencial,Básico,5.5,13
+EST-0079,La Araucania,Gestión de Proyectos,Online,Intermedio,5.7,15
+EST-0080,Maule,Marketing Digital,Híbrida,Intermedio,5.5,10
+EST-0081,Valparaíso,Contabilidad,Presencial,Intermedio,5.1,15
+EST-0082,Biobio,Marketing Digital,Presencial,Intermedio,4.8,9
+EST-0083,RM,Marketing Digital,Presencial,Básico,4.2,14
+EST-0084,Bio Bío,Gestión de Proyectos,Presencial,Avanzado,6.2,16
+EST-0085,Valparaíso,Contabilidad,Presencial,Básico,5.7,17
+EST-0086,O'Higgins,Marketing Digital,Presencial,Básico,5.5,10
+EST-0087,RM,Análisis de Datos,Híbrida,Básico,4.9,7
+EST-0088,Araucanía,Análisis de Datos,Presencial,Básico,5.2,7
+EST-0089,Atacama,Gestión de Proyectos,Presencial,Avanzado,5.3,9
+EST-0090,O'Higgins,Marketing Digital,Híbrida,Básico,5.5,15
+EST-0091,Coquimbo,Contabilidad,Online,Intermedio,3.8,19
+EST-0092,Atacama,Contabilidad,Presencial,Intermedio,6.6,11
+EST-0093,Región Metropolitana,Gestión de Proyectos,Online,Intermedio,3.4,14
+EST-0094,Bio Bío,Contabilidad,Online,Avanzado,5.8,20
+EST-0095,Bio-Bío,Gestión de Proyectos,Presencial,Avanzado,3.4,9
+EST-0096,Bio-Bío,Análisis de Datos,Online,Avanzado,5.7,9
+EST-0097,Valparaíso,Contabilidad,Presencial,Intermedio,5.2,12
+EST-0098,Bio-Bío,Marketing Digital,Presencial,Avanzado,4.3,12
+EST-0099,Los Lagos,Marketing Digital,Presencial,Básico,6.6,16
+EST-0100,los lagos,Gestión de Proyectos,Online,Avanzado,4.1,5
+EST-0101,Coquimbo,Contabilidad,Híbrida,Básico,4.7,14
+EST-0102,V Región,Análisis de Datos,Presencial,Básico,4.1,9
+EST-0103,V Región,Gestión de Proyectos,Online,Avanzado,4.9,13
+EST-0104,Maule,Análisis de Datos,Online,Intermedio,4.8,8
+EST-0105,los lagos,Marketing Digital,Online,Básico,5.1,10
+EST-0106,Araucanía,Programación,Presencial,Avanzado,6.2,20
+EST-0107,Biobio,Gestión de Proyectos,Presencial,Intermedio,6.6,8
+EST-0108,Bio Bío,Marketing Digital,Online,Intermedio,5.5,16
+EST-0109,O'Higgins,Marketing Digital,Online,Intermedio,6.6,11
+EST-0110,Los Lagos,Análisis de Datos,Presencial,Básico,6.5,10
+EST-0111,Araucanía,Marketing Digital,Presencial,Básico,-5.5,13
+EST-0112,Antofagasta,Análisis de Datos,Híbrida,Intermedio,6.1,9
+EST-0113,RM,Marketing Digital,Presencial,Intermedio,5.6,7
+EST-0114,Región Metropolitana,Gestión de Proyectos,Online,Intermedio,4.4,15
+EST-0115,RM,Análisis de Datos,Híbrida,Básico,6.1,11
+EST-0116,rm,Programación,Presencial,Básico,3.3,11
+EST-0117,Valparaíso,Análisis de Datos,Online,Intermedio,6.8,11
+EST-0118,Antofagasta,Gestión de Proyectos,Online,Intermedio,3.9,9
+EST-0119,Maule,Análisis de Datos,Online,Básico,4.5,7
+EST-0120,Atacama,Contabilidad,Online,Intermedio,5.3,12
+EST-0121,Atacama,Gestión de Proyectos,Online,Básico,6.3,16
+EST-0122,RM,Contabilidad,Presencial,Avanzado,6.0,9
+EST-0123,Maule,Programación,Presencial,Básico,4.5,8
+EST-0124,Araucanía,Gestión de Proyectos,Presencial,Básico,4.7,11
+EST-0125,los lagos,Programación,Híbrida,Básico,5.4,14
+EST-0126,Los Lagos,Análisis de Datos,Híbrida,Avanzado,4.9,11
+EST-0127,Bio-Bío,Programación,Online,Intermedio,5.0,17
+EST-0128,Antofagasta,Contabilidad,Online,Intermedio,4.4,6
+EST-0129,Araucanía,Programación,Presencial,Intermedio,5.1,16
+EST-0130,Los Lagos,Marketing Digital,Presencial,Avanzado,4.4,16
+EST-0131,Bio-Bío,Análisis de Datos,Presencial,Intermedio,5.8,12
+EST-0132,O'Higgins,Marketing Digital,Online,Intermedio,6.6,8
+EST-0133,La Araucania,Programación,Presencial,Intermedio,5.1,2
+EST-0134,Valparaiso,Análisis de Datos,Híbrida,Básico,4.6,18
+EST-0135,Valparaiso,Análisis de Datos,Online,Básico,3.0,20
+EST-0136,rm,Gestión de Proyectos,Online,Básico,3.7,18
+EST-0137,Atacama,Marketing Digital,Online,Intermedio,4.5,10
+EST-0138,RM,Gestión de Proyectos,Online,Intermedio,5.8,6
+EST-0139,Maule ,Análisis de Datos,Híbrida,Intermedio,4.5,9
+EST-0140,Valparaíso,Gestión de Proyectos,Online,Básico,5.6,17
+EST-0141,Antofagasta,Marketing Digital,Presencial,Intermedio,5.1,19
+EST-0142,La Araucania,Gestión de Proyectos,Presencial,Intermedio,5.2,10
+EST-0143,O'Higgins,Marketing Digital,Híbrida,Intermedio,6.3,11
+EST-0144,Maule,Análisis de Datos,Presencial,Básico,6.9,12
+EST-0145,Maule,Programación,Online,Intermedio,5.8,8
+EST-0146,Biobio,Contabilidad,Online,Básico,-1.3,13
+EST-0147,Araucanía,Programación,Híbrida,Básico,7.0,10
+EST-0148,RM,Contabilidad,Híbrida,Básico,4.2,8
+EST-0149,Bio Bío,Gestión de Proyectos,Online,Intermedio,5.4,10
+EST-0150,Región Metropolitana,Análisis de Datos,Híbrida,Básico,5.9,12
+EST-0151,Valparaíso,Programación,Online,Intermedio,3.7,4
+EST-0152,Biobio,Gestión de Proyectos,Online,Avanzado,5.2,12
+EST-0153,Maule,Gestión de Proyectos,Híbrida,Intermedio,4.7,10
+EST-0154,Maule,Análisis de Datos,Presencial,Básico,4.9,15
+EST-0155,Maule,Programación,Presencial,Básico,5.9,9
+EST-0156,Valparaiso,Marketing Digital,Presencial,Avanzado,6.1,8
+EST-0157,Araucanía,Marketing Digital,Presencial,Intermedio,5.5,10
+EST-0158,rm,Análisis de Datos,Presencial,Básico,4.3,13
+EST-0159,Maule,Marketing Digital,Online,Avanzado,5.3,16
+EST-0160,Araucanía,Contabilidad,Presencial,Avanzado,5.7,8
+EST-0161,Coquimbo,Programación,Online,Básico,4.5,15
+EST-0162,Bio Bío,Gestión de Proyectos,Presencial,Intermedio,6.5,10
+EST-0163,rm,Análisis de Datos,Online,Intermedio,5.8,12
+EST-0164,RM,Programación,Híbrida,Intermedio,4.7,12
+EST-0165,Antofagasta,Gestión de Proyectos,Online,Avanzado,5.7,9
+EST-0166,Antofagasta,Programación,Presencial,Intermedio,4.1,11
+EST-0167,Araucanía,Programación,Presencial,Avanzado,6.0,13
+EST-0168,O'Higgins,Programación,Presencial,Avanzado,5.6,14
+EST-0169,Valparaíso,Programación,Online,Básico,0.1,9
+EST-0170,Bio-Bío,Contabilidad,Online,Básico,4.7,7
+EST-0171,RM,Contabilidad,Online,Intermedio,5.6,11
+EST-0172,RM,Contabilidad,Presencial,Avanzado,5.3,10
+EST-0173,Los Lagos,Programación,Presencial,Básico,4.9,15
+EST-0174,La Araucania,Análisis de Datos,Online,Intermedio,6.4,13
+EST-0175,RM,Análisis de Datos,Presencial,Intermedio,5.6,10
+EST-0176,Atacama,Análisis de Datos,Presencial,Intermedio,4.1,9
+EST-0177,O'Higgins,Análisis de Datos,Online,Básico,4.8,7
+EST-0178,O'Higgins,Marketing Digital,Online,Intermedio,4.2,6
+EST-0179,Coquimbo,Programación,Presencial,Básico,3.5,16
+EST-0180,Antofagasta,Gestión de Proyectos,Híbrida,Básico,5.3,5
+EST-0181,Biobio,Marketing Digital,Presencial,Avanzado,5.2,14
+EST-0182,Araucanía,Marketing Digital,Presencial,Intermedio,4.1,8
+EST-0183,La Araucania,Análisis de Datos,Presencial,Avanzado,2.7,16
+EST-0184,RM,Gestión de Proyectos,Online,Avanzado,4.2,13
+EST-0185,Valparaiso,Contabilidad,Online,Intermedio,5.7,18
+EST-0186,RM,Gestión de Proyectos,Online,Intermedio,7.0,15
+EST-0187,Atacama,Programación,Presencial,Básico,4.2,11
+EST-0188,Coquimbo,Programación,Presencial,Básico,5.7,14
+EST-0189,Maule,Análisis de Datos,Presencial,Básico,4.9,13
+EST-0190,Araucanía,Programación,Online,Intermedio,3.8,7
+EST-0191,Antofagasta,Contabilidad,Online,Intermedio,4.2,13
+EST-0192,Atacama,Programación,Presencial,Intermedio,4.8,12
+EST-0193,Valparaíso,Análisis de Datos,Híbrida,Intermedio,9.9,21
+EST-0194,RM,Programación,Online,Avanzado,4.9,12
+EST-0195,RM,Contabilidad,Presencial,Básico,4.5,13
+EST-0196,RM,Programación,Presencial,Avanzado,7.0,13
+EST-0197,Atacama,Gestión de Proyectos,Presencial,Básico,4.2,13
+EST-0198,Maule,Contabilidad,Presencial,Intermedio,5.0,16
+EST-0199,Biobio,Marketing Digital,Online,Básico,5.2,13
+EST-0200,RM,Contabilidad,Presencial,Intermedio,5.1,12
+EST-0201,Los Lagos,Marketing Digital,Presencial,Intermedio,10.8,21
+EST-0202,Bio Bío,Análisis de Datos,Online,Intermedio,-2.0,13
+EST-0203,Maule,Marketing Digital,Presencial,Intermedio,5.6,16
+EST-0204,Antofagasta,Programación,Presencial,Avanzado,5.0,12
+EST-0205,RM,Contabilidad,Presencial,Intermedio,5.1,7
+EST-0206,Atacama,Gestión de Proyectos,Presencial,Básico,2.9,13
+EST-0207,Los Lagos,Gestión de Proyectos,Online,Básico,5.1,19
+EST-0208,Región Metropolitana,Análisis de Datos,Presencial,Intermedio,4.2,13
+EST-0209,Maule,Gestión de Proyectos,Presencial,Avanzado,4.2,9
+EST-0210,Bio-Bío,Gestión de Proyectos,Híbrida,Intermedio,7.0,16
+EST-0211,Bio-Bío,Gestión de Proyectos,Presencial,Básico,4.3,8
+EST-0212,rm,Gestión de Proyectos,Online,Básico,3.9,20
+EST-0213,Los Lagos,Marketing Digital,Presencial,Intermedio,5.9,12
+EST-0214,Valparaíso,Marketing Digital,Online,Básico,5.6,4
+EST-0215,Valparaíso,Análisis de Datos,Presencial,Básico,3.9,6
+EST-0216,rm,Gestión de Proyectos,Presencial,Intermedio,6.0,18
+EST-0217,Antofagasta,Programación,Online,Intermedio,4.2,8
+EST-0218,Valparaíso,Marketing Digital,Presencial,Intermedio,5.4,16
+EST-0219,los lagos,Programación,Presencial,Básico,4.5,16
+EST-0220,rm,Programación,Híbrida,Intermedio,6.7,2
+EST-0221,La Araucania,Análisis de Datos,Híbrida,Intermedio,5.2,19
+EST-0222,Valparaíso,Gestión de Proyectos,Híbrida,Básico,5.4,11
+EST-0223,Valparaíso,Marketing Digital,Presencial,Básico,4.7,12
+EST-0224,O'Higgins,Análisis de Datos,Presencial,Avanzado,3.9,14
+EST-0225,rm,Análisis de Datos,Híbrida,Avanzado,3.5,12
+EST-0226,RM,Contabilidad,Online,Intermedio,5.6,13
+EST-0227,Maule,Gestión de Proyectos,Online,Intermedio,3.7,12
+EST-0228,Bio Bío,Análisis de Datos,Presencial,Avanzado,4.4,15
+EST-0229,Atacama,Gestión de Proyectos,Presencial,Básico,4.7,12
+EST-0230,Los Lagos,Contabilidad,Online,Avanzado,3.3,13
+EST-0231,Valparaiso,Programación,Presencial,Intermedio,5.8,9
+EST-0232,Bio Bío,Marketing Digital,Presencial,Básico,2.2,18
+EST-0233,Maule,Programación,Online,Intermedio,3.3,2
+EST-0234,Valparaíso,Análisis de Datos,Híbrida,Intermedio,5.9,13
+EST-0235,O'Higgins,Gestión de Proyectos,Presencial,Intermedio,4.8,14
+EST-0236,Araucanía,Programación,Híbrida,Intermedio,5.0,19
+EST-0237,Bio-Bío,Análisis de Datos,Online,Intermedio,5.2,11
+EST-0238,Araucanía,Programación,Online,Avanzado,5.2,13
+EST-0239,Región Metropolitana,Programación,Online,Básico,5.8,10
+EST-0240,Araucanía,Programación,Online,Básico,4.8,19
+EST-0241,Valparaíso,Programación,Online,Avanzado,4.7,14
+EST-0242,Maule,Programación,Online,Avanzado,3.7,16
+EST-0243,Maule,Contabilidad,Presencial,Avanzado,4.8,6
+EST-0244,Antofagasta,Programación,Presencial,Intermedio,6.0,13
+EST-0245,Región Metropolitana,Análisis de Datos,Híbrida,Intermedio,7.0,22
+EST-0246,RM,Marketing Digital,Online,Básico,4.5,15
+EST-0247,Antofagasta,Contabilidad,Online,Básico,5.9,14
+EST-0248,Coquimbo,Programación,Online,Básico,5.6,13
+EST-0249,Coquimbo,Marketing Digital,Presencial,Básico,5.0,18
+EST-0250,Biobio,Programación,Híbrida,Intermedio,4.2,6
+EST-0251,Los Lagos,Análisis de Datos,Presencial,Avanzado,4.7,12
+EST-0252,Coquimbo,Gestión de Proyectos,Online,Básico,7.0,15
+EST-0253,Coquimbo,Marketing Digital,Online,Intermedio,3.7,7
+EST-0254,RM,Análisis de Datos,Híbrida,Intermedio,4.6,5
+EST-0255,Araucanía,Gestión de Proyectos,Híbrida,Intermedio,5.4,17
+EST-0256,RM,Análisis de Datos,Presencial,Básico,5.1,12
+EST-0257,O'Higgins,Análisis de Datos,Online,Intermedio,2.4,10
+EST-0258,Región Metropolitana,Contabilidad,Presencial,Intermedio,5.4,6
+EST-0259,RM,Programación,Presencial,Intermedio,4.7,8
+EST-0260,Bio Bío,Programación,Online,Avanzado,4.0,19
+EST-0261,Región Metropolitana,Análisis de Datos,Híbrida,Intermedio,4.0,7
+EST-0262,Valparaiso,Programación,Online,Básico,5.6,13
+EST-0263,RM,Programación,Presencial,Avanzado,5.7,17
+EST-0264,Coquimbo,Análisis de Datos,Presencial,Avanzado,5.0,12
+EST-0265,Atacama,Programación,Online,Avanzado,5.1,9
+EST-0266,O'Higgins,Contabilidad,Online,Básico,5.2,22
+EST-0267,Valparaiso,Contabilidad,Online,Avanzado,5.3,5
+EST-0268,Coquimbo,Contabilidad,Online,Intermedio,5.7,12
+EST-0269,Valparaiso,Contabilidad,Online,Intermedio,6.2,16
+EST-0270,Coquimbo,Análisis de Datos,Presencial,Intermedio,5.6,11
+EST-0271,Coquimbo,Marketing Digital,Online,Básico,5.5,5
+EST-0272,RM,Contabilidad,Presencial,Intermedio,5.8,18
+EST-0273,Maule ,Marketing Digital,Presencial,Básico,4.5,17
+EST-0274,Valparaíso,Marketing Digital,Online,Avanzado,6.7,7
+EST-0275,RM,Programación,Híbrida,Básico,4.6,14
+EST-0276,RM,Análisis de Datos,Presencial,Intermedio,4.3,19
+EST-0277,Bio Bío,Análisis de Datos,Presencial,Básico,4.0,7
+EST-0278,Biobio,Contabilidad,Online,Intermedio,5.7,6
+EST-0279,O'Higgins,Gestión de Proyectos,Online,Avanzado,5.2,10
+EST-0280,RM,Gestión de Proyectos,Presencial,Avanzado,4.7,11
+EST-0281,rm,Análisis de Datos,Online,Intermedio,5.7,9
+EST-0282,La Araucania,Análisis de Datos,Online,Básico,5.2,6
+EST-0283,Los Lagos,Contabilidad,Presencial,Intermedio,5.8,12
+EST-0284,Bio-Bío,Análisis de Datos,Presencial,Avanzado,6.9,10
+EST-0285,Valparaiso,Análisis de Datos,Presencial,Intermedio,6.5,4
+EST-0286,Maule ,Análisis de Datos,Híbrida,Intermedio,5.0,11
+EST-0287,RM,Programación,Presencial,Intermedio,5.7,10
+EST-0288,Araucanía,Contabilidad,Presencial,Básico,6.1,13
+EST-0289,Coquimbo,Marketing Digital,Presencial,Básico,6.3,21
+EST-0290,Bio-Bío,Marketing Digital,Híbrida,Intermedio,5.1,15
+EST-0291,Biobio,Gestión de Proyectos,Presencial,Intermedio,7.0,14
+EST-0292,Coquimbo,Programación,Online,Intermedio,150.0,11
+EST-0293,V Región,Gestión de Proyectos,Presencial,Avanzado,4.7,13
+EST-0294,V Región,Análisis de Datos,Presencial,Intermedio,6.1,17
+EST-0295,Región Metropolitana,Contabilidad,Online,Intermedio,6.3,7
+EST-0296,RM,Contabilidad,Online,Avanzado,5.5,13
+EST-0297,Maule,Análisis de Datos,Híbrida,Intermedio,3.8,10
+EST-0298,Los Lagos,Análisis de Datos,Presencial,Avanzado,6.3,21
+EST-0299,La Araucania,Programación,Online,Intermedio,5.2,17
+EST-0300,Maule,Contabilidad,Híbrida,Avanzado,4.2,9

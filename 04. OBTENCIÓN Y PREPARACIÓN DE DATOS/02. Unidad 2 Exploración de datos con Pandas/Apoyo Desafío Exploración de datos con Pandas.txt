@@ -1,0 +1,186 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Desafío - Exploración de datos con Pandas"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Desafío – Exploración de Datos con Pandas\n",
+    "### Tienda en línea — Análisis de ventas recientes\n",
+    "\n",
+    "**Resultado de Aprendizaje:** Utilizar métodos básicos de exploración con estructuras Serie y DataFrame de pandas para selección, filtrado y sumarización de datos.\n",
+    "\n",
+    "**Tiempo:** 2 horas cronológicas\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Creación del DataFrame\n",
+    "\n",
+    "Copia el siguiente diccionario y úsalo para crear el DataFrame de pandas."
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "datos_ventas = {\n",
+    "    'Producto': ['Laptop', 'Mouse', 'Teclado', 'Monitor', 'Webcam', 'Audífonos', 'Laptop', 'Mouse', 'Mouse'],\n",
+    "    'Categoría': ['Electrónica', 'Accesorios', 'Accesorios', 'Electrónica', 'Accesorios', 'Accesorios', 'Electrónica', 'Accesorios', 'Accesorios'],\n",
+    "    'Precio': [1200, 25, 45, 300, 50, 75, 1250, 27, 26],\n",
+    "    'Unidades_Vendidas': [5, 30, 25, 10, 20, 15, 3, 40, 35]\n",
+    "}\n",
+    "\n",
+    "df_ventas = pd.DataFrame(datos_ventas)\n",
+    "print(df_ventas)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Requerimiento 1 – Exploración Inicial *(4 puntos)*"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Resumen conciso: tipos de datos y valores no nulos\n",
+    "df_ventas.info()"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Primeras 5 filas para inspeccionar la estructura\n",
+    "df_ventas.head()"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Resumen estadístico descriptivo para columnas numéricas\n",
+    "df_ventas.describe()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Requerimiento 2 – Selección y Filtrado *(3 puntos)*"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Columna Producto como Serie de pandas\n",
+    "df_ventas['Producto']"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Columnas Producto y Precio\n",
+    "df_ventas[['Producto', 'Precio']]"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ventas donde el Precio fue superior a 100\n",
+    "df_ventas[df_ventas['Precio'] > 100]"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Requerimiento 3 – Sumarización de Datos *(3 puntos)*"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Precio promedio de todos los productos\n",
+    "precio_promedio = df_ventas['Precio'].mean()\n",
+    "print(f'Precio promedio: ${precio_promedio:.2f}')"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Total de unidades vendidas en categoría \"Accesorios\"\n",
+    "total_accesorios = df_ventas[df_ventas['Categoría'] == 'Accesorios']['Unidades_Vendidas'].sum()\n",
+    "print(f'Total unidades vendidas en Accesorios: {total_accesorios}')"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Cuántas veces aparece cada producto en el listado\n",
+    "df_ventas['Producto'].value_counts()"
+   ]
+  }
+
+ ]
+}

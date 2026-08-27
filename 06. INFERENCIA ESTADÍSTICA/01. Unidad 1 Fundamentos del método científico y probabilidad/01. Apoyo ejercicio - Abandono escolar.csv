@@ -1,0 +1,201 @@
+id_estudiante,comuna,region,nivel_socioeconomico,anio,pct_asistencia,pct_conectividad,promedio_notas,abandono
+EST0001,Maipú,RM,Medio-alto,2024,79.0,81.5,5.7,1
+EST0002,El Bosque,RM,Bajo,2022,67.2,71.1,5.3,1
+EST0003,Recoleta,RM,Bajo,2022,45.3,37.5,4.0,1
+EST0004,Recoleta,RM,Bajo,2022,60.4,59.1,5.9,1
+EST0005,La Pintana,RM,Medio-bajo,2024,68.1,68.1,5.3,0
+EST0006,Maipú,RM,Bajo,2024,66.9,49.5,3.7,1
+EST0007,Quilicura,Maule,Medio,2022,55.4,86.8,5.1,0
+EST0008,San Bernardo,RM,Bajo,2023,78.9,38.5,4.8,1
+EST0009,Pudahuel,RM,Bajo,2022,54.4,69.9,5.4,1
+EST0010,El Bosque,RM,Medio-bajo,2024,93.4,89.1,4.9,0
+EST0011,Conchalí,RM,Medio-bajo,2024,59.9,87.4,6.5,1
+EST0012,Cerro Navia,Araucanía,Medio-bajo,2023,77.4,100,5.4,0
+EST0013,Pedro Aguirre Cerda,Araucanía,Bajo,2023,64.9,57.6,5.0,1
+EST0014,Peñalolén,RM,Medio-bajo,2022,84.8,96.3,5.0,0
+EST0015,El Bosque,RM,Bajo,2023,80.3,69.5,3.5,0
+EST0016,Peñalolén,RM,Bajo,2022,66.2,60.8,5.4,1
+EST0017,Estación Central,Biobío,Bajo,2022,84.5,55.5,4.0,0
+EST0018,El Bosque,RM,Medio-alto,2023,93.4,61.4,4.3,0
+EST0019,Lo Espejo,Maule,Medio-bajo,2022,71.2,90.7,5.0,0
+EST0020,Pudahuel,RM,Bajo,2022,76.6,55.4,4.8,0
+EST0021,Maipú,RM,Medio-bajo,2023,89.4,83.3,4.6,0
+EST0022,Conchalí,RM,Bajo,2023,83.9,88.1,2.5,1
+EST0023,Renca,RM,Bajo,2022,80.8,64.9,4.6,0
+EST0024,Peñalolén,RM,Medio-alto,2024,100,68.0,5.4,0
+EST0025,Lo Espejo,Araucanía,Medio-alto,2022,94.1,57.0,5.4,0
+EST0026,Peñalolén,RM,Medio-bajo,2022,93.4,80.9,4.7,0
+EST0027,Lo Espejo,Biobío,Medio,2023,90.2,51.1,5.7,0
+EST0028,Santiago,RM,Medio,2024,96.3,66.4,5.6,0
+EST0029,Conchalí,RM,Medio,2022,80.1,61.5,5.9,0
+EST0030,Peñalolén,RM,Bajo,2024,71.2,3.0,5.1,0
+EST0031,Quilicura,Araucanía,Medio,2022,97.2,91.4,6.8,0
+EST0032,La Pintana,RM,Medio-bajo,2024,70.7,73.0,5.2,0
+EST0033,Recoleta,RM,Medio,2024,88.1,83.4,5.7,0
+EST0034,Lo Espejo,Biobío,Medio-bajo,2023,81.9,61.2,4.9,0
+EST0035,El Bosque,RM,Bajo,2022,100,59.3,4.2,0
+EST0036,Estación Central,Biobío,Medio,2023,70.1,81.3,6.2,0
+EST0037,Lo Espejo,Araucanía,Bajo,2023,66.4,59.6,5.5,0
+EST0038,Estación Central,Maule,Medio,2022,76.0,84.9,5.2,0
+EST0039,Santiago,RM,Medio,2022,84.7,53.7,5.6,0
+EST0040,Cerro Navia,Valparaíso,Medio-bajo,2024,75.3,68.0,6.5,0
+EST0041,Lo Espejo,Valparaíso,Medio,2023,89.3,82.1,5.9,0
+EST0042,Lo Espejo,Valparaíso,Medio-bajo,2024,83.4,61.8,4.8,0
+EST0043,Renca,RM,Medio-bajo,2023,68.6,73.7,6.8,0
+EST0044,Pedro Aguirre Cerda,Biobío,Medio,2023,75.3,84.0,5.8,0
+EST0045,Quilicura,Biobío,Medio-bajo,2024,84.4,92.9,6.6,0
+EST0046,Maipú,RM,Bajo,2022,86.5,89.9,3.2,1
+EST0047,Pedro Aguirre Cerda,Maule,Bajo,2023,67.8,43.9,4.0,0
+EST0048,Peñalolén,RM,Medio-bajo,2023,45.0,92.4,6.0,1
+EST0049,Conchalí,RM,Medio,2022,71.2,92.4,4.9,0
+EST0050,Lo Espejo,Biobío,Medio-alto,2022,100,89.2,5.9,0
+EST0051,La Pintana,RM,Bajo,2023,80.6,68.7,6.2,0
+EST0052,El Bosque,RM,Medio-alto,2022,70.3,52.8,4.9,0
+EST0053,Lo Espejo,Biobío,Medio-bajo,2022,100,96.7,4.4,0
+EST0054,Peñalolén,RM,Bajo,2023,55.9,67.9,4.0,0
+EST0055,Pedro Aguirre Cerda,Araucanía,Medio-bajo,2023,100,85.6,7.0,1
+EST0056,Peñalolén,RM,Medio-alto,2022,70.0,62.7,4.7,0
+EST0057,El Bosque,RM,Medio,2022,79.2,100,5.7,0
+EST0058,El Bosque,RM,Medio-alto,2023,81.9,64.5,5.4,1
+EST0059,Estación Central,Maule,Medio,2022,57.9,67.3,6.3,0
+EST0060,Estación Central,Biobío,Medio-bajo,2022,80.1,74.5,5.7,1
+EST0061,Quilicura,Araucanía,Medio-bajo,2023,98.7,87.1,4.7,0
+EST0062,Cerro Navia,Araucanía,Bajo,2022,81.7,60.6,5.5,0
+EST0063,Maipú,RM,Medio-alto,2023,73.4,74.1,6.3,0
+EST0064,Maipú,RM,Medio-bajo,2022,79.8,57.0,5.7,0
+EST0065,Lo Espejo,Valparaíso,Bajo,2023,74.7,45.8,4.0,0
+EST0066,Peñalolén,RM,Bajo,2022,65.8,89.0,4.3,0
+EST0067,Cerro Navia,Maule,Medio,2022,79.4,57.3,5.2,1
+EST0068,Estación Central,Maule,Medio,2024,98.3,81.8,5.0,0
+EST0069,San Bernardo,RM,Medio,2024,89.6,46.3,3.9,0
+EST0070,Pudahuel,RM,Bajo,2022,59.2,66.4,5.4,1
+EST0071,Conchalí,RM,Medio-bajo,2022,70.3,59.8,5.1,0
+EST0072,Pudahuel,RM,Medio,2024,69.4,55.7,5.5,0
+EST0073,Cerro Navia,Maule,Bajo,2024,80.4,61.4,4.7,0
+EST0074,Conchalí,RM,Medio-bajo,2024,73.9,62.8,6.2,0
+EST0075,Santiago,RM,Medio-bajo,2024,79.0,72.4,5.9,0
+EST0076,San Bernardo,RM,Medio-bajo,2023,89.3,84.3,5.5,0
+EST0077,Pudahuel,RM,Medio,2023,77.5,64.7,4.5,0
+EST0078,Pedro Aguirre Cerda,Biobío,Bajo,2023,70.6,72.5,5.3,0
+EST0079,Estación Central,Maule,Medio-alto,2022,61.7,100,5.8,1
+EST0080,El Bosque,RM,Bajo,2024,70.0,39.4,5.7,1
+EST0081,Pedro Aguirre Cerda,Valparaíso,Medio,2022,85.0,100,5.3,0
+EST0082,Quilicura,Maule,Medio-bajo,2023,82.2,75.3,4.6,0
+EST0083,Estación Central,Araucanía,Bajo,2024,72.1,20.6,6.3,1
+EST0084,Cerro Navia,Araucanía,Bajo,2024,90.8,71.4,5.2,1
+EST0085,Pedro Aguirre Cerda,Maule,Medio,2024,87.9,66.4,6.8,0
+EST0086,Peñalolén,RM,Medio-alto,2023,87.6,63.6,5.8,0
+EST0087,Recoleta,RM,Medio,2024,88.4,54.5,7.0,0
+EST0088,Pudahuel,RM,Bajo,2022,57.2,52.8,3.8,1
+EST0089,Renca,RM,Medio-bajo,2023,94.9,66.0,5.9,0
+EST0090,Cerro Navia,Araucanía,Medio-bajo,2024,92.9,79.5,6.5,0
+EST0091,La Pintana,RM,Medio-bajo,2023,94.6,87.7,5.9,0
+EST0092,Lo Espejo,Maule,Medio-bajo,2022,68.0,65.1,5.3,0
+EST0093,Pudahuel,RM,Bajo,2023,57.2,79.1,4.9,1
+EST0094,Cerro Navia,Biobío,Medio-bajo,2023,84.3,74.6,5.8,0
+EST0095,Maipú,RM,Bajo,2023,55.1,54.5,5.2,0
+EST0096,Quilicura,Maule,Medio-bajo,2022,75.6,65.5,7.0,0
+EST0097,Recoleta,RM,Medio,2023,92.8,65.6,5.5,0
+EST0098,Pedro Aguirre Cerda,Maule,Medio-alto,2022,81.9,78.1,5.9,0
+EST0099,Quilicura,Valparaíso,Medio-alto,2024,78.9,52.4,5.6,0
+EST0100,Santiago,RM,Medio,2024,68.8,82.4,7.0,0
+EST0101,La Pintana,RM,Medio-bajo,2023,69.3,74.6,5.5,0
+EST0102,San Bernardo,RM,Bajo,2022,66.5,52.8,6.4,1
+EST0103,Renca,RM,Medio-alto,2024,80.1,93.4,5.9,0
+EST0104,Peñalolén,RM,Bajo,2022,64.4,32.8,5.5,1
+EST0105,Conchalí,RM,Medio,2023,79.0,72.1,5.6,0
+EST0106,Santiago,RM,Medio,2023,94.5,74.6,4.7,0
+EST0107,Lo Espejo,Araucanía,Medio,2022,73.9,77.6,6.3,0
+EST0108,Peñalolén,RM,Bajo,2024,70.0,61.6,4.5,0
+EST0109,La Pintana,RM,Medio,2023,55.8,81.7,6.6,1
+EST0110,Santiago,RM,Medio-alto,2022,87.6,81.7,5.7,0
+EST0111,Conchalí,RM,Medio,2023,96.5,58.5,7.0,0
+EST0112,Quilicura,Maule,Bajo,2023,71.6,46.0,4.0,0
+EST0113,Conchalí,RM,Bajo,2022,81.7,55.3,3.5,1
+EST0114,Lo Espejo,Biobío,Medio-bajo,2023,100,79.8,4.7,1
+EST0115,Cerro Navia,Maule,Bajo,2023,59.4,50.0,4.1,1
+EST0116,Recoleta,RM,Bajo,2023,89.6,42.1,4.2,1
+EST0117,Pudahuel,RM,Medio,2023,89.3,82.5,6.6,0
+EST0118,San Bernardo,RM,Bajo,2023,78.3,54.4,3.4,1
+EST0119,Cerro Navia,Valparaíso,Bajo,2023,73.4,75.3,7.0,0
+EST0120,Pedro Aguirre Cerda,Maule,Medio,2022,74.0,92.2,6.3,0
+EST0121,Cerro Navia,Araucanía,Medio,2023,84.3,53.6,5.1,0
+EST0122,San Bernardo,RM,Bajo,2022,81.3,64.8,6.2,0
+EST0123,Quilicura,Valparaíso,Medio-bajo,2022,75.2,75.1,5.1,0
+EST0124,Pudahuel,RM,Bajo,2023,74.5,7.7,6.1,1
+EST0125,La Pintana,RM,Medio-bajo,2024,68.9,59.5,5.5,0
+EST0126,Lo Espejo,Araucanía,Bajo,2024,48.8,39.1,4.4,1
+EST0127,Conchalí,RM,Bajo,2023,72.2,65.4,5.7,1
+EST0128,Renca,RM,Medio-alto,2022,71.5,65.0,5.5,0
+EST0129,Santiago,RM,Bajo,2022,50.1,60.3,5.9,0
+EST0130,Santiago,RM,Bajo,2022,49.6,78.5,4.6,1
+EST0131,Estación Central,Biobío,Medio-bajo,2024,80.7,100,5.9,0
+EST0132,Maipú,RM,Bajo,2022,70.1,48.3,5.2,0
+EST0133,Santiago,RM,Medio-bajo,2024,77.3,68.1,6.3,0
+EST0134,San Bernardo,RM,Bajo,2024,72.8,64.3,6.3,0
+EST0135,Recoleta,RM,Bajo,2022,60.0,68.9,4.5,1
+EST0136,Renca,RM,Medio-bajo,2022,78.0,74.8,6.3,0
+EST0137,San Bernardo,RM,Medio,2024,80.0,79.8,5.7,0
+EST0138,Cerro Navia,Maule,Bajo,2023,50.5,93.7,4.9,1
+EST0139,Pudahuel,RM,Medio-bajo,2024,91.9,64.6,5.6,0
+EST0140,Lo Espejo,Maule,Bajo,2024,73.8,42.5,4.2,0
+EST0141,Maipú,RM,Bajo,2022,44.9,49.6,5.6,1
+EST0142,Estación Central,Valparaíso,Medio-alto,2024,90.8,72.1,5.5,0
+EST0143,Pedro Aguirre Cerda,Biobío,Medio-bajo,2023,92.4,58.3,5.1,0
+EST0144,Peñalolén,RM,Bajo,2023,66.8,64.7,4.6,0
+EST0145,Peñalolén,RM,Medio-alto,2024,85.1,67.2,6.8,1
+EST0146,Estación Central,Araucanía,Bajo,2024,56.6,36.6,4.1,0
+EST0147,Renca,RM,Medio-bajo,2022,66.3,89.9,4.6,1
+EST0148,Conchalí,RM,Medio-bajo,2023,86.2,54.4,5.9,0
+EST0149,Lo Espejo,Maule,Medio-bajo,2024,92.3,84.9,4.4,0
+EST0150,Santiago,RM,Bajo,2023,88.2,82.8,6.3,0
+EST0151,El Bosque,RM,Bajo,2022,72.3,16.8,3.9,0
+EST0152,Cerro Navia,Valparaíso,Bajo,2022,54.8,75.8,4.7,0
+EST0153,Peñalolén,RM,Bajo,2023,60.1,79.4,5.8,0
+EST0154,Renca,RM,Medio-bajo,2023,100,88.8,5.2,0
+EST0155,Peñalolén,RM,Bajo,2024,79.4,57.6,5.9,0
+EST0156,Recoleta,RM,Bajo,2024,95.9,56.9,4.4,1
+EST0157,Estación Central,Araucanía,Medio-alto,2023,68.1,84.4,4.8,0
+EST0158,Quilicura,Maule,Medio,2023,58.3,65.9,6.1,1
+EST0159,Maipú,RM,Bajo,2023,79.6,61.4,3.1,0
+EST0160,Quilicura,Araucanía,Medio,2023,62.0,77.8,4.9,1
+EST0161,Recoleta,RM,Medio-bajo,2022,79.5,82.2,4.3,1
+EST0162,Santiago,RM,Medio-bajo,2024,83.2,70.7,6.5,0
+EST0163,San Bernardo,RM,Bajo,2022,79.6,67.8,5.1,0
+EST0164,Peñalolén,RM,Medio,2022,75.8,71.8,5.6,0
+EST0165,Lo Espejo,Araucanía,Medio-bajo,2023,81.8,80.7,4.8,0
+EST0166,San Bernardo,RM,Medio-bajo,2022,69.8,100,4.9,0
+EST0167,Santiago,RM,Bajo,2022,60.0,51.4,4.8,1
+EST0168,El Bosque,RM,Medio,2024,86.1,84.0,6.4,0
+EST0169,El Bosque,RM,Medio-bajo,2024,67.8,90.6,5.2,1
+EST0170,Pedro Aguirre Cerda,Maule,Medio,2024,81.8,100,5.6,0
+EST0171,Pudahuel,RM,Medio,2022,73.8,81.8,6.0,0
+EST0172,Pedro Aguirre Cerda,Araucanía,Medio,2023,87.4,75.7,6.6,0
+EST0173,Pedro Aguirre Cerda,Araucanía,Bajo,2022,94.9,38.4,5.7,1
+EST0174,Peñalolén,RM,Medio,2023,89.3,81.1,6.0,0
+EST0175,Recoleta,RM,Bajo,2024,73.8,94.2,3.9,0
+EST0176,Conchalí,RM,Medio,2023,68.5,66.5,3.8,0
+EST0177,Pedro Aguirre Cerda,Araucanía,Medio,2022,69.6,93.0,5.0,1
+EST0178,Pudahuel,RM,Medio-bajo,2024,79.1,100,7.0,1
+EST0179,Santiago,RM,Bajo,2024,69.8,50.8,5.1,0
+EST0180,Peñalolén,RM,Medio,2022,83.5,94.1,3.8,0
+EST0181,Cerro Navia,Maule,Bajo,2024,73.6,63.4,6.5,1
+EST0182,Lo Espejo,Araucanía,Medio-bajo,2024,87.0,99.4,6.7,0
+EST0183,Maipú,RM,Bajo,2023,71.2,71.7,5.1,0
+EST0184,Lo Espejo,Maule,Medio,2023,80.4,74.7,5.3,1
+EST0185,El Bosque,RM,Medio,2022,71.3,100,4.9,0
+EST0186,Renca,RM,Bajo,2022,70.0,67.1,4.8,1
+EST0187,Conchalí,RM,Bajo,2024,64.4,23.3,6.0,1
+EST0188,La Pintana,RM,Bajo,2023,68.7,61.1,6.2,0
+EST0189,Quilicura,Valparaíso,Medio-bajo,2022,97.4,76.7,6.1,0
+EST0190,Recoleta,RM,Medio,2024,88.5,77.4,4.6,1
+EST0191,Peñalolén,RM,Bajo,2024,58.5,64.9,6.0,1
+EST0192,Conchalí,RM,Bajo,2024,100,32.2,4.0,1
+EST0193,Maipú,RM,Medio-bajo,2023,58.1,73.1,4.4,1
+EST0194,Conchalí,RM,Medio,2023,86.7,77.4,6.2,0
+EST0195,Pedro Aguirre Cerda,Biobío,Medio-bajo,2024,79.8,100,6.1,0
+EST0196,Peñalolén,RM,Medio,2022,67.3,64.7,5.0,0
+EST0197,Peñalolén,RM,Bajo,2022,100,38.7,5.5,1
+EST0198,La Pintana,RM,Medio,2022,97.1,76.0,4.5,1
+EST0199,Pedro Aguirre Cerda,Valparaíso,Bajo,2023,82.1,41.7,6.6,0
+EST0200,El Bosque,RM,Medio-alto,2023,83.9,76.9,5.7,0

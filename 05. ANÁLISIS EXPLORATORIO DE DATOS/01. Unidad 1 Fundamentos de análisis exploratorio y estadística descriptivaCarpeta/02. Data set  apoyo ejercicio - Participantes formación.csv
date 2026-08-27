@@ -1,0 +1,161 @@
+id_participante,genero,edad,region,comuna,nivel_educacional,situacion_laboral,modalidad,frecuencia_conexion,nota_promedio
+P001,M,47,Metropolitana,Peñalolén,Técnico,Ocupado,Presencial,1,4.6
+P002,F,40,Valparaíso,Valparaíso,Técnico,Desocupado,Híbrida,6,6.6
+P003,F,49,Metropolitana,La Florida,Media completa,Inactivo,Híbrida,1,4.1
+P004,F,55,Metropolitana,Peñalolén,Media incompleta,Desocupado,Online,2,6.1
+P005,F,40,Valparaíso,Quilpué,Media completa,Estudiante,Presencial,4,6.0
+P006,M,48,Araucanía,Angol,Universitaria,Estudiante,Presencial,7,5.4
+P007,F,37,Araucanía,Temuco,Media incompleta,Inactivo,Presencial,6,6.5
+P008,F,39,Metropolitana,Peñalolén,Media completa,Estudiante,Online,4,5.8
+P009,M,20,Valparaíso,Valparaíso,Básica,Desocupado,Online,3,5.0
+P010,M,18,Biobío,Concepción,Media incompleta,Desocupado,Híbrida,2,6.8
+P011,M,31,Biobío,Talcahuano,Media completa,Ocupado,Presencial,4,6.1
+P012,F,36,Araucanía,Curacautín,Básica,Inactivo,Híbrida,4,
+P013,F,29,Metropolitana,La Florida,Técnico,Ocupado,Presencial,5,6.1
+P014,F,35,Araucanía,Curacautín,Postgrado,Inactivo,Híbrida,5,6.2
+P015,F,47,Valparaíso,Valparaíso,Media incompleta,Ocupado,Online,3,4.9
+P016,M,41,Biobío,Concepción,Media incompleta,Estudiante,Híbrida,3,5.1
+P017,F,46,Biobío,Talcahuano,Postgrado,Ocupado,Online,3,5.2
+P018,M,35,Metropolitana,La Florida,Media completa,Ocupado,Online,2,4.4
+P019,M,37,Biobío,Los Ángeles,Universitaria,Estudiante,Presencial,2,5.6
+P020,F,44,Biobío,Chillán,Técnico,Desocupado,Online,5,4.2
+P021,M,38,Metropolitana,Santiago,Postgrado,Ocupado,Presencial,4,4.6
+P022,M,29,Biobío,Los Ángeles,Técnico,Inactivo,Híbrida,1,4.5
+P023,F,29,Biobío,Talcahuano,Media completa,Desocupado,Presencial,3,7.0
+P024,M,23,Biobío,Los Ángeles,Media completa,Ocupado,Híbrida,1,4.0
+P025,M,60,Valparaíso,Valparaíso,Postgrado,Ocupado,Presencial,2,4.5
+P026,M,40,Valparaíso,Quilpué,Media completa,Ocupado,Híbrida,3,4.4
+P027,F,55,Metropolitana,Maipú,Universitaria,Inactivo,Presencial,7,6.4
+P028,M,43,Biobío,Los Ángeles,Básica,Desocupado,Online,2,5.9
+P029,F,55,Biobío,Chillán,Básica,Desocupado,Híbrida,2,7.0
+P030,M,53,Biobío,Chillán,Postgrado,Desocupado,Online,7,4.9
+P031,M,37,Valparaíso,Quilpué,Media completa,Desocupado,Híbrida,3,5.6
+P032,M,29,Araucanía,Angol,Básica,Inactivo,Híbrida,1,6.1
+P033,F,32,Metropolitana,Santiago,Media completa,Desocupado,Online,1,5.7
+P034,F,39,Metropolitana,Quilicura,Media completa,Desocupado,Híbrida,15,6.2
+P035,M,41,Biobío,Chillán,Media incompleta,Desocupado,Online,1,5.5
+P036,F,19,Araucanía,Curacautín,Universitaria,Desocupado,Online,6,6.5
+P037,M,45,Araucanía,Curacautín,Media incompleta,Ocupado,Híbrida,5,5.0
+P038,F,26,Valparaíso,Valparaíso,Media incompleta,Inactivo,Híbrida,6,5.4
+P039,F,41,Metropolitana,Quilicura,Media completa,Ocupado,Presencial,7,4.0
+P040,M,26,Metropolitana,Pudahuel,Universitaria,Ocupado,Online,1,6.9
+P041,F,26,Araucanía,Villarrica,Media incompleta,Inactivo,Online,6,4.6
+P042,M,48,Valparaíso,Viña del Mar,Media completa,Desocupado,Online,3,4.6
+P043,F,23,Biobío,Chillán,Media incompleta,Desocupado,Híbrida,3,6.5
+P044,F,24,Valparaíso,Valparaíso,Postgrado,Inactivo,Online,5,4.4
+P045,F,44,Biobío,Chillán,Postgrado,Estudiante,Híbrida,7,4.7
+P046,M,27,Metropolitana,La Florida,Postgrado,Inactivo,Presencial,3,6.0
+P047,F,21,Valparaíso,Valparaíso,Postgrado,Inactivo,Online,5,4.7
+P048,F,31,Biobío,Los Ángeles,Universitaria,Ocupado,Online,4,4.9
+P049,M,58,Valparaíso,Villa Alemana,Universitaria,Estudiante,Presencial,4,6.1
+P050,M,33,Araucanía,Angol,Universitaria,Ocupado,Online,6,6.9
+P051,M,49,Biobío,Talcahuano,Media completa,Inactivo,Online,1,6.7
+P052,F,54,Araucanía,Temuco,Universitaria,Ocupado,Online,5,4.9
+P053,F,51,Metropolitana,La Florida,Universitaria,Estudiante,Presencial,1,6.6
+P054,F,50,Araucanía,Curacautín,Universitaria,Inactivo,Online,5,6.9
+P055,M,46,Araucanía,Villarrica,Técnico,Desocupado,Híbrida,3,5.9
+P056,M,27,Araucanía,Angol,Básica,Desocupado,Online,5,6.1
+P057,F,33,Biobío,Chillán,Media completa,Ocupado,Online,2,5.4
+P058,M,55,Metropolitana,La Florida,MEDIA,Inactivo,Híbrida,2,4.7
+P059,F,26,Araucanía,Temuco,Media completa,Inactivo,Híbrida,4,6.7
+P060,M,48,Biobío,Los Ángeles,Media incompleta,Inactivo,Online,5,6.2
+P061,M,18,Valparaíso,Valparaíso,Media incompleta,Ocupado,Presencial,6,5.7
+P062,F,57,Valparaíso,Valparaíso,Universitaria,Desocupado,Presencial,2,5.2
+P063,M,60,Biobío,Chillán,Universitaria,Ocupado,Presencial,1,6.7
+P064,M,55,Biobío,Los Ángeles,Universitaria,Inactivo,Online,3,6.6
+P065,M,54,Biobío,Talcahuano,Universitaria,Inactivo,Online,2,4.1
+P066,F,43,Araucanía,Villarrica,Media completa,Inactivo,Híbrida,3,6.4
+P067,F,32,Araucanía,Curacautín,Media completa,Desocupado,Híbrida,5,4.8
+P068,M,37,Metropolitana,Peñalolén,Universitaria,Estudiante,Online,7,6.1
+P069,F,52,Biobío,Los Ángeles,Básica,Inactivo,Híbrida,2,5.4
+P070,F,33,Biobío,Los Ángeles,Postgrado,Desocupado,Presencial,2,5.1
+P071,F,44,Biobío,Talcahuano,Media incompleta,Inactivo,Híbrida,4,6.8
+P072,F,34,Araucanía,Curacautín,Universitaria,Estudiante,Online,2,4.1
+P073,F,57,Metropolitana,Santiago,Postgrado,Inactivo,Presencial,3,5.3
+P074,M,50,Araucanía,Temuco,Universitaria,Desocupado,Híbrida,1,6.1
+P075,M,43,Biobío,Talcahuano,Universitaria,Inactivo,Online,4,6.1
+P076,M,18,Valparaíso,Viña del Mar,Media incompleta,Desocupado,Presencial,2,6.0
+P077,F,57,Metropolitana,La Florida,Media incompleta,Estudiante,Online,4,6.7
+P078,M,51,Valparaíso,Villa Alemana,Técnico,Estudiante,Online,6,4.3
+P079,F,25,Araucanía,Villarrica,Básica,Ocupado,Presencial,1,5.0
+P080,F,44,Biobío,Concepción,Postgrado,Inactivo,Presencial,7,5.5
+P081,F,55,Biobío,Concepción,Técnico,Estudiante,Online,1,5.4
+P082,F,49,Valparaíso,Valparaíso,Media completa,Ocupado,Online,4,6.5
+P083,M,26,Metropolitana,La Florida,Técnico,Desocupado,Híbrida,6,6.3
+P084,F,27,Valparaíso,Viña del Mar,Media completa,Estudiante,Presencial,2,6.0
+P085,M,43,Biobío,Los Ángeles,Universitaria,Desocupado,Presencial,4,4.4
+P086,M,24,Biobío,Chillán,Media incompleta,Inactivo,Híbrida,4,5.1
+P087,F,24,Araucanía,Curacautín,Postgrado,Inactivo,Presencial,1,5.7
+P088,M,39,Valparaíso,Viña del Mar,Universitaria,Inactivo,Online,3,6.5
+P089,F,42,Metropolitana,Santiago,Postgrado,Desocupado,Híbrida,6,6.1
+P090,F,17,Biobío,Los Ángeles,Postgrado,Estudiante,Online,3,6.5
+P091,M,60,Metropolitana,Peñalolén,Postgrado,Ocupado,Híbrida,3,4.5
+P092,F,38,Biobío,Talcahuano,Universitaria,Ocupado,Híbrida,4,4.4
+P093,F,45,Metropolitana,Peñalolén,Universitaria,Estudiante,Híbrida,6,4.9
+P094,F,49,Valparaíso,Quilpué,Básica,Desocupado,Híbrida,2,4.7
+P095,M,54,Valparaíso,Quilpué,Básica,Estudiante,Híbrida,5,6.7
+P096,F,45,Araucanía,Angol,Técnico,Inactivo,Presencial,1,5.9
+P097,F,59,Biobío,Chillán,Media incompleta,Ocupado,Híbrida,4,6.0
+P098,M,25,Araucanía,Temuco,Media completa,Inactivo,Online,2,5.6
+P099,F,19,Valparaíso,Viña del Mar,Media incompleta,Desocupado,Presencial,6,5.1
+P100,M,31,Valparaíso,Villa Alemana,Técnico,Desocupado,Presencial,2,4.5
+P101,M,34,Valparaíso,Quilpué,Media completa,Desocupado,Online,3,4.3
+P102,M,50,Biobío,Chillán,Postgrado,Ocupado,Presencial,1,5.1
+P103,M,20,Biobío,Chillán,Media completa,Inactivo,Online,6,4.8
+P104,M,47,Biobío,Los Ángeles,Media incompleta,Desocupado,Presencial,5,5.3
+P105,M,25,Valparaíso,Quilpué,Media incompleta,Desocupado,Online,4,4.6
+P106,M,22,Biobío,Chillán,Universitaria,Ocupado,Online,2,6.1
+P107,F,51,Valparaíso,Villa Alemana,Universitaria,Desocupado,Híbrida,3,5.6
+P108,M,28,Araucanía,Temuco,Técnico,Estudiante,Online,5,4.4
+P109,F,27,Valparaíso,Valparaíso,Postgrado,Inactivo,Híbrida,4,5.6
+P110,M,46,Araucanía,Angol,Básica,Ocupado,Híbrida,7,6.8
+P111,F,60,Araucanía,Villarrica,Media incompleta,Desocupado,Híbrida,2,5.2
+P112,F,36,Valparaíso,Quilpué,Media incompleta,Ocupado,Híbrida,3,6.8
+P113,M,55,Biobío,Talcahuano,Postgrado,Estudiante,Híbrida,7,5.6
+P114,F,53,Araucanía,Villarrica,Básica,Desocupado,Presencial,7,5.7
+P115,M,32,Biobío,Chillán,Universitaria,Estudiante,Presencial,6,5.4
+P116,M,35,Araucanía,Villarrica,Básica,Estudiante,Presencial,1,5.8
+P117,M,28,Araucanía,Temuco,Universitaria,Desocupado,Híbrida,7,5.7
+P118,F,41,Valparaíso,Villa Alemana,Media incompleta,Ocupado,Online,2,4.5
+P119,F,35,Araucanía,Temuco,Media completa,Ocupado,Híbrida,5,4.3
+P120,M,25,Valparaíso,Quilpué,Básica,Estudiante,Online,3,4.8
+P121,M,31,Araucanía,Temuco,Técnico,Ocupado,Híbrida,7,6.2
+P122,F,32,Araucanía,Angol,Media incompleta,Ocupado,Híbrida,5,5.8
+P123,F,18,Araucanía,Curacautín,Media completa,Inactivo,Presencial,3,4.7
+P124,F,36,Metropolitana,Santiago,Básica,Desocupado,Presencial,6,6.4
+P125,M,52,Araucanía,Villarrica,Postgrado,Estudiante,Presencial,6,6.0
+P126,M,58,Valparaíso,Valparaíso,Universitaria,Estudiante,Presencial,2,5.7
+P127,F,52,Biobío,Concepción,Media incompleta,Desocupado,Online,6,5.4
+P128,M,24,Valparaíso,Villa Alemana,Media completa,Desocupado,Online,5,5.5
+P129,F,29,Valparaíso,Villa Alemana,Postgrado,Inactivo,Presencial,5,5.8
+P130,F,49,Biobío,Concepción,Universitaria,Ocupado,Híbrida,3,6.1
+P131,F,20,Araucanía,Villarrica,Universitaria,Estudiante,Presencial,2,5.2
+P132,M,28,Araucanía,Angol,Técnico,Inactivo,Presencial,7,4.1
+P133,M,20,Biobío,Talcahuano,Universitaria,Desocupado,Online,6,6.1
+P134,M,23,Metropolitana,Peñalolén,Técnico,Estudiante,Online,2,6.2
+P135,F,20,Metropolitana,Pudahuel,Media incompleta,Ocupado,Híbrida,2,4.1
+P136,F,34,Metropolitana,La Florida,Postgrado,Estudiante,Online,3,5.7
+P137,F,27,Biobío,Concepción,Media completa,Desocupado,Online,4,5.9
+P138,M,18,Valparaíso,Villa Alemana,Técnico,Ocupado,Híbrida,6,5.3
+P139,M,51,Biobío,Chillán,Técnico,Inactivo,Híbrida,4,6.1
+P140,M,57,Metropolitana,La Florida,Básica,Desocupado,Híbrida,3,4.7
+P141,M,22,Biobío,Talcahuano,Postgrado,Ocupado,Híbrida,7,6.5
+P142,F,39,Metropolitana,Santiago,Técnico,Ocupado,Online,5,6.6
+P143,M,52,Biobío,Chillán,Técnico,Inactivo,Híbrida,6,5.5
+P144,F,49,Araucanía,Angol,Básica,Estudiante,Online,3,4.7
+P145,F,34,Araucanía,Villarrica,Postgrado,Desocupado,Online,4,5.1
+P146,F,22,Biobío,Concepción,Postgrado,Desocupado,Online,1,5.4
+P147,F,39,Biobío,Concepción,Postgrado,Desocupado,Híbrida,7,6.6
+P148,F,31,Metropolitana,La Florida,Universitaria,Inactivo,Online,7,6.8
+P149,M,51,Valparaíso,Villa Alemana,Media incompleta,Ocupado,Online,2,6.0
+P150,F,42,Araucanía,Villarrica,Postgrado,Inactivo,Híbrida,5,5.1
+P151,F,50,Valparaíso,Quilpué,Básica,Inactivo,Híbrida,4,4.4
+P152,F,24,Araucanía,Curacautín,Media incompleta,Desocupado,Presencial,2,5.7
+P153,F,43,Araucanía,Villarrica,Media incompleta,Ocupado,Online,2,5.5
+P154,M,36,Valparaíso,Viña del Mar,Media incompleta,Ocupado,Presencial,7,4.5
+P155,M,43,Biobío,Chillán,Técnico,Estudiante,Online,3,4.3
+P156,F,34,Araucanía,Angol,Técnico,Estudiante,Híbrida,5,4.9
+P157,M,33,Biobío,Concepción,Postgrado,Inactivo,Híbrida,5,5.6
+P158,F,30,Biobío,Chillán,Media incompleta,Ocupado,Híbrida,2,6.2
+P159,F,20,Biobío,Los Ángeles,Media incompleta,Inactivo,Presencial,4,5.0
+P160,F,33,Metropolitana,Peñalolén,Técnico,Inactivo,Híbrida,5,6.5

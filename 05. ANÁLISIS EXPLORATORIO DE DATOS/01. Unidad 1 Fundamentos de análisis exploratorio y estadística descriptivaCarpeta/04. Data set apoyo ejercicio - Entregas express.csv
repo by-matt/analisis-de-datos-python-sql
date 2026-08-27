@@ -1,0 +1,81 @@
+id_pedido,tiempo_entrega,region,canal,categoria_producto
+P001,40,Antofagasta,Telefónico,Muebles
+P002,40,Los Lagos,Sucursal,Ropa
+P003,49,Metropolitana,Telefónico,Ropa
+P004,51,Metropolitana,App,Electrónica
+P005,62,Antofagasta,Sucursal,Alimentos
+P006,40,Valparaíso,Telefónico,Muebles
+P007,117,Valparaíso,Sucursal,Ropa
+P008,55,Valparaíso,App,Alimentos
+P009,36,Valparaíso,Telefónico,Farmacia
+P010,42,Metropolitana,Web,Alimentos
+P011,28,Valparaíso,Web,Ropa
+P012,33,Biobío,Sucursal,Alimentos
+P013,57,Biobío,App,Muebles
+P014,34,Antofagasta,Sucursal,Electrónica
+P015,40,Biobío,App,Ropa
+P016,33,Metropolitana,Sucursal,Electrónica
+P017,122,Metropolitana,App,Alimentos
+P018,48,Metropolitana,App,Farmacia
+P019,51,Biobío,Sucursal,Muebles
+P020,62,Antofagasta,Sucursal,Electrónica
+P021,42,Valparaíso,Web,Muebles
+P022,39,Biobío,App,Alimentos
+P023,48,Antofagasta,Telefónico,Alimentos
+P024,22,Biobío,Web,Ropa
+P025,41,Biobío,Sucursal,Farmacia
+P026,56,Valparaíso,Telefónico,Alimentos
+P027,22,Metropolitana,Telefónico,Ropa
+P028,31,Los Lagos,App,Muebles
+P029,29,Metropolitana,Sucursal,Ropa
+P030,40,Antofagasta,Web,Alimentos
+P031,119,Metropolitana,Sucursal,Farmacia
+P032,51,Biobío,Telefónico,Farmacia
+P033,41,Biobío,Telefónico,Electrónica
+P034,49,Antofagasta,App,Alimentos
+P035,48,Metropolitana,Telefónico,Alimentos
+P036,35,Biobío,Sucursal,Farmacia
+P037,55,Los Lagos,Telefónico,Alimentos
+P038,57,Metropolitana,Telefónico,Alimentos
+P039,42,Antofagasta,Telefónico,Farmacia
+P040,23,Los Lagos,App,Ropa
+P041,99,Biobío,Web,Electrónica
+P042,36,Biobío,Sucursal,Electrónica
+P043,57,Antofagasta,App,Ropa
+P044,28,Metropolitana,Telefónico,Muebles
+P045,50,Biobío,App,Muebles
+P046,56,Valparaíso,Telefónico,Alimentos
+P047,37,Valparaíso,Sucursal,Ropa
+P048,29,Metropolitana,Sucursal,Alimentos
+P049,29,Biobío,Telefónico,Alimentos
+P050,46,Metropolitana,App,Electrónica
+P051,99,Valparaíso,Telefónico,Alimentos
+P052,50,Los Lagos,Telefónico,Muebles
+P053,24,Biobío,Sucursal,Electrónica
+P054,74,Los Lagos,Web,Farmacia
+P055,44,Valparaíso,App,Ropa
+P056,50,Antofagasta,Sucursal,Farmacia
+P057,33,Antofagasta,App,Muebles
+P058,71,Metropolitana,Web,Electrónica
+P059,49,Antofagasta,Sucursal,Ropa
+P060,38,Antofagasta,App,Ropa
+P061,37,Metropolitana,Telefónico,Ropa
+P062,70,Los Lagos,App,Ropa
+P063,33,Antofagasta,Telefónico,Muebles
+P064,23,Los Lagos,Telefónico,Electrónica
+P065,38,Valparaíso,Sucursal,Muebles
+P066,43,Antofagasta,Telefónico,Farmacia
+P067,54,Los Lagos,Sucursal,Muebles
+P068,48,Valparaíso,Web,Electrónica
+P069,51,Los Lagos,Sucursal,Ropa
+P070,52,Biobío,Sucursal,Alimentos
+P071,56,Metropolitana,Sucursal,Ropa
+P072,23,Biobío,Sucursal,Farmacia
+P073,120,Biobío,Sucursal,Alimentos
+P074,42,Metropolitana,Telefónico,Farmacia
+P075,44,Valparaíso,Sucursal,Ropa
+P076,45,Antofagasta,Sucursal,Muebles
+P077,49,Biobío,App,Farmacia
+P078,41,Los Lagos,Telefónico,Farmacia
+P079,39,Metropolitana,App,Farmacia
+P080,35,Valparaíso,Sucursal,Electrónica

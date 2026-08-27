@@ -1,0 +1,598 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 1 - Introducción a Pandas y trabajo con Series"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 1 – Introducción a Pandas y Trabajo con Series\n",
+    "### Exploración de datos con Pandas\n",
+    "\n",
+    "**Temas:** Reseña de pandas · Estructura Serie · Creación · Acceso · Operaciones vectorizadas\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Slide 3 – Desafío Inicial: Control de Calidad Farmacéutico\n",
+    "\n",
+    "Eres parte del equipo de control de calidad de una empresa farmacéutica.\n",
+    "Debes revisar si las temperaturas de los refrigeradores están dentro del rango aceptable: **2.0°C – 8.0°C**.\n",
+    "\n",
+    "**Archivo:** `temperaturas_refrigeradores.csv`"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga inicial del desafío ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "df = pd.read_csv('temperaturas_refrigeradores.csv')\n",
+    "\n",
+    "# Extraemos la columna de temperaturas como una Serie de pandas\n",
+    "s_temps = df['temperatura_c']\n",
+    "\n",
+    "print('=== Desafío inicial: Serie de temperaturas ===')\n",
+    "print(type(s_temps))\n",
+    "print()\n",
+    "print(s_temps.head(10))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–6 – Reseña de la Librería Pandas\n",
+    "\n",
+    "**pandas** es la biblioteca central para análisis de datos en Python. Trabaja con dos estructuras principales:\n",
+    "- **Serie**: datos unidimensionales con índice\n",
+    "- **DataFrame**: tabla bidimensional (filas y columnas)"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Instalación e importación ───────────────────────────────────────\n",
+    "\n",
+    "# Instalación (ejecutar una sola vez si no está instalado)\n",
+    "# pip install pandas\n",
+    "\n",
+    "# Importación básica — alias 'pd' es la convención universal\n",
+    "import pandas as pd\n",
+    "\n",
+    "print(f'Versión de pandas: {pd.__version__}')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 8–9 – Características del Tipo de Dato Serie\n",
+    "\n",
+    "Una **Serie** es un arreglo unidimensional con etiquetas (índices). Combina la simplicidad de una lista con la flexibilidad de un diccionario.\n",
+    "\n",
+    "Útil para: ventas diarias, temperaturas horarias, resultados de evaluaciones, etc."
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 9: Estructura de una Serie ─────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "s = pd.Series([10, 20, 30], index=['lunes', 'martes', 'miércoles'])\n",
+    "print(s)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 10 – Creación de una Serie\n",
+    "\n",
+    "pandas permite construir Series desde distintas fuentes:"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Desde una lista simple ─────────────────────────────────────────\n",
+    "# Esto genera una Serie con índices automáticos: 0, 1, 2\n",
+    "\n",
+    "s = pd.Series([5, 8, 12])\n",
+    "print(s)"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Desde un diccionario ───────────────────────────────────────────\n",
+    "# Las claves se usan como índices, aportando significado contextual\n",
+    "\n",
+    "temperaturas = {\n",
+    "    'lun': 4.3,\n",
+    "    'mar': 3.8,\n",
+    "    'mié': 5.0\n",
+    "}\n",
+    "s = pd.Series(temperaturas)\n",
+    "print(s)"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 10: Especificando el índice manualmente ────────────────────────────\n",
+    "# Ideal cuando trabajamos con registros de sucursales, regiones, etc.\n",
+    "\n",
+    "s = pd.Series([100, 200, 300], index=['Sucursal A', 'Sucursal B', 'Sucursal C'])\n",
+    "print(s)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 11 – Obtención de Datos de una Serie"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Por índice posicional ──────────────────────────────────────────\n",
+    "\n",
+    "print(s[0])\n",
+    "# primer elemento"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Por índice por etiqueta ────────────────────────────────────────\n",
+    "\n",
+    "print(s['Sucursal A'])"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Por segmento (slicing) ─────────────────────────────────────────\n",
+    "\n",
+    "print(s[1:3])\n",
+    "# del segundo al tercer elemento"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 12 – Exploración de Propiedades y Metainformación"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 12: Propiedades de una Serie ───────────────────────────────────────\n",
+    "\n",
+    "print(s.values)   # valores contenidos\n",
+    "print(s.index)    # etiquetas\n",
+    "print(s.dtype)    # tipo de dato almacenado"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 13 – Operaciones sobre una Serie\n",
+    "\n",
+    "Las Series permiten **operaciones vectorizadas**: se aplican a todos los elementos sin necesidad de bucles."
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Operaciones aritméticas ────────────────────────────────────────\n",
+    "\n",
+    "suma        = s + 10\n",
+    "multiplicado = s * 2\n",
+    "\n",
+    "print('Serie original:')\n",
+    "print(s)\n",
+    "print('\\nSerie + 10:')\n",
+    "print(suma)\n",
+    "print('\\nSerie × 2:')\n",
+    "print(multiplicado)"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Condiciones booleanas y filtrado ────────────────────────────────\n",
+    "\n",
+    "mayores = s > 100\n",
+    "print(s[mayores])"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Estadísticas básicas de resumen ─────────────────────────────────\n",
+    "\n",
+    "s.mean()      # promedios\n",
+    "max()         # valor máximo\n",
+    "min()         # valor mínimo\n",
+    "s.describe()  # resumen estadístico general"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Ejemplo aplicado — detección de valores en riesgo ───────────────\n",
+    "# Detectamos condiciones anómalas: temperaturas peligrosas\n",
+    "\n",
+    "# Recreamos la serie de temperaturas del ejemplo del slide\n",
+    "s_riesgo = pd.Series([4.3, 3.8, 1.5, 5.0, 1.2, 4.9], \n",
+    "                     index=['lun', 'mar', 'mié', 'jue', 'vie', 'sáb'])\n",
+    "\n",
+    "riesgo = s_riesgo[s_riesgo < 2.0]\n",
+    "print(riesgo)"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Actividad Guiada – Análisis completo del desafío inicial\n",
+    "\n",
+    "Aplicamos todos los conceptos de la clase al caso farmacéutico del **Slide 3**.\n",
+    "\n",
+    "**Archivo:** `temperaturas_refrigeradores.csv`\n",
+    "\n",
+    "**Rango aceptable:** 2.0°C – 8.0°C"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiada, Paso 1: Cargar datos y crear la Serie ────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "df = pd.read_csv('temperaturas_refrigeradores.csv')\n",
+    "\n",
+    "# Creamos la Serie usando la columna de temperaturas\n",
+    "# Usamos el índice del DataFrame como referencia\n",
+    "s_temps = pd.Series(df['temperatura_c'].values, index=df['timestamp'])\n",
+    "\n",
+    "print('=== Serie de temperaturas ===')\n",
+    "print(f'Tipo: {type(s_temps)}')\n",
+    "print(f'Longitud: {len(s_temps)}')\n",
+    "print(f'Dtype: {s_temps.dtype}')\n",
+    "print()\n",
+    "print(s_temps.head(10))"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiada, Paso 2: Inspección con propiedades (Slide 12) ────────────────────\n",
+    "\n",
+    "print('Valores (primeros 5):', s_temps.values[:5])\n",
+    "print('Índice (primeros 5):', s_temps.index[:5].tolist())\n",
+    "print('Dtype:', s_temps.dtype)\n",
+    "print()\n",
+    "print('=== Estadísticas descriptivas ===')\n",
+    "print(s_temps.describe().round(2))"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiada, Paso 3: Acceso a elementos (Slide 11) ────────────────────────────\n",
+    "\n",
+    "print('Primer registro (índice posicional 0):')\n",
+    "print(s_temps.iloc[0])\n",
+    "print()\n",
+    "print('Primeros 5 registros (slicing):')\n",
+    "print(s_temps.iloc[0:5])\n",
+    "print()\n",
+    "print('Acceso por etiqueta (timestamp específico):')\n",
+    "print(s_temps.iloc[10])   # elemento 10"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiada, Paso 4: Operaciones aritméticas (Slide 13) ───────────────────────\n",
+    "\n",
+    "# Convertir de Celsius a Fahrenheit: F = C * 9/5 + 32\n",
+    "s_fahrenheit = s_temps * 9/5 + 32\n",
+    "\n",
+    "print('Primeras 5 temperaturas en Celsius y Fahrenheit:')\n",
+    "comparacion = pd.DataFrame({\n",
+    "    'Celsius'   : s_temps.values[:5],\n",
+    "    'Fahrenheit': s_fahrenheit.values[:5].round(1)\n",
+    "})\n",
+    "print(comparacion.to_string(index=False))"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiada, Paso 5: Filtrado condicional — detección de anomalías (Slide 13) ──\n",
+    "\n",
+    "# Rango aceptable: 2.0°C – 8.0°C\n",
+    "fuera_rango = s_temps[(s_temps < 2.0) | (s_temps > 8.0)]\n",
+    "\n",
+    "print(f'Total de registros:         {len(s_temps)}')\n",
+    "print(f'Registros fuera de rango:   {len(fuera_rango)}')\n",
+    "print(f'Porcentaje de anomalías:    {len(fuera_rango)/len(s_temps)*100:.1f}%')\n",
+    "print()\n",
+    "print('=== Registros con temperatura fuera de rango ===')\n",
+    "print(fuera_rango.to_string())"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Guiada, Paso 6: Visualización básica ─────────────────────────────────────\n",
+    "\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(13, 5))\n",
+    "\n",
+    "# Histograma de temperaturas\n",
+    "axes[0].hist(s_temps, bins=25, color='steelblue', edgecolor='white', alpha=0.85)\n",
+    "axes[0].axvline(2.0, color='red', linestyle='--', linewidth=2, label='Límite inferior (2°C)')\n",
+    "axes[0].axvline(8.0, color='red', linestyle='--', linewidth=2, label='Límite superior (8°C)')\n",
+    "axes[0].axvline(s_temps.mean(), color='orange', linestyle='-', linewidth=2,\n",
+    "                label=f'Media = {s_temps.mean():.2f}°C')\n",
+    "axes[0].set_title('Distribución de Temperaturas', fontsize=12)\n",
+    "axes[0].set_xlabel('Temperatura (°C)')\n",
+    "axes[0].set_ylabel('Frecuencia')\n",
+    "axes[0].legend(fontsize=8)\n",
+    "\n",
+    "# Clasificación: dentro/fuera de rango\n",
+    "dentro = len(s_temps[(s_temps >= 2.0) & (s_temps <= 8.0)])\n",
+    "fuera  = len(s_temps[(s_temps < 2.0) | (s_temps > 8.0)])\n",
+    "axes[1].bar(['Dentro de rango\\n(2–8°C)', 'Fuera de rango'],\n",
+    "            [dentro, fuera],\n",
+    "            color=['#27AE60', '#E74C3C'], alpha=0.85, edgecolor='white')\n",
+    "axes[1].set_title('Clasificación de Registros', fontsize=12)\n",
+    "axes[1].set_ylabel('Cantidad de registros')\n",
+    "for i, v in enumerate([dentro, fuera]):\n",
+    "    axes[1].text(i, v + 0.5, str(v), ha='center', fontweight='bold', fontsize=12)\n",
+    "\n",
+    "plt.suptitle('Control de Calidad — Temperaturas de Refrigeradores', fontsize=13)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Actividad Autónoma – Análisis de Ventas por Sucursal\n",
+    "\n",
+    "Aplica los conceptos de la clase al archivo `ventas_sucursales.csv`.\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 1 – Carga el archivo y crea una Serie con la columna 'ventas_usd'\n",
+    "# Usa la columna 'fecha' como índice (Slide 10: índice personalizado)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df_ventas = pd.read_csv('ventas_sucursales.csv')\n",
+    "# s_ventas  = pd.Series(..., index=...)"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 2 – Inspecciona la Serie: values, index, dtype y describe()\n",
+    "# (Slide 12: propiedades y metainformación)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 3 – Accede a los primeros 5 registros, al último y al registro en posición 30\n",
+    "# (Slide 11: acceso por posición y slicing)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 4 – Aplica una operación aritmética: convierte las ventas de USD a CLP\n",
+    "# (Tasa de cambio aproximada: 1 USD = 920 CLP)\n",
+    "# (Slide 13: operaciones aritméticas vectorizadas)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# s_clp = s_ventas * 920"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 5 – Filtra los días con ventas mayores al promedio\n",
+    "# (Slide 13: condiciones booleanas y filtrado)\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# promedio = s_ventas.mean()\n",
+    "# dias_sobre_promedio = s_ventas[s_ventas > promedio]"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 6 – Responde con código:\n",
+    "# a) ¿Cuál fue el día con mayor venta?\n",
+    "# b) ¿Cuántos días se superaron los $1000 USD?\n",
+    "# c) ¿Qué porcentaje del total representan los días con ventas < $500 USD?\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Reflexión final (Slide 15)\n",
+    "\n",
+    "Responde en la plantilla de resolución:\n",
+    "\n",
+    "1. ¿Qué ventajas encuentras en el uso de Series frente a listas o arrays tradicionales?\n",
+    "2. ¿Qué tipo de situaciones profesionales podrían resolverse más eficientemente con Series?\n",
+    "3. ¿Cuándo conviene usar índice numérico y cuándo uno personalizado (por etiqueta)?\n",
+    "4. ¿Cómo usarías el filtrado condicional de una Serie en un problema real de tu área?\n",
+    "5. ¿Qué diferencia hay entre acceder a un elemento por posición y por etiqueta?"
+   ]
+  }
+
+ ]
+}

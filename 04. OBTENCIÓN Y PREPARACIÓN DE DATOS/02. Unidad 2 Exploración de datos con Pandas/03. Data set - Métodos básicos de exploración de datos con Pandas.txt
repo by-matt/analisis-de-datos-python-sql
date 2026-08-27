@@ -1,0 +1,422 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 3 - Métodos básicos de exploración de datos con Pandas"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 3 – Métodos Básicos de Exploración de Datos con Pandas\n",
+    "### Exploración de datos con Pandas\n",
+    "\n",
+    "**Temas:** `head()` · `tail()` · `info()` · `describe()` · Estrategia de exploración integrada\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Empresa de Transportes Interurbanos\n",
+    "\n",
+    "Tienes **menos de 15 minutos** para dar una visión preliminar de un archivo con más de 10.000 registros.\n",
+    "\n",
+    "**Archivo:** `viajes_interurbanos.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('viajes_interurbanos.csv')\n",
+    "print(f'Archivo cargado: {df.shape[0]:,} filas × {df.shape[1]} columnas')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–6 – Exploración Inicial con `head()` y `tail()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 5: head() — primeras filas ─────────────────────────────────────────\n",
+    "\n",
+    "df.head()    # Primeras 5 filas\n",
+    "df.head(10)  # Primeras 10 filas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: tail() — últimas filas ──────────────────────────────────────────\n",
+    "\n",
+    "df.tail()   # Últimas 5 filas\n",
+    "df.tail(3)  # Últimas 3 filas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Ejemplo aplicado ────────────────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "df = pd.read_csv('viajes_interurbanos.csv')\n",
+    "print(df.head())\n",
+    "print(df.tail(2))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 8–9 – Revisión Estructural con `info()`\n",
+    "\n",
+    "`info()` entrega:\n",
+    "- Cantidad total de filas y columnas\n",
+    "- Nombres de columnas\n",
+    "- Cantidad de **valores no nulos** por columna\n",
+    "- **Tipo de dato** de cada columna\n",
+    "- Memoria utilizada"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 8: info() ───────────────────────────────────────────────────────────\n",
+    "\n",
+    "df.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 9: Ejemplo aplicado ────────────────────────────────────────────────\n",
+    "\n",
+    "df = pd.read_csv('viajes_interurbanos.csv')\n",
+    "df.info()"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 12–13 – Análisis Estadístico Preliminar con `describe()`\n",
+    "\n",
+    "`describe()` calcula automáticamente: `count`, `mean`, `std`, `min`, `25%`, `50%`, `75%`, `max`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 12: describe() ─────────────────────────────────────────────────────\n",
+    "\n",
+    "df.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Ejemplo aplicado ───────────────────────────────────────────────\n",
+    "\n",
+    "df = pd.read_csv('viajes_interurbanos.csv')\n",
+    "df.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Para columnas no numéricas ─────────────────────────────────────\n",
+    "\n",
+    "df.describe(include='object')   # para texto\n",
+    "df.describe(include='all')      # para todo tipo de datos"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 16 – Estrategia de Exploración Integrada\n",
+    "\n",
+    "Buena práctica profesional: combinar todos los métodos en una **rutina de revisión inicial**."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 16: Rutina de diagnóstico inicial ───────────────────────────────────\n",
+    "\n",
+    "print(\"Vista inicial:\")\n",
+    "print(df.head())\n",
+    "print(\"\\nResumen de estructura:\")\n",
+    "print(df.info())\n",
+    "print(\"\\nEstadísticas básicas:\")\n",
+    "print(df.describe())"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 17–20 – Ejercicio Guiado: Cadena de Farmacias\n",
+    "\n",
+    "**Objetivo (Slide 18):** Aplicar `head`, `tail`, `info`, `describe` para entregar un resumen a la jefatura."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 19: Crear el DataFrame de ventas de medicamentos ───────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "datos = {'Producto': ['Paracetamol', 'Ibuprofeno', 'Amoxicilina', 'Aspirina', 'Loratadina'],\n",
+    "         'Precio': [1200, 1500, 2500, 900, 1800],\n",
+    "         'Stock': [35, 20, 0, 50, 40],\n",
+    "         'Farmacia': ['Central', 'Norte', 'Sur', 'Central', 'Oriente']}\n",
+    "df = pd.DataFrame(datos)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20: Ejecutar y analizar los 4 métodos ───────────────────────────────\n",
+    "\n",
+    "print(df.head())\n",
+    "print(df.tail())\n",
+    "print(df.info())\n",
+    "print(df.describe())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 20: Preguntas de análisis — respuestas con código ──────────────────\n",
+    "\n",
+    "print('¿Qué tipo de variables contiene el DataFrame?')\n",
+    "print(df.dtypes)\n",
+    "print()\n",
+    "print('¿Hay alguna columna con valores faltantes?')\n",
+    "print(df.isnull().sum())\n",
+    "print()\n",
+    "print(f'Producto más caro:   {df.loc[df[\"Precio\"].idxmax(), \"Producto\"]} (${df[\"Precio\"].max():,})')\n",
+    "print(f'Producto más barato: {df.loc[df[\"Precio\"].idxmin(), \"Producto\"]} (${df[\"Precio\"].min():,})')\n",
+    "print()\n",
+    "print('Distribución del stock:')\n",
+    "print(df['Stock'].describe().round(1))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 21–24 – Ejercicio Guiado: Asistencia a Capacitaciones\n",
+    "\n",
+    "**Objetivo (Slide 22):** Explorar y diagnosticar un archivo de asistencia."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 23: Crear el DataFrame de asistencia ───────────────────────────────\n",
+    "\n",
+    "data = {'Nombre': ['Luis', 'Andrea', 'Camila', 'Jorge', 'María'],\n",
+    "        'Duración (hrs)': [2, 3, 4, 2, 3],\n",
+    "        'Modalidad': ['Online', 'Presencial', 'Online', 'Presencial', 'Online'],\n",
+    "        'Región': ['RM', 'Biobío', 'RM', 'Valparaíso', 'Araucanía']}\n",
+    "df = pd.DataFrame(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24: Aplicar los 4 métodos ──────────────────────────────────────────\n",
+    "\n",
+    "df.head()\n",
+    "df.tail()\n",
+    "df.info()\n",
+    "df.describe()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 24: Preguntas de reflexión — respuestas con código ─────────────────\n",
+    "\n",
+    "print('Variables categóricas:')\n",
+    "print(df.select_dtypes(include='object').columns.tolist())\n",
+    "print()\n",
+    "print('Valores faltantes por columna:')\n",
+    "print(df.isnull().sum())\n",
+    "print()\n",
+    "print(f'Duración promedio: {df[\"Duración (hrs)\"].mean()} hrs')\n",
+    "print()\n",
+    "print('Modalidad más frecuente:')\n",
+    "print(df['Modalidad'].value_counts())"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Actividad Autónoma – Aplicación al desafío inicial (10.500 registros)\n",
+    "\n",
+    "Aplica la **rutina de diagnóstico completa** al archivo `viajes_interurbanos.csv`.\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 1 – Carga el archivo y aplica la rutina integrada del Slide 16\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df = pd.read_csv('viajes_interurbanos.csv')\n",
+    "# print(df.head())\n",
+    "# print(df.info())\n",
+    "# print(df.describe())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 2 – Responde con código:\n",
+    "# a) ¿Cuántas filas y columnas tiene el archivo?\n",
+    "# b) ¿Qué columnas tienen valores faltantes y cuántos?\n",
+    "# c) ¿Cuál es el precio promedio, mínimo y máximo de los viajes?\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 3 – Usa describe(include='object') para explorar columnas de texto\n",
+    "# ¿Cuántos tipos de bus distintos hay? ¿Cuál es el más frecuente?\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# PASO 4 – Redacta (en comentarios o celdas de texto) el resumen\n",
+    "# que entregarías a la jefatura en menos de 15 minutos\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Pregunta de cierre (Slide 26)\n",
+    "\n",
+    "¿Por qué `describe()` no entrega valores para columnas de texto por defecto?\n",
+    "¿Qué método usarías para detectar si faltan datos?"
+   ]
+  }
+
+ ]
+}

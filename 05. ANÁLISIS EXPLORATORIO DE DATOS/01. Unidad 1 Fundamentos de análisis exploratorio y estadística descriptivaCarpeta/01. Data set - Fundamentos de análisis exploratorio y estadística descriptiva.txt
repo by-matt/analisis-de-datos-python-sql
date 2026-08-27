@@ -1,0 +1,880 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📊 Clase 2 — Conceptos básicos de estadística descriptiva\n",
+    "## Tipos de variables y tablas de frecuencia\n",
+    "\n",
+    "**Situación:** Trabajas como asistente de análisis en una empresa de estudios de mercado. Recibes una base de datos con encuestas de clientes de distintas ciudades. Tu jefatura necesita un informe que organice los datos según tipo de variable y presente tablas de frecuencia para las variables clave.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Clasificar variables: nominal, ordinal, cuantitativa discreta y continua\n",
+    "- Construir tablas de frecuencia absoluta, relativa y acumulada\n",
+    "- Agrupar variables continuas por intervalos (`pd.cut`)\n",
+    "- Visualizar la distribución de cada tipo de variable\n",
+    "\n",
+    "> ⚠️ Ambos datasets contienen errores intencionales para practicar diagnóstico."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Librerías cargadas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Clasificación de variables\n",
+    "\n",
+    "### 1.1 Carga del dataset de clientes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('clientes_estudio.csv')\n",
+    "\n",
+    "print(f'Dimensiones: {df.shape[0]} filas × {df.shape[1]} columnas')\n",
+    "print()\n",
+    "print(df.head(10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Tipos de dato por defecto (pandas) ===')\n",
+    "print(df.dtypes)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Clasificación estadística de cada variable\n",
+    "\n",
+    "Los tipos de `dtype` en pandas no siempre coinciden con la clasificación estadística."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "clasificacion = {\n",
+    "    'id_cliente':          'Identificador (no analizar)',\n",
+    "    'genero':              'Categórica NOMINAL — sin orden intrínseco',\n",
+    "    'edad':                'Cuantitativa CONTINUA — valores en rango real',\n",
+    "    'region':              'Categórica NOMINAL — sin orden intrínseco',\n",
+    "    'nivel_educacional':   'Categórica ORDINAL — tiene orden lógico',\n",
+    "    'compras_mensuales':   'Cuantitativa DISCRETA — valores enteros contables',\n",
+    "    'canal_preferido':     'Categórica NOMINAL — sin orden intrínseco',\n",
+    "    'producto_frecuente':  'Categórica NOMINAL — sin orden intrínseco',\n",
+    "    'satisfaccion':        'Categórica ORDINAL — tiene orden lógico',\n",
+    "}\n",
+    "\n",
+    "print('=== Clasificación estadística ===')\n",
+    "for col, tipo in clasificacion.items():\n",
+    "    print(f'  {col:<25} → {tipo}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1.2 — Responde:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué pandas clasifica 'nivel_educacional' como 'object' y no como ordinal?\n",
+    "r_dtype = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué pasaría si calculáramos la media de 'nivel_educacional'? ¿Tendría sentido?\n",
+    "r_media_ordinal = \"\"\n",
+    "\n",
+    "# ✏️ Escribe otro ejemplo de cada tipo de variable de tu propio contexto laboral:\n",
+    "r_ejemplos = \"\"\"\n",
+    "Categórica nominal:    \n",
+    "Categórica ordinal:    \n",
+    "Cuantitativa discreta: \n",
+    "Cuantitativa continua: \n",
+    "\"\"\"\n",
+    "\n",
+    "print(r_dtype)\n",
+    "print(r_media_ordinal)\n",
+    "print(r_ejemplos)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Detectar y corregir errores en el dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Valores únicos por columna categórica\n",
+    "for col in ['genero', 'nivel_educacional', 'satisfaccion']:\n",
+    "    print(f'  {col}: {sorted(df[col].dropna().unique())}')\n",
+    "\n",
+    "print()\n",
+    "print('=== Valores faltantes ===')\n",
+    "print(df.isnull().sum()[df.isnull().sum() > 0])\n",
+    "\n",
+    "print()\n",
+    "print('=== Valores fuera de rango en compras_mensuales ===')\n",
+    "print(df[df['compras_mensuales'] < 0][['id_cliente','compras_mensuales']])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Correcciones\n",
+    "df['nivel_educacional'] = df['nivel_educacional'].str.capitalize()  # estandarizar\n",
+    "df = df[df['genero'].isin(['F','M'])]                               # eliminar categoría inválida\n",
+    "df = df[df['compras_mensuales'] >= 0]                               # eliminar negativo\n",
+    "df['edad'] = pd.to_numeric(df['edad'], errors='coerce')             # forzar numérico\n",
+    "\n",
+    "print(f'Registros después de limpieza: {len(df)}')\n",
+    "print('Géneros únicos:', df['genero'].unique())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Tablas de frecuencia\n",
+    "\n",
+    "### 2.1 Variable categórica nominal: `genero`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frec_abs  = df['genero'].value_counts()\n",
+    "frec_rel  = df['genero'].value_counts(normalize=True).mul(100).round(1)\n",
+    "\n",
+    "tabla_genero = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_abs,\n",
+    "    'Frecuencia relativa (%)': frec_rel\n",
+    "})\n",
+    "tabla_genero.index.name = 'Género'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Género (nominal) ===')\n",
+    "print(tabla_genero)\n",
+    "print(f'Total: {tabla_genero[\"Frecuencia absoluta\"].sum()} registros')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n",
+    "fig.suptitle('Distribución de Género (variable nominal)', fontweight='bold')\n",
+    "\n",
+    "sns.countplot(data=df, x='genero', palette='Set2', ax=axes[0])\n",
+    "axes[0].set_title('Frecuencia absoluta')\n",
+    "axes[0].set_xlabel('Género')\n",
+    "axes[0].set_ylabel('Cantidad')\n",
+    "for bar in axes[0].patches:\n",
+    "    axes[0].text(bar.get_x()+bar.get_width()/2, bar.get_height()+0.3,\n",
+    "                 int(bar.get_height()), ha='center', fontsize=10)\n",
+    "\n",
+    "axes[1].pie(frec_abs.values, labels=frec_abs.index,\n",
+    "            autopct='%1.1f%%', colors=sns.color_palette('Set2'))\n",
+    "axes[1].set_title('Frecuencia relativa (%)')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Variable categórica nominal: `region`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frec_region = df['region'].value_counts()\n",
+    "frec_rel_r  = df['region'].value_counts(normalize=True).mul(100).round(1)\n",
+    "\n",
+    "tabla_region = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_region,\n",
+    "    'Frecuencia relativa (%)': frec_rel_r\n",
+    "})\n",
+    "tabla_region.index.name = 'Región'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Región ===')\n",
+    "print(tabla_region)\n",
+    "\n",
+    "plt.figure(figsize=(10, 4))\n",
+    "sns.countplot(data=df, y='region', order=frec_region.index, palette='Blues_r')\n",
+    "plt.title('Distribución por región (nominal)', fontweight='bold')\n",
+    "plt.xlabel('Cantidad de clientes')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Variable categórica ordinal: `nivel_educacional`\n",
+    "\n",
+    "> ⚠️ Para ordinales es **obligatorio** definir el orden explícitamente."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "orden_nivel = ['Básica', 'Media', 'Técnico', 'Universitaria', 'Postgrado']\n",
+    "df['nivel_educacional'] = pd.Categorical(\n",
+    "    df['nivel_educacional'], categories=orden_nivel, ordered=True\n",
+    ")\n",
+    "\n",
+    "frec_nivel = df['nivel_educacional'].value_counts().sort_index()\n",
+    "rel_nivel  = df['nivel_educacional'].value_counts(normalize=True).sort_index().mul(100).round(1)\n",
+    "acum_nivel = rel_nivel.cumsum().round(1)\n",
+    "\n",
+    "tabla_nivel = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_nivel,\n",
+    "    'Frecuencia relativa (%)': rel_nivel,\n",
+    "    'Frecuencia acumulada (%)': acum_nivel\n",
+    "})\n",
+    "tabla_nivel.index.name = 'Nivel educacional'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Nivel Educacional (ordinal) ===')\n",
+    "print(tabla_nivel)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Nivel Educacional (variable ordinal)', fontweight='bold')\n",
+    "\n",
+    "# Barras en orden\n",
+    "sns.countplot(data=df, x='nivel_educacional', order=orden_nivel,\n",
+    "              palette='Blues', ax=axes[0])\n",
+    "axes[0].set_title('Frecuencia absoluta (orden correcto)')\n",
+    "axes[0].set_xlabel('')\n",
+    "axes[0].set_ylabel('Cantidad')\n",
+    "axes[0].tick_params(axis='x', rotation=15)\n",
+    "\n",
+    "# Frecuencia acumulada\n",
+    "axes[1].plot(orden_nivel, acum_nivel.values, marker='o', color='#1F4E79', linewidth=2)\n",
+    "axes[1].fill_between(orden_nivel, acum_nivel.values, alpha=0.15, color='#2E75B6')\n",
+    "axes[1].set_title('Frecuencia acumulada (%)')\n",
+    "axes[1].set_ylabel('%')\n",
+    "axes[1].set_ylim(0, 110)\n",
+    "axes[1].tick_params(axis='x', rotation=15)\n",
+    "for i, v in enumerate(acum_nivel.values):\n",
+    "    axes[1].text(i, v+2, f'{v:.0f}%', ha='center', fontsize=9)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4 Variable categórica ordinal: `satisfaccion`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "orden_satis = ['Baja', 'Media', 'Alta']\n",
+    "df['satisfaccion'] = pd.Categorical(\n",
+    "    df['satisfaccion'], categories=orden_satis, ordered=True\n",
+    ")\n",
+    "\n",
+    "frec_s = df['satisfaccion'].value_counts().sort_index()\n",
+    "rel_s  = df['satisfaccion'].value_counts(normalize=True).sort_index().mul(100).round(1)\n",
+    "acum_s = rel_s.cumsum().round(1)\n",
+    "\n",
+    "tabla_satis = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_s,\n",
+    "    'Frecuencia relativa (%)': rel_s,\n",
+    "    'Frecuencia acumulada (%)': acum_s\n",
+    "})\n",
+    "tabla_satis.index.name = 'Satisfacción'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Satisfacción (ordinal) ===')\n",
+    "print(tabla_satis)\n",
+    "\n",
+    "plt.figure(figsize=(7, 4))\n",
+    "colores_satis = ['#FC4E4E', '#FFC000', '#70AD47']\n",
+    "sns.countplot(data=df, x='satisfaccion', order=orden_satis, palette=colores_satis)\n",
+    "plt.title('Satisfacción del cliente (ordinal)', fontweight='bold')\n",
+    "plt.xlabel('')\n",
+    "plt.ylabel('Cantidad')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2.4 — Responde:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Por qué la frecuencia acumulada tiene sentido en variables ordinales pero no en nominales?\n",
+    "r_acum = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué porcentaje de clientes tiene satisfacción 'Baja' o 'Media'? (usa la tabla acumulada)\n",
+    "pct_baja_media = acum_s['Media']   # frecuencia acumulada hasta 'Media'\n",
+    "print(f'Clientes con satisfacción Baja o Media: {pct_baja_media:.1f}%')\n",
+    "\n",
+    "# ✏️ ¿Qué error se comete si calculamos la media de satisfacción sin justificación?\n",
+    "r_error = \"\"\n",
+    "\n",
+    "print('Respuesta acumulada:', r_acum)\n",
+    "print('Error de media ordinal:', r_error)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.5 Variable cuantitativa discreta: `compras_mensuales`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frec_comp = df['compras_mensuales'].value_counts().sort_index()\n",
+    "rel_comp  = df['compras_mensuales'].value_counts(normalize=True).sort_index().mul(100).round(1)\n",
+    "acum_comp = rel_comp.cumsum().round(1)\n",
+    "\n",
+    "tabla_comp = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_comp,\n",
+    "    'Frecuencia relativa (%)': rel_comp,\n",
+    "    'Frecuencia acumulada (%)': acum_comp\n",
+    "})\n",
+    "tabla_comp.index.name = 'Compras/mes'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Compras mensuales (cuant. discreta) ===')\n",
+    "print(tabla_comp.head(15))\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Compras Mensuales (variable discreta)', fontweight='bold')\n",
+    "\n",
+    "frec_comp.plot(kind='bar', ax=axes[0], color='#2E75B6', edgecolor='white')\n",
+    "axes[0].set_title('Frecuencia absoluta por valor')\n",
+    "axes[0].set_xlabel('Compras por mes')\n",
+    "axes[0].set_ylabel('Cantidad de clientes')\n",
+    "axes[0].tick_params(axis='x', rotation=0)\n",
+    "\n",
+    "sns.histplot(df['compras_mensuales'], bins=12, kde=False, ax=axes[1], color='#70AD47')\n",
+    "axes[1].set_title('Histograma (distribución)')\n",
+    "axes[1].set_xlabel('Compras por mes')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.6 Variable cuantitativa continua: `edad` — agrupada por intervalos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Definir intervalos (bins) con criterio lógico\n",
+    "bins   = [18, 30, 40, 50, 66]\n",
+    "labels = ['18–29', '30–39', '40–49', '50–65']\n",
+    "df['grupo_edad'] = pd.cut(df['edad'], bins=bins, labels=labels, right=False)\n",
+    "\n",
+    "frec_edad = df['grupo_edad'].value_counts().sort_index()\n",
+    "rel_edad  = df['grupo_edad'].value_counts(normalize=True).sort_index().mul(100).round(1)\n",
+    "acum_edad = rel_edad.cumsum().round(1)\n",
+    "\n",
+    "tabla_edad = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_edad,\n",
+    "    'Frecuencia relativa (%)': rel_edad,\n",
+    "    'Frecuencia acumulada (%)': acum_edad\n",
+    "})\n",
+    "tabla_edad.index.name = 'Rango de edad'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Edad agrupada (cuant. continua) ===')\n",
+    "print(tabla_edad)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Edad (variable continua agrupada en intervalos)', fontweight='bold')\n",
+    "\n",
+    "# Histograma con KDE\n",
+    "sns.histplot(df['edad'].dropna(), bins=15, kde=True, ax=axes[0], color='#ED7D31')\n",
+    "axes[0].axvline(df['edad'].mean(),   color='red',    linestyle='--', label=f'Media {df[\"edad\"].mean():.1f}')\n",
+    "axes[0].axvline(df['edad'].median(), color='blue',   linestyle='--', label=f'Mediana {df[\"edad\"].median():.1f}')\n",
+    "axes[0].set_title('Histograma + KDE')\n",
+    "axes[0].set_xlabel('Edad')\n",
+    "axes[0].legend()\n",
+    "\n",
+    "# Barras por rango\n",
+    "frec_edad.plot(kind='bar', ax=axes[1], color='#FFC000', edgecolor='white')\n",
+    "axes[1].set_title('Frecuencia por rango de edad')\n",
+    "axes[1].set_xlabel('Rango')\n",
+    "axes[1].set_ylabel('Cantidad')\n",
+    "axes[1].tick_params(axis='x', rotation=0)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2.6 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué grupo de edad concentra más clientes?\n",
+    "grupo_mayor = tabla_edad['Frecuencia absoluta'].idxmax()\n",
+    "print(f'Grupo de edad con más clientes: {grupo_mayor}')\n",
+    "\n",
+    "# ✏️ ¿Qué porcentaje de clientes tiene entre 18 y 39 años? (usa frecuencia acumulada)\n",
+    "pct_18_39 = acum_edad.loc['30–39']\n",
+    "print(f'Clientes de 18 a 39 años: {pct_18_39:.1f}%')\n",
+    "\n",
+    "# ✏️ Crea tus propios intervalos usando qartiles (usa pd.qcut en vez de pd.cut)\n",
+    "# df['grupo_edad_q'] = pd.qcut(df['edad'], q=4, labels=['Q1','Q2','Q3','Q4'])\n",
+    "# print(df['grupo_edad_q'].value_counts().sort_index())\n",
+    "\n",
+    "# ✏️ ¿Qué diferencia hay entre pd.cut() y pd.qcut()? ¿Cuándo usarías cada uno?\n",
+    "r_cut = \"\"\n",
+    "print('Diferencia cut vs qcut:', r_cut)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Actividad autónoma: Participantes de capacitación\n",
+    "\n",
+    "### 3.1 Carga y diagnóstico del segundo dataset"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df2 = pd.read_csv('participantes_formacion.csv')\n",
+    "\n",
+    "print(f'Dimensiones: {df2.shape[0]} filas × {df2.shape[1]} columnas')\n",
+    "print()\n",
+    "print(df2.head(8))\n",
+    "print()\n",
+    "print('=== Tipos de dato ===')\n",
+    "print(df2.dtypes)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Valores faltantes ===')\n",
+    "print(df2.isnull().sum()[df2.isnull().sum() > 0])\n",
+    "\n",
+    "print()\n",
+    "print('=== Valores únicos — nivel_educacional ===')\n",
+    "print(sorted(df2['nivel_educacional'].unique()))\n",
+    "\n",
+    "print()\n",
+    "print('=== Rango de frecuencia_conexion ===')\n",
+    "print(f'Min: {df2[\"frecuencia_conexion\"].min()} | Max: {df2[\"frecuencia_conexion\"].max()}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3.1 — Identifica los errores y corrígelos:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Describe los errores encontrados:\n",
+    "errores_df2 = \"\"\"\n",
+    "Error 1 (valor faltante):              \n",
+    "Error 2 (frecuencia fuera de rango):   \n",
+    "Error 3 (inconsistencia texto):        \n",
+    "Error 4 (edad fuera de rango):         \n",
+    "\"\"\"\n",
+    "print(errores_df2)\n",
+    "\n",
+    "# ✏️ Aplica las correcciones:\n",
+    "df2['nivel_educacional'] = df2['nivel_educacional'].str.title()      # estandarizar\n",
+    "df2 = df2[df2['frecuencia_conexion'] <= 7]                           # máx 7 días/semana\n",
+    "df2 = df2[df2['edad'] >= 18]                                         # edad mínima 18\n",
+    "\n",
+    "print(f'Registros después de limpieza: {len(df2)}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Clasificación de variables del dataset de participantes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Completa la clasificación de cada variable:\n",
+    "clasificacion_df2 = {\n",
+    "    'id_participante':     'Identificador',\n",
+    "    'genero':              '???',\n",
+    "    'edad':                '???',\n",
+    "    'region':              '???',\n",
+    "    'comuna':              '???',\n",
+    "    'nivel_educacional':   '???',\n",
+    "    'situacion_laboral':   '???',\n",
+    "    'modalidad':           '???',\n",
+    "    'frecuencia_conexion': '???',\n",
+    "    'nota_promedio':       '???',\n",
+    "}\n",
+    "\n",
+    "print('=== Clasificación de variables — Participantes ===')\n",
+    "for col, tipo in clasificacion_df2.items():\n",
+    "    print(f'  {col:<25} → {tipo}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Tabla de frecuencia para variable nominal: `comuna`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frec_com = df2['comuna'].value_counts().head(10)\n",
+    "rel_com  = df2['comuna'].value_counts(normalize=True).head(10).mul(100).round(1)\n",
+    "\n",
+    "tabla_com = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_com,\n",
+    "    'Frecuencia relativa (%)': rel_com\n",
+    "})\n",
+    "tabla_com.index.name = 'Comuna'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Comuna (top 10) ===')\n",
+    "print(tabla_com)\n",
+    "\n",
+    "plt.figure(figsize=(10, 4))\n",
+    "sns.countplot(data=df2, y='comuna',\n",
+    "              order=df2['comuna'].value_counts().head(10).index,\n",
+    "              palette='Blues_r')\n",
+    "plt.title('Top 10 comunas por participantes', fontweight='bold')\n",
+    "plt.xlabel('Cantidad')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Tabla de frecuencia para variable ordinal: `nivel_educacional`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "orden_niv2 = ['Básica','Media incompleta','Media completa','Técnico','Universitaria','Postgrado']\n",
+    "df2['nivel_educacional'] = pd.Categorical(\n",
+    "    df2['nivel_educacional'], categories=orden_niv2, ordered=True\n",
+    ")\n",
+    "\n",
+    "frec_n2  = df2['nivel_educacional'].value_counts().sort_index()\n",
+    "rel_n2   = df2['nivel_educacional'].value_counts(normalize=True).sort_index().mul(100).round(1)\n",
+    "acum_n2  = rel_n2.cumsum().round(1)\n",
+    "\n",
+    "tabla_n2 = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_n2,\n",
+    "    'Frecuencia relativa (%)': rel_n2,\n",
+    "    'Frecuencia acumulada (%)': acum_n2\n",
+    "})\n",
+    "tabla_n2.index.name = 'Nivel educacional'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Nivel educacional (ordinal) ===')\n",
+    "print(tabla_n2)\n",
+    "\n",
+    "plt.figure(figsize=(10, 4))\n",
+    "sns.countplot(data=df2, x='nivel_educacional', order=orden_niv2, palette='Blues')\n",
+    "plt.title('Nivel educacional de participantes (ordinal)', fontweight='bold')\n",
+    "plt.xlabel('')\n",
+    "plt.ylabel('Cantidad')\n",
+    "plt.tick_params(axis='x', rotation=20)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.5 Tabla de frecuencia para variable discreta: `frecuencia_conexion`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "frec_fc  = df2['frecuencia_conexion'].value_counts().sort_index()\n",
+    "rel_fc   = df2['frecuencia_conexion'].value_counts(normalize=True).sort_index().mul(100).round(1)\n",
+    "acum_fc  = rel_fc.cumsum().round(1)\n",
+    "\n",
+    "tabla_fc = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_fc,\n",
+    "    'Frecuencia relativa (%)': rel_fc,\n",
+    "    'Frecuencia acumulada (%)': acum_fc\n",
+    "})\n",
+    "tabla_fc.index.name = 'Días/semana'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Frecuencia de conexión (discreta) ===')\n",
+    "print(tabla_fc)\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "frec_fc.plot(kind='bar', ax=axes[0], color='#2E75B6', edgecolor='white')\n",
+    "axes[0].set_title('Días de conexión por semana', fontweight='bold')\n",
+    "axes[0].set_xlabel('Días/semana')\n",
+    "axes[0].set_ylabel('Participantes')\n",
+    "axes[0].tick_params(axis='x', rotation=0)\n",
+    "\n",
+    "axes[1].plot(acum_fc.index, acum_fc.values, marker='s', color='#1F4E79', linewidth=2)\n",
+    "axes[1].set_title('Frecuencia acumulada (%)', fontweight='bold')\n",
+    "axes[1].set_xlabel('Días/semana')\n",
+    "axes[1].set_ylabel('%')\n",
+    "axes[1].set_ylim(0, 110)\n",
+    "for i, (x, y) in enumerate(zip(acum_fc.index, acum_fc.values)):\n",
+    "    axes[1].text(x, y+2, f'{y:.0f}%', ha='center', fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.6 Tabla de frecuencia agrupada para variable continua: `edad`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bins2   = [18, 25, 35, 45, 61]\n",
+    "labs2   = ['18–24', '25–34', '35–44', '45–60']\n",
+    "df2['grupo_edad'] = pd.cut(df2['edad'], bins=bins2, labels=labs2, right=False)\n",
+    "\n",
+    "frec_e2  = df2['grupo_edad'].value_counts().sort_index()\n",
+    "rel_e2   = df2['grupo_edad'].value_counts(normalize=True).sort_index().mul(100).round(1)\n",
+    "acum_e2  = rel_e2.cumsum().round(1)\n",
+    "\n",
+    "tabla_e2 = pd.DataFrame({\n",
+    "    'Frecuencia absoluta': frec_e2,\n",
+    "    'Frecuencia relativa (%)': rel_e2,\n",
+    "    'Frecuencia acumulada (%)': acum_e2\n",
+    "})\n",
+    "tabla_e2.index.name = 'Rango de edad'\n",
+    "\n",
+    "print('=== Tabla de frecuencia — Edad participantes (continua agrupada) ===')\n",
+    "print(tabla_e2)\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(14, 4))\n",
+    "fig.suptitle('Distribución de Edad — Participantes', fontweight='bold')\n",
+    "\n",
+    "sns.histplot(df2['edad'].dropna(), bins=15, kde=True, ax=axes[0], color='#ED7D31')\n",
+    "axes[0].set_title('Histograma + KDE')\n",
+    "axes[0].set_xlabel('Edad')\n",
+    "\n",
+    "frec_e2.plot(kind='bar', ax=axes[1], color='#FFC000', edgecolor='white')\n",
+    "axes[1].set_title('Por rangos etarios')\n",
+    "axes[1].set_xlabel('Rango')\n",
+    "axes[1].set_ylabel('Cantidad')\n",
+    "axes[1].tick_params(axis='x', rotation=0)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas finales de reflexión:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué decisiones tomarías con los datos de nivel educacional y frecuencia de conexión?\n",
+    "r1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Cómo usarías las tablas de frecuencia en un reporte ejecutivo?\n",
+    "r2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Por qué es importante definir el orden en variables ordinales antes de graficar?\n",
+    "r3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Qué criterio usarías para definir cuántos intervalos crear en pd.cut()?\n",
+    "r4 = \"\"\n",
+    "\n",
+    "print('--- REFLEXIONES ---')\n",
+    "for i, r in enumerate([r1, r2, r3, r4], 1):\n",
+    "    print(f'{i}. {r}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de técnicas y funciones\n",
+    "\n",
+    "| Tipo de variable | Estadísticas válidas | Gráficos típicos | Función pandas |\n",
+    "|-----------------|---------------------|-----------------|----------------|\n",
+    "| **Nominal** | Frecuencias, moda | Barras, torta | `value_counts()` |\n",
+    "| **Ordinal** | Frecuencias, moda, acumulada | Barras ordenadas | `pd.Categorical(..., ordered=True)` |\n",
+    "| **Discreta** | Media, mediana, moda, varianza | Histograma, columnas | `value_counts().sort_index()` |\n",
+    "| **Continua** | Todo lo anterior + percentiles | Histograma, boxplot, KDE | `pd.cut()`, `sns.histplot()` |\n",
+    "\n",
+    "| Componente | Definición | Código |\n",
+    "|-----------|-----------|--------|\n",
+    "| Frecuencia absoluta | N° de veces que aparece | `value_counts()` |\n",
+    "| Frecuencia relativa | % sobre el total | `value_counts(normalize=True) * 100` |\n",
+    "| Frecuencia acumulada | Suma progresiva (ordinales/discretas) | `.cumsum()` |\n",
+    "| Agrupación por intervalos | Rangos para continuas | `pd.cut(col, bins=[...], labels=[...])` |\n",
+    "\n",
+    "> 💡 **Error frecuente:** Calcular la media de variables ordinales (\"bajo=1, medio=2, alto=3\") sin justificación técnica puede inducir interpretaciones incorrectas.\n",
+    "\n",
+    "> 💡 **Buena práctica:** Siempre usa `pd.Categorical(..., ordered=True)` para variables ordinales **antes** de graficar o tabular, para garantizar el orden correcto."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

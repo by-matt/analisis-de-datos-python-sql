@@ -1,0 +1,152 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "titulo",
+   "metadata": {},
+   "source": [
+    "# Unidad 1 — El lenguaje Python"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-vscode",
+   "metadata": {},
+   "source": [
+    "## Visual Studio Code — Entorno de Desarrollo Integrado (IDE)\n",
+    "**Slide 13 — Verificación de la instalación**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "verificacion",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "python --version"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-holamundo",
+   "metadata": {},
+   "source": [
+    "**Slide 16 — Escribe tu primer programa (`hola_mundo.py`)**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "hola-mundo",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"¡Hola, mundo!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-spyder",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## El editor Spyder — Ejercicio\n",
+    "**Slide 31 — En el editor, escribe (`mi_primer_script.py`)**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "spyder",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"¡Hola, Spyder!\")\n",
+    "print(\"Este es mi primer script en Python.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-jupyter",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Jupyter notebooks — Cómo abrir un nuevo notebook\n",
+    "**Slide 27 — En la primera celda, escribe:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "jupyter-celda1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"¡Hola, mundo!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-jupyter2",
+   "metadata": {},
+   "source": [
+    "**Slide 28 — En la siguiente celda, escribe:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "jupyter-celda2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "2 + 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "titulo-colab",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Google Colab — Acceder y crear un nuevo notebook en Colab\n",
+    "**Slide 35 — En la primera celda, escribe y ejecuta:**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "colab",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "# Crear un DataFrame simple\n",
+    "df = pd.DataFrame({'x': range(10), 'y': [i**2 for i in range(10)]})\n",
+    "\n",
+    "# Crear un gráfico\n",
+    "plt.plot(df['x'], df['y'])\n",
+    "plt.title('Gráfico de y = x^2')\n",
+    "plt.xlabel('x')\n",
+    "plt.ylabel('y')\n",
+    "plt.show()"
+   ]
+  }
+ ]
+}

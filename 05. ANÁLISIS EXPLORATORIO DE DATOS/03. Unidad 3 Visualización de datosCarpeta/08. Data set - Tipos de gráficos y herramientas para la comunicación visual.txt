@@ -1,0 +1,840 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📉 Clase 8 — Tipos de gráficos y herramientas para la comunicación visual\n",
+    "## Unidad: Visualización de datos\n",
+    "\n",
+    "**Situación:** Preparas un informe para una empresa financiera. Debes comunicar tendencias temporales, dispersión de ingresos, distribución de edades, proporciones de cuenta y detectar outliers — con límites personalizados, anotaciones y exportación.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Controlar rangos con `set_xlim()` / `set_ylim()` y `autoscale()`\n",
+    "- Añadir `annotate()`, `text()`, `axhline()`, `axvline()` y `patches`\n",
+    "- Exportar con `savefig(dpi=300, bbox_inches='tight')`\n",
+    "- Dominar los 6 tipos: **línea, histograma, boxplot, scatter, barras, torta**\n",
+    "- Elegir el tipo correcto según el objetivo del análisis"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "import matplotlib.patches as patches\n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "print('✅ Librerías cargadas')\n",
+    "import matplotlib\n",
+    "print(f'Matplotlib {matplotlib.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Fijando los límites de un gráfico\n",
+    "\n",
+    "### 1.1 `set_xlim()` y `set_ylim()` — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 6\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "x = [1, 2, 3, 4, 5]\n",
+    "y = [20, 22, 21, 23, 24]\n",
+    "\n",
+    "fig, ax = plt.subplots()\n",
+    "ax.plot(x, y)\n",
+    "ax.set_xlim(0, 6)    # Límite del eje X de 0 a 6\n",
+    "ax.set_ylim(18, 26)  # Límite del eje Y de 18 a 26\n",
+    "ax.set_title('Temperatura semanal')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración clave: zoom engañoso vs escala honesta\n",
+    "x = [1, 2, 3, 4, 5]\n",
+    "y = [25.1, 25.2, 25.4, 25.3, 25.6]\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(13, 4))\n",
+    "fig.suptitle('Mismo dato — escala automática vs. manual honesta', fontweight='bold')\n",
+    "\n",
+    "# Zoom engañoso (escala automática)\n",
+    "axes[0].plot(x, y, 'r-o', linewidth=2)\n",
+    "axes[0].set_title('❌ Zoom automático\\nParece una variación drástica', fontsize=9)\n",
+    "axes[0].set_xlabel('Día')\n",
+    "axes[0].set_ylabel('Temperatura (°C)')\n",
+    "axes[0].grid(True)\n",
+    "\n",
+    "# Escala honesta\n",
+    "axes[1].plot(x, y, 'b-o', linewidth=2)\n",
+    "axes[1].set_ylim(0, 40)   # rango completo de temperatura\n",
+    "axes[1].set_title('✅ Escala manual honesta\\nVariación real es mínima', fontsize=9)\n",
+    "axes[1].set_xlabel('Día')\n",
+    "axes[1].set_ylabel('Temperatura (°C)')\n",
+    "axes[1].grid(True)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('Rango real: 25.1 → 25.6 °C  (variación de 0.5 °C)')\n",
+    "print('La escala automática exagera la diferencia visual.')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# autoscale() — código exacto slide 7\n",
+    "fig, ax = plt.subplots(figsize=(7, 4))\n",
+    "ax.plot([1,2,3,4,5], [20,22,21,23,24], 'g-o')\n",
+    "ax.autoscale(enable=True, axis='both', tight=False)\n",
+    "ax.set_title('autoscale() activado')\n",
+    "ax.grid(True)\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# Tabla comparativa — slide 7\n",
+    "tabla_lim = pd.DataFrame({\n",
+    "    'Configuración': ['autoscale()','set_xlim() / set_ylim()'],\n",
+    "    'Ventaja principal': ['Rápido para gráficos únicos',\n",
+    "                          'Control total del rango'],\n",
+    "    'Riesgo principal': ['Escalas inconsistentes o exageradas',\n",
+    "                         'Requiere conocimiento previo del dato']\n",
+    "})\n",
+    "print(tabla_lim.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Anotaciones y dibujos en un gráfico\n",
+    "\n",
+    "### 2.1 `annotate()` — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 11\n",
+    "fig, ax = plt.subplots()\n",
+    "ax.plot([1, 2, 3, 4], [10, 20, 15, 25])\n",
+    "ax.annotate('Pico máximo', xy=(4, 25), xytext=(3, 26),\n",
+    "            arrowprops=dict(facecolor='red', arrowstyle='->'))\n",
+    "ax.set_title('Anotación destacada')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto: text() — slide 12\n",
+    "fig, ax = plt.subplots(figsize=(7, 4))\n",
+    "ax.plot([1,2,3,4], [10,20,15,25], 'b-o')\n",
+    "ax.text(2, 22, 'Tendencia creciente', fontsize=10, color='green')\n",
+    "ax.set_title('ax.text() — texto libre en el gráfico')\n",
+    "ax.grid(True)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto: axhline + axvline — slide 13\n",
+    "fig, ax = plt.subplots(figsize=(8, 4))\n",
+    "ax.plot([1,2,3,4,5], [10,20,15,25,18], 'b-o')\n",
+    "\n",
+    "ax.axhline(y=20, color='gray',  linestyle='--')  # línea horizontal\n",
+    "ax.axvline(x=2,  color='blue',  linestyle=':')   # línea vertical\n",
+    "\n",
+    "ax.set_title('axhline() y axvline() — líneas de referencia')\n",
+    "ax.grid(True, alpha=0.3)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto: patches — slide 14\n",
+    "import matplotlib.patches as patches\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(7, 5))\n",
+    "ax.plot([1,2,3,4,5], [10,20,15,25,18], 'b-o')\n",
+    "\n",
+    "circle = patches.Circle((2, 20), radius=0.3, color='orange', alpha=0.5)\n",
+    "ax.add_patch(circle)\n",
+    "\n",
+    "ax.set_title('patches.Circle() sobre el gráfico')\n",
+    "ax.grid(True, alpha=0.3)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Demostración completa: todas las herramientas de anotación juntas\n",
+    "np.random.seed(42)\n",
+    "meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic']\n",
+    "ventas = [150,180,160,200,220,210,250,240,230,280,270,310]\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(12, 5))\n",
+    "ax.plot(range(12), ventas, 'b-o', linewidth=2, markersize=7, label='Ventas')\n",
+    "\n",
+    "# set_xlim / set_ylim\n",
+    "ax.set_xlim(-0.5, 11.5)\n",
+    "ax.set_ylim(0, 380)\n",
+    "\n",
+    "# axhline: promedio\n",
+    "prom = np.mean(ventas)\n",
+    "ax.axhline(y=prom, color='gray', linestyle='--', linewidth=1.5, label=f'Promedio ${prom:.0f}')\n",
+    "\n",
+    "# axvline: inicio Q3\n",
+    "ax.axvline(x=6, color='green', linestyle=':', linewidth=1.5, label='Inicio Q3')\n",
+    "\n",
+    "# annotate: pico máximo\n",
+    "idx_max = ventas.index(max(ventas))\n",
+    "ax.annotate(f'Máximo: ${max(ventas)}',\n",
+    "            xy=(idx_max, max(ventas)),\n",
+    "            xytext=(idx_max - 2, max(ventas) + 30),\n",
+    "            arrowprops=dict(facecolor='red', arrowstyle='->', lw=1.5),\n",
+    "            fontsize=10, color='red', fontweight='bold')\n",
+    "\n",
+    "# text libre\n",
+    "ax.text(0.5, 330, 'Crecimiento sostenido en H2', fontsize=9, color='navy',\n",
+    "        style='italic', bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.7))\n",
+    "\n",
+    "# patch: rectángulo zona Q4\n",
+    "rect = patches.Rectangle((8.5, 0), 3.5, 380, linewidth=0, facecolor='#FFFACD', alpha=0.4)\n",
+    "ax.add_patch(rect)\n",
+    "ax.text(10.5, 320, 'Q4', ha='center', fontsize=11, color='#B8860B', fontweight='bold')\n",
+    "\n",
+    "ax.set_xticks(range(12))\n",
+    "ax.set_xticklabels(meses)\n",
+    "ax.set_title('Ventas anuales — panel completo de anotaciones', fontsize=13, fontweight='bold')\n",
+    "ax.set_xlabel('Mes')\n",
+    "ax.set_ylabel('Ventas ($)')\n",
+    "ax.legend(fontsize=9)\n",
+    "ax.grid(True, linestyle='--', alpha=0.4)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Guardando los gráficos en un archivo\n",
+    "\n",
+    "### 3.1 `savefig()` — códigos exactos presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 18\n",
+    "fig, ax = plt.subplots()\n",
+    "ax.plot([1, 2, 3], [4, 5, 6])\n",
+    "plt.savefig('grafico.png')\n",
+    "print('✅ Guardado como grafico.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 20: alta resolución\n",
+    "fig, ax = plt.subplots(figsize=(8, 6))\n",
+    "ax.plot([1,2,3,4], [10,20,15,25], 'b-o')\n",
+    "ax.set_title('Gráfico HD para impresión')\n",
+    "ax.grid(True)\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('grafico_hd.png', dpi=300, bbox_inches='tight')\n",
+    "print('✅ Guardado con dpi=300, bbox_inches=\"tight\"')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 21: guardar sin mostrar\n",
+    "fig2, ax2 = plt.subplots(figsize=(7, 4))\n",
+    "ax2.bar(['A','B','C'], [20,35,15], color='steelblue')\n",
+    "ax2.set_title('Reporte automático')\n",
+    "plt.savefig('reporte.png')\n",
+    "plt.close()   # cerrar sin mostrar — útil en scripts automatizados\n",
+    "print('✅ Guardado como reporte.png y cerrado sin mostrar')\n",
+    "\n",
+    "# Tabla de formatos — slide 19\n",
+    "tabla_fmt = pd.DataFrame({\n",
+    "    'Formato': ['PNG','PDF','SVG','JPG'],\n",
+    "    'Uso': ['Imágenes para presentaciones o páginas web',\n",
+    "            'Documentos vectoriales de alta resolución',\n",
+    "            'Gráficos escalables para web o impresión técnica',\n",
+    "            'Fotografías o imágenes simples'],\n",
+    "    'Código': [\"savefig('f.png',dpi=300)\",\n",
+    "               \"savefig('f.pdf')\",\n",
+    "               \"savefig('f.svg')\",\n",
+    "               \"savefig('f.jpg',quality=95)\"]\n",
+    "})\n",
+    "print(tabla_fmt.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Los 6 tipos de gráficos\n",
+    "\n",
+    "### 4.1 Diagrama de línea — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 26\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "meses  = ['Ene', 'Feb', 'Mar', 'Abr', 'May']\n",
+    "ventas = [150, 200, 220, 180, 260]\n",
+    "\n",
+    "plt.plot(meses, ventas, marker='o', linestyle='-', color='blue')\n",
+    "plt.title('Ventas mensuales')\n",
+    "plt.xlabel('Mes')\n",
+    "plt.ylabel('Ventas en miles')\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Histograma — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 29\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "data = np.random.normal(loc=50, scale=10, size=200)\n",
+    "\n",
+    "plt.hist(data, bins=10, color='skyblue', edgecolor='black')\n",
+    "plt.title('Distribución de puntajes')\n",
+    "plt.xlabel('Puntaje')\n",
+    "plt.ylabel('Frecuencia')\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Boxplot — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 32\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "data = [np.random.normal(100, 10, 200), np.random.normal(80, 15, 200)]\n",
+    "\n",
+    "plt.boxplot(data, labels=['Grupo A', 'Grupo B'])\n",
+    "plt.title('Comparación de distribuciones')\n",
+    "plt.ylabel('Valor')\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Diagrama de dispersión — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 34\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "x = np.random.rand(100)\n",
+    "y = 2 * x + np.random.normal(0, 0.1, 100)\n",
+    "\n",
+    "plt.scatter(x, y, color='purple', alpha=0.6)\n",
+    "plt.title('Relación entre variables')\n",
+    "plt.xlabel('X')\n",
+    "plt.ylabel('Y')\n",
+    "plt.grid(True)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.5 Diagrama de barras — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 36\n",
+    "categorias = ['A', 'B', 'C', 'D']\n",
+    "valores    = [23, 17, 35, 29]\n",
+    "\n",
+    "plt.bar(categorias, valores, color='teal')\n",
+    "plt.title('Distribución por categoría')\n",
+    "plt.xlabel('Categoría')\n",
+    "plt.ylabel('Cantidad')\n",
+    "plt.grid(True, axis='y')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.6 Diagrama de torta — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 38\n",
+    "etiquetas   = ['Producto A', 'Producto B', 'Producto C']\n",
+    "porcentajes = [45, 30, 25]\n",
+    "\n",
+    "plt.pie(porcentajes, labels=etiquetas, autopct='%1.1f%%', startangle=90)\n",
+    "plt.title('Participación de mercado')\n",
+    "plt.axis('equal')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de selección del tipo correcto\n",
+    "tabla_sel = pd.DataFrame({\n",
+    "    'Tipo':      ['Línea','Histograma','Boxplot','Scatter','Barras','Torta'],\n",
+    "    'Función':   ['plot()','hist()','boxplot()','scatter()','bar()/barh()','pie()'],\n",
+    "    'Cuándo usarlo': [\n",
+    "        'Tendencias temporales o secuencias',\n",
+    "        'Distribución de una variable continua',\n",
+    "        'Dispersión y outliers por grupo',\n",
+    "        'Relación entre 2 variables numéricas',\n",
+    "        'Comparar categorías nominales',\n",
+    "        'Proporciones (máx. 5-6 categorías)'\n",
+    "    ],\n",
+    "    'Variable requerida': [\n",
+    "        'Numérica continua (tiempo)',\n",
+    "        'Numérica continua',\n",
+    "        'Numérica + categórica',\n",
+    "        'Numérica × Numérica',\n",
+    "        'Categórica + Numérica',\n",
+    "        'Categórica (proporciones)'\n",
+    "    ]\n",
+    "})\n",
+    "print('=== Guía de selección de tipo de gráfico ===')\n",
+    "print(tabla_sel.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Actividad guiada: Colección de visualizaciones\n",
+    "\n",
+    "### 5.1 Cargar datos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 45\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "df = pd.read_csv('datos_clientes.csv')\n",
+    "print(df.head(8))\n",
+    "print()\n",
+    "print('=== Info ===')\n",
+    "print(df.info())\n",
+    "print()\n",
+    "print('=== Nulos ===')\n",
+    "print(df.isnull().sum())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Limpiar nulo intencional\n",
+    "df_clean = df.dropna().copy()\n",
+    "print(f'Registros: {len(df)} → {len(df_clean)} después de limpiar nulos')\n",
+    "print()\n",
+    "print('Columnas: mes, ventas_mensuales, edad, compras_anuales, tipo_producto, ingreso_anual')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.2 Gráfico 1 — Línea: evolución de ventas mensuales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "orden_mes = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',\n",
+    "             'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']\n",
+    "ventas_mes = df_clean.groupby('mes')['ventas_mensuales'].mean().reindex(orden_mes).dropna()\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(11, 4))\n",
+    "ax.plot(range(len(ventas_mes)), ventas_mes.values,\n",
+    "        marker='o', linestyle='-', color='#2E75B6', linewidth=2.5)\n",
+    "\n",
+    "# Límites manuales\n",
+    "ax.set_ylim(0, ventas_mes.max() * 1.3)\n",
+    "\n",
+    "# Anotación del pico\n",
+    "idx_max = ventas_mes.values.argmax()\n",
+    "ax.annotate(f'Pico: ${ventas_mes.values[idx_max]:,.0f}',\n",
+    "            xy=(idx_max, ventas_mes.values[idx_max]),\n",
+    "            xytext=(idx_max - 1.5, ventas_mes.values[idx_max] * 1.15),\n",
+    "            arrowprops=dict(arrowstyle='->', color='red'),\n",
+    "            fontsize=9, color='red')\n",
+    "\n",
+    "# Línea de referencia (promedio)\n",
+    "ax.axhline(ventas_mes.mean(), color='gray', linestyle='--',\n",
+    "           linewidth=1.5, label=f'Promedio ${ventas_mes.mean():,.0f}')\n",
+    "\n",
+    "ax.set_xticks(range(len(ventas_mes)))\n",
+    "ax.set_xticklabels([m[:3] for m in ventas_mes.index], fontsize=10)\n",
+    "ax.set_title('Evolución de ventas mensuales promedio', fontsize=13, fontweight='bold')\n",
+    "ax.set_xlabel('Mes')\n",
+    "ax.set_ylabel('Ventas ($)')\n",
+    "ax.legend()\n",
+    "ax.grid(True, linestyle='--', alpha=0.4)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('grafico1_linea_ventas.png', dpi=300, bbox_inches='tight')\n",
+    "print('✅ Guardado: grafico1_linea_ventas.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.3 Gráfico 2 — Histograma: distribución de ingreso anual"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, ax = plt.subplots(figsize=(9, 4))\n",
+    "ax.hist(df_clean['ingreso_anual'], bins=15,\n",
+    "        color='#BDD7EE', edgecolor='black', alpha=0.85)\n",
+    "\n",
+    "# Límites y líneas de referencia\n",
+    "ax.set_xlim(0, df_clean['ingreso_anual'].max() * 1.05)\n",
+    "media_ing = df_clean['ingreso_anual'].mean()\n",
+    "mediana_ing = df_clean['ingreso_anual'].median()\n",
+    "ax.axvline(media_ing,   color='red',   linestyle='--', linewidth=2, label=f'Media ${media_ing:,.0f}')\n",
+    "ax.axvline(mediana_ing, color='green', linestyle='--', linewidth=2, label=f'Mediana ${mediana_ing:,.0f}')\n",
+    "\n",
+    "ax.set_title('Distribución de ingreso anual de clientes', fontsize=13, fontweight='bold')\n",
+    "ax.set_xlabel('Ingreso anual ($)')\n",
+    "ax.set_ylabel('Frecuencia')\n",
+    "ax.legend()\n",
+    "ax.grid(True, axis='y', linestyle='--', alpha=0.4)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('grafico2_hist_ingreso.png', dpi=300, bbox_inches='tight')\n",
+    "print('✅ Guardado: grafico2_hist_ingreso.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.4 Gráfico 3 — Boxplot: ingresos por tipo de producto"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tipos_ord = df_clean.groupby('tipo_producto')['ingreso_anual'].median().sort_values(ascending=False).index\n",
+    "grupos = [df_clean[df_clean['tipo_producto']==t]['ingreso_anual'].values for t in tipos_ord]\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(10, 5))\n",
+    "bp = ax.boxplot(grupos, labels=tipos_ord, patch_artist=True)\n",
+    "\n",
+    "colores_bp = ['#2E75B6','#ED7D31','#70AD47','#7030A0','#FFC000']\n",
+    "for patch, color in zip(bp['boxes'], colores_bp):\n",
+    "    patch.set_facecolor(color)\n",
+    "    patch.set_alpha(0.7)\n",
+    "\n",
+    "ax.set_title('Ingreso anual por tipo de producto', fontsize=13, fontweight='bold')\n",
+    "ax.set_ylabel('Ingreso anual ($)')\n",
+    "ax.grid(True, axis='y', linestyle='--', alpha=0.4)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.5 Gráfico 4 — Scatter con anotación y límites (código exacto slide 45)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — slide 45\n",
+    "plt.figure(figsize=(8, 5))\n",
+    "plt.scatter(df['edad'], df['compras_anuales'], alpha=0.6)\n",
+    "plt.xlabel('Edad')\n",
+    "plt.ylabel('Compras anuales')\n",
+    "plt.title('Relación entre edad y compras')\n",
+    "plt.xlim(18, 70)\n",
+    "plt.ylim(0, 100)\n",
+    "plt.annotate('Cliente destacado',\n",
+    "             xy=(45, 55), xytext=(50, 70),\n",
+    "             arrowprops=dict(arrowstyle='->', color='red'))\n",
+    "plt.grid(True)\n",
+    "plt.tight_layout()\n",
+    "plt.savefig('edad_vs_compras.png', dpi=300, bbox_inches='tight')\n",
+    "print('✅ Guardado: edad_vs_compras.png')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.6 Gráfico 5 — Torta: participación de tipo de producto"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "conteo_tipo = df_clean['tipo_producto'].value_counts()\n",
+    "\n",
+    "fig, ax = plt.subplots(figsize=(7, 6))\n",
+    "colores_pie = ['#2E75B6','#ED7D31','#70AD47','#7030A0','#FFC000']\n",
+    "wedges, texts, autotexts = ax.pie(\n",
+    "    conteo_tipo.values,\n",
+    "    labels=conteo_tipo.index,\n",
+    "    autopct='%1.1f%%',\n",
+    "    startangle=90,\n",
+    "    colors=colores_pie,\n",
+    "    pctdistance=0.82\n",
+    ")\n",
+    "for t in autotexts:\n",
+    "    t.set_fontsize(9)\n",
+    "ax.axis('equal')   # exacto del slide 38\n",
+    "ax.set_title('Participación de tipo de producto', fontsize=12, fontweight='bold')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas de cierre (slide 48):"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué función controla el rango visualizado?\n",
+    "p1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. Diferencias entre annotate() y text()\n",
+    "p2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. Consideraciones para guardar con alta calidad\n",
+    "p3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿Qué gráfico para relación entre 2 vars numéricas? ¿Y para comparar categorías?\n",
+    "p4 = \"\"\n",
+    "\n",
+    "# ✏️ 5. ¿Por qué no siempre es recomendable el gráfico de torta?\n",
+    "p5 = \"\"\n",
+    "\n",
+    "print('--- PREGUNTAS DE CIERRE (slide 48) ---')\n",
+    "preguntas = [\n",
+    "    '¿Qué función controla el rango visualizado?',\n",
+    "    '¿Diferencias entre annotate() y text()?',\n",
+    "    '¿Qué considerar al guardar con alta calidad?',\n",
+    "    '¿Gráfico para relación numérica-numérica? ¿Y para comparar categorías?',\n",
+    "    '¿Por qué el gráfico de torta no siempre es recomendable?'\n",
+    "]\n",
+    "for i, (preg, resp) in enumerate(zip(preguntas, [p1,p2,p3,p4,p5]), 1):\n",
+    "    print(f'\\n{i}. {preg}')\n",
+    "    print(f'   R: {resp}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen completo\n",
+    "\n",
+    "### Límites de ejes\n",
+    "\n",
+    "| Herramienta | Código | Cuándo usar |\n",
+    "|------------|--------|-------------|\n",
+    "| Límite X | `ax.set_xlim(min, max)` | Comparar gráficos o evitar zoom engañoso |\n",
+    "| Límite Y | `ax.set_ylim(min, max)` | Controlar escala visible |\n",
+    "| Autoescala | `ax.autoscale(enable=True)` | Exploración rápida |\n",
+    "\n",
+    "### Anotaciones\n",
+    "\n",
+    "| Herramienta | Código | Uso |\n",
+    "|------------|--------|-----|\n",
+    "| Anotación con flecha | `ax.annotate('txt', xy=, xytext=, arrowprops=)` | Señalar punto específico |\n",
+    "| Texto libre | `ax.text(x, y, 'txt')` | Comentario sin señalar punto |\n",
+    "| Línea horizontal | `ax.axhline(y=val, color=, linestyle=)` | Umbral, promedio |\n",
+    "| Línea vertical | `ax.axvline(x=val, color=, linestyle=)` | Fecha, corte |\n",
+    "| Formas | `patches.Circle/Rectangle(...)` | Resaltar zonas |\n",
+    "\n",
+    "### Exportación\n",
+    "\n",
+    "| Parámetro | Valor recomendado | Efecto |\n",
+    "|-----------|------------------|--------|\n",
+    "| `dpi=` | 150 (web) / 300 (impresión) | Resolución |\n",
+    "| `bbox_inches=` | `'tight'` | Sin recortes |\n",
+    "| Formato | PNG, PDF, SVG | Según destino |\n",
+    "| Sin mostrar | `plt.close()` | Scripts automáticos |\n",
+    "\n",
+    "> 💡 **`annotate` vs `text`:** `annotate()` señala un punto con flecha. `text()` coloca texto en cualquier posición sin flecha.\n",
+    "\n",
+    "> 💡 **Gráfico de torta:** usar solo con ≤5-6 categorías. Si hay muchas categorías pequeñas, preferir barras horizontales."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

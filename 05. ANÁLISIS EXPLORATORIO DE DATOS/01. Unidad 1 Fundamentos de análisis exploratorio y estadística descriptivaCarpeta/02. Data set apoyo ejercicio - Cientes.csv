@@ -1,0 +1,121 @@
+id_cliente,genero,edad,region,nivel_educacional,compras_mensuales,canal_preferido,producto_frecuente,satisfaccion
+001,F,30,Valparaíso,Técnico,4,Online,Libros,Baja
+002,M,64,Coquimbo,Universitaria,6,Telefónico,Hogar,Alta
+003,M,52,Coquimbo,Básica,2,App móvil,Electrónica,Baja
+004,F,54,Los Lagos,Media,1,Online,Hogar,Baja
+005,M,30,Valparaíso,Media,3,Telefónico,Ropa,Media
+006,F,24,Coquimbo,Universitaria,8,App móvil,Alimentos,Media
+007,F,47,Valparaíso,universitaria,2,Tienda física,Alimentos,Alta
+008,F,37,Araucanía,Media,4,Telefónico,Hogar,Alta
+009,F,43,Coquimbo,Básica,2,App móvil,Electrónica,Alta
+010,M,38,Biobío,Media,5,Online,Deportes,Media
+011,M,49,Metropolitana,Universitaria,3,App móvil,Deportes,Media
+012,F,43,Antofagasta,Universitaria,8,Telefónico,Deportes,Baja
+013,F,33,Coquimbo,Técnico,4,Telefónico,Alimentos,Alta
+014,F,20,Biobío,Media,4,Telefónico,Alimentos,Media
+015,M,35,Araucanía,Universitaria,4,Tienda física,Libros,Baja
+016,F,61,Araucanía,Técnico,5,Telefónico,Deportes,Alta
+017,F,53,Metropolitana,Postgrado,5,App móvil,Ropa,Media
+018,M,25,Los Lagos,Media,1,App móvil,Ropa,Alta
+019,F,48,Coquimbo,Postgrado,12,Telefónico,Deportes,Baja
+020,F,41,Los Lagos,Técnico,5,Online,Hogar,Media
+021,M,38,Metropolitana,Básica,1,Tienda física,Hogar,Baja
+022,F,59,Coquimbo,Técnico,9,App móvil,Electrónica,Alta
+023,F,,Antofagasta,Media,1,Online,Deportes,Media
+024,M,45,Araucanía,Básica,1,Telefónico,Deportes,Alta
+025,F,26,Coquimbo,Postgrado,11,App móvil,Deportes,Alta
+026,M,52,Araucanía,Básica,1,Telefónico,Hogar,Alta
+027,F,51,Antofagasta,Básica,1,Online,Libros,Alta
+028,F,29,Coquimbo,Básica,1,Telefónico,Libros,Media
+029,F,61,Los Lagos,Básica,1,Tienda física,Hogar,Media
+030,M,65,Metropolitana,Básica,2,Online,Electrónica,Alta
+031,F,48,Biobío,Técnico,7,Tienda física,Deportes,Media
+032,F,27,Biobío,Universitaria,10,App móvil,Hogar,Baja
+033,M,64,Los Lagos,Postgrado,10,App móvil,Libros,Baja
+034,M,60,Los Lagos,Técnico,7,App móvil,Deportes,Media
+035,F,60,Biobío,Media,1,Online,Libros,Alta
+036,M,18,Los Lagos,Universitaria,3,Tienda física,Libros,Media
+037,M,23,Antofagasta,Media,3,Online,Electrónica,Alta
+038,M,55,Araucanía,Universitaria,4,Online,Alimentos,Baja
+039,F,41,Los Lagos,Postgrado,9,App móvil,Deportes,Baja
+040,M,65,Los Lagos,Postgrado,6,Tienda física,Electrónica,Alta
+041,M,18,Los Lagos,Técnico,6,Online,Deportes,Alta
+042,F,36,Coquimbo,Técnico,2,App móvil,Alimentos,Baja
+043,F,24,Los Lagos,Postgrado,13,Tienda física,Hogar,Media
+044,F,40,Los Lagos,Técnico,8,Tienda física,Hogar,Alta
+045,M,35,Los Lagos,Universitaria,-5,Online,Alimentos,Media
+046,M,34,Metropolitana,Postgrado,12,App móvil,Deportes,Baja
+047,F,60,Araucanía,Técnico,3,App móvil,Libros,Media
+048,M,40,Antofagasta,Básica,1,Online,Ropa,Media
+049,M,55,Araucanía,Técnico,7,App móvil,Deportes,Media
+050,M,40,Coquimbo,Universitaria,6,Telefónico,Deportes,Media
+051,M,22,Araucanía,Postgrado,3,Tienda física,Hogar,Media
+052,M,46,Araucanía,Universitaria,3,Online,Deportes,Baja
+053,F,24,Antofagasta,Básica,3,Tienda física,Alimentos,Alta
+054,F,65,Araucanía,Técnico,7,Tienda física,Deportes,Alta
+055,M,60,Araucanía,Media,1,Telefónico,Alimentos,Media
+056,F,33,Biobío,Técnico,4,App móvil,Ropa,Alta
+057,F,33,Araucanía,Universitaria,5,Online,Ropa,Alta
+058,F,58,Coquimbo,Universitaria,5,App móvil,Hogar,Media
+059,M,37,Valparaíso,Postgrado,10,Online,Alimentos,Media
+060,M,20,Valparaíso,Técnico,7,Telefónico,Deportes,Media
+061,F,23,Antofagasta,Universitaria,8,Tienda física,Libros,Media
+062,M,26,Biobío,Básica,1,Tienda física,Deportes,Alta
+063,F,35,Araucanía,Media,2,Online,Hogar,Alta
+064,F,46,Antofagasta,Media,2,Online,Ropa,Media
+065,M,48,Coquimbo,Universitaria,4,Online,Hogar,Baja
+066,M,23,Coquimbo,Básica,1,Telefónico,Alimentos,Baja
+067,X,31,Valparaíso,Básica,2,Online,Deportes,Media
+068,F,20,Coquimbo,Técnico,6,Online,Deportes,Alta
+069,F,38,Los Lagos,Técnico,4,Online,Hogar,Baja
+070,M,26,Los Lagos,Media,5,Telefónico,Electrónica,Media
+071,F,20,Coquimbo,Postgrado,11,App móvil,Ropa,Alta
+072,M,31,Coquimbo,Media,4,App móvil,Hogar,Baja
+073,M,61,Metropolitana,Básica,2,Telefónico,Electrónica,Media
+074,F,32,Coquimbo,Universitaria,9,Online,Libros,Media
+075,M,65,Metropolitana,Universitaria,11,Tienda física,Hogar,Baja
+076,M,53,Antofagasta,Media,3,App móvil,Ropa,Baja
+077,M,37,Biobío,Básica,1,Tienda física,Libros,Alta
+078,F,47,Los Lagos,Básica,3,Tienda física,Alimentos,Media
+079,M,50,Antofagasta,Técnico,2,Tienda física,Ropa,Media
+080,F,47,Metropolitana,Universitaria,6,App móvil,Libros,Baja
+081,M,63,Metropolitana,Postgrado,3,Online,Ropa,Media
+082,M,50,Valparaíso,Postgrado,11,App móvil,Deportes,Media
+083,F,62,Coquimbo,Técnico,8,App móvil,Alimentos,Baja
+084,F,61,Araucanía,Media,2,Tienda física,Libros,Media
+085,M,44,Coquimbo,Universitaria,8,App móvil,Ropa,Alta
+086,M,35,Coquimbo,Postgrado,11,Tienda física,Ropa,Media
+087,F,62,Biobío,Universitaria,4,Online,Alimentos,Alta
+088,F,26,Araucanía,Universitaria,7,App móvil,Electrónica,Baja
+089,M,30,Antofagasta,Media,1,Telefónico,Electrónica,Baja
+090,M,31,Araucanía,Media,2,App móvil,Ropa,Baja
+091,M,28,Antofagasta,Básica,3,Telefónico,Libros,Baja
+092,M,31,Antofagasta,Técnico,8,Telefónico,Deportes,Alta
+093,F,31,Biobío,Postgrado,7,Telefónico,Electrónica,Alta
+094,M,22,Metropolitana,Postgrado,14,Telefónico,Deportes,Baja
+095,F,39,Biobío,Técnico,8,Telefónico,Libros,Alta
+096,F,49,Valparaíso,Técnico,2,Tienda física,Libros,Media
+097,F,33,Valparaíso,Media,3,Telefónico,Alimentos,Baja
+098,F,19,Los Lagos,Técnico,3,Tienda física,Libros,Alta
+099,M,56,Valparaíso,Técnico,4,Telefónico,Electrónica,Alta
+100,F,32,Antofagasta,Universitaria,7,Telefónico,Ropa,Alta
+101,F,58,Araucanía,Técnico,9,Telefónico,Electrónica,Alta
+102,F,29,Araucanía,Universitaria,5,Telefónico,Hogar,Baja
+103,M,50,Valparaíso,Universitaria,5,Telefónico,Electrónica,Baja
+104,F,21,Metropolitana,Universitaria,11,Tienda física,Libros,Media
+105,F,42,Valparaíso,Básica,1,Tienda física,Libros,Media
+106,F,48,Biobío,Universitaria,4,Tienda física,Ropa,Baja
+107,M,54,Los Lagos,Técnico,8,App móvil,Deportes,Baja
+108,M,29,Araucanía,Universitaria,8,Online,Libros,Media
+109,M,62,Valparaíso,Básica,2,Online,Alimentos,Alta
+110,M,18,Coquimbo,Postgrado,11,Tienda física,Alimentos,Baja
+111,F,65,Biobío,Postgrado,11,Online,Libros,Media
+112,F,20,Valparaíso,Universitaria,7,Online,Ropa,Baja
+113,M,48,Antofagasta,Básica,1,Online,Alimentos,Media
+114,M,29,Antofagasta,Básica,2,App móvil,Libros,Alta
+115,F,33,Biobío,Básica,3,Telefónico,Electrónica,Media
+116,F,47,Metropolitana,Media,3,Online,Electrónica,Baja
+117,M,31,Araucanía,Técnico,5,Online,Deportes,Alta
+118,F,44,Los Lagos,Postgrado,3,Telefónico,Deportes,Media
+119,F,34,Araucanía,Técnico,3,Tienda física,Libros,Media
+120,M,34,Metropolitana,Postgrado,10,Telefónico,Alimentos,Baja

@@ -1,0 +1,632 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 🔗 Clase 3 — Gráficos de relaciones bivariadas y regresiones con Seaborn\n",
+    "## Unidad: Visualización de datos\n",
+    "\n",
+    "**Situación:** Una empresa de tecnología quiere entender si el tiempo que los usuarios pasan en su plataforma se relaciona con la cantidad de compras/módulos completados. ¿Existe correlación? ¿Es lineal? ¿Varía por tipo de usuario?\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Explorar relaciones bivariadas con `jointplot()` (scatter + márgenes)\n",
+    "- Ver múltiples relaciones simultáneamente con `pairplot()`\n",
+    "- Añadir línea de tendencia con `regplot()` y `lmplot()`\n",
+    "- Comparar tendencias por grupos con `hue=` y `col=`\n",
+    "- Saber cuándo usar `jointplot` vs `pairplot`, y `regplot` vs `lmplot`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import seaborn as sns\n",
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Librerías cargadas')\n",
+    "print(f'Seaborn {sns.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — `jointplot()`: relación bivariada con distribuciones marginales\n",
+    "\n",
+    "### 1.1 ¿Qué es jointplot y para qué sirve?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Cargar datos — código exacto de la presentación\n",
+    "import seaborn as sns\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "clientes = pd.read_csv('comportamiento_plataforma_edu.csv')\n",
+    "print(f'Registros: {len(clientes)}')\n",
+    "print(clientes.head(10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# jointplot básico — código exacto de la presentación\n",
+    "sns.jointplot(data=clientes, x='min_conexion_dia', y='modulos_completados', kind='scatter')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Modos disponibles en `kind=`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Explorar los 4 modos principales de jointplot\n",
+    "modos = ['scatter', 'kde', 'hex', 'reg']\n",
+    "descripcion = [\n",
+    "    'Puntos individuales (default)',\n",
+    "    'Densidad KDE bivariada',\n",
+    "    'Mapa hexagonal (muchos datos)',\n",
+    "    'Scatter + regresión lineal'\n",
+    "]\n",
+    "\n",
+    "fig, axes_list = plt.subplots(1, 4, figsize=(20, 5))\n",
+    "fig.suptitle('Modos de jointplot (kind=)', fontweight='bold', fontsize=12)\n",
+    "\n",
+    "for modo, desc, ax in zip(modos, descripcion, axes_list):\n",
+    "    jg = sns.jointplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "                       kind=modo, height=4)\n",
+    "    jg.figure.suptitle(f'kind=\"{modo}\"\\n{desc}', fontsize=8, y=1.02)\n",
+    "    plt.close(jg.figure)\n",
+    "\n",
+    "# Como no se pueden mostrar todos en un subplot directamente, mostramos uno por uno\n",
+    "plt.close('all')\n",
+    "print('Modos disponibles en jointplot(kind=):')\n",
+    "for m, d in zip(modos, descripcion):\n",
+    "    print(f'  kind=\"{m}\"  → {d}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Mostrar kind='reg' que incluye regresión — muy útil\n",
+    "sns.jointplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "              kind='reg', height=5, ratio=3,\n",
+    "              joint_kws={'color': '#2E75B6', 'scatter_kws': {'alpha': 0.5}})\n",
+    "plt.suptitle('jointplot con regresión (kind=\"reg\")', y=1.01, fontweight='bold')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Personalizar jointplot con hue\n",
+    "sns.jointplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "              hue='categoria_usuario', kind='scatter',\n",
+    "              palette={'nuevo': '#ED7D31', 'recurrente': '#2E75B6', 'premium': '#70AD47'},\n",
+    "              height=5)\n",
+    "plt.suptitle('jointplot con hue=categoria_usuario', y=1.01, fontweight='bold')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué información aportan los histogramas en los márgenes que el scatter solo no muestra?\n",
+    "r_margenes = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuándo usarías kind='kde' en vez de kind='scatter'?\n",
+    "r_kde_vs_scatter = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué patrón observas entre min_conexion_dia y modulos_completados?\n",
+    "r_patron = \"\"\n",
+    "\n",
+    "print(f'Márgenes: {r_margenes}')\n",
+    "print(f'kde vs scatter: {r_kde_vs_scatter}')\n",
+    "print(f'Patrón: {r_patron}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — `pairplot()`: múltiples relaciones simultáneas\n",
+    "\n",
+    "### 2.1 Pairplot básico"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "sns.pairplot(data=clientes[['min_conexion_dia', 'modulos_completados', 'sesiones_dia']],\n",
+    "             diag_kind='kde')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Pairplot con hue para ver diferencias por categoría de usuario\n",
+    "sns.pairplot(data=clientes[['min_conexion_dia','modulos_completados','sesiones_dia','categoria_usuario']],\n",
+    "             hue='categoria_usuario',\n",
+    "             diag_kind='kde',\n",
+    "             palette={'nuevo': '#ED7D31', 'recurrente': '#2E75B6', 'premium': '#70AD47'},\n",
+    "             plot_kws={'alpha': 0.5, 's': 25})\n",
+    "plt.suptitle('Pairplot por categoría de usuario', y=1.01, fontweight='bold')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Tabla comparativa: `jointplot` vs `pairplot`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tabla de la presentación\n",
+    "tabla = pd.DataFrame({\n",
+    "    'Característica':           ['Relación','Visualizaciones marginales',\n",
+    "                                 'Personalización detallada','Ideal para…',\n",
+    "                                 'Rendimiento con muchos datos'],\n",
+    "    'jointplot()':              ['Bivariada (1 pareja)','Sí (histograma, KDE, etc.)',\n",
+    "                                 'Más control con height, ratio, space',\n",
+    "                                 'Análisis profundo de 1 relación específica','Rápido'],\n",
+    "    'pairplot()':               ['Multivariada (varios pares)','Sí (diagonal: histograma o KDE)',\n",
+    "                                 'Menos granular, flexible con diag_kind, hue',\n",
+    "                                 'Exploración global en fase inicial','Más lento (muchas columnas)']\n",
+    "})\n",
+    "print(tabla.to_string(index=False))\n",
+    "print()\n",
+    "print('Recomendación: jointplot() para par objetivo. pairplot() para exploración inicial.')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — `regplot()` y `lmplot()`: visualizar tendencias lineales\n",
+    "\n",
+    "### 3.1 `regplot()` — scatter + recta de regresión"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — regplot básico\n",
+    "sns.regplot(data=clientes, x='min_conexion_dia', y='modulos_completados')\n",
+    "plt.title('Relación entre tiempo de conexión y módulos completados')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# regplot personalizado — código exacto de la presentación\n",
+    "sns.regplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "            ci=95,\n",
+    "            scatter_kws={'color': 'gray'},\n",
+    "            line_kws={'color': 'red'})\n",
+    "plt.title('Regresión personalizada (ci=95, scatter_kws, line_kws)')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Efecto de ci — comparación\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(15, 4))\n",
+    "fig.suptitle('Efecto del parámetro ci= en regplot()', fontweight='bold')\n",
+    "\n",
+    "for ax, ci_val in zip(axes, [None, 68, 95]):\n",
+    "    sns.regplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "                ci=ci_val, ax=ax, color='#2E75B6',\n",
+    "                scatter_kws={'alpha': 0.4, 's': 20})\n",
+    "    lbl = 'sin IC' if ci_val is None else f'IC {ci_val}%'\n",
+    "    ax.set_title(f'ci={ci_val} ({lbl})', fontsize=10)\n",
+    "    ax.set_xlabel('Tiempo conexión (min)')\n",
+    "    ax.set_ylabel('Módulos completados')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 `lmplot()` — regresión con facetas y grupos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación — lmplot con hue\n",
+    "sns.lmplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "           hue='categoria_usuario', height=4, aspect=1.3)\n",
+    "plt.suptitle('Tendencia por categoría de usuario (hue=)', y=1.01, fontweight='bold')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# lmplot con col — facetas por categoría — código del slide 14\n",
+    "sns.lmplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "           col='categoria_usuario', hue='categoria_usuario',\n",
+    "           height=4, aspect=1,\n",
+    "           palette={'nuevo': '#ED7D31', 'recurrente': '#2E75B6', 'premium': '#70AD47'})\n",
+    "plt.suptitle('lmplot con col= (facetas por categoría)', y=1.01, fontweight='bold')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Tabla de parámetros (de la presentación)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tabla_params = pd.DataFrame({\n",
+    "    'Parámetro': ['ci', 'scatter_kws', 'line_kws', 'hue', 'col / row'],\n",
+    "    'Función':   ['Ambas','Ambas','Ambas','lmplot','lmplot'],\n",
+    "    'Descripción': [\n",
+    "        'Intervalo de confianza (95% por defecto). Desactivar con ci=None',\n",
+    "        'Dict para personalizar puntos: color, tamaño, opacidad',\n",
+    "        'Dict para personalizar la línea: color, estilo, ancho',\n",
+    "        'Colorear por categoría. Útil para segmentar relaciones',\n",
+    "        'Crear subgráficos (facetas) por categoría'\n",
+    "    ]\n",
+    "})\n",
+    "print(tabla_params.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 `regplot` vs `lmplot` — ¿cuándo usar cada uno?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tabla_reg = pd.DataFrame({\n",
+    "    'Característica':  ['Axes de matplotlib','Facetas (col/row)','hue (por grupo)',\n",
+    "                        'Retorna','Ideal para…'],\n",
+    "    'regplot()':       ['Sí, acepta ax=','No','No directamente',\n",
+    "                        'Axes de matplotlib','Un scatter con recta simple'],\n",
+    "    'lmplot()':        ['No (figura propia)','Sí','Sí',\n",
+    "                        'FacetGrid','Comparar regresiones por grupo o faceta']\n",
+    "})\n",
+    "print(tabla_reg.to_string(index=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué indica una pendiente positiva en regplot?\n",
+    "r_pendiente = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuándo usarías lmplot con col= en vez de hue=?\n",
+    "r_col_vs_hue = \"\"\n",
+    "\n",
+    "# ✏️ Si la línea de regresión parece ajustarse mal visualmente, ¿qué harías?\n",
+    "r_mal_ajuste = \"\"\n",
+    "\n",
+    "# ✏️ ¿Una línea de regresión que se ve bien visualmente garantiza significancia estadística?\n",
+    "r_visual_stat = \"\"\n",
+    "\n",
+    "print(f'Pendiente positiva: {r_pendiente}')\n",
+    "print(f'col vs hue:         {r_col_vs_hue}')\n",
+    "print(f'Mal ajuste:         {r_mal_ajuste}')\n",
+    "print(f'Visual vs estadístico: {r_visual_stat}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Actividad guiada: Plataforma de educación online\n",
+    "\n",
+    "### 4.1 Cargar datos y verificar estructura"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import seaborn as sns\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "clientes = pd.read_csv('comportamiento_plataforma_edu.csv')\n",
+    "print(clientes.head(10))\n",
+    "print()\n",
+    "print(clientes.describe().round(2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 `jointplot()` — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 24\n",
+    "sns.jointplot(data=clientes, x='min_conexion_dia', y='modulos_completados', kind='scatter')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 `pairplot()` — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 24\n",
+    "sns.pairplot(data=clientes[['min_conexion_dia', 'modulos_completados', 'sesiones_dia']],\n",
+    "             diag_kind='kde')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 `regplot()` con ci=95 — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 25\n",
+    "sns.regplot(data=clientes, x='min_conexion_dia', y='modulos_completados', ci=95)\n",
+    "plt.title('Relación entre tiempo de conexión y módulos completados')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.5 `lmplot()` con `hue=` — código exacto presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto slide 25\n",
+    "sns.lmplot(data=clientes, x='min_conexion_dia', y='modulos_completados',\n",
+    "           hue='categoria_usuario')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.6 Análisis de correlaciones numéricas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "numericas = clientes[['min_conexion_dia','modulos_completados','sesiones_dia']]\n",
+    "print('=== Matriz de correlación de Pearson ===')\n",
+    "print(numericas.corr().round(3))\n",
+    "\n",
+    "plt.figure(figsize=(5, 4))\n",
+    "sns.heatmap(numericas.corr(), annot=True, fmt='.3f', cmap='coolwarm',\n",
+    "            vmin=-1, vmax=1, linewidths=0.5, square=True)\n",
+    "plt.title('Heatmap de correlación', fontweight='bold')\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas de interpretación de la actividad guiada:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Existe relación lineal entre min_conexion_dia y modulos_completados?\n",
+    "c1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿La relación difiere entre usuarios nuevos y recurrentes?\n",
+    "c2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Qué variable parece tener mayor correlación con modulos_completados?\n",
+    "r_max = numericas.corr()['modulos_completados'].drop('modulos_completados').idxmax()\n",
+    "r_val = numericas.corr()['modulos_completados'].drop('modulos_completados').max()\n",
+    "print(f'Variable más correlacionada: {r_max} (r={r_val:.3f})')\n",
+    "\n",
+    "# ✏️ 4. ¿Observas outliers que distorsionen la recta de regresión?\n",
+    "c4 = \"\"\n",
+    "\n",
+    "# ✏️ 5. ¿Qué decisión podría tomar el equipo pedagógico basándose en estas visualizaciones?\n",
+    "c5 = \"\"\n",
+    "\n",
+    "print()\n",
+    "print('--- CONCLUSIONES ---')\n",
+    "for i, c in enumerate([c1, c2, c4, c5], 1):\n",
+    "    if i <= 2:\n",
+    "        print(f'{i}. {c}')\n",
+    "    else:\n",
+    "        print(f'{i+1}. {c}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de funciones y parámetros\n",
+    "\n",
+    "### `jointplot()` — distribución bivariada\n",
+    "\n",
+    "| Parámetro | Valores | Descripción |\n",
+    "|-----------|---------|-------------|\n",
+    "| `x`, `y` | columnas | Las dos variables a relacionar |\n",
+    "| `kind` | `'scatter'`, `'kde'`, `'hex'`, `'reg'` | Tipo de gráfico central |\n",
+    "| `hue` | columna cat. | Colorear por categoría |\n",
+    "| `height` | float | Tamaño del gráfico |\n",
+    "| `ratio` | int | Proporción central/marginal |\n",
+    "\n",
+    "### `pairplot()` — múltiples pares\n",
+    "\n",
+    "| Parámetro | Descripción |\n",
+    "|-----------|-------------|\n",
+    "| `diag_kind='kde'` | Curvas KDE en la diagonal |\n",
+    "| `hue='columna'` | Colorear por categoría |\n",
+    "| `plot_kws={'alpha':0.5}` | Transparencia de puntos |\n",
+    "\n",
+    "### `regplot()` y `lmplot()` — regresión visual\n",
+    "\n",
+    "| Parámetro | Función | Descripción |\n",
+    "|-----------|---------|-------------|\n",
+    "| `ci=95` | Ambas | Intervalo de confianza |\n",
+    "| `scatter_kws={'color':'gray'}` | Ambas | Estilo de puntos |\n",
+    "| `line_kws={'color':'red'}` | Ambas | Estilo de la línea |\n",
+    "| `hue='col'` | lmplot | Regresión por grupo |\n",
+    "| `col='col'` | lmplot | Facetas por categoría |\n",
+    "\n",
+    "> 💡 **regplot vs lmplot:** usa `regplot` cuando trabajas dentro de un subplot o no necesitas grupos. Usa `lmplot` cuando quieres facetas (`col=`) o comparar múltiples grupos (`hue=`).\n",
+    "\n",
+    "> 💡 **Correlación ≠ causalidad:** una línea de regresión bien ajustada visualmente no implica que X cause Y. Siempre complementar con análisis estadístico formal."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

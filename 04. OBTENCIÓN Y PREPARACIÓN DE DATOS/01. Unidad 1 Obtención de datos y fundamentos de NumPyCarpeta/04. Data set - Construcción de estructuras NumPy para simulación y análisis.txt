@@ -1,0 +1,771 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 🔬 Clase 4 — Construcción de estructuras NumPy para simulación y análisis\n",
+    "## Obtención de datos y fundamentos de NumPy\n",
+    "\n",
+    "**Situación:** Formas parte de un equipo de simulación computacional que debe generar datos artificiales para probar un nuevo modelo de predicción de demanda. Necesitas arreglos con puntos equiespaciados, matrices con propiedades especiales y datos aleatorios que imiten el comportamiento real de sistemas variables.\n",
+    "\n",
+    "**Objetivos de la clase:**\n",
+    "- Generar vectores con distribución de puntos usando `np.linspace()`\n",
+    "- Crear matrices identidad con `np.identity()`\n",
+    "- Generar datos aleatorios con `np.random.rand()` y `np.random.randint()`\n",
+    "- Redimensionar arreglos con `reshape()` y `flatten()`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📦 Importar NumPy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "print('✅ Librerías importadas correctamente')\n",
+    "print(f'NumPy versión: {np.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Vector con distribución de puntos: `np.linspace()`\n",
+    "\n",
+    "### 1.1 Sintaxis y ejemplo básico"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# np.linspace(inicio, fin, num_puntos)\n",
+    "# → fin SÍ se incluye  |  num_puntos define la cantidad exacta\n",
+    "\n",
+    "vector = np.linspace(0, 1, 5)\n",
+    "print('5 puntos entre 0 y 1:')\n",
+    "print(vector)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 `linspace()` vs `arange()` — comparación directa"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== linspace: 5 puntos entre 0 y 1 (incluye el 1) ===')\n",
+    "print(np.linspace(0, 1, 5))\n",
+    "\n",
+    "print()\n",
+    "print('=== arange: paso 0.25 entre 0 y 1 (excluye el 1) ===')\n",
+    "print(np.arange(0, 1, 0.25))\n",
+    "\n",
+    "print()\n",
+    "print('=== Problema de precisión con arange() (pasos decimales) ===')\n",
+    "print(np.arange(0, 1, 0.1))     # puede generar imprecisiones de punto flotante\n",
+    "\n",
+    "print()\n",
+    "print('=== linspace evita ese problema ===')\n",
+    "print(np.linspace(0, 1, 11))    # 11 puntos exactos, sin imprecisión"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Aplicaciones típicas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Eje de tiempo: 100 puntos entre 0 y 10 segundos\n",
+    "tiempo = np.linspace(0, 10, 100)\n",
+    "print('Eje temporal (primeros 10 valores):', tiempo[:10])\n",
+    "print(f'Total de puntos: {len(tiempo)}')\n",
+    "\n",
+    "print()\n",
+    "# Escala de temperatura para normalización: 0 a 100°C en 11 divisiones\n",
+    "escala_temp = np.linspace(0, 100, 11)\n",
+    "print('Escala de temperatura (11 divisiones):', escala_temp)\n",
+    "\n",
+    "print()\n",
+    "# Visualizar función seno sobre el eje temporal\n",
+    "señal = np.sin(np.linspace(0, 2 * np.pi, 100))\n",
+    "plt.figure(figsize=(8, 3))\n",
+    "plt.plot(tiempo, señal, color='#2E75B6', linewidth=2)\n",
+    "plt.title('Señal simulada con linspace (seno)', fontweight='bold')\n",
+    "plt.xlabel('Tiempo (s)')\n",
+    "plt.ylabel('Amplitud')\n",
+    "plt.grid(linestyle='--', alpha=0.5)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Crea un vector de 20 temperaturas simuladas entre 15°C y 30°C\n",
+    "temperaturas = np.linspace(???, ???, ???)\n",
+    "print('Temperaturas simuladas:', temperaturas)\n",
+    "\n",
+    "# ✏️ ¿Cuál es la diferencia (paso) entre valores consecutivos?\n",
+    "paso = temperaturas[1] - temperaturas[0]\n",
+    "print(f'Paso entre valores: {paso:.4f}°C')\n",
+    "\n",
+    "# ✏️ ¿Qué cambiarías si necesitaras 50 divisiones en vez de 20?\n",
+    "respuesta = \"\"\n",
+    "print('Respuesta:', respuesta)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Matriz identidad: `np.identity()`\n",
+    "\n",
+    "### 2.1 Creación y propiedades"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Matriz identidad 3×3: unos en la diagonal, ceros en el resto\n",
+    "identidad = np.identity(3)\n",
+    "print('Matriz identidad 3×3:')\n",
+    "print(identidad)\n",
+    "print()\n",
+    "print(f'Shape: {identidad.shape}')\n",
+    "print(f'dtype: {identidad.dtype}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Propiedad fundamental: multiplicación por identidad"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# La identidad es el \"1\" de la multiplicación matricial\n",
+    "A = np.array([[2, 3], [4, 5]])\n",
+    "I = np.identity(2)\n",
+    "\n",
+    "resultado = np.dot(A, I)   # A × I = A\n",
+    "\n",
+    "print('Matriz A:')\n",
+    "print(A)\n",
+    "print()\n",
+    "print('Identidad 2×2:')\n",
+    "print(I)\n",
+    "print()\n",
+    "print('A × Identidad = A:')\n",
+    "print(resultado)\n",
+    "print()\n",
+    "print('¿El resultado es igual a A?', np.array_equal(A, resultado))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Uso en calibración de sensores"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# La identidad como referencia ideal de calibración (sin distorsión)\n",
+    "# 3 sensores × 3 coeficientes de calibración\n",
+    "calibracion_ideal = np.identity(3)\n",
+    "print('Referencia de calibración (sin distorsión):')\n",
+    "print(calibracion_ideal)\n",
+    "\n",
+    "# Lecturas crudas de 3 sensores en 3 variables [temp, humedad, presión]\n",
+    "lecturas_crudas = np.array([\n",
+    "    [22.5, 55.0, 1012.0],\n",
+    "    [23.1, 54.2, 1011.5],\n",
+    "    [22.8, 55.5, 1012.3]\n",
+    "])\n",
+    "\n",
+    "# Aplicar calibración (identidad no altera)\n",
+    "lecturas_calibradas = np.dot(lecturas_crudas, calibracion_ideal)\n",
+    "print()\n",
+    "print('Lecturas calibradas (idénticas, calibración neutra):')\n",
+    "print(lecturas_calibradas)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Crea una matriz identidad de tamaño 5×5\n",
+    "I5 = np.identity(???)\n",
+    "print('Identidad 5×5:')\n",
+    "print(I5)\n",
+    "\n",
+    "# ✏️ ¿Qué valor tiene el elemento en la posición [2, 2]?\n",
+    "print('Elemento [2,2]:', I5[???, ???])\n",
+    "\n",
+    "# ✏️ ¿Qué valor tiene el elemento en la posición [0, 1]?\n",
+    "print('Elemento [0,1]:', I5[???, ???])\n",
+    "\n",
+    "# ✏️ ¿Para qué casos reales podría usarse una matriz identidad en la simulación de sensores?\n",
+    "respuesta = \"\"\n",
+    "print('Respuesta:', respuesta)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Matrices aleatorias: `np.random`\n",
+    "\n",
+    "### 3.1 `np.random.rand()` — flotantes entre 0 y 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Valores flotantes uniformes entre 0.0 y 1.0\n",
+    "aleatoria = np.random.rand(2, 3)\n",
+    "print('Matriz aleatoria flotante (2×3):')\n",
+    "print(aleatoria)\n",
+    "print(f'Min: {aleatoria.min():.4f} | Max: {aleatoria.max():.4f}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 `np.random.randint()` — enteros en un rango"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Enteros entre 10 (inclusive) y 100 (excluido)\n",
+    "enteros = np.random.randint(10, 100, size=(2, 3))\n",
+    "print('Matriz aleatoria entera (2×3):')\n",
+    "print(enteros)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Semilla de reproducibilidad: `np.random.seed()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Sin semilla: resultados cambian en cada ejecución\n",
+    "print('Sin semilla (cambia cada vez):')\n",
+    "print(np.random.randint(0, 10, 5))\n",
+    "print(np.random.randint(0, 10, 5))\n",
+    "\n",
+    "print()\n",
+    "# Con semilla: resultados SIEMPRE iguales\n",
+    "print('Con semilla fija (siempre igual):')\n",
+    "np.random.seed(42)\n",
+    "print(np.random.randint(0, 10, 5))\n",
+    "np.random.seed(42)\n",
+    "print(np.random.randint(0, 10, 5))   # idéntico al anterior"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Escalar rango de `rand()` a medidas reales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# rand() genera entre 0 y 1 → escalar para simular temperaturas entre 15°C y 30°C\n",
+    "np.random.seed(42)\n",
+    "temp_simuladas = np.random.rand(10) * (30 - 15) + 15\n",
+    "print('Temperaturas simuladas (°C):')\n",
+    "print(np.round(temp_simuladas, 2))\n",
+    "print(f'Rango: {temp_simuladas.min():.2f} — {temp_simuladas.max():.2f}°C')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ Fija la semilla en 99 para resultados reproducibles\n",
+    "np.random.seed(???)\n",
+    "\n",
+    "# ✏️ Genera 5 lecturas aleatorias de humedad entre 40% y 80% (enteros)\n",
+    "humedad = np.random.randint(???, ???, size=???)\n",
+    "print('Lecturas de humedad (%):', humedad)\n",
+    "\n",
+    "# ✏️ Genera una matriz 3×5 de luminosidad entre 200 y 800 lúmenes (enteros)\n",
+    "luminosidad = np.random.randint(???, ???, size=(???, ???))\n",
+    "print()\n",
+    "print('Lecturas de luminosidad en 3 sensores (lúmenes):')\n",
+    "print(luminosidad)\n",
+    "\n",
+    "# ✏️ ¿Qué situaciones justifican usar randint() para representar datos ambientales reales?\n",
+    "respuesta = \"\"\n",
+    "print('Respuesta:', respuesta)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Redimensionado de arreglos\n",
+    "\n",
+    "### 4.1 `reshape()` — cambiar forma sin alterar datos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Arreglo de 12 elementos → matriz 3×4\n",
+    "original = np.arange(12)\n",
+    "print('Arreglo original (1D):', original)\n",
+    "print(f'Shape: {original.shape}')\n",
+    "\n",
+    "print()\n",
+    "matriz = original.reshape((3, 4))\n",
+    "print('Reshape a (3, 4):')\n",
+    "print(matriz)\n",
+    "print(f'Shape: {matriz.shape}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Combinaciones válidas de reshape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datos = np.arange(12)   # 12 elementos en total\n",
+    "\n",
+    "print('(2, 6):'); print(datos.reshape(2, 6))\n",
+    "print()\n",
+    "print('(6, 2):'); print(datos.reshape(6, 2))\n",
+    "print()\n",
+    "print('(1, 12):'); print(datos.reshape(1, 12))\n",
+    "print()\n",
+    "print('(12, 1):'); print(datos.reshape(12, 1))\n",
+    "\n",
+    "# ¿Qué pasa si las dimensiones no coinciden?\n",
+    "try:\n",
+    "    datos.reshape(4, 4)   # 4×4 = 16 ≠ 12\n",
+    "except ValueError as e:\n",
+    "    print()\n",
+    "    print(f'❌ Error al reshape(4,4): {e}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 `flatten()` y `ravel()` — reducir a 1D"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "luminosidad = np.random.randint(200, 801, size=(3, 5))\n",
+    "print('Matriz original (3×5):')\n",
+    "print(luminosidad)\n",
+    "\n",
+    "print()\n",
+    "# flatten() → crea una COPIA independiente en 1D\n",
+    "lineal_flatten = luminosidad.flatten()\n",
+    "print('flatten() — copia 1D:', lineal_flatten)\n",
+    "\n",
+    "print()\n",
+    "# ravel() → crea una VISTA (más eficiente en memoria)\n",
+    "lineal_ravel = luminosidad.ravel()\n",
+    "print('ravel()   — vista 1D:', lineal_ravel)\n",
+    "\n",
+    "# Demostrar diferencia: modificar flatten no altera original\n",
+    "lineal_flatten[0] = 9999\n",
+    "print()\n",
+    "print('¿flatten modifica el original?', luminosidad[0, 0] == 9999)   # False"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Uso de `-1` en reshape (dimensión automática)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "v = np.arange(24)\n",
+    "\n",
+    "# -1 le dice a NumPy que calcule esa dimensión automáticamente\n",
+    "print('reshape(4, -1)  → NumPy calcula columnas:')\n",
+    "print(v.reshape(4, -1))   # 24 / 4 = 6 columnas\n",
+    "\n",
+    "print()\n",
+    "print('reshape(-1, 6)  → NumPy calcula filas:')\n",
+    "print(v.reshape(-1, 6))   # 24 / 6 = 4 filas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 4 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "\n",
+    "# ✏️ Crea un arreglo de 20 elementos con arange y transfórmalo en una matriz 4×5\n",
+    "arr = np.arange(???)\n",
+    "matriz_4x5 = arr.reshape(???, ???)\n",
+    "print('Matriz 4×5:')\n",
+    "print(matriz_4x5)\n",
+    "\n",
+    "print()\n",
+    "# ✏️ Ahora aplana la matriz a 1D con flatten()\n",
+    "plano = matriz_4x5.???()\n",
+    "print('Aplanado:', plano)\n",
+    "\n",
+    "print()\n",
+    "# ✏️ Intenta hacer reshape(3, 7) sobre el arreglo de 20 elementos.\n",
+    "# ¿Qué error obtienes y por qué?\n",
+    "try:\n",
+    "    arr.reshape(3, 7)\n",
+    "except ValueError as e:\n",
+    "    print(f'Error: {e}')\n",
+    "    \n",
+    "# ✏️ ¿En qué escenarios necesitas usar reshape() antes de aplicar modelos?\n",
+    "respuesta = \"\"\n",
+    "print('Respuesta:', respuesta)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Ejercicio guiado: Simulación de sensores ambientales\n",
+    "\n",
+    "**Situación:** Debes simular lecturas de temperatura, humedad y luminosidad antes de que los sensores físicos estén disponibles."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 1 — Simular temperaturas con `linspace()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# 10 lecturas de temperatura entre 15°C y 30°C\n",
+    "temperaturas = np.linspace(15, 30, 10)\n",
+    "print('Lecturas simuladas de temperatura (°C):')\n",
+    "print(temperaturas)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 2 — Matriz identidad como referencia de calibración"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Un coeficiente por cada sensor (temp, humedad, luminosidad)\n",
+    "calibracion = np.identity(3)\n",
+    "print('Matriz identidad de referencia para sensores:')\n",
+    "print(calibracion)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 3 — Lecturas aleatorias de humedad con `randint()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "\n",
+    "humedad = np.random.randint(40, 81, size=5)   # 40–80%\n",
+    "print('Lecturas aleatorias de humedad (%):')\n",
+    "print(humedad)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 4 — Lecturas de luminosidad en 3 sensores"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "luminosidad = np.random.randint(200, 801, size=(3, 5))\n",
+    "print('Lecturas de luminosidad en 3 sensores (lúmenes):')\n",
+    "print(luminosidad)\n",
+    "print(f'Shape: {luminosidad.shape}  → 3 sensores × 5 lecturas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 5 — Reestructurar con `flatten()` y preparar estructura"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Aplanar lecturas de luminosidad (lectura por minuto en orden)\n",
+    "luminosidad_lineal = luminosidad.flatten()\n",
+    "print('Lecturas de luminosidad aplanadas (por minuto):')\n",
+    "print(luminosidad_lineal)\n",
+    "print(f'Shape: {luminosidad_lineal.shape}')\n",
+    "\n",
+    "print()\n",
+    "# Preparar estructura vacía y rellenar con datos aleatorios\n",
+    "estructura = np.zeros((3, 5))\n",
+    "estructura[:, :] = np.random.randint(100, 500, size=(3, 5))\n",
+    "print('Estructura lista para nuevas mediciones:')\n",
+    "print(estructura)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Paso 6 — Construir dataset consolidado"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "\n",
+    "# Columnas: temperatura, humedad, luminosidad (5 registros)\n",
+    "col_temp  = np.linspace(15, 30, 5)\n",
+    "col_hum   = np.random.randint(40, 81, size=5).astype(float)\n",
+    "col_lum   = np.random.randint(200, 801, size=5).astype(float)\n",
+    "\n",
+    "# Apilar columnas verticalmente y transponer → (5 filas × 3 columnas)\n",
+    "dataset = np.column_stack([col_temp, col_hum, col_lum])\n",
+    "\n",
+    "print('Dataset consolidado (5 registros × 3 variables):')\n",
+    "print(f'{\"Temp(°C)\":>12} {\"Humedad(%)\": >12} {\"Lum(lm)\":>12}')\n",
+    "print('-' * 40)\n",
+    "for fila in dataset:\n",
+    "    print(f'{fila[0]:>12.2f} {fila[1]:>12.0f} {fila[2]:>12.0f}')\n",
+    "\n",
+    "print()\n",
+    "print(f'Shape final: {dataset.shape}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 6 — Preguntas de reflexión y cierre"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué ventajas ofrece linspace() frente a escribir los valores uno a uno?\n",
+    "r1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Para qué casos reales podría usarse una matriz identidad en la simulación de sensores?\n",
+    "r2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Qué situaciones justifican el uso de randint() para representar datos ambientales?\n",
+    "r3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿En qué escenarios necesitas usar reshape() o flatten() antes de aplicar modelos?\n",
+    "r4 = \"\"\n",
+    "\n",
+    "# ✏️ 5. ¿Cómo se podrían combinar estos arreglos para construir un dataset completo?\n",
+    "r5 = \"\"\n",
+    "\n",
+    "print('--- REFLEXIONES ---')\n",
+    "for i, r in enumerate([r1, r2, r3, r4, r5], 1):\n",
+    "    print(f'{i}. {r}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de funciones vistas\n",
+    "\n",
+    "| Función | Sintaxis | Descripción |\n",
+    "|---------|----------|-------------|\n",
+    "| `np.linspace()` | `np.linspace(ini, fin, n)` | N puntos equiespaciados, **incluye** el fin |\n",
+    "| `np.identity()` | `np.identity(n)` | Matriz identidad n×n (diagonal = 1) |\n",
+    "| `np.random.rand()` | `np.random.rand(f, c)` | Flotantes aleatorios entre 0 y 1 |\n",
+    "| `np.random.randint()` | `np.random.randint(a, b, size)` | Enteros aleatorios entre a y b-1 |\n",
+    "| `np.random.seed()` | `np.random.seed(n)` | Fijar semilla para reproducibilidad |\n",
+    "| `.reshape()` | `arr.reshape(f, c)` | Cambiar forma sin alterar datos |\n",
+    "| `.flatten()` | `arr.flatten()` | Reducir a 1D — genera **copia** |\n",
+    "| `.ravel()` | `arr.ravel()` | Reducir a 1D — genera **vista** |\n",
+    "| `np.column_stack()` | `np.column_stack([a, b, c])` | Combinar vectores como columnas |\n",
+    "\n",
+    "> 💡 **`linspace` vs `arange`:** Usa `linspace` cuando necesites un número exacto de puntos. Usa `arange` cuando necesites controlar el paso.\n",
+    "\n",
+    "> 💡 **`reshape` regla de oro:** El producto de las nuevas dimensiones **debe** ser igual al total de elementos originales. Usa `-1` para que NumPy calcule automáticamente una dimensión.\n",
+    "\n",
+    "> 💡 **Semilla:** Fija siempre `np.random.seed()` en experimentos que necesites reproducir o compartir."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

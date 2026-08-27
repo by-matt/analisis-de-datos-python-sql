@@ -1,0 +1,1201 @@
+id_postulante,nombre,genero,edad,region,educacion,cargo_postulado,experiencia_anos,pretension_salarial
+POST-0001,Cristóbal Muñoz,M,25.0,RM,Postgrado,Project Manager,4.6,1511000.0
+POST-0002,Javiera Medina,F,22.0,RM,Técnico Superior,Diseñador UX,1.8,1137000.0
+POST-0003,Tomás Vargas,M,34.0,RM,Postgrado,Project Manager,3.7,1158000.0
+POST-0004,Paola Rojas,F,32.0,Valparaíso,Universitaria,Diseñador UX,7.2,1683000.0
+POST-0005,Paola Flores,F,29.0,RM,Universitaria,Ventas B2B,1.6,1931000.0
+POST-0006,Rodrigo Rojas,M,35.0,RM,Universitaria,Ventas B2B,1.4,
+POST-0007,Valentina Muñoz,F,27.0,Bio-Bío,Secundaria,Project Manager,3.0,1794000.0
+POST-0008,Francisca Soto,F,23.0,Maule,Técnico Superior,Soporte TI,4.4,1287000.0
+POST-0009,Sofía Reyes,F,31.0,Valparaíso,Secundaria,Ventas B2B,2.3,1701000.0
+POST-0010,Cristóbal Torres,M,30.0,RM,Postgrado,Analista de Datos,0.8,1331000.0
+POST-0011,Pedro Muñoz,M,,Valparaíso,Secundaria,DevOps,7.1,1288000.0
+POST-0012,Javiera Reyes,F,26.0,La Araucanía,Universitaria,DevOps,0.0,1701000.0
+POST-0013,Catalina Rojas,F,,Valparaíso,Universitaria,Diseñador UX,13.0,1461000.0
+POST-0014,Ignacio Morales,M,52.0,RM,Postgrado,Diseñador UX,4.7,722000.0
+POST-0015,Cristóbal Rojas,M,34.0,RM,Universitaria,Marketing Digital,12.2,1495000.0
+POST-0016,Luis Rojas,M,30.0,Valparaíso,Universitaria,Analista de RRHH,0.8,1894000.0
+POST-0017,Carlos Medina,M,31.0,RM,Técnico Superior,Soporte TI,2.0,1104000.0
+POST-0018,Andrés Morales,M,35.0,Los Lagos,Universitaria,Analista de Datos,12.0,1032000.0
+POST-0019,Valentina González,F,35.0,RM,Postgrado,Project Manager,2.1,687000.0
+POST-0020,Andrés Morales,M,21.0,RM,Postgrado,Analista de Datos,0.6,1541000.0
+POST-0021,Natalia Vargas,F,31.0,RM,Postgrado,Project Manager,1.7,1047000.0
+POST-0022,Luis Flores,M,40.0,RM,Técnico Superior,Marketing Digital,2.0,1778000.0
+POST-0023,Felipe Vargas,M,35.0,Bio-Bío,Postgrado,Analista de RRHH,1.5,1997000.0
+POST-0024,Pedro Morales,M,32.0,Valparaíso,Postgrado,Desarrollador Backend,1.6,963000.0
+POST-0025,Andrea Díaz,F,22.0,Valparaíso,Técnico Superior,Project Manager,2.7,980000.0
+POST-0026,Javiera Torres,F,41.0,RM,Universitaria,Desarrollador Backend,10.7,833000.0
+POST-0027,Paola González,F,32.0,Valparaíso,Postgrado,Analista de RRHH,0.8,1431000.0
+POST-0028,Alejandra Castro,F,38.0,Bio-Bío,Universitaria,Desarrollador Backend,5.6,1660000.0
+POST-0029,Cristóbal Vargas,M,28.0,RM,Postgrado,Marketing Digital,4.3,984000.0
+POST-0030,Carolina Díaz,F,30.0,RM,Universitaria,Marketing Digital,10.1,1405000.0
+POST-0031,Sebastián Soto,M,34.0,RM,Universitaria,Marketing Digital,0.0,1843000.0
+POST-0032,Alejandra Vargas,F,42.0,Valparaíso,Técnico Superior,Analista de Datos,4.2,959000.0
+POST-0033,Carlos Castro,M,43.0,RM,Universitaria,Analista de Datos,25.0,1834000.0
+POST-0034,Carolina Soto,F,21.0,RM,Universitaria,Desarrollador Backend,0.5,1649000.0
+POST-0035,Ignacio Herrera,M,27.0,Bio-Bío,Técnico Superior,Project Manager,5.3,1481000.0
+POST-0036,Luis Torres,M,31.0,RM,Técnico Superior,Soporte TI,4.9,1403000.0
+POST-0037,Pedro Morales,M,30.0,RM,Universitaria,Desarrollador Backend,9.5,1410000.0
+POST-0038,Daniela Reyes,F,26.0,RM,Secundaria,Ventas B2B,3.5,1059000.0
+POST-0039,Natalia Fuentes,F,46.0,Maule,Postgrado,Desarrollador Backend,3.6,1162000.0
+POST-0040,Valentina Soto,F,45.0,Maule,Técnico Superior,Analista de RRHH,0.4,1336000.0
+POST-0041,Paola Muñoz,F,,Valparaíso,Universitaria,Analista de RRHH,10.8,1769000.0
+POST-0042,Cristóbal Reyes,M,46.0,RM,Postgrado,Marketing Digital,2.1,1252000.0
+POST-0043,Natalia Rojas,F,28.0,RM,Técnico Superior,Analista de RRHH,2.1,780000.0
+POST-0044,Catalina Vargas,F,35.0,Los Lagos,Técnico Superior,Analista de Datos,5.4,1356000.0
+POST-0045,Constanza Soto,F,38.0,Valparaíso,Universitaria,Ventas B2B,6.1,556000.0
+POST-0046,Sebastián Fuentes,M,27.0,RM,Universitaria,Analista de RRHH,6.1,1605000.0
+POST-0047,Pablo Flores,M,31.0,RM,Universitaria,Analista de Datos,10.6,1161000.0
+POST-0048,Paola Herrera,F,36.0,Los Lagos,Técnico Superior,Desarrollador Backend,1.6,1168000.0
+POST-0049,María Pérez,F,,La Araucanía,Universitaria,Analista de RRHH,1.3,1363000.0
+POST-0050,Cristóbal González,M,37.0,Los Lagos,Técnico Superior,Desarrollador Backend,9.7,1779000.0
+POST-0051,Luis Herrera,M,44.0,La Araucanía,Universitaria,Desarrollador Backend,0.3,1454000.0
+POST-0052,Sebastián Flores,M,31.0,La Araucanía,Técnico Superior,Project Manager,15.3,1200000.0
+POST-0053,Andrea Rojas,F,39.0,RM,Técnico Superior,Diseñador UX,2.3,
+POST-0054,Francisca Fuentes,F,47.0,La Araucanía,Universitaria,Desarrollador Backend,9.7,1016000.0
+POST-0055,Diego Vargas,M,28.0,Bio-Bío,Técnico Superior,Analista de RRHH,1.7,781000.0
+POST-0056,Diego Vargas,M,31.0,RM,Universitaria,Soporte TI,1.5,1685000.0
+POST-0057,Felipe Medina,M,34.0,Valparaíso,Universitaria,Marketing Digital,4.2,1361000.0
+POST-0058,Carolina Muñoz,F,47.0,Valparaíso,Universitaria,Project Manager,1.8,1070000.0
+POST-0059,Pedro Morales,M,44.0,RM,Universitaria,Soporte TI,7.7,1412000.0
+POST-0060,Andrea Muñoz,F,40.0,RM,Técnico Superior,Contabilidad,3.9,894000.0
+POST-0061,Daniela Rojas,F,22.0,RM,Técnico Superior,Analista de RRHH,0.3,1209000.0
+POST-0062,Felipe Castro,M,27.0,Valparaíso,Técnico Superior,Ventas B2B,4.3,1104000.0
+POST-0063,Francisca Herrera,F,27.0,RM,Técnico Superior,Project Manager,0.5,1593000.0
+POST-0064,Natalia Pérez,F,33.0,RM,Universitaria,Project Manager,2.8,1465000.0
+POST-0065,Javiera Vargas,F,37.0,RM,Universitaria,Analista de RRHH,5.1,818000.0
+POST-0066,Luis Morales,M,35.0,RM,Técnico Superior,Analista de Datos,4.4,985000.0
+POST-0067,Constanza Muñoz,F,37.0,Maule,Técnico Superior,Marketing Digital,0.4,1704000.0
+POST-0068,Valentina González,F,42.0,Valparaíso,Postgrado,Marketing Digital,24.6,1776000.0
+POST-0069,Catalina Medina,F,28.0,Valparaíso,Postgrado,Soporte TI,10.1,1022000.0
+POST-0070,Valentina Medina,F,25.0,RM,Universitaria,Analista de Datos,3.2,1900000.0
+POST-0071,Carolina Díaz,F,43.0,La Araucanía,Secundaria,Desarrollador Backend,1.0,1316000.0
+POST-0072,Carlos Muñoz,M,35.0,Bio-Bío,Postgrado,Analista de RRHH,16.0,1099000.0
+POST-0073,Diego Muñoz,M,33.0,Los Lagos,Técnico Superior,Marketing Digital,0.4,2268000.0
+POST-0074,Camila Medina,F,21.0,Bio-Bío,Técnico Superior,Contabilidad,1.2,1979000.0
+POST-0075,Rodrigo Soto,M,28.0,Valparaíso,Universitaria,Analista de Datos,6.5,1278000.0
+POST-0076,Diego Morales,M,,RM,Secundaria,Analista de RRHH,3.9,1148000.0
+POST-0077,Cristóbal Vargas,M,28.0,RM,Postgrado,Project Manager,2.6,1150000.0
+POST-0078,Sofía Rojas,F,37.0,Bio-Bío,Universitaria,Soporte TI,4.6,1481000.0
+POST-0079,Pedro Vargas,M,23.0,RM,Técnico Superior,Analista de Datos,7.3,694000.0
+POST-0080,Diego Rojas,M,28.0,Valparaíso,Universitaria,Contabilidad,0.2,1785000.0
+POST-0081,Nicolás Medina,M,33.0,La Araucanía,Postgrado,Analista de RRHH,9.7,
+POST-0082,Valentina González,F,32.0,RM,Universitaria,Diseñador UX,24.2,1530000.0
+POST-0083,Alejandra Flores,F,39.0,RM,Postgrado,Analista de RRHH,0.4,1252000.0
+POST-0084,Diego Soto,M,40.0,Bio-Bío,Técnico Superior,Analista de Datos,0.2,1717000.0
+POST-0085,Pedro Rojas,M,28.0,Maule,Universitaria,Analista de Datos,3.8,1573000.0
+POST-0086,Paola Soto,F,34.0,RM,Técnico Superior,Analista de Datos,6.0,1486000.0
+POST-0087,Francisca Pérez,F,40.0,RM,Técnico Superior,Analista de RRHH,1.9,1155000.0
+POST-0088,Bárbara Fuentes,F,40.0,La Araucanía,Universitaria,Analista de Datos,0.1,1355000.0
+POST-0089,Cristóbal Medina,M,34.0,RM,Técnico Superior,Soporte TI,16.9,1072000.0
+POST-0090,Sofía Flores,F,27.0,La Araucanía,Universitaria,Contabilidad,2.4,1125000.0
+POST-0091,Bárbara Rojas,F,42.0,RM,Técnico Superior,Diseñador UX,5.3,1781000.0
+POST-0092,Camila Pérez,F,29.0,RM,Universitaria,Analista de RRHH,3.7,1295000.0
+POST-0093,Valentina Morales,F,44.0,La Araucanía,Postgrado,Project Manager,1.6,400000.0
+POST-0094,Constanza Vargas,F,33.0,RM,Técnico Superior,Analista de Datos,3.0,2039000.0
+POST-0095,Constanza González,F,38.0,La Araucanía,Secundaria,Ventas B2B,14.0,
+POST-0096,Paola Pérez,F,33.0,RM,Técnico Superior,Soporte TI,7.7,958000.0
+POST-0097,Valentina Muñoz,F,44.0,RM,Postgrado,Analista de Datos,3.4,1508000.0
+POST-0098,Catalina Pérez,F,40.0,La Araucanía,Secundaria,Desarrollador Backend,2.1,1740000.0
+POST-0099,Javiera Castro,F,26.0,Otras,Universitaria,Marketing Digital,1.2,1837000.0
+POST-0100,Camila Muñoz,F,35.0,Otras,Universitaria,Diseñador UX,0.9,1385000.0
+POST-0101,Constanza Castro,F,33.0,RM,Universitaria,Project Manager,10.3,954000.0
+POST-0102,Martín Rojas,M,20.0,Maule,Universitaria,Analista de Datos,0.7,1512000.0
+POST-0103,Natalia Flores,F,25.0,RM,Técnico Superior,Soporte TI,0.0,1027000.0
+POST-0104,Martín Torres,M,24.0,RM,Técnico Superior,Diseñador UX,2.7,894000.0
+POST-0105,Natalia Rojas,F,38.0,Bio-Bío,Postgrado,Analista de Datos,8.0,1130000.0
+POST-0106,Luis González,M,30.0,RM,Postgrado,Diseñador UX,3.1,1205000.0
+POST-0107,Andrés Díaz,M,41.0,Bio-Bío,Técnico Superior,Diseñador UX,1.3,1135000.0
+POST-0108,Felipe Torres,M,29.0,La Araucanía,Postgrado,Analista de RRHH,10.3,1409000.0
+POST-0109,Tomás Castro,M,20.0,RM,Postgrado,Project Manager,1.5,
+POST-0110,Alejandra Flores,F,36.0,Valparaíso,Secundaria,Analista de Datos,3.6,1427000.0
+POST-0111,Daniela Pérez,F,39.0,Bio-Bío,Postgrado,Analista de RRHH,5.5,
+POST-0112,Jorge Herrera,M,,RM,Postgrado,Desarrollador Backend,3.1,1185000.0
+POST-0113,Andrea Flores,F,39.0,La Araucanía,Universitaria,Diseñador UX,5.1,1211000.0
+POST-0114,Bárbara Flores,F,,RM,Universitaria,Soporte TI,7.7,
+POST-0115,Pablo González,M,31.0,RM,Universitaria,Diseñador UX,6.0,1421000.0
+POST-0116,Pedro Díaz,M,20.0,Los Lagos,Técnico Superior,Contabilidad,0.6,1448000.0
+POST-0117,Ignacio Flores,M,38.0,RM,Universitaria,Desarrollador Backend,2.3,1781000.0
+POST-0118,Francisca Fuentes,F,33.0,Los Lagos,Universitaria,Marketing Digital,6.5,854000.0
+POST-0119,Cristóbal Muñoz,M,40.0,La Araucanía,Universitaria,Marketing Digital,0.4,2291000.0
+POST-0120,Rodrigo Muñoz,M,45.0,Otras,Universitaria,Diseñador UX,3.6,1630000.0
+POST-0121,Carolina Rojas,F,30.0,Valparaíso,Técnico Superior,Ventas B2B,7.6,1775000.0
+POST-0122,Valentina Rojas,F,,Maule,Universitaria,Contabilidad,0.4,
+POST-0123,Constanza Flores,F,43.0,Valparaíso,Universitaria,Contabilidad,12.4,
+POST-0124,Andrea Vargas,F,35.0,La Araucanía,Universitaria,Project Manager,9.6,1529000.0
+POST-0125,Natalia González,F,36.0,La Araucanía,Universitaria,Marketing Digital,0.4,1199000.0
+POST-0126,Ignacio Flores,M,32.0,Maule,Universitaria,Project Manager,6.1,743000.0
+POST-0127,Rodrigo Castro,M,33.0,RM,Universitaria,Marketing Digital,1.9,1799000.0
+POST-0128,Carolina Castro,F,39.0,RM,Universitaria,Contabilidad,4.1,1210000.0
+POST-0129,Pablo Muñoz,M,31.0,RM,Universitaria,Contabilidad,0.1,1039000.0
+POST-0130,Constanza Castro,F,,RM,Técnico Superior,Desarrollador Backend,1.1,834000.0
+POST-0131,Carolina Flores,F,,RM,Universitaria,Desarrollador Backend,1.0,1631000.0
+POST-0132,Cristóbal Díaz,M,35.0,RM,Universitaria,Soporte TI,20.7,1575000.0
+POST-0133,Martín Pérez,M,38.0,RM,Secundaria,Analista de RRHH,4.0,1008000.0
+POST-0134,Natalia Fuentes,F,,Valparaíso,Universitaria,Ventas B2B,20.9,
+POST-0135,Rodrigo Herrera,M,34.0,RM,Universitaria,Marketing Digital,0.3,1747000.0
+POST-0136,Tomás Díaz,M,,Otras,Técnico Superior,Analista de Datos,0.7,2068000.0
+POST-0137,Cristóbal Torres,M,33.0,Bio-Bío,Universitaria,Diseñador UX,6.3,1165000.0
+POST-0138,María Flores,F,28.0,RM,Universitaria,Desarrollador Backend,17.4,696000.0
+POST-0139,Camila Pérez,F,24.0,Bio-Bío,Universitaria,Ventas B2B,3.6,1065000.0
+POST-0140,Alejandra Flores,F,32.0,Bio-Bío,Técnico Superior,Marketing Digital,1.6,1343000.0
+POST-0141,Paola Muñoz,F,35.0,RM,Secundaria,Desarrollador Backend,0.5,418000.0
+POST-0142,Camila Díaz,F,38.0,Valparaíso,Postgrado,Diseñador UX,12.6,1108000.0
+POST-0143,Sofía Castro,F,43.0,Los Lagos,Técnico Superior,Analista de Datos,2.0,1785000.0
+POST-0144,Cristóbal Pérez,M,40.0,Otras,Universitaria,Desarrollador Backend,4.4,1129000.0
+POST-0145,Alejandra Fuentes,F,22.0,RM,Técnico Superior,Analista de Datos,5.0,1411000.0
+POST-0146,Andrea Morales,F,40.0,RM,Universitaria,Analista de Datos,1.4,
+POST-0147,Sebastián Rojas,M,,RM,Técnico Superior,Contabilidad,9.1,1904000.0
+POST-0148,Diego Herrera,M,24.0,RM,Universitaria,Analista de RRHH,4.8,552000.0
+POST-0149,Pablo Flores,M,51.0,Bio-Bío,Universitaria,Diseñador UX,6.2,1570000.0
+POST-0150,Valentina Pérez,F,28.0,RM,Universitaria,Analista de Datos,2.5,1604000.0
+POST-0151,Javiera Vargas,F,,Valparaíso,Universitaria,Analista de RRHH,23.6,1566000.0
+POST-0152,Luis Castro,M,27.0,RM,Universitaria,Soporte TI,0.8,790000.0
+POST-0153,Andrea Torres,F,20.0,Maule,Universitaria,Contabilidad,1.2,
+POST-0154,Pablo Vargas,M,37.0,RM,Universitaria,Project Manager,3.5,
+POST-0155,Pedro Rojas,M,,RM,Técnico Superior,Analista de RRHH,13.2,2041000.0
+POST-0156,Constanza Herrera,F,,Bio-Bío,Universitaria,DevOps,6.5,1280000.0
+POST-0157,Catalina Pérez,F,37.0,RM,Postgrado,Desarrollador Backend,1.6,1836000.0
+POST-0158,Jorge Herrera,M,24.0,RM,Postgrado,Analista de RRHH,1.5,1163000.0
+POST-0159,Carlos Díaz,M,42.0,RM,Postgrado,Diseñador UX,1.2,1804000.0
+POST-0160,Javiera Herrera,F,29.0,Bio-Bío,Universitaria,Diseñador UX,0.3,
+POST-0161,Jorge Reyes,M,30.0,Los Lagos,Universitaria,Project Manager,2.3,1583000.0
+POST-0162,Pablo Vargas,M,40.0,La Araucanía,Secundaria,Analista de Datos,6.0,
+POST-0163,Alejandra Herrera,F,29.0,Bio-Bío,Universitaria,Analista de RRHH,1.6,1863000.0
+POST-0164,Bárbara Rojas,F,42.0,Los Lagos,Postgrado,Project Manager,5.0,1141000.0
+POST-0165,Constanza Díaz,F,36.0,Valparaíso,Técnico Superior,Analista de Datos,5.1,1799000.0
+POST-0166,Bárbara Herrera,F,30.0,Bio-Bío,Universitaria,Desarrollador Backend,3.1,907000.0
+POST-0167,María Morales,F,20.0,RM,Universitaria,Soporte TI,3.3,1332000.0
+POST-0168,Ignacio Medina,M,40.0,RM,Técnico Superior,Soporte TI,0.7,1845000.0
+POST-0169,Rodrigo Vargas,M,36.0,Los Lagos,Universitaria,Analista de Datos,1.2,1219000.0
+POST-0170,Catalina Herrera,F,46.0,RM,Postgrado,Diseñador UX,3.7,1368000.0
+POST-0171,Sebastián Morales,M,36.0,Maule,Universitaria,Diseñador UX,8.3,1339000.0
+POST-0172,Nicolás Soto,M,20.0,Maule,Postgrado,Marketing Digital,5.5,980000.0
+POST-0173,Jorge Rojas,M,37.0,RM,Técnico Superior,DevOps,0.8,575000.0
+POST-0174,Natalia Vargas,F,28.0,RM,Técnico Superior,DevOps,3.9,1199000.0
+POST-0175,Tomás Vargas,M,36.0,RM,Técnico Superior,Analista de Datos,5.1,499000.0
+POST-0176,Andrés Rojas,M,35.0,La Araucanía,Universitaria,Desarrollador Backend,4.3,1413000.0
+POST-0177,Felipe González,M,21.0,RM,Técnico Superior,Contabilidad,7.9,1500000.0
+POST-0178,Jorge Reyes,M,37.0,La Araucanía,Universitaria,Marketing Digital,19.1,976000.0
+POST-0179,Nicolás Muñoz,M,27.0,RM,Universitaria,Soporte TI,7.1,1527000.0
+POST-0180,Francisca Torres,F,26.0,RM,Postgrado,Project Manager,0.7,835000.0
+POST-0181,Carolina Soto,F,41.0,RM,Universitaria,Analista de Datos,2.1,893000.0
+POST-0182,Carolina Vargas,F,35.0,RM,Universitaria,Analista de RRHH,3.2,1545000.0
+POST-0183,Paola Flores,F,30.0,RM,Universitaria,Marketing Digital,5.0,1382000.0
+POST-0184,Diego Torres,M,26.0,RM,Postgrado,Project Manager,23.5,1830000.0
+POST-0185,Catalina Medina,F,31.0,RM,Postgrado,Desarrollador Backend,6.3,2218000.0
+POST-0186,Carolina Herrera,F,30.0,Otras,Postgrado,Analista de Datos,1.6,1128000.0
+POST-0187,Javiera Díaz,F,26.0,RM,Postgrado,Analista de Datos,3.5,1118000.0
+POST-0188,Pablo Rojas,M,,RM,Universitaria,Soporte TI,7.3,
+POST-0189,Pedro Díaz,M,35.0,La Araucanía,Universitaria,Analista de RRHH,10.0,1494000.0
+POST-0190,Felipe Herrera,M,31.0,Valparaíso,Universitaria,Soporte TI,2.5,970000.0
+POST-0191,Nicolás Reyes,M,33.0,Los Lagos,Universitaria,Contabilidad,1.5,2228000.0
+POST-0192,Ignacio Reyes,M,34.0,Otras,Universitaria,Soporte TI,4.4,1366000.0
+POST-0193,Pablo Rojas,M,33.0,Maule,Universitaria,Ventas B2B,2.3,400000.0
+POST-0194,Nicolás Pérez,M,43.0,Bio-Bío,Técnico Superior,Ventas B2B,6.4,1961000.0
+POST-0195,Camila González,F,22.0,RM,Universitaria,Desarrollador Backend,10.5,1210000.0
+POST-0196,Andrés Reyes,M,30.0,Valparaíso,Postgrado,Analista de Datos,1.6,896000.0
+POST-0197,Carolina Morales,F,32.0,La Araucanía,Postgrado,Diseñador UX,1.2,1421000.0
+POST-0198,Rodrigo Soto,M,33.0,RM,Postgrado,Desarrollador Backend,2.2,738000.0
+POST-0199,Rodrigo González,M,25.0,RM,Postgrado,Diseñador UX,2.8,916000.0
+POST-0200,Alejandra Medina,F,31.0,Los Lagos,Técnico Superior,Marketing Digital,1.8,
+POST-0201,Sebastián Soto,M,31.0,Maule,Universitaria,Contabilidad,1.8,2039000.0
+POST-0202,Alejandra Herrera,F,24.0,RM,Técnico Superior,Project Manager,2.7,2016000.0
+POST-0203,Daniela Soto,F,23.0,RM,Universitaria,Diseñador UX,2.0,1842000.0
+POST-0204,Catalina Pérez,F,40.0,RM,Universitaria,Soporte TI,4.5,1586000.0
+POST-0205,Pedro Muñoz,M,29.0,RM,Universitaria,Project Manager,4.1,1735000.0
+POST-0206,Francisca Herrera,F,41.0,Maule,Secundaria,Project Manager,4.8,2009000.0
+POST-0207,Natalia Rojas,F,25.0,RM,Universitaria,Marketing Digital,1.0,860000.0
+POST-0208,Cristóbal Soto,M,32.0,La Araucanía,Universitaria,Desarrollador Backend,17.1,2086000.0
+POST-0209,María Díaz,F,40.0,Maule,Universitaria,Soporte TI,2.4,965000.0
+POST-0210,Tomás Díaz,M,45.0,RM,Secundaria,Soporte TI,0.6,1782000.0
+POST-0211,Rodrigo Rojas,M,,RM,Universitaria,Soporte TI,7.4,909000.0
+POST-0212,Pedro Pérez,M,32.0,RM,Postgrado,DevOps,0.2,1716000.0
+POST-0213,Francisca Vargas,F,37.0,RM,Universitaria,Soporte TI,0.7,1289000.0
+POST-0214,Camila Vargas,F,29.0,RM,Universitaria,Diseñador UX,4.0,928000.0
+POST-0215,Jorge Díaz,M,40.0,RM,Postgrado,Soporte TI,1.6,1310000.0
+POST-0216,Bárbara Morales,F,31.0,RM,Postgrado,Analista de Datos,0.4,
+POST-0217,Cristóbal Reyes,M,49.0,RM,Postgrado,Analista de RRHH,10.2,938000.0
+POST-0218,Tomás González,M,23.0,Bio-Bío,Universitaria,Marketing Digital,4.1,1181000.0
+POST-0219,Tomás Pérez,M,36.0,RM,Universitaria,Analista de RRHH,3.5,
+POST-0220,Camila Herrera,F,39.0,RM,Universitaria,DevOps,10.2,1755000.0
+POST-0221,Sofía Reyes,F,29.0,RM,Universitaria,Analista de RRHH,4.5,1904000.0
+POST-0222,Catalina Morales,F,29.0,Valparaíso,Universitaria,Ventas B2B,2.4,1099000.0
+POST-0223,María González,F,43.0,Bio-Bío,Postgrado,Analista de Datos,0.8,1017000.0
+POST-0224,Rodrigo Pérez,M,38.0,RM,Técnico Superior,Analista de Datos,5.9,1359000.0
+POST-0225,Nicolás Flores,M,36.0,RM,Técnico Superior,Analista de RRHH,10.5,896000.0
+POST-0226,María Herrera,F,32.0,RM,Postgrado,analista de Datos,0.1,1428000.0
+POST-0227,Pedro Castro,M,23.0,Bio-Bío,Postgrado,Desarrolladore Backen,4.2,1185000.0
+POST-0228,Ignacio Herrera,M,42.0,Valparaíso,Postgrado,Soporte TI,5.7,
+POST-0229,Catalina Soto,F,37.0,Maule,Postgrado,Diseñador UX,5.8,1196000.0
+POST-0230,Martín Soto,M,36.0,RM,Universitaria,Analista de RRHH,5.3,1118000.0
+POST-0231,Cristóbal Reyes,M,33.0,Bio-Bío,Universitaria,Project Manager,3.6,1449000.0
+POST-0232,Andrés Pérez,M,23.0,RM,Universitaria,Desarrollador Backend,0.7,886000.0
+POST-0233,Camila Torres,F,28.0,Bio-Bío,Universitaria,Project Manager,11.0,1299000.0
+POST-0234,Nicolás Pérez,M,46.0,Valparaíso,Secundaria,Soporte TI,2.3,1445000.0
+POST-0235,Javiera González,F,26.0,RM,Técnico Superior,Project Manager,2.2,1385000.0
+POST-0236,Sebastián Díaz,M,35.0,RM,Técnico Superior,Analista de Datos,7.2,
+POST-0237,Andrés Herrera,M,22.0,RM,Universitaria,Desarrollador Backend,2.0,1041000.0
+POST-0238,Pablo Soto,M,32.0,RM,Universitaria,Analista de Datos,4.9,1764000.0
+POST-0239,Andrea Pérez,F,24.0,RM,Técnico Superior,Analista de Datos,2.0,796000.0
+POST-0240,Daniela Herrera,F,37.0,RM,Técnico Superior,Ventas B2B,2.5,1061000.0
+POST-0241,Felipe Vargas,M,25.0,RM,Universitaria,Soporte TI,3.9,1736000.0
+POST-0242,Constanza Herrera,F,30.0,RM,Postgrado,Ventas B2B,0.7,2007000.0
+POST-0243,Bárbara Herrera,F,26.0,Bio-Bío,Universitaria,Desarrollador Backend,4.3,1150000.0
+POST-0244,Javiera Soto,F,24.0,RM,Postgrado,Project Manager,17.2,1092000.0
+POST-0245,Luis Torres,M,34.0,RM,Universitaria,Project Manager,2.9,1772000.0
+POST-0246,Felipe Castro,M,,RM,Técnico Superior,Analista de Datos,5.4,980000.0
+POST-0247,María Torres,F,39.0,Valparaíso,Universitaria,Marketing Digital,13.4,1982000.0
+POST-0248,Diego Rojas,M,25.0,Valparaíso,Postgrado,DevOps,4.2,1468000.0
+POST-0249,Pablo Díaz,M,32.0,RM,Universitaria,Analista de Datos,2.3,811000.0
+POST-0250,Rodrigo Pérez,M,,RM,Técnico Superior,Analista de RRHH,9.7,1345000.0
+POST-0251,Tomás Medina,M,34.0,Valparaíso,Universitaria,Contabilidad,0.0,1405000.0
+POST-0252,Francisca González,F,40.0,Valparaíso,Técnico Superior,Analista de RRHH,0.3,802000.0
+POST-0253,Martín Soto,M,22.0,Valparaíso,Universitaria,Desarrollador Backend,1.3,
+POST-0254,Luis Reyes,M,,RM,Postgrado,Marketing Digital,1.5,1724000.0
+POST-0255,Felipe Flores,M,34.0,Valparaíso,Técnico Superior,Analista de Datos,4.0,918000.0
+POST-0256,Carolina Muñoz,F,40.0,Bio-Bío,Técnico Superior,Diseñador UX,3.3,1798000.0
+POST-0257,Martín Flores,M,33.0,Los Lagos,Universitaria,Marketing Digital,9.2,1335000.0
+POST-0258,María Torres,F,,La Araucanía,Secundaria,Soporte TI,5.6,1641000.0
+POST-0259,Bárbara Morales,F,29.0,Otras,Universitaria,Diseñador UX,7.1,1393000.0
+POST-0260,Sebastián Vargas,M,29.0,La Araucanía,Universitaria,Analista de Datos,4.2,845000.0
+POST-0261,Andrés Medina,M,34.0,Maule,Técnico Superior,Desarrollador Backend,2.3,1912000.0
+POST-0262,Constanza Herrera,F,26.0,RM,Técnico Superior,Soporte TI,0.1,1331000.0
+POST-0263,Cristóbal Soto,M,28.0,RM,Universitaria,Analista de RRHH,7.9,1990000.0
+POST-0264,Javiera Medina,F,24.0,RM,Universitaria,Analista de Datos,10.4,1590000.0
+POST-0265,Francisca Herrera,F,40.0,RM,Postgrado,Contabilidad,5.4,1202000.0
+POST-0266,Catalina Medina,F,40.0,La Araucanía,Secundaria,Analista de RRHH,1.4,
+POST-0267,Javiera Fuentes,F,43.0,Otras,Postgrado,Soporte TI,5.0,947000.0
+POST-0268,Pedro González,M,41.0,La Araucanía,Universitaria,Analista de RRHH,2.0,1512000.0
+POST-0269,Javiera Fuentes,F,36.0,Maule,Postgrado,Contabilidad,15.4,1300000.0
+POST-0270,Felipe Vargas,M,28.0,RM,Universitaria,Project Manager,8.5,1621000.0
+POST-0271,Felipe Reyes,M,32.0,La Araucanía,Postgrado,Soporte TI,2.0,1849000.0
+POST-0272,Carolina Vargas,F,32.0,RM,Universitaria,Marketing Digital,1.1,1190000.0
+POST-0273,Nicolás Vargas,M,20.0,RM,Universitaria,Analista de RRHH,4.9,914000.0
+POST-0274,Carolina Pérez,F,30.0,Bio-Bío,Postgrado,Contabilidad,1.9,
+POST-0275,Felipe Herrera,M,39.0,RM,Técnico Superior,DevOps,4.9,1927000.0
+POST-0276,Tomás Rojas,M,,RM,Técnico Superior,Analista de Datos,15.3,1207000.0
+POST-0277,Alejandra Fuentes,F,38.0,La Araucanía,Universitaria,Contabilidad,8.3,1580000.0
+POST-0278,Pedro Díaz,M,27.0,RM,Universitaria,DevOps,0.7,1351000.0
+POST-0279,María Herrera,F,39.0,RM,Universitaria,Marketing Digital,5.7,1871000.0
+POST-0280,Paola Muñoz,F,31.0,Bio-Bío,Postgrado,Contabilidad,4.4,615000.0
+POST-0281,Pablo Pérez,M,27.0,Bio-Bío,Universitaria,DevOps,8.9,1999000.0
+POST-0282,Jorge Reyes,M,34.0,La Araucanía,Técnico Superior,Project Manager,1.2,1559000.0
+POST-0283,Bárbara Flores,F,45.0,Los Lagos,Universitaria,Analista de Datos,5.9,1791000.0
+POST-0284,Camila Pérez,F,21.0,Bio-Bío,Técnico Superior,DevOps,15.0,1101000.0
+POST-0285,Martín Fuentes,M,22.0,Valparaíso,Universitaria,Contabilidad,4.4,1771000.0
+POST-0286,Tomás Herrera,M,31.0,Valparaíso,Postgrado,Diseñador UX,23.6,1559000.0
+POST-0287,Rodrigo Morales,M,20.0,RM,Universitaria,Soporte TI,13.7,1406000.0
+POST-0288,Camila Castro,F,52.0,RM,Universitaria,Desarrollador Backend,5.7,
+POST-0289,Diego Reyes,M,35.0,RM,Técnico Superior,Desarrollador Backend,8.9,1963000.0
+POST-0290,Daniela Pérez,F,35.0,Maule,Universitaria,Analista de Datos,0.1,982000.0
+POST-0291,Rodrigo Morales,M,35.0,Bio-Bío,Universitaria,Analista de Datos,3.5,1322000.0
+POST-0292,Bárbara Vargas,F,21.0,RM,Técnico Superior,Diseñador UX,1.2,1361000.0
+POST-0293,Alejandra González,F,21.0,Maule,Universitaria,Analista de Datos,4.8,546000.0
+POST-0294,Francisca Fuentes,F,27.0,RM,Universitaria,Project Manager,3.8,1679000.0
+POST-0295,María Rojas,F,33.0,RM,Técnico Superior,Diseñador UX,0.9,1241000.0
+POST-0296,Constanza Muñoz,F,51.0,RM,Universitaria,Marketing Digital,1.3,1913000.0
+POST-0297,Jorge Castro,M,33.0,La Araucanía,Universitaria,Analista de RRHH,5.1,1601000.0
+POST-0298,Pablo Castro,M,37.0,Los Lagos,Universitaria,DevOps,0.6,1460000.0
+POST-0299,Tomás Rojas,M,40.0,La Araucanía,Técnico Superior,Marketing Digital,8.3,1616000.0
+POST-0300,Andrés Medina,M,,La Araucanía,Universitaria,Desarrolladore Backen,13.2,688000.0
+POST-0301,Andrea Rojas,F,36.0,Los Lagos,Universitaria,Analista de Datos,5.5,1533000.0
+POST-0302,Natalia Herrera,F,26.0,Bio-Bío,Técnico Superior,Analista de RRHH,1.9,2476000.0
+POST-0303,Natalia Torres,F,22.0,RM,Técnico Superior,Analista de RRHH,1.1,1580000.0
+POST-0304,Camila Vargas,F,37.0,Otras,Técnico Superior,Analista de Datos,4.4,1046000.0
+POST-0305,Natalia Fuentes,F,33.0,Valparaíso,Universitaria,Marketing Digital,8.7,1158000.0
+POST-0306,Camila Medina,F,38.0,RM,Universitaria,Ventas B2B,0.5,902000.0
+POST-0307,Nicolás Torres,M,40.0,Valparaíso,Secundaria,Desarrollador Backend,3.3,963000.0
+POST-0308,Tomás Pérez,M,35.0,RM,Técnico Superior,Ventas B2B,1.7,1708000.0
+POST-0309,Ignacio Vargas,M,36.0,RM,Técnico Superior,Desarrollador Backend,2.5,1965000.0
+POST-0310,Paola Muñoz,F,40.0,La Araucanía,Universitaria,Analista de RRHH,1.1,984000.0
+POST-0311,Nicolás Fuentes,M,28.0,Valparaíso,Universitaria,Marketing Digital,1.0,1317000.0
+POST-0312,Carlos Muñoz,M,33.0,RM,Técnico Superior,Contabilidad,7.1,1132000.0
+POST-0313,María Castro,F,37.0,RM,Universitaria,Diseñador UX,4.2,1430000.0
+POST-0314,Sofía Medina,F,32.0,RM,Universitaria,Analista de RRHH,10.3,901000.0
+POST-0315,Andrés Herrera,M,26.0,RM,Secundaria,Diseñador UX,1.3,2202000.0
+POST-0316,Paola Fuentes,F,43.0,La Araucanía,Postgrado,Analista de Datos,1.1,1695000.0
+POST-0317,Tomás Muñoz,M,20.0,RM,Secundaria,Contabilidad,3.7,1650000.0
+POST-0318,Andrea Soto,F,24.0,Otras,Universitaria,Desarrollador Backend,9.0,1264000.0
+POST-0319,Constanza Castro,F,33.0,Valparaíso,Postgrado,DevOps,1.4,1674000.0
+POST-0320,Jorge Herrera,M,36.0,Otras,Postgrado,Desarrollador Backend,1.1,
+POST-0321,Bárbara Castro,F,30.0,La Araucanía,Postgrado,Ventas B2B,17.1,1430000.0
+POST-0322,Cristóbal Reyes,M,,RM,Postgrado,Analista de RRHH,3.2,1397000.0
+POST-0323,Andrea Herrera,F,39.0,RM,Postgrado,Analista de RRHH,3.6,
+POST-0324,Andrés Soto,M,34.0,Bio-Bío,Postgrado,DevOps,5.6,1570000.0
+POST-0325,Andrea Herrera,F,25.0,Maule,Universitaria,Diseñador UX,2.4,1147000.0
+POST-0326,Luis Medina,M,24.0,Maule,Postgrado,Project Manager,9.6,946000.0
+POST-0327,Rodrigo Vargas,M,32.0,RM,Universitaria,Soporte TI,13.2,1074000.0
+POST-0328,María Muñoz,F,47.0,Otras,Universitaria,Soporte TI,0.4,1693000.0
+POST-0329,Pedro Medina,M,35.0,Valparaíso,Universitaria,Analista de RRHH,3.8,1389000.0
+POST-0330,Andrés Morales,M,25.0,RM,Técnico Superior,Analista de Datos,2.2,
+POST-0331,Daniela Castro,F,38.0,Maule,Postgrado,Soporte TI,16.4,2044000.0
+POST-0332,Alejandra Pérez,F,36.0,RM,Universitaria,Desarrollador Backend,2.8,2164000.0
+POST-0333,Valentina Reyes,F,31.0,Bio-Bío,Técnico Superior,Analista de Datos,6.3,520000.0
+POST-0334,Carolina Soto,F,34.0,RM,Técnico Superior,Analista de Datos,0.2,1494000.0
+POST-0335,Diego González,M,28.0,RM,Secundaria,Ventas B2B,0.3,400000.0
+POST-0336,Tomás Medina,M,35.0,RM,Universitaria,Soporte TI,2.4,
+POST-0337,Ignacio Soto,M,25.0,Valparaíso,Universitaria,Project Manager,1.0,1444000.0
+POST-0338,Pedro Díaz,M,32.0,RM,Postgrado,Desarrollador Backend,3.0,
+POST-0339,Camila Flores,F,22.0,RM,Postgrado,Analista de Datos,7.1,1810000.0
+POST-0340,Javiera Flores,F,,RM,Postgrado,Analista de RRHH,2.2,514000.0
+POST-0341,María Morales,F,29.0,La Araucanía,Universitaria,Desarrollador Backend,6.8,1758000.0
+POST-0342,Andrea Soto,F,42.0,La Araucanía,Postgrado,Analista de RRHH,2.3,
+POST-0343,Javiera Soto,F,,Maule,Técnico Superior,Analista de Datos,5.8,2126000.0
+POST-0344,Bárbara Herrera,F,31.0,Bio-Bío,Técnico Superior,Contabilidad,1.2,1397000.0
+POST-0345,Catalina Morales,F,33.0,RM,Secundaria,Desarrollador Backend,1.0,
+POST-0346,Rodrigo Herrera,M,39.0,RM,Universitaria,Analista de Datos,0.1,827000.0
+POST-0347,Pedro Herrera,M,38.0,RM,Universitaria,Ventas B2B,9.9,1748000.0
+POST-0348,Tomás Herrera,M,37.0,RM,Postgrado,Marketing Digital,1.6,739000.0
+POST-0349,Carolina González,F,20.0,Maule,Postgrado,Contabilidad,5.9,1785000.0
+POST-0350,Jorge Vargas,M,32.0,Los Lagos,Técnico Superior,Soporte TI,9.9,
+POST-0351,Constanza Flores,F,33.0,Valparaíso,Universitaria,Ventas B2B,9.1,
+POST-0352,Valentina Soto,F,26.0,Bio-Bío,Postgrado,Project Manager,5.3,1491000.0
+POST-0353,Valentina Castro,F,34.0,Bio-Bío,Postgrado,Desarrollador Backend,5.2,1832000.0
+POST-0354,Pablo Torres,M,31.0,RM,Secundaria,Contabilidad,9.0,1206000.0
+POST-0355,Carolina Medina,F,24.0,RM,Universitaria,Project Manager,23.0,2207000.0
+POST-0356,Andrea Rojas,F,40.0,RM,Universitaria,Analista de Datos,2.3,1597000.0
+POST-0357,Diego Herrera,M,,Maule,Universitaria,Marketing Digital,9.3,617000.0
+POST-0358,Javiera González,F,30.0,Valparaíso,Postgrado,Analista de Datos,7.2,
+POST-0359,Pedro Torres,M,30.0,Valparaíso,Técnico Superior,Desarrollador Backend,8.6,2276000.0
+POST-0360,Daniela Muñoz,F,21.0,Maule,Técnico Superior,Desarrollador Backend,3.4,1131000.0
+POST-0361,Andrea Herrera,F,31.0,RM,Universitaria,Contabilidad,3.6,
+POST-0362,Camila Pérez,F,27.0,RM,Universitaria,Analista de RRHH,0.6,1824000.0
+POST-0363,Pablo Pérez,M,32.0,Los Lagos,Postgrado,Analista de Datos,0.9,1241000.0
+POST-0364,Francisca González,F,39.0,La Araucanía,Universitaria,Diseñador UX,1.6,666000.0
+POST-0365,Natalia Flores,F,28.0,Bio-Bío,Postgrado,Project Manager,0.8,874000.0
+POST-0366,Tomás Soto,M,33.0,Valparaíso,Técnico Superior,Analista de Datos,2.1,1303000.0
+POST-0367,Constanza Castro,F,28.0,Los Lagos,Universitaria,Desarrollador Backend,0.3,2087000.0
+POST-0368,Cristóbal Flores,M,27.0,RM,Técnico Superior,Ventas B2B,2.5,1638000.0
+POST-0369,Pedro Herrera,M,21.0,RM,Secundaria,Marketing Digital,15.2,1339000.0
+POST-0370,Pablo Medina,M,27.0,RM,Postgrado,Analista de Datos,14.0,1435000.0
+POST-0371,Rodrigo Fuentes,M,35.0,RM,Universitaria,Analista de RRHH,1.2,1159000.0
+POST-0372,Francisca Herrera,F,29.0,La Araucanía,Universitaria,Contabilidad,6.7,1314000.0
+POST-0373,Pablo Pérez,M,41.0,Bio-Bío,Técnico Superior,Analista de Datos,0.5,1666000.0
+POST-0374,Carlos Muñoz,M,44.0,RM,Universitaria,Desarrollador Backend,4.8,
+POST-0375,Luis Medina,M,,RM,Universitaria,Analista de RRHH,5.5,1664000.0
+POST-0376,Camila Soto,F,30.0,Bio-Bío,Técnico Superior,Analista de RRHH,7.1,1157000.0
+POST-0377,Martín Díaz,M,39.0,Valparaíso,Universitaria,Diseñador UX,7.0,1404000.0
+POST-0378,Carlos Flores,M,32.0,RM,Universitaria,Project Manager,1.9,958000.0
+POST-0379,Daniela Fuentes,F,37.0,RM,Universitaria,Analista de RRHH,0.9,2009000.0
+POST-0380,Francisca González,F,46.0,RM,Universitaria,Analista de RRHH,1.9,504000.0
+POST-0381,Carlos Vargas,M,26.0,Valparaíso,Universitaria,Contabilidad,1.1,2255000.0
+POST-0382,Cristóbal Medina,M,43.0,RM,Universitaria,Diseñador UX,0.8,1136000.0
+POST-0383,Daniela Morales,F,42.0,Los Lagos,Universitaria,Marketing Digital,0.5,1215000.0
+POST-0384,Andrea González,F,,Maule,Técnico Superior,Marketing Digital,9.5,1544000.0
+POST-0385,Sofía Rojas,F,25.0,RM,Universitaria,Ventas B2B,9.8,1189000.0
+POST-0386,Francisca Herrera,F,32.0,Valparaíso,Técnico Superior,Ventas B2B,0.3,1215000.0
+POST-0387,Alejandra Morales,F,31.0,Los Lagos,Universitaria,Marketing Digital,4.1,1873000.0
+POST-0388,Valentina Fuentes,F,29.0,RM,Universitaria,Contabilidad,6.7,1616000.0
+POST-0389,Bárbara Díaz,F,45.0,RM,Postgrado,Project Manager,8.3,2227000.0
+POST-0390,Diego Flores,M,55.0,RM,Universitaria,analista de Datos,15.4,1104000.0
+POST-0391,Daniela Muñoz,F,26.0,RM,Técnico Superior,Marketing Digital,5.2,563000.0
+POST-0392,Rodrigo Torres,M,35.0,Bio-Bío,Universitaria,Contabilidad,7.1,2056000.0
+POST-0393,Felipe Herrera,M,38.0,La Araucanía,Universitaria,Analista de Datos,3.4,1493000.0
+POST-0394,Pablo Herrera,M,25.0,RM,Universitaria,Desarrollador Backend,6.9,1552000.0
+POST-0395,Nicolás Morales,M,31.0,RM,Técnico Superior,Analista de Datos,5.8,2244000.0
+POST-0396,Bárbara Fuentes,F,26.0,RM,Universitaria,Analista de RRHH,12.5,1521000.0
+POST-0397,Felipe Vargas,M,33.0,RM,Universitaria,Ventas B2B,1.2,1018000.0
+POST-0398,Luis Torres,M,30.0,RM,Secundaria,Marketing Digital,4.1,1043000.0
+POST-0399,Tomás Herrera,M,26.0,RM,Técnico Superior,Contabilidad,7.5,2448000.0
+POST-0400,Valentina Herrera,F,36.0,Valparaíso,Postgrado,Marketing Digital,1.1,
+POST-0401,Sofía Díaz,F,43.0,La Araucanía,Universitaria,Ventas B2B,0.4,1462000.0
+POST-0402,Catalina Medina,F,39.0,Valparaíso,Universitaria,Desarrollador Backend,2.8,696000.0
+POST-0403,Paola Torres,F,36.0,RM,Universitaria,Analista de RRHH,13.0,1046000.0
+POST-0404,Valentina Díaz,F,40.0,RM,Universitaria,Diseñador UX,1.9,1319000.0
+POST-0405,Camila Medina,F,40.0,Bio-Bío,Técnico Superior,Analista de Datos,7.9,1054000.0
+POST-0406,Carlos Muñoz,M,25.0,RM,Universitaria,Analista de Datos,10.8,1729000.0
+POST-0407,Catalina Flores,F,38.0,Otras,Postgrado,Analista de RRHH,3.1,1139000.0
+POST-0408,Andrés Vargas,M,42.0,Bio-Bío,Universitaria,Diseñador UX,3.0,1245000.0
+POST-0409,Pablo Pérez,M,,RM,Universitaria,Project Manager,4.9,
+POST-0410,Rodrigo Torres,M,39.0,Bio-Bío,Técnico Superior,Marketing Digital,1.1,1790000.0
+POST-0411,Andrés Herrera,M,33.0,Maule,Técnico Superior,Analista de RRHH,10.9,951000.0
+POST-0412,Andrea Fuentes,F,43.0,RM,Universitaria,Soporte TI,9.3,1689000.0
+POST-0413,Pablo Muñoz,M,37.0,Los Lagos,Universitaria,Marketing Digital,8.3,1185000.0
+POST-0414,Constanza Torres,F,34.0,RM,Universitaria,Desarrollador Backend,19.3,1901000.0
+POST-0415,Tomás Muñoz,M,22.0,Bio-Bío,Universitaria,Soporte TI,3.2,587000.0
+POST-0416,Constanza Medina,F,33.0,Bio-Bío,Postgrado,Diseñador UX,4.9,1731000.0
+POST-0417,Alejandra Muñoz,F,33.0,Valparaíso,Técnico Superior,Desarrollador Backend,0.1,1351000.0
+POST-0418,Camila Soto,F,39.0,RM,Postgrado,Contabilidad,14.7,796000.0
+POST-0419,Tomás Vargas,M,46.0,RM,Técnico Superior,Project Manager,0.7,1665000.0
+POST-0420,Andrés Herrera,M,28.0,RM,Postgrado,Analista de Datos,10.0,1567000.0
+POST-0421,Natalia Soto,F,28.0,RM,Universitaria,Ventas B2B,1.2,1389000.0
+POST-0422,Rodrigo Fuentes,M,34.0,Maule,Técnico Superior,Project Manager,3.6,847000.0
+POST-0423,María Flores,F,37.0,RM,Universitaria,Project Manager,2.7,1318000.0
+POST-0424,Constanza Medina,F,40.0,RM,Universitaria,Project Manager,4.8,
+POST-0425,Constanza Reyes,F,40.0,Otras,Universitaria,Marketing Digital,2.1,1565000.0
+POST-0426,Ignacio Fuentes,M,35.0,RM,Técnico Superior,Analista de Datos,1.6,1155000.0
+POST-0427,Paola Castro,F,27.0,Los Lagos,Universitaria,Analista de Datos,3.3,2370000.0
+POST-0428,Carolina Torres,F,20.0,RM,Universitaria,Soporte TI,1.7,1400000.0
+POST-0429,Andrea Torres,F,32.0,Valparaíso,Universitaria,Analista de Datos,1.9,1340000.0
+POST-0430,Bárbara Flores,F,34.0,La Araucanía,Secundaria,Desarrollador Backend,10.6,1146000.0
+POST-0431,Carlos Herrera,M,36.0,RM,Técnico Superior,Analista de Datos,4.7,1423000.0
+POST-0432,María Muñoz,F,36.0,Valparaíso,Técnico Superior,Analista de Datos,5.8,1162000.0
+POST-0433,Carlos Soto,M,37.0,RM,Secundaria,Analista de RRHH,22.3,1805000.0
+POST-0434,Francisca Castro,F,36.0,Bio-Bío,Universitaria,Analista de Datos,0.3,1118000.0
+POST-0435,Luis Torres,M,27.0,RM,Universitaria,Analista de RRHH,2.6,1066000.0
+POST-0436,Pedro Medina,M,39.0,Valparaíso,Universitaria,Marketing Digital,0.2,1253000.0
+POST-0437,Bárbara Díaz,F,43.0,Otras,Universitaria,Desarrollador Backend,10.1,1541000.0
+POST-0438,Cristóbal Fuentes,M,26.0,RM,Postgrado,Contabilidad,3.5,1668000.0
+POST-0439,Cristóbal Muñoz,M,36.0,Bio-Bío,Postgrado,Contabilidad,3.3,764000.0
+POST-0440,Alejandra Soto,F,38.0,Bio-Bío,Universitaria,Desarrollador Backend,19.7,1271000.0
+POST-0441,Sofía González,F,39.0,Maule,Universitaria,Project Manager,17.0,1166000.0
+POST-0442,Bárbara González,F,30.0,RM,Técnico Superior,Desarrollador Backend,1.9,1238000.0
+POST-0443,Tomás Rojas,M,38.0,Valparaíso,Postgrado,Analista de Datos,8.3,1487000.0
+POST-0444,Natalia Castro,F,31.0,RM,Universitaria,Project Manager,1.3,2216000.0
+POST-0445,Natalia Medina,F,36.0,Bio-Bío,Universitaria,Contabilidad,10.5,1774000.0
+POST-0446,Catalina Flores,F,28.0,Bio-Bío,Postgrado,Diseñador UX,3.5,933000.0
+POST-0447,Carlos Reyes,M,37.0,RM,Postgrado,Analista de Datos,5.0,1589000.0
+POST-0448,Andrea Castro,F,,La Araucanía,Postgrado,Diseñador UX,1.7,2693000.0
+POST-0449,Andrea Soto,F,23.0,Otras,Postgrado,Soporte TI,4.4,946000.0
+POST-0450,Catalina Díaz,F,29.0,RM,Técnico Superior,Desarrollador Backend,3.4,1686000.0
+POST-0451,Cristóbal Díaz,M,,RM,Postgrado,Diseñador UX,10.9,1295000.0
+POST-0452,Martín Rojas,M,39.0,Maule,Técnico Superior,Desarrollador Backend,5.0,1970000.0
+POST-0453,Natalia Medina,F,28.0,Maule,Universitaria,Desarrollador Backend,4.9,1004000.0
+POST-0454,Francisca Muñoz,F,33.0,RM,Universitaria,Analista de Datos,1.0,400000.0
+POST-0455,Felipe Fuentes,M,40.0,Maule,Universitaria,Analista de Datos,3.8,2278000.0
+POST-0456,Javiera Fuentes,F,22.0,RM,Técnico Superior,Analista de Datos,1.1,
+POST-0457,Andrea Vargas,F,20.0,Valparaíso,Universitaria,Project Manager,0.3,1565000.0
+POST-0458,Constanza González,F,31.0,Otras,Universitaria,Ventas B2B,13.7,1805000.0
+POST-0459,Valentina Díaz,F,24.0,Bio-Bío,Técnico Superior,Analista de Datos,4.8,1908000.0
+POST-0460,Javiera Castro,F,41.0,RM,Universitaria,Contabilidad,0.9,1207000.0
+POST-0461,Carlos Castro,M,33.0,Los Lagos,Técnico Superior,DevOps,3.8,1138000.0
+POST-0462,Sofía Flores,F,38.0,Bio-Bío,Técnico Superior,Project Manager,1.3,1230000.0
+POST-0463,Bárbara Reyes,F,40.0,Bio-Bío,Universitaria,Desarrollador Backend,5.5,1385000.0
+POST-0464,Camila Soto,F,31.0,Bio-Bío,Técnico Superior,Project Manager,1.1,1431000.0
+POST-0465,Camila Vargas,F,31.0,RM,Universitaria,Soporte TI,8.0,764000.0
+POST-0466,Sofía Fuentes,F,27.0,Otras,Técnico Superior,Analista de Datos,5.3,795000.0
+POST-0467,Pedro Vargas,M,44.0,Valparaíso,Universitaria,Desarrollador Backend,0.2,2360000.0
+POST-0468,Valentina Torres,F,31.0,RM,Técnico Superior,Marketing Digital,6.4,1573000.0
+POST-0469,Paola Muñoz,F,45.0,RM,Técnico Superior,Contabilidad,12.2,976000.0
+POST-0470,Rodrigo Vargas,M,43.0,RM,Postgrado,Ventas B2B,2.7,400000.0
+POST-0471,Bárbara Rojas,F,23.0,Bio-Bío,Universitaria,Desarrollador Backend,2.5,1594000.0
+POST-0472,Nicolás Vargas,M,30.0,RM,Técnico Superior,Project Manager,0.8,2059000.0
+POST-0473,Martín Medina,M,32.0,La Araucanía,Universitaria,Analista de Datos,0.5,1877000.0
+POST-0474,Carolina Castro,F,29.0,RM,Universitaria,Contabilidad,2.0,1395000.0
+POST-0475,María Díaz,F,40.0,Maule,Universitaria,Analista de Datos,11.9,2061000.0
+POST-0476,Sofía Flores,F,46.0,Valparaíso,Universitaria,Contabilidad,1.8,
+POST-0477,Cristóbal Fuentes,M,35.0,Maule,Universitaria,Ventas B2B,2.7,969000.0
+POST-0478,Andrés Morales,M,31.0,Valparaíso,Postgrado,Desarrollador Backend,0.6,556000.0
+POST-0479,Daniela Muñoz,F,20.0,Valparaíso,Postgrado,Ventas B2B,4.0,1879000.0
+POST-0480,Andrés Torres,M,37.0,RM,Técnico Superior,Analista de RRHH,15.6,1852000.0
+POST-0481,Rodrigo Flores,M,33.0,RM,Universitaria,Analista de RRHH,4.6,954000.0
+POST-0482,Camila Medina,F,33.0,RM,Universitaria,Project Manager,0.1,1612000.0
+POST-0483,Carolina Torres,F,35.0,Otras,Secundaria,Analista de Datos,2.3,809000.0
+POST-0484,Sofía Díaz,F,22.0,Maule,Universitaria,Marketing Digital,8.8,1441000.0
+POST-0485,Cristóbal Torres,M,38.0,RM,Universitaria,Desarrollador Backend,0.4,1284000.0
+POST-0486,Alejandra Díaz,F,27.0,RM,Universitaria,Analista de RRHH,3.1,789000.0
+POST-0487,Martín Díaz,M,38.0,Bio-Bío,Postgrado,Analista de Datos,5.3,
+POST-0488,Luis Díaz,M,36.0,Maule,Técnico Superior,Project Manager,1.7,1691000.0
+POST-0489,Carlos Muñoz,M,40.0,Otras,Universitaria,Desarrollador Backend,3.5,1459000.0
+POST-0490,Daniela Castro,F,35.0,Maule,Universitaria,Desarrollador Backend,4.1,1278000.0
+POST-0491,Sebastián Castro,M,47.0,Bio-Bío,Universitaria,Desarrollador Backend,2.3,1313000.0
+POST-0492,Ignacio Torres,M,43.0,La Araucanía,Secundaria,Soporte TI,5.2,1755000.0
+POST-0493,Daniela Soto,F,,Maule,Secundaria,Project Manager,2.7,670000.0
+POST-0494,Carlos Medina,M,23.0,Maule,Postgrado,Desarrollador Backend,2.3,1176000.0
+POST-0495,Andrés Fuentes,M,37.0,RM,Universitaria,analista de RRHH,5.8,1412000.0
+POST-0496,Constanza Rojas,F,,RM,Postgrado,Diseñador UX,0.4,1216000.0
+POST-0497,Andrés Medina,M,32.0,La Araucanía,Universitaria,Desarrollador Backend,2.9,1476000.0
+POST-0498,Andrés Medina,M,37.0,La Araucanía,Universitaria,Desarrollador Backend,7.2,937000.0
+POST-0499,Sofía Castro,F,22.0,La Araucanía,Universitaria,Project Manager,2.8,1389000.0
+POST-0500,Bárbara Díaz,F,34.0,Maule,Secundaria,Soporte TI,11.4,1258000.0
+POST-0501,Daniela Pérez,F,,RM,Universitaria,Ventas B2B,0.2,
+POST-0502,Carolina Díaz,F,25.0,RM,Universitaria,Project Manager,1.2,1284000.0
+POST-0503,Francisca Pérez,F,34.0,RM,Universitaria,Contabilidad,1.4,2231000.0
+POST-0504,Luis Medina,M,21.0,Valparaíso,Universitaria,Contabilidad,8.2,416000.0
+POST-0505,Rodrigo Morales,M,34.0,RM,Universitaria,Desarrollador Backend,1.2,931000.0
+POST-0506,Ignacio González,M,30.0,Valparaíso,Universitaria,Contabilidad,11.4,1767000.0
+POST-0507,Catalina Díaz,F,32.0,RM,Universitaria,Ventas B2B,7.5,1544000.0
+POST-0508,Daniela Herrera,F,38.0,Bio-Bío,Postgrado,Analista de Datos,5.5,1857000.0
+POST-0509,Felipe Díaz,M,,RM,Universitaria,Analista de RRHH,8.4,487000.0
+POST-0510,Martín Morales,M,37.0,Valparaíso,Técnico Superior,Analista de RRHH,0.9,
+POST-0511,Andrea Muñoz,F,35.0,Los Lagos,Universitaria,Diseñador UX,0.0,1792000.0
+POST-0512,Jorge Morales,M,46.0,Valparaíso,Postgrado,Diseñador UX,3.9,1251000.0
+POST-0513,Ignacio Morales,M,42.0,Valparaíso,Técnico Superior,Analista de Datos,3.4,400000.0
+POST-0514,Sebastián Torres,M,33.0,Bio-Bío,Universitaria,Project Manager,0.4,685000.0
+POST-0515,Sebastián Torres,M,38.0,Valparaíso,Universitaria,Analista de Datos,0.3,887000.0
+POST-0516,Francisca Vargas,F,31.0,Valparaíso,Postgrado,Desarrollador Backend,1.5,1005000.0
+POST-0517,Francisca Fuentes,F,30.0,La Araucanía,Postgrado,Ventas B2B,1.0,
+POST-0518,Valentina Medina,F,,Bio-Bío,Técnico Superior,Soporte TI,7.7,1677000.0
+POST-0519,Carlos Herrera,M,35.0,RM,Postgrado,Soporte TI,5.2,1600000.0
+POST-0520,Rodrigo Castro,M,46.0,RM,Universitaria,Marketing Digital,2.0,1235000.0
+POST-0521,Alejandra Soto,F,31.0,Los Lagos,Universitaria,Analista de RRHH,2.3,1264000.0
+POST-0522,Javiera Castro,F,33.0,Valparaíso,Universitaria,Diseñador UX,4.1,1169000.0
+POST-0523,Jorge Vargas,M,24.0,RM,Universitaria,Analista de Datos,0.6,1065000.0
+POST-0524,Nicolás Morales,M,20.0,Otras,Postgrado,Desarrollador Backend,4.3,1784000.0
+POST-0525,Pablo Muñoz,M,38.0,Bio-Bío,Secundaria,Soporte TI,2.8,1579000.0
+POST-0526,Alejandra Rojas,F,35.0,RM,Universitaria,Diseñador UX,9.4,1591000.0
+POST-0527,Pedro Morales,M,29.0,La Araucanía,Técnico Superior,Contabilidad,2.4,1264000.0
+POST-0528,Cristóbal Medina,M,32.0,RM,Postgrado,Project Manager,0.9,1667000.0
+POST-0529,Bárbara Medina,F,39.0,Los Lagos,Universitaria,Analista de Datos,1.3,1262000.0
+POST-0530,María Morales,F,28.0,Bio-Bío,Postgrado,Diseñador UX,7.0,622000.0
+POST-0531,Nicolás Vargas,M,27.0,RM,Postgrado,Analista de RRHH,2.7,1866000.0
+POST-0532,Natalia Pérez,F,29.0,Maule,Universitaria,Soporte TI,3.8,922000.0
+POST-0533,Nicolás Flores,M,31.0,Valparaíso,Universitaria,Contabilidad,0.9,1036000.0
+POST-0534,Javiera Herrera,F,32.0,Valparaíso,Universitaria,Soporte TI,6.5,
+POST-0535,Carlos Morales,M,36.0,La Araucanía,Universitaria,Marketing Digital,0.5,1689000.0
+POST-0536,María Fuentes,F,39.0,RM,Técnico Superior,Diseñador UX,2.8,857000.0
+POST-0537,Francisca Flores,F,29.0,Valparaíso,Postgrado,DevOps,6.2,1040000.0
+POST-0538,Sofía Vargas,F,47.0,Valparaíso,Postgrado,Contabilidad,0.7,1965000.0
+POST-0539,Bárbara Muñoz,F,37.0,Bio-Bío,Postgrado,Soporte TI,3.4,1490000.0
+POST-0540,Felipe Pérez,M,49.0,RM,Universitaria,Soporte TI,1.5,1460000.0
+POST-0541,Bárbara Morales,F,29.0,Bio-Bío,Técnico Superior,Soporte TI,9.4,1648000.0
+POST-0542,Pablo Vargas,M,27.0,Valparaíso,Técnico Superior,Diseñador UX,5.7,954000.0
+POST-0543,Paola Díaz,F,20.0,La Araucanía,Universitaria,Soporte TI,8.4,1264000.0
+POST-0544,Alejandra González,F,34.0,RM,Técnico Superior,Soporte TI,0.1,1262000.0
+POST-0545,Nicolás Torres,M,33.0,La Araucanía,Universitaria,Soporte TI,2.0,1164000.0
+POST-0546,Natalia Fuentes,F,33.0,RM,Secundaria,Ventas B2B,1.5,1225000.0
+POST-0547,Nicolás Reyes,M,24.0,Valparaíso,Postgrado,DevOps,8.4,2002000.0
+POST-0548,Sofía Reyes,F,39.0,RM,Postgrado,Marketing Digital,20.2,
+POST-0549,Sebastián Vargas,M,22.0,Bio-Bío,Secundaria,Diseñador UX,5.7,1581000.0
+POST-0550,Francisca Soto,F,27.0,La Araucanía,Universitaria,Marketing Digital,0.5,2111000.0
+POST-0551,Catalina Rojas,F,38.0,RM,Universitaria,Diseñador UX,1.5,1602000.0
+POST-0552,Javiera Torres,F,24.0,Maule,Postgrado,Desarrollador Backend,4.5,
+POST-0553,Carolina González,F,33.0,RM,Universitaria,Analista de Datos,3.1,1067000.0
+POST-0554,Valentina González,F,21.0,RM,Postgrado,Marketing Digital,0.3,1607000.0
+POST-0555,Pedro Castro,M,34.0,RM,Universitaria,Analista de RRHH,5.5,1402000.0
+POST-0556,María Morales,F,33.0,RM,Universitaria,Soporte TI,1.6,992000.0
+POST-0557,Rodrigo Medina,M,42.0,Valparaíso,Universitaria,Diseñador UX,2.1,1843000.0
+POST-0558,Francisca Soto,F,35.0,RM,Técnico Superior,Ventas B2B,0.7,400000.0
+POST-0559,Camila Díaz,F,30.0,La Araucanía,Técnico Superior,Analista de Datos,2.9,866000.0
+POST-0560,Tomás Castro,M,,Valparaíso,Postgrado,Diseñador UX,0.7,577000.0
+POST-0561,Sebastián Flores,M,34.0,Maule,Técnico Superior,Analista de RRHH,4.5,995000.0
+POST-0562,Martín Vargas,M,32.0,Bio-Bío,Técnico Superior,Analista de Datos,0.1,2138000.0
+POST-0563,Sebastián Castro,M,28.0,Valparaíso,Universitaria,Marketing Digital,7.5,1526000.0
+POST-0564,Catalina Fuentes,F,28.0,RM,Postgrado,Desarrollador Backend,3.2,1718000.0
+POST-0565,Pedro Díaz,M,31.0,Bio-Bío,Universitaria,Diseñador UX,8.0,683000.0
+POST-0566,Constanza Soto,F,34.0,Bio-Bío,Técnico Superior,Marketing Digital,1.6,1782000.0
+POST-0567,Sebastián Morales,M,37.0,RM,Universitaria,Analista de Datos,1.4,1328000.0
+POST-0568,Rodrigo Flores,M,47.0,RM,Postgrado,Analista de RRHH,1.6,1136000.0
+POST-0569,Francisca Soto,F,45.0,La Araucanía,Técnico Superior,Desarrollador Backend,2.1,677000.0
+POST-0570,Catalina Castro,F,37.0,Bio-Bío,Postgrado,Desarrollador Backend,0.9,2153000.0
+POST-0571,Bárbara Pérez,F,33.0,RM,Técnico Superior,Diseñador UX,0.6,1352000.0
+POST-0572,Francisca Herrera,F,31.0,Valparaíso,Universitaria,Diseñador UX,2.6,1563000.0
+POST-0573,Nicolás Soto,M,33.0,Valparaíso,Universitaria,Analista de RRHH,11.5,914000.0
+POST-0574,Ignacio Díaz,M,,Maule,Secundaria,Analista de Datos,6.6,
+POST-0575,Felipe Pérez,M,27.0,RM,Técnico Superior,Contabilidad,5.5,921000.0
+POST-0576,Catalina Rojas,F,32.0,La Araucanía,Técnico Superior,Contabilidad,3.6,927000.0
+POST-0577,Catalina Reyes,F,36.0,RM,Postgrado,Diseñador UX,6.1,1497000.0
+POST-0578,Luis Pérez,M,37.0,RM,Universitaria,Desarrollador Backend,1.0,1061000.0
+POST-0579,Tomás Rojas,M,31.0,RM,Universitaria,Desarrollador Backend,0.2,400000.0
+POST-0580,Francisca Vargas,F,45.0,RM,Universitaria,Desarrollador Backend,2.6,1684000.0
+POST-0581,Camila Medina,F,47.0,RM,Secundaria,Desarrollador Backend,5.3,1506000.0
+POST-0582,Sebastián Flores,M,27.0,RM,Universitaria,Soporte TI,3.3,1222000.0
+POST-0583,Luis Díaz,M,39.0,Maule,Universitaria,Ventas B2B,6.3,1575000.0
+POST-0584,Martín Díaz,M,39.0,Bio-Bío,Técnico Superior,Analista de RRHH,1.8,1552000.0
+POST-0585,Felipe Fuentes,M,35.0,RM,Universitaria,Diseñador UX,0.1,400000.0
+POST-0586,Carlos Flores,M,28.0,RM,Técnico Superior,Contabilidad,17.2,1600000.0
+POST-0587,Alejandra Torres,F,30.0,Maule,Postgrado,Analista de Datos,1.3,1154000.0
+POST-0588,Paola Reyes,F,20.0,RM,Universitaria,DevOps,17.5,1046000.0
+POST-0589,Bárbara Fuentes,F,34.0,Valparaíso,Universitaria,Analista de Datos,1.8,1332000.0
+POST-0590,Ignacio Soto,M,35.0,Valparaíso,Técnico Superior,Desarrollador Backend,3.8,1168000.0
+POST-0591,Andrea Morales,F,38.0,Maule,Universitaria,Analista de Datos,3.5,1778000.0
+POST-0592,Catalina Muñoz,F,37.0,RM,Postgrado,Contabilidad,6.0,941000.0
+POST-0593,Sebastián Muñoz,M,28.0,Maule,Técnico Superior,Desarrollador Backend,4.0,1280000.0
+POST-0594,Andrea Torres,F,42.0,RM,Universitaria,Marketing Digital,3.7,1611000.0
+POST-0595,Rodrigo Medina,M,33.0,RM,Universitaria,Diseñador UX,4.3,1814000.0
+POST-0596,Andrea Rojas,F,37.0,Valparaíso,Postgrado,Analista de Datos,1.6,1988000.0
+POST-0597,Andrea Díaz,F,34.0,Bio-Bío,Técnico Superior,Analista de Datos,12.7,1060000.0
+POST-0598,Carlos Fuentes,M,41.0,Valparaíso,Postgrado,Contabilidad,14.1,2768000.0
+POST-0599,Carolina Pérez,F,32.0,La Araucanía,Postgrado,Analista de Datos,6.3,1642000.0
+POST-0600,Felipe Castro,M,35.0,RM,Postgrado,Desarrollador Backend,2.2,1550000.0
+POST-0601,Tomás Soto,M,24.0,RM,Secundaria,Analista de RRHH,0.6,1910000.0
+POST-0602,Carolina Morales,F,37.0,RM,Universitaria,Desarrollador Backend,16.0,1057000.0
+POST-0603,Constanza González,F,25.0,RM,Postgrado,Analista de Datos,2.5,400000.0
+POST-0604,Rodrigo Díaz,M,28.0,RM,Técnico Superior,Soporte TI,0.6,631000.0
+POST-0605,Natalia Herrera,F,41.0,Valparaíso,Postgrado,Analista de Datos,5.1,2028000.0
+POST-0606,Sebastián Vargas,M,37.0,RM,Postgrado,Soporte TI,2.2,1916000.0
+POST-0607,Martín Muñoz,M,,RM,Secundaria,Analista de RRHH,0.4,400000.0
+POST-0608,Tomás Rojas,M,23.0,RM,Universitaria,Project Manager,1.7,2241000.0
+POST-0609,Paola Morales,F,37.0,Los Lagos,Técnico Superior,Analista de Datos,0.6,1393000.0
+POST-0610,Daniela Reyes,F,33.0,RM,Universitaria,Project Manager,1.5,1523000.0
+POST-0611,Rodrigo Vargas,M,40.0,RM,Técnico Superior,Analista de Datos,19.6,400000.0
+POST-0612,Andrea Rojas,F,23.0,Bio-Bío,Universitaria,Analista de Datos,0.3,1563000.0
+POST-0613,Carlos Soto,M,26.0,La Araucanía,Técnico Superior,Analista de RRHH,3.7,1223000.0
+POST-0614,Felipe Medina,M,27.0,Los Lagos,Universitaria,Soporte TI,6.1,1012000.0
+POST-0615,Javiera Herrera,F,45.0,RM,Universitaria,Contabilidad,9.2,1385000.0
+POST-0616,Carlos Rojas,M,42.0,Valparaíso,Universitaria,Marketing Digital,3.5,1802000.0
+POST-0617,Luis Soto,M,24.0,Bio-Bío,Técnico Superior,Soporte TI,11.1,1410000.0
+POST-0618,Camila Muñoz,F,34.0,Valparaíso,Universitaria,Marketing Digital,12.6,801000.0
+POST-0619,Pedro Castro,M,34.0,Otras,Universitaria,Analista de RRHH,3.2,1010000.0
+POST-0620,Luis Herrera,M,35.0,RM,Postgrado,Analista de Datos,0.0,2177000.0
+POST-0621,Rodrigo Díaz,M,44.0,Bio-Bío,Técnico Superior,Soporte TI,6.4,2694000.0
+POST-0622,Carolina Rojas,F,31.0,RM,Universitaria,Project Manager,0.3,749000.0
+POST-0623,Nicolás Fuentes,M,37.0,Bio-Bío,Universitaria,Desarrollador Backend,14.1,1011000.0
+POST-0624,Nicolás Pérez,M,35.0,RM,Técnico Superior,Project Manager,2.3,1136000.0
+POST-0625,Carlos Castro,M,22.0,Valparaíso,Universitaria,Analista de Datos,0.2,1302000.0
+POST-0626,Bárbara Fuentes,F,39.0,Bio-Bío,Técnico Superior,Diseñador UX,1.6,1571000.0
+POST-0627,Catalina Castro,F,24.0,RM,Técnico Superior,Soporte TI,0.8,1458000.0
+POST-0628,Carolina Fuentes,F,45.0,Valparaíso,Universitaria,Project Manager,0.3,1469000.0
+POST-0629,María Medina,F,45.0,RM,Universitaria,Contabilidad,2.9,
+POST-0630,Carolina Castro,F,20.0,Valparaíso,Universitaria,Ventas B2B,2.8,1454000.0
+POST-0631,Tomás Pérez,M,27.0,Bio-Bío,Universitaria,Diseñador UX,3.0,2114000.0
+POST-0632,Pedro Reyes,M,20.0,RM,Universitaria,Analista de RRHH,4.4,1193000.0
+POST-0633,Paola Medina,F,,Valparaíso,Universitaria,Analista de Datos,8.4,1767000.0
+POST-0634,Constanza Vargas,F,27.0,RM,Postgrado,DevOps,2.7,1960000.0
+POST-0635,Paola González,F,33.0,Bio-Bío,Universitaria,Ventas B2B,5.6,1334000.0
+POST-0636,Bárbara Pérez,F,25.0,La Araucanía,Universitaria,Analista de Datos,0.5,
+POST-0637,Carlos Morales,M,38.0,Bio-Bío,Postgrado,Contabilidad,1.7,1541000.0
+POST-0638,Paola Rojas,F,38.0,RM,Postgrado,Desarrollador Backend,4.0,865000.0
+POST-0639,Pedro González,M,36.0,Los Lagos,Universitaria,Analista de RRHH,6.1,1399000.0
+POST-0640,Sebastián Herrera,M,28.0,Otras,Universitaria,Analista de RRHH,3.8,2069000.0
+POST-0641,Pablo Vargas,M,28.0,RM,Universitaria,Project Manager,1.9,
+POST-0642,Javiera Torres,F,27.0,RM,Universitaria,Analista de RRHH,3.6,1187000.0
+POST-0643,Camila Flores,F,44.0,Maule,Técnico Superior,Desarrollador Backend,1.6,2215000.0
+POST-0644,Luis Castro,M,35.0,RM,Universitaria,Project Manager,6.4,1382000.0
+POST-0645,María Flores,F,35.0,Otras,Universitaria,Marketing Digital,0.9,1094000.0
+POST-0646,Francisca Muñoz,F,40.0,RM,Postgrado,Diseñador UX,4.5,1053000.0
+POST-0647,Rodrigo Díaz,M,29.0,RM,Postgrado,Marketing Digital,0.7,1271000.0
+POST-0648,Catalina Soto,F,,Maule,Universitaria,Analista de RRHH,0.6,1289000.0
+POST-0649,Alejandra Flores,F,33.0,Valparaíso,Universitaria,Diseñador UX,0.4,1464000.0
+POST-0650,Carolina Muñoz,F,,RM,Universitaria,Analista de Datos,1.0,440000.0
+POST-0651,Valentina Muñoz,F,34.0,RM,Secundaria,Soporte TI,0.2,2297000.0
+POST-0652,Diego Herrera,M,42.0,Maule,Universitaria,Desarrollador Backend,0.2,2071000.0
+POST-0653,Jorge Herrera,M,24.0,RM,Universitaria,Soporte TI,14.4,1046000.0
+POST-0654,Martín Vargas,M,23.0,Maule,Universitaria,Project Manager,14.6,1319000.0
+POST-0655,Bárbara Díaz,F,32.0,Bio-Bío,Postgrado,Analista de RRHH,10.5,1454000.0
+POST-0656,Javiera Pérez,F,39.0,Bio-Bío,Postgrado,Ventas B2B,11.5,1873000.0
+POST-0657,Javiera Morales,F,31.0,La Araucanía,Secundaria,Project Manager,1.4,2192000.0
+POST-0658,Bárbara Rojas,F,34.0,RM,Universitaria,Project Manager,6.2,890000.0
+POST-0659,Andrea González,F,21.0,RM,Universitaria,Analista de Datos,4.9,902000.0
+POST-0660,Diego Díaz,M,30.0,RM,Universitaria,Marketing Digital,12.9,1007000.0
+POST-0661,Sofía Reyes,F,35.0,Los Lagos,Universitaria,DevOps,5.1,1769000.0
+POST-0662,Natalia Muñoz,F,48.0,RM,Universitaria,Analista de Datos,2.7,1646000.0
+POST-0663,Natalia Rojas,F,30.0,RM,Técnico Superior,Diseñador UX,1.2,1201000.0
+POST-0664,Bárbara Morales,F,38.0,La Araucanía,Técnico Superior,Marketing Digital,1.1,1442000.0
+POST-0665,Andrés Muñoz,M,,RM,Postgrado,Project Manager,2.7,1093000.0
+POST-0666,Ignacio Muñoz,M,27.0,RM,Universitaria,Marketing Digital,6.0,1771000.0
+POST-0667,Camila Vargas,F,20.0,RM,Postgrado,Analista de Datos,4.0,1306000.0
+POST-0668,Alejandra Rojas,F,36.0,RM,Universitaria,Analista de RRHH,1.2,1151000.0
+POST-0669,Valentina Castro,F,27.0,Bio-Bío,Universitaria,Contabilidad,1.7,400000.0
+POST-0670,Nicolás Pérez,M,30.0,Otras,Postgrado,Ventas B2B,2.6,1389000.0
+POST-0671,Constanza Torres,F,20.0,Otras,Universitaria,Analista de Datos,10.3,1417000.0
+POST-0672,Javiera Pérez,F,26.0,RM,Postgrado,Soporte TI,14.4,1119000.0
+POST-0673,Carolina Muñoz,F,34.0,Los Lagos,Universitaria,Desarrollador Backend,1.7,1499000.0
+POST-0674,Felipe Rojas,M,23.0,La Araucanía,Universitaria,DevOps,5.2,1656000.0
+POST-0675,Carolina Vargas,F,41.0,RM,Universitaria,Project Manager,0.5,2010000.0
+POST-0676,Pedro Reyes,M,41.0,Maule,Universitaria,Soporte TI,0.4,1062000.0
+POST-0677,Felipe Vargas,M,20.0,Los Lagos,Técnico Superior,Analista de Datos,3.8,1132000.0
+POST-0678,Camila González,F,43.0,RM,Universitaria,Analista de Datos,0.9,971000.0
+POST-0679,Sofía Morales,F,35.0,RM,Universitaria,Marketing Digital,2.9,1196000.0
+POST-0680,Natalia Castro,F,47.0,RM,Universitaria,Diseñador UX,5.6,959000.0
+POST-0681,Catalina Castro,F,37.0,Los Lagos,Universitaria,Project Manager,5.3,1076000.0
+POST-0682,Valentina Vargas,F,25.0,Maule,Universitaria,Analista de RRHH,20.6,978000.0
+POST-0683,Diego Medina,M,31.0,Valparaíso,Técnico Superior,Desarrollador Backend,9.2,714000.0
+POST-0684,María Fuentes,F,38.0,RM,Técnico Superior,Diseñador UX,1.9,1684000.0
+POST-0685,Catalina Medina,F,34.0,RM,Postgrado,Analista de RRHH,4.0,1031000.0
+POST-0686,Valentina Flores,F,31.0,Bio-Bío,Técnico Superior,Project Manager,2.8,1229000.0
+POST-0687,Luis Pérez,M,36.0,Los Lagos,Universitaria,Analista de Datos,0.3,1052000.0
+POST-0688,Valentina Díaz,F,29.0,Bio-Bío,Técnico Superior,Project Manager,10.0,1372000.0
+POST-0689,Francisca Pérez,F,38.0,Valparaíso,Técnico Superior,Marketing Digital,7.2,1154000.0
+POST-0690,Andrés Castro,M,26.0,RM,Postgrado,Project Manager,1.8,1506000.0
+POST-0691,Alejandra Morales,F,40.0,Otras,Postgrado,Analista de Datos,4.4,1645000.0
+POST-0692,Camila Herrera,F,23.0,La Araucanía,Universitaria,Analista de RRHH,1.5,1549000.0
+POST-0693,Nicolás Morales,M,47.0,RM,Universitaria,Desarrollador Backend,2.1,896000.0
+POST-0694,Cristóbal Flores,M,30.0,RM,Universitaria,Diseñador UX,2.3,1544000.0
+POST-0695,Nicolás Medina,M,,Maule,Técnico Superior,Analista de Datos,0.7,1950000.0
+POST-0696,Francisca Díaz,F,46.0,Bio-Bío,Universitaria,Ventas B2B,10.0,
+POST-0697,Javiera Díaz,F,36.0,Bio-Bío,Universitaria,Analista de RRHH,10.3,1126000.0
+POST-0698,Natalia González,F,31.0,RM,Universitaria,Analista de Datos,2.0,1064000.0
+POST-0699,Diego Soto,M,40.0,RM,Universitaria,Desarrollador Backend,0.9,1280000.0
+POST-0700,Andrea Fuentes,F,39.0,Valparaíso,Universitaria,Desarrollador Backend,7.4,912000.0
+POST-0701,Alejandra González,F,30.0,RM,Técnico Superior,Diseñador UX,2.8,746000.0
+POST-0702,Catalina González,F,28.0,RM,Universitaria,Soporte TI,2.9,1731000.0
+POST-0703,Rodrigo Muñoz,M,26.0,Bio-Bío,Universitaria,Diseñador UX,5.8,650000.0
+POST-0704,Carlos Díaz,M,52.0,RM,Universitaria,Soporte TI,2.9,2232000.0
+POST-0705,Nicolás Reyes,M,39.0,Bio-Bío,Técnico Superior,Contabilidad,0.5,1516000.0
+POST-0706,Daniela Torres,F,43.0,Valparaíso,Técnico Superior,Diseñador UX,5.0,1680000.0
+POST-0707,Catalina Reyes,F,31.0,RM,Técnico Superior,Desarrollador Backend,2.1,1041000.0
+POST-0708,Ignacio Torres,M,34.0,RM,Técnico Superior,Diseñador UX,5.1,1295000.0
+POST-0709,Martín Soto,M,37.0,RM,Secundaria,Analista de Datos,1.5,1398000.0
+POST-0710,Catalina Díaz,F,38.0,RM,Postgrado,Contabilidad,0.5,1703000.0
+POST-0711,Jorge Soto,M,34.0,RM,Universitaria,Project Manager,9.2,2218000.0
+POST-0712,María Vargas,F,34.0,La Araucanía,Postgrado,Contabilidad,0.4,1073000.0
+POST-0713,Daniela Torres,F,45.0,RM,Secundaria,Analista de Datos,5.9,1331000.0
+POST-0714,Constanza Muñoz,F,50.0,RM,Universitaria,Analista de Datos,2.4,1441000.0
+POST-0715,Camila Castro,F,29.0,Los Lagos,Postgrado,Soporte TI,0.1,714000.0
+POST-0716,Catalina Morales,F,,RM,Secundaria,Desarrollador Backend,0.5,1530000.0
+POST-0717,Valentina Rojas,F,41.0,RM,Universitaria,Marketing Digital,8.8,1631000.0
+POST-0718,María Rojas,F,33.0,Valparaíso,Universitaria,Ventas B2B,0.4,1827000.0
+POST-0719,Diego Fuentes,M,50.0,RM,Universitaria,Analista de RRHH,8.8,1735000.0
+POST-0720,Valentina Torres,F,29.0,RM,Postgrado,Desarrollador Backend,0.2,1676000.0
+POST-0721,María Soto,F,34.0,RM,Técnico Superior,Project Manager,0.9,1625000.0
+POST-0722,Sofía Vargas,F,30.0,Bio-Bío,Universitaria,Analista de Datos,0.6,884000.0
+POST-0723,Luis Castro,M,20.0,RM,Postgrado,Ventas B2B,2.2,1039000.0
+POST-0724,Paola Torres,F,32.0,La Araucanía,Técnico Superior,Desarrollador Backend,1.1,1751000.0
+POST-0725,Catalina Díaz,F,26.0,RM,Postgrado,Diseñador UX,1.7,2114000.0
+POST-0726,Pablo Pérez,M,,Valparaíso,Técnico Superior,Marketing Digital,1.5,1650000.0
+POST-0727,Carlos Vargas,M,28.0,RM,Postgrado,Diseñador UX,0.4,1617000.0
+POST-0728,Sofía Muñoz,F,36.0,RM,Universitaria,Project Manager,8.3,1826000.0
+POST-0729,Andrea Morales,F,23.0,La Araucanía,Postgrado,Soporte TI,0.2,
+POST-0730,Valentina Herrera,F,33.0,La Araucanía,Postgrado,Diseñador UX,25.0,1756000.0
+POST-0731,Felipe Flores,M,33.0,Otras,Universitaria,Desarrollador Backend,4.4,996000.0
+POST-0732,Sofía Medina,F,33.0,RM,Postgrado,Marketing Digital,2.5,1275000.0
+POST-0733,Bárbara Medina,F,26.0,Bio-Bío,Universitaria,Desarrollador Backend,1.7,910000.0
+POST-0734,Carlos Rojas,M,36.0,La Araucanía,Universitaria,Soporte TI,8.7,1301000.0
+POST-0735,Constanza Pérez,F,34.0,Valparaíso,Universitaria,Marketing Digital,1.7,857000.0
+POST-0736,Carolina Muñoz,F,23.0,Maule,Universitaria,Ventas B2B,2.6,1907000.0
+POST-0737,Carolina Rojas,F,21.0,RM,Universitaria,Contabilidad,3.9,891000.0
+POST-0738,Pablo Medina,M,20.0,RM,Técnico Superior,Ventas B2B,0.2,698000.0
+POST-0739,María Flores,F,32.0,RM,Universitaria,Ventas B2B,4.4,1984000.0
+POST-0740,Constanza Castro,F,42.0,Valparaíso,Postgrado,Soporte TI,4.7,
+POST-0741,Pedro Torres,M,46.0,RM,Técnico Superior,Analista de Datos,2.4,605000.0
+POST-0742,Bárbara Fuentes,F,30.0,Bio-Bío,Técnico Superior,Diseñador UX,5.5,1129000.0
+POST-0743,Diego Vargas,M,,RM,Universitaria,Analista de RRHH,0.4,2224000.0
+POST-0744,Daniela Castro,F,32.0,RM,Universitaria,Project Manager,0.0,1336000.0
+POST-0745,Luis Pérez,M,,RM,Técnico Superior,Desarrolladore Backen,0.4,1104000.0
+POST-0746,Camila Vargas,F,25.0,RM,Universitaria,Analista de RRHH,2.9,1742000.0
+POST-0747,Sofía Castro,F,22.0,Valparaíso,Postgrado,Analista de Datos,2.3,1207000.0
+POST-0748,Natalia Reyes,F,34.0,Otras,Universitaria,Analista de Datos,1.2,1637000.0
+POST-0749,Paola Reyes,F,34.0,Otras,Secundaria,Desarrollador Backend,0.8,1897000.0
+POST-0750,Catalina González,F,28.0,RM,Postgrado,Analista de Datos,4.4,1470000.0
+POST-0751,Andrea Díaz,F,29.0,La Araucanía,Universitaria,Project Manager,5.5,1662000.0
+POST-0752,Andrés Fuentes,M,42.0,Bio-Bío,Postgrado,Desarrollador Backend,1.0,1488000.0
+POST-0753,Bárbara Vargas,F,34.0,Bio-Bío,Universitaria,Diseñador UX,10.2,1109000.0
+POST-0754,Catalina Muñoz,F,25.0,RM,Universitaria,Marketing Digital,12.2,908000.0
+POST-0755,Pedro Torres,M,30.0,RM,Técnico Superior,Desarrolladore Backen,3.6,1147000.0
+POST-0756,Alejandra Rojas,F,32.0,La Araucanía,Universitaria,Desarrolladore Backen,0.7,1491000.0
+POST-0757,María Rojas,F,21.0,Los Lagos,Secundaria,Contabilidad,0.6,1000000.0
+POST-0758,Pedro Herrera,M,37.0,RM,Universitaria,DevOps,3.4,1369000.0
+POST-0759,Constanza Medina,F,33.0,Los Lagos,Universitaria,Analista de Datos,1.0,1572000.0
+POST-0760,Catalina Reyes,F,27.0,Los Lagos,Universitaria,Desarrollador Backend,4.1,1701000.0
+POST-0761,Camila Medina,F,42.0,Maule,Postgrado,Ventas B2B,0.9,1094000.0
+POST-0762,Javiera Castro,F,31.0,RM,Universitaria,Soporte TI,2.1,1878000.0
+POST-0763,Francisca Flores,F,34.0,Valparaíso,Universitaria,Analista de Datos,0.4,1032000.0
+POST-0764,Andrea Díaz,F,26.0,Los Lagos,Técnico Superior,Marketing Digital,0.8,999000.0
+POST-0765,Martín Castro,M,45.0,Bio-Bío,Técnico Superior,Analista de Datos,0.7,1564000.0
+POST-0766,Sofía Castro,F,29.0,Los Lagos,Secundaria,Analista de Datos,7.2,1253000.0
+POST-0767,Nicolás Muñoz,M,46.0,RM,Universitaria,Marketing Digital,0.4,1689000.0
+POST-0768,Natalia Díaz,F,40.0,RM,Postgrado,Marketing Digital,11.5,1095000.0
+POST-0769,Luis Rojas,M,32.0,Maule,Universitaria,Soporte TI,2.5,1045000.0
+POST-0770,Francisca Castro,F,37.0,Maule,Universitaria,Contabilidad,10.8,745000.0
+POST-0771,Daniela González,F,35.0,Valparaíso,Técnico Superior,Soporte TI,9.7,2347000.0
+POST-0772,Andrés Rojas,M,39.0,RM,Técnico Superior,Contabilidad,1.8,
+POST-0773,Ignacio Soto,M,33.0,Maule,Universitaria,Soporte TI,5.1,1255000.0
+POST-0774,Andrea Rojas,F,26.0,Los Lagos,Universitaria,Contabilidad,8.8,1167000.0
+POST-0775,Cristóbal Medina,M,33.0,RM,Universitaria,Contabilidad,0.2,902000.0
+POST-0776,Luis Vargas,M,30.0,RM,Universitaria,Soporte TI,9.6,1670000.0
+POST-0777,Bárbara Torres,F,35.0,Bio-Bío,Universitaria,Ventas B2B,10.7,
+POST-0778,Natalia Medina,F,32.0,La Araucanía,Universitaria,Project Manager,1.8,1456000.0
+POST-0779,Diego Castro,M,24.0,Bio-Bío,Postgrado,Diseñador UX,4.6,1621000.0
+POST-0780,Natalia Morales,F,29.0,Otras,Universitaria,Desarrollador Backend,5.8,1455000.0
+POST-0781,Paola Fuentes,F,28.0,RM,Postgrado,Desarrollador Backend,0.3,505000.0
+POST-0782,Constanza Díaz,F,38.0,RM,Universitaria,Analista de RRHH,2.7,1779000.0
+POST-0783,Martín Reyes,M,22.0,Los Lagos,Técnico Superior,Analista de Datos,5.8,1635000.0
+POST-0784,Paola Medina,F,43.0,RM,Universitaria,Ventas B2B,1.0,1543000.0
+POST-0785,Catalina Herrera,F,33.0,Maule,Universitaria,Soporte TI,13.7,1552000.0
+POST-0786,Nicolás Medina,M,30.0,Maule,Secundaria,Analista de Datos,4.6,1702000.0
+POST-0787,Jorge Soto,M,35.0,Bio-Bío,Universitaria,Marketing Digital,0.9,1620000.0
+POST-0788,Carolina Medina,F,24.0,RM,Universitaria,Contabilidad,2.5,532000.0
+POST-0789,Jorge Vargas,M,35.0,Otras,Técnico Superior,Soporte TI,5.9,576000.0
+POST-0790,Francisca Medina,F,39.0,Bio-Bío,Universitaria,Ventas B2B,3.0,1634000.0
+POST-0791,Martín Herrera,M,34.0,Otras,Universitaria,Analista de RRHH,9.5,
+POST-0792,Camila Reyes,F,39.0,La Araucanía,Universitaria,Desarrollador Backend,4.7,1613000.0
+POST-0793,Martín Morales,M,30.0,RM,Universitaria,Diseñador UX,0.7,951000.0
+POST-0794,Javiera Fuentes,F,36.0,RM,Universitaria,Analista de RRHH,14.5,1721000.0
+POST-0795,Felipe Reyes,M,29.0,Bio-Bío,Universitaria,Desarrollador Backend,6.6,1806000.0
+POST-0796,Martín Rojas,M,44.0,Valparaíso,Universitaria,Project Manager,10.6,1172000.0
+POST-0797,Diego Rojas,M,47.0,Bio-Bío,Universitaria,Analista de Datos,0.6,942000.0
+POST-0798,María Pérez,F,27.0,Bio-Bío,Técnico Superior,Soporte TI,2.0,505000.0
+POST-0799,Sebastián Torres,M,30.0,Los Lagos,Universitaria,Desarrollador Backend,2.5,1486000.0
+POST-0800,Pedro Soto,M,41.0,Bio-Bío,Secundaria,Soporte TI,5.5,1294000.0
+POST-0801,Andrea Rojas,F,29.0,Los Lagos,Secundaria,Contabilidad,1.8,1779000.0
+POST-0802,Bárbara Reyes,F,45.0,RM,Secundaria,Analista de RRHH,6.0,2042000.0
+POST-0803,Andrea Medina,F,28.0,RM,Universitaria,Marketing Digital,0.4,971000.0
+POST-0804,Carolina González,F,36.0,Valparaíso,Postgrado,Analista de RRHH,0.2,1412000.0
+POST-0805,Sebastián Flores,M,43.0,Valparaíso,Postgrado,Marketing Digital,4.9,1417000.0
+POST-0806,Ignacio González,M,36.0,Valparaíso,Universitaria,Soporte TI,2.0,543000.0
+POST-0807,Ignacio Reyes,M,42.0,Bio-Bío,Universitaria,Analista de Datos,0.1,1221000.0
+POST-0808,Valentina Medina,F,35.0,Bio-Bío,Postgrado,Desarrollador Backend,2.0,1083000.0
+POST-0809,Bárbara Muñoz,F,41.0,Los Lagos,Universitaria,Project Manager,10.1,1183000.0
+POST-0810,Jorge Díaz,M,31.0,RM,Postgrado,Contabilidad,5.8,1231000.0
+POST-0811,Andrea Díaz,F,28.0,RM,Universitaria,Diseñador UX,0.6,1445000.0
+POST-0812,Javiera Medina,F,31.0,Valparaíso,Universitaria,Project Manager,10.6,989000.0
+POST-0813,Carolina Pérez,F,40.0,Otras,Universitaria,DevOps,5.0,996000.0
+POST-0814,Cristóbal González,M,32.0,Bio-Bío,Postgrado,Analista de Datos,9.7,1105000.0
+POST-0815,Camila Fuentes,F,48.0,RM,Técnico Superior,Analista de RRHH,3.2,1008000.0
+POST-0816,Cristóbal Pérez,M,39.0,RM,Universitaria,Ventas B2B,1.6,1715000.0
+POST-0817,Camila Fuentes,F,24.0,Bio-Bío,Universitaria,Analista de Datos,1.2,
+POST-0818,Valentina Torres,F,30.0,RM,Universitaria,Project Manager,3.6,1726000.0
+POST-0819,Sofía Pérez,F,29.0,La Araucanía,Universitaria,Desarrollador Backend,4.8,897000.0
+POST-0820,Constanza Morales,F,29.0,RM,Universitaria,Diseñador UX,6.3,1248000.0
+POST-0821,Nicolás Castro,M,31.0,RM,Universitaria,Marketing Digital,9.0,604000.0
+POST-0822,Bárbara Morales,F,41.0,RM,Universitaria,Project Manager,2.1,2205000.0
+POST-0823,Rodrigo Castro,M,37.0,RM,Universitaria,Analista de Datos,4.6,1653000.0
+POST-0824,Bárbara González,F,20.0,Los Lagos,Universitaria,Desarrollador Backend,11.0,502000.0
+POST-0825,Paola Reyes,F,31.0,RM,Postgrado,Project Manager,3.1,1109000.0
+POST-0826,Luis Rojas,M,31.0,RM,Técnico Superior,Analista de Datos,1.1,1563000.0
+POST-0827,Natalia Torres,F,36.0,Bio-Bío,Postgrado,Ventas B2B,7.8,1645000.0
+POST-0828,Carolina Torres,F,44.0,Bio-Bío,Técnico Superior,Contabilidad,13.3,1249000.0
+POST-0829,Pablo Fuentes,M,29.0,Otras,Universitaria,Desarrollador Backend,5.3,1728000.0
+POST-0830,Constanza Díaz,F,29.0,Valparaíso,Universitaria,Analista de Datos,25.0,1409000.0
+POST-0831,Constanza Pérez,F,35.0,RM,Universitaria,Analista de Datos,2.0,
+POST-0832,Francisca Flores,F,31.0,Los Lagos,Universitaria,Analista de Datos,8.3,1456000.0
+POST-0833,Natalia Fuentes,F,28.0,La Araucanía,Universitaria,Contabilidad,1.4,1416000.0
+POST-0834,Javiera Pérez,F,40.0,Valparaíso,Universitaria,Contabilidad,3.0,903000.0
+POST-0835,Cristóbal González,M,28.0,RM,Universitaria,Project Manager,6.5,1860000.0
+POST-0836,Javiera Herrera,F,22.0,RM,Universitaria,Desarrollador Backend,0.4,876000.0
+POST-0837,Catalina González,F,33.0,RM,Postgrado,Diseñador UX,8.2,1644000.0
+POST-0838,Catalina Rojas,F,38.0,RM,Universitaria,Analista de Datos,0.8,1644000.0
+POST-0839,Pedro Flores,M,40.0,Valparaíso,Postgrado,Project Manager,5.9,1841000.0
+POST-0840,Felipe Vargas,M,41.0,Otras,Universitaria,Analista de Datos,7.2,1732000.0
+POST-0841,Pablo Pérez,M,36.0,Bio-Bío,Universitaria,Analista de Datos,1.0,1312000.0
+POST-0842,Nicolás Rojas,M,24.0,RM,Universitaria,Soporte TI,15.1,1536000.0
+POST-0843,Rodrigo Herrera,M,41.0,RM,Universitaria,Analista de Datos,7.7,1224000.0
+POST-0844,Martín Díaz,M,34.0,Bio-Bío,Secundaria,Analista de Datos,2.7,2050000.0
+POST-0845,Andrés Rojas,M,30.0,La Araucanía,Universitaria,Marketing Digital,10.7,750000.0
+POST-0846,Andrés Castro,M,29.0,RM,Técnico Superior,Soporte TI,10.4,1729000.0
+POST-0847,Luis Rojas,M,43.0,RM,Universitaria,Diseñador UX,0.9,1707000.0
+POST-0848,Sofía Vargas,F,25.0,RM,Técnico Superior,Project Manager,1.9,1050000.0
+POST-0849,Sofía Rojas,F,28.0,RM,Técnico Superior,Contabilidad,0.6,1294000.0
+POST-0850,Andrea Pérez,F,31.0,Los Lagos,Universitaria,DevOps,2.3,1482000.0
+POST-0851,Bárbara Morales,F,,Valparaíso,Postgrado,Marketing Digital,0.0,1233000.0
+POST-0852,Francisca Flores,F,28.0,RM,Postgrado,Desarrolladore Backen,1.0,1473000.0
+POST-0853,Bárbara Muñoz,F,27.0,RM,Universitaria,Analista de RRHH,1.6,1009000.0
+POST-0854,Nicolás González,M,32.0,Bio-Bío,Técnico Superior,Ventas B2B,0.6,723000.0
+POST-0855,Luis Castro,M,42.0,Los Lagos,Secundaria,DevOps,0.9,959000.0
+POST-0856,Constanza Flores,F,35.0,Maule,Técnico Superior,Project Manager,4.1,867000.0
+POST-0857,Sebastián Torres,M,29.0,Valparaíso,Técnico Superior,Desarrollador Backend,3.3,1035000.0
+POST-0858,Rodrigo Vargas,M,35.0,RM,Universitaria,Project Manager,0.8,872000.0
+POST-0859,Nicolás Torres,M,35.0,La Araucanía,Universitaria,Ventas B2B,5.4,1368000.0
+POST-0860,Andrés Fuentes,M,33.0,RM,Universitaria,Desarrollador Backend,8.5,630000.0
+POST-0861,Andrea Morales,F,46.0,RM,Universitaria,DevOps,2.8,1500000.0
+POST-0862,Sofía Flores,F,31.0,RM,Postgrado,Ventas B2B,7.2,1054000.0
+POST-0863,Daniela Torres,F,23.0,Otras,Postgrado,Marketing Digital,0.6,1429000.0
+POST-0864,Alejandra Medina,F,35.0,Valparaíso,Universitaria,Desarrollador Backend,1.3,
+POST-0865,Nicolás Castro,M,26.0,Valparaíso,Universitaria,Contabilidad,2.2,1019000.0
+POST-0866,Carolina Medina,F,34.0,Bio-Bío,Postgrado,Diseñador UX,1.2,823000.0
+POST-0867,Tomás Morales,M,34.0,Valparaíso,Secundaria,Analista de Datos,6.0,1679000.0
+POST-0868,Paola Reyes,F,23.0,La Araucanía,Postgrado,Analista de Datos,6.3,1220000.0
+POST-0869,Constanza Reyes,F,20.0,RM,Técnico Superior,Soporte TI,3.9,1049000.0
+POST-0870,Carolina Rojas,F,40.0,Valparaíso,Postgrado,Soporte TI,0.4,993000.0
+POST-0871,Sebastián Reyes,M,23.0,RM,Técnico Superior,Marketing Digital,5.3,1204000.0
+POST-0872,Francisca Díaz,F,37.0,Bio-Bío,Postgrado,Ventas B2B,0.1,1722000.0
+POST-0873,Javiera Pérez,F,38.0,Los Lagos,Técnico Superior,Contabilidad,3.1,1821000.0
+POST-0874,Diego Reyes,M,33.0,La Araucanía,Secundaria,Desarrollador Backend,1.4,
+POST-0875,Natalia Flores,F,35.0,RM,Universitaria,Soporte TI,0.9,1664000.0
+POST-0876,Luis Vargas,M,39.0,Bio-Bío,Universitaria,Analista de Datos,3.4,1536000.0
+POST-0877,Andrea Fuentes,F,37.0,La Araucanía,Postgrado,Soporte TI,6.0,2001000.0
+POST-0878,Luis Pérez,M,30.0,Bio-Bío,Universitaria,Contabilidad,2.9,1429000.0
+POST-0879,Javiera Díaz,F,20.0,Maule,Secundaria,Ventas B2B,2.9,1073000.0
+POST-0880,Camila Flores,F,27.0,RM,Técnico Superior,Analista de RRHH,2.8,960000.0
+POST-0881,María Reyes,F,22.0,RM,Técnico Superior,Analista de Datos,2.0,1494000.0
+POST-0882,Sofía Reyes,F,35.0,Bio-Bío,Universitaria,Analista de Datos,14.7,1811000.0
+POST-0883,Andrea Torres,F,39.0,RM,Universitaria,Diseñador UX,0.0,1977000.0
+POST-0884,Camila Pérez,F,32.0,RM,Universitaria,Ventas B2B,2.7,1565000.0
+POST-0885,Carlos Reyes,M,23.0,Maule,Universitaria,Project Manager,15.8,1294000.0
+POST-0886,Tomás Castro,M,27.0,Otras,Universitaria,Contabilidad,10.0,1367000.0
+POST-0887,Carlos Herrera,M,33.0,RM,Secundaria,Ventas B2B,0.7,1583000.0
+POST-0888,Natalia Rojas,F,35.0,Bio-Bío,Universitaria,Analista de RRHH,7.3,
+POST-0889,Rodrigo Pérez,M,39.0,RM,Postgrado,Soporte TI,7.1,1749000.0
+POST-0890,Paola Rojas,F,27.0,RM,Universitaria,Analista de Datos,12.2,1370000.0
+POST-0891,María Muñoz,F,26.0,Valparaíso,Universitaria,Analista de Datos,2.5,995000.0
+POST-0892,Nicolás Díaz,M,41.0,RM,Universitaria,Analista de Datos,8.5,1391000.0
+POST-0893,Daniela Castro,F,27.0,RM,Técnico Superior,Desarrollador Backend,18.1,2179000.0
+POST-0894,Felipe Castro,M,26.0,La Araucanía,Universitaria,Project Manager,1.3,1363000.0
+POST-0895,Rodrigo Reyes,M,30.0,RM,Universitaria,Analista de Datos,9.3,1449000.0
+POST-0896,Diego Soto,M,34.0,RM,Universitaria,Desarrollador Backend,4.6,2084000.0
+POST-0897,Constanza Fuentes,F,20.0,RM,Postgrado,Analista de Datos,25.0,501000.0
+POST-0898,Andrea Muñoz,F,38.0,RM,Postgrado,Marketing Digital,1.1,
+POST-0899,Ignacio Pérez,M,25.0,RM,Universitaria,Project Manager,19.5,
+POST-0900,Constanza Torres,F,20.0,Maule,Universitaria,Desarrollador Backend,4.7,
+POST-0901,Javiera Herrera,F,37.0,Maule,Universitaria,Analista de Datos,14.1,1305000.0
+POST-0902,Rodrigo Flores,M,32.0,RM,Universitaria,Project Manager,0.8,930000.0
+POST-0903,Diego Muñoz,M,29.0,RM,Técnico Superior,Ventas B2B,6.2,1908000.0
+POST-0904,Bárbara Torres,F,27.0,RM,Universitaria,Analista de Datos,21.4,1476000.0
+POST-0905,Valentina Morales,F,,Valparaíso,Universitaria,Contabilidad,19.2,1833000.0
+POST-0906,Francisca Reyes,F,33.0,Valparaíso,Postgrado,DevOps,1.6,1485000.0
+POST-0907,Carolina González,F,35.0,RM,Secundaria,Analista de RRHH,1.2,1293000.0
+POST-0908,Carolina Castro,F,38.0,RM,Universitaria,Desarrollador Backend,2.0,2332000.0
+POST-0909,Jorge Herrera,M,40.0,RM,Universitaria,Soporte TI,11.4,1290000.0
+POST-0910,Francisca Pérez,F,39.0,RM,Secundaria,Marketing Digital,11.5,840000.0
+POST-0911,Sebastián Castro,M,33.0,Bio-Bío,Postgrado,Marketing Digital,3.9,724000.0
+POST-0912,Cristóbal Muñoz,M,21.0,Los Lagos,Universitaria,Soporte TI,5.0,446000.0
+POST-0913,Javiera Díaz,F,26.0,RM,Técnico Superior,Diseñador UX,5.3,1759000.0
+POST-0914,Catalina Herrera,F,29.0,La Araucanía,Universitaria,Desarrollador Backend,2.1,989000.0
+POST-0915,Carlos Medina,M,31.0,RM,Universitaria,Analista de Datos,1.4,1126000.0
+POST-0916,Jorge Reyes,M,28.0,Bio-Bío,Técnico Superior,Diseñador UX,17.9,1223000.0
+POST-0917,Ignacio Herrera,M,30.0,Valparaíso,Técnico Superior,Contabilidad,13.2,1492000.0
+POST-0918,Diego Herrera,M,28.0,RM,Técnico Superior,Analista de RRHH,5.6,1127000.0
+POST-0919,Cristóbal Flores,M,21.0,La Araucanía,Universitaria,Analista de RRHH,0.4,1769000.0
+POST-0920,Valentina González,F,37.0,RM,Universitaria,Desarrollador Backend,9.2,656000.0
+POST-0921,Carlos González,M,35.0,RM,Universitaria,Analista de RRHH,2.4,1637000.0
+POST-0922,Cristóbal Herrera,M,40.0,La Araucanía,Técnico Superior,Marketing Digital,0.8,2091000.0
+POST-0923,Jorge Castro,M,39.0,Los Lagos,Universitaria,Analista de Datos,4.7,2124000.0
+POST-0924,Andrea Díaz,F,,RM,Universitaria,Project Manager,11.1,
+POST-0925,Javiera Morales,F,35.0,RM,Universitaria,Desarrollador Backend,1.1,1512000.0
+POST-0926,Bárbara González,F,35.0,RM,Postgrado,Analista de RRHH,6.2,2050000.0
+POST-0927,Diego Herrera,M,29.0,RM,Secundaria,Desarrollador Backend,1.4,
+POST-0928,Javiera González,F,37.0,RM,Postgrado,Analista de Datos,2.2,
+POST-0929,Francisca Torres,F,43.0,RM,Técnico Superior,Marketing Digital,3.3,1072000.0
+POST-0930,Carlos Morales,M,38.0,RM,Universitaria,Analista de Datos,2.6,724000.0
+POST-0931,Nicolás Fuentes,M,20.0,RM,Técnico Superior,Contabilidad,0.2,1144000.0
+POST-0932,Paola Morales,F,43.0,Bio-Bío,Universitaria,Analista de RRHH,3.8,1965000.0
+POST-0933,Carolina Rojas,F,44.0,RM,Técnico Superior,Diseñador UX,2.9,1029000.0
+POST-0934,Catalina Rojas,F,50.0,Otras,Postgrado,Soporte TI,2.7,905000.0
+POST-0935,Pedro Pérez,M,33.0,Valparaíso,Universitaria,Project Manager,6.0,1747000.0
+POST-0936,Pablo Fuentes,M,33.0,RM,Técnico Superior,Analista de Datos,1.9,794000.0
+POST-0937,Ignacio Muñoz,M,30.0,Bio-Bío,Postgrado,Desarrollador Backend,2.4,1642000.0
+POST-0938,Alejandra Reyes,F,38.0,RM,Universitaria,Ventas B2B,5.8,1534000.0
+POST-0939,Diego Soto,M,42.0,Bio-Bío,Universitaria,Soporte TI,0.0,2113000.0
+POST-0940,Nicolás Pérez,M,,RM,Universitaria,Marketing Digital,4.5,1675000.0
+POST-0941,Daniela Morales,F,46.0,RM,Universitaria,Analista de RRHH,1.6,858000.0
+POST-0942,Pablo Castro,M,24.0,RM,Postgrado,Project Manager,1.6,1509000.0
+POST-0943,Rodrigo Pérez,M,,RM,Universitaria,Soporte TI,0.8,1338000.0
+POST-0944,Carolina Fuentes,F,20.0,Valparaíso,Universitaria,Desarrollador Backend,4.6,693000.0
+POST-0945,María Pérez,F,42.0,RM,Universitaria,Soporte TI,2.1,1232000.0
+POST-0946,Felipe Muñoz,M,36.0,Los Lagos,Universitaria,Marketing Digital,0.1,1364000.0
+POST-0947,Paola González,F,37.0,RM,Postgrado,Project Manager,1.6,1625000.0
+POST-0948,Bárbara Castro,F,35.0,Bio-Bío,Postgrado,Analista de RRHH,0.1,693000.0
+POST-0949,Cristóbal Torres,M,27.0,Otras,Universitaria,Desarrollador Backend,4.5,1615000.0
+POST-0950,Pedro Medina,M,42.0,La Araucanía,Universitaria,Analista de Datos,15.9,1231000.0
+POST-0951,Natalia Soto,F,41.0,RM,Universitaria,Ventas B2B,9.7,1124000.0
+POST-0952,Bárbara Herrera,F,23.0,RM,Universitaria,Analista de Datos,2.4,1654000.0
+POST-0953,Felipe Medina,M,33.0,RM,Postgrado,Diseñador UX,3.9,809000.0
+POST-0954,Bárbara Soto,F,33.0,Maule,Universitaria,Desarrollador Backend,6.8,1050000.0
+POST-0955,Nicolás Castro,M,34.0,RM,Universitaria,Soporte TI,0.9,400000.0
+POST-0956,Carolina Vargas,F,37.0,Valparaíso,Universitaria,Project Manager,7.5,2056000.0
+POST-0957,Diego Pérez,M,22.0,Valparaíso,Técnico Superior,Desarrollador Backend,0.6,1219000.0
+POST-0958,Rodrigo Soto,M,26.0,Maule,Universitaria,Project Manager,11.7,1143000.0
+POST-0959,Ignacio Herrera,M,36.0,RM,Técnico Superior,Ventas B2B,5.3,1508000.0
+POST-0960,Pablo González,M,24.0,Valparaíso,Universitaria,Analista de Datos,2.0,1564000.0
+POST-0961,Andrea Reyes,F,22.0,RM,Universitaria,Desarrollador Backend,3.5,1419000.0
+POST-0962,Catalina Vargas,F,38.0,Otras,Universitaria,Analista de RRHH,3.6,
+POST-0963,Carolina Díaz,F,37.0,RM,Técnico Superior,Analista de Datos,14.9,1658000.0
+POST-0964,Carolina Fuentes,F,33.0,Maule,Universitaria,Soporte TI,0.7,1074000.0
+POST-0965,Cristóbal Vargas,M,39.0,RM,Postgrado,Analista de Datos,6.6,2006000.0
+POST-0966,Sofía Pérez,F,33.0,Bio-Bío,Universitaria,Analista de RRHH,1.3,1710000.0
+POST-0967,Daniela Castro,F,34.0,Los Lagos,Técnico Superior,Analista de Datos,2.0,1577000.0
+POST-0968,Paola Torres,F,39.0,Valparaíso,Universitaria,Analista de RRHH,10.8,1204000.0
+POST-0969,Bárbara Flores,F,47.0,RM,Postgrado,Project Manager,1.7,2577000.0
+POST-0970,Rodrigo González,M,35.0,Bio-Bío,Universitaria,Diseñador UX,2.6,732000.0
+POST-0971,Javiera Soto,F,31.0,Bio-Bío,Postgrado,Desarrollador Backend,16.1,400000.0
+POST-0972,Valentina Rojas,F,46.0,La Araucanía,Universitaria,Contabilidad,1.2,1302000.0
+POST-0973,Carlos Castro,M,50.0,RM,Universitaria,Ventas B2B,25.0,1487000.0
+POST-0974,Felipe González,M,22.0,Valparaíso,Universitaria,Diseñador UX,4.3,
+POST-0975,Valentina Herrera,F,32.0,RM,Técnico Superior,Marketing Digital,2.0,1871000.0
+POST-0976,María González,F,30.0,RM,Secundaria,Ventas B2B,3.1,1565000.0
+POST-0977,Rodrigo Pérez,M,36.0,RM,Universitaria,Analista de Datos,2.5,827000.0
+POST-0978,Felipe Herrera,M,41.0,Maule,Postgrado,Analista de RRHH,5.0,1339000.0
+POST-0979,Carolina Castro,F,31.0,Bio-Bío,Técnico Superior,Marketing Digital,3.5,
+POST-0980,Andrés Rojas,M,42.0,Valparaíso,Postgrado,Contabilidad,7.0,1816000.0
+POST-0981,Martín Díaz,M,28.0,RM,Técnico Superior,Desarrollador Backend,2.0,1868000.0
+POST-0982,Javiera Pérez,F,50.0,Valparaíso,Postgrado,Project Manager,2.5,
+POST-0983,Javiera Vargas,F,30.0,RM,Universitaria,DevOps,14.3,1233000.0
+POST-0984,Carolina Flores,F,30.0,Maule,Universitaria,Soporte TI,3.5,1796000.0
+POST-0985,Francisca Muñoz,F,29.0,Los Lagos,Universitaria,Desarrollador Backend,3.4,966000.0
+POST-0986,Alejandra Rojas,F,43.0,La Araucanía,Universitaria,Project Manager,0.6,1215000.0
+POST-0987,Rodrigo Rojas,M,37.0,Los Lagos,Universitaria,Analista de Datos,1.0,1906000.0
+POST-0988,Catalina Soto,F,32.0,Valparaíso,Secundaria,Desarrollador Backend,0.9,1822000.0
+POST-0989,Martín Pérez,M,34.0,RM,Técnico Superior,Diseñador UX,0.6,1306000.0
+POST-0990,Carlos Flores,M,36.0,RM,Universitaria,Analista de Datos,0.5,1526000.0
+POST-0991,Sebastián Rojas,M,38.0,RM,Universitaria,Desarrollador Backend,12.6,
+POST-0992,Pablo Pérez,M,30.0,La Araucanía,Técnico Superior,Project Manager,5.7,1885000.0
+POST-0993,Daniela Rojas,F,31.0,RM,Técnico Superior,Analista de Datos,0.5,1450000.0
+POST-0994,Valentina Rojas,F,20.0,RM,Universitaria,Marketing Digital,5.0,1383000.0
+POST-0995,Martín Morales,M,29.0,RM,Universitaria,Diseñador UX,3.3,
+POST-0996,Pedro Muñoz,M,42.0,Bio-Bío,Postgrado,Analista de Datos,1.7,1497000.0
+POST-0997,Tomás Fuentes,M,30.0,RM,Universitaria,Project Manager,6.7,1466000.0
+POST-0998,María Pérez,F,35.0,RM,Universitaria,Analista de Datos,6.8,
+POST-0999,Diego Muñoz,M,35.0,RM,Técnico Superior,Desarrollador Backend,1.4,1404000.0
+POST-1000,Pedro Morales,M,36.0,RM,Universitaria,Analista de Datos,12.6,1441000.0
+POST-1001,Valentina Pérez,F,25.0,RM,Universitaria,Analista de Datos,4.7,1810000.0
+POST-1002,Daniela Vargas,F,45.0,RM,Postgrado,Marketing Digital,19.0,1556000.0
+POST-1003,Daniela Muñoz,F,31.0,RM,Técnico Superior,Diseñador UX,12.3,1049000.0
+POST-1004,María Rojas,F,32.0,RM,Universitaria,Contabilidad,4.6,1537000.0
+POST-1005,Pablo González,M,31.0,Valparaíso,Universitaria,Desarrollador Backend,0.6,1673000.0
+POST-1006,Paola Vargas,F,25.0,RM,Universitaria,Contabilidad,0.5,1167000.0
+POST-1007,Bárbara Torres,F,38.0,Maule,Universitaria,Contabilidad,14.7,
+POST-1008,Cristóbal Torres,M,31.0,RM,Universitaria,Diseñador UX,7.4,1360000.0
+POST-1009,Cristóbal Medina,M,36.0,RM,Universitaria,Analista de Datos,6.3,400000.0
+POST-1010,Nicolás Vargas,M,20.0,Bio-Bío,Técnico Superior,Desarrollador Backend,2.4,1007000.0
+POST-1011,Pablo Reyes,M,29.0,RM,Postgrado,Contabilidad,3.6,
+POST-1012,Valentina González,F,35.0,Valparaíso,Universitaria,Desarrollador Backend,9.4,982000.0
+POST-1013,Alejandra Pérez,F,38.0,Bio-Bío,Universitaria,Desarrollador Backend,2.1,1769000.0
+POST-1014,Paola Reyes,F,21.0,RM,Postgrado,Analista de RRHH,1.0,1615000.0
+POST-1015,Constanza Morales,F,,La Araucanía,Postgrado,Diseñador UX,4.9,677000.0
+POST-1016,Andrés Pérez,M,20.0,Otras,Universitaria,Contabilidad,0.5,1510000.0
+POST-1017,Luis Morales,M,29.0,RM,Universitaria,DevOps,5.4,
+POST-1018,Cristóbal Torres,M,38.0,RM,Universitaria,Desarrollador Backend,20.8,2253000.0
+POST-1019,Pedro Soto,M,36.0,RM,Universitaria,Desarrollador Backend,8.3,1790000.0
+POST-1020,Carlos Herrera,M,30.0,RM,Universitaria,Contabilidad,12.6,1149000.0
+POST-1021,Sofía Díaz,F,39.0,Valparaíso,Universitaria,analista de Datos,2.0,1918000.0
+POST-1022,Luis Vargas,M,25.0,RM,Técnico Superior,Desarrollador Backend,5.4,1247000.0
+POST-1023,Pablo González,M,26.0,Valparaíso,Universitaria,Marketing Digital,1.7,
+POST-1024,Cristóbal González,M,38.0,RM,Postgrado,Desarrollador Backend,5.8,795000.0
+POST-1025,Rodrigo Castro,M,40.0,Valparaíso,Postgrado,Desarrollador Backend,0.5,1556000.0
+POST-1026,Sebastián Reyes,M,24.0,RM,Técnico Superior,Desarrollador Backend,15.8,1578000.0
+POST-1027,Alejandra Pérez,F,35.0,RM,Universitaria,Project Manager,0.0,1699000.0
+POST-1028,Pablo Medina,M,37.0,Valparaíso,Postgrado,Analista de RRHH,5.4,1676000.0
+POST-1029,María Morales,F,34.0,Valparaíso,Postgrado,Soporte TI,0.5,1218000.0
+POST-1030,Daniela Morales,F,38.0,RM,Técnico Superior,Analista de RRHH,1.8,1343000.0
+POST-1031,Jorge González,M,48.0,RM,Postgrado,Analista de Datos,4.4,1320000.0
+POST-1032,Alejandra Vargas,F,29.0,Valparaíso,Técnico Superior,Project Manager,10.3,
+POST-1033,Sofía Muñoz,F,34.0,RM,Universitaria,Analista de Datos,5.5,
+POST-1034,Rodrigo Medina,M,21.0,RM,Técnico Superior,Analista de Datos,2.5,968000.0
+POST-1035,Rodrigo Díaz,M,33.0,RM,Universitaria,Contabilidad,12.6,1064000.0
+POST-1036,Nicolás Muñoz,M,44.0,Bio-Bío,Técnico Superior,Analista de Datos,10.2,1548000.0
+POST-1037,Catalina Díaz,F,24.0,La Araucanía,Universitaria,Marketing Digital,4.3,1812000.0
+POST-1038,Valentina Vargas,F,32.0,Valparaíso,Universitaria,Desarrollador Backend,4.6,1294000.0
+POST-1039,Diego Vargas,M,29.0,Bio-Bío,Técnico Superior,Desarrollador Backend,10.8,1482000.0
+POST-1040,Francisca Muñoz,F,29.0,RM,Técnico Superior,Ventas B2B,12.4,765000.0
+POST-1041,Constanza Herrera,F,28.0,Valparaíso,Universitaria,DevOps,1.8,
+POST-1042,Constanza Pérez,F,35.0,Valparaíso,Universitaria,Analista de RRHH,0.9,1167000.0
+POST-1043,Francisca Muñoz,F,29.0,RM,Postgrado,Project Manager,5.5,1794000.0
+POST-1044,Camila Vargas,F,34.0,La Araucanía,Secundaria,Marketing Digital,2.4,
+POST-1045,Alejandra Herrera,F,26.0,RM,Universitaria,Analista de Datos,1.0,1544000.0
+POST-1046,Tomás Muñoz,M,33.0,Bio-Bío,Postgrado,Diseñador UX,3.1,605000.0
+POST-1047,Carlos Rojas,M,31.0,RM,Técnico Superior,Desarrollador Backend,3.9,769000.0
+POST-1048,Constanza Castro,F,31.0,Valparaíso,Técnico Superior,Analista de Datos,1.3,889000.0
+POST-1049,Javiera Díaz,F,36.0,RM,Universitaria,Marketing Digital,6.0,1660000.0
+POST-1050,Rodrigo Herrera,M,26.0,RM,Universitaria,Project Manager,14.0,
+POST-1051,Andrés Pérez,M,23.0,Bio-Bío,Secundaria,Analista de Datos,5.3,1150000.0
+POST-1052,Daniela González,F,34.0,Valparaíso,Universitaria,Project Manager,4.4,1266000.0
+POST-1053,Francisca Morales,F,,Otras,Universitaria,Analista de RRHH,3.2,1321000.0
+POST-1054,Valentina Medina,F,46.0,RM,Técnico Superior,Analista de Datos,3.6,1827000.0
+POST-1055,Francisca Vargas,F,32.0,RM,Técnico Superior,Desarrollador Backend,5.7,1292000.0
+POST-1056,Rodrigo Herrera,M,36.0,RM,Universitaria,Analista de Datos,3.0,1610000.0
+POST-1057,Paola Flores,F,33.0,Bio-Bío,Universitaria,Analista de Datos,1.0,1402000.0
+POST-1058,Tomás Reyes,M,37.0,RM,Postgrado,Analista de Datos,2.5,1040000.0
+POST-1059,Paola Fuentes,F,26.0,RM,Técnico Superior,Marketing Digital,7.4,
+POST-1060,Cristóbal González,M,26.0,RM,Universitaria,Ventas B2B,3.1,
+POST-1061,Sofía Flores,F,35.0,Bio-Bío,Postgrado,Analista de Datos,5.4,1383000.0
+POST-1062,María Flores,F,42.0,RM,Técnico Superior,Soporte TI,6.3,1887000.0
+POST-1063,Alejandra Castro,F,36.0,RM,Universitaria,Analista de RRHH,0.4,1762000.0
+POST-1064,Sebastián Torres,M,27.0,RM,Universitaria,Soporte TI,5.3,1170000.0
+POST-1065,Paola Pérez,F,26.0,Bio-Bío,Universitaria,Analista de RRHH,2.8,1471000.0
+POST-1066,Valentina González,F,38.0,Otras,Técnico Superior,Soporte TI,5.4,1088000.0
+POST-1067,Nicolás Soto,M,29.0,Otras,Postgrado,Soporte TI,4.6,1133000.0
+POST-1068,Cristóbal Herrera,M,21.0,Bio-Bío,Postgrado,Analista de RRHH,5.2,852000.0
+POST-1069,Diego Torres,M,28.0,RM,Técnico Superior,Ventas B2B,5.8,1410000.0
+POST-1070,Daniela Rojas,F,31.0,Bio-Bío,Técnico Superior,Desarrollador Backend,6.7,1177000.0
+POST-1071,Luis Fuentes,M,34.0,Valparaíso,Universitaria,Contabilidad,1.3,1414000.0
+POST-1072,María Rojas,F,40.0,Valparaíso,Universitaria,Analista de RRHH,3.9,953000.0
+POST-1073,Pablo Herrera,M,40.0,Bio-Bío,Universitaria,Desarrollador Backend,4.7,1775000.0
+POST-1074,Daniela Pérez,F,31.0,Valparaíso,Técnico Superior,Desarrollador Backend,0.7,1078000.0
+POST-1075,Daniela Díaz,F,20.0,Valparaíso,Técnico Superior,Analista de Datos,0.2,1752000.0
+POST-1076,María Soto,F,28.0,Maule,Universitaria,Diseñador UX,0.7,1714000.0
+POST-1077,Sofía Díaz,F,39.0,Valparaíso,Postgrado,Desarrollador Backend,1.0,
+POST-1078,Jorge Pérez,M,26.0,RM,Universitaria,Analista de RRHH,9.4,479000.0
+POST-1079,Pedro González,M,40.0,Maule,Universitaria,Soporte TI,0.6,1048000.0
+POST-1080,Martín Flores,M,33.0,RM,Postgrado,DevOps,5.7,1233000.0
+POST-1081,Valentina Medina,F,38.0,RM,Postgrado,Marketing Digital,11.9,632000.0
+POST-1082,Andrés Medina,M,44.0,RM,Universitaria,DevOps,1.1,1557000.0
+POST-1083,Paola Medina,F,33.0,Los Lagos,Técnico Superior,Desarrollador Backend,12.0,1681000.0
+POST-1084,Andrés González,M,28.0,Bio-Bío,Universitaria,Diseñador UX,1.5,2036000.0
+POST-1085,Diego Vargas,M,,La Araucanía,Universitaria,Desarrollador Backend,0.7,719000.0
+POST-1086,Sofía Reyes,F,38.0,Bio-Bío,Universitaria,Ventas B2B,8.1,571000.0
+POST-1087,Camila Rojas,F,28.0,Valparaíso,Postgrado,Ventas B2B,15.2,963000.0
+POST-1088,Luis Soto,M,33.0,Valparaíso,Universitaria,Soporte TI,0.4,400000.0
+POST-1089,Andrés Fuentes,M,40.0,Otras,Postgrado,Analista de Datos,8.3,1452000.0
+POST-1090,Rodrigo Díaz,M,37.0,RM,Universitaria,Desarrollador Backend,5.1,1608000.0
+POST-1091,Daniela Muñoz,F,20.0,Maule,Técnico Superior,Contabilidad,7.7,1247000.0
+POST-1092,Javiera Muñoz,F,42.0,RM,Secundaria,Analista de RRHH,3.4,1082000.0
+POST-1093,Pedro Pérez,M,40.0,RM,Universitaria,Contabilidad,1.4,2305000.0
+POST-1094,Diego Pérez,M,33.0,Los Lagos,Universitaria,Diseñador UX,0.3,
+POST-1095,Rodrigo Flores,M,28.0,Bio-Bío,Universitaria,Ventas B2B,2.9,400000.0
+POST-1096,Jorge Vargas,M,33.0,RM,Universitaria,Desarrollador Backend,2.5,2676000.0
+POST-1097,Martín Castro,M,36.0,La Araucanía,Universitaria,Project Manager,1.4,1158000.0
+POST-1098,Paola Flores,F,35.0,RM,Universitaria,Contabilidad,1.1,1646000.0
+POST-1099,Carlos Rojas,M,41.0,RM,Técnico Superior,Ventas B2B,0.2,
+POST-1100,Catalina González,F,37.0,Bio-Bío,Universitaria,Diseñador UX,0.2,1827000.0
+POST-1101,Camila Reyes,F,39.0,La Araucanía,Universitaria,Analista de Datos,4.1,1676000.0
+POST-1102,Andrea González,F,25.0,Bio-Bío,Técnico Superior,Ventas B2B,1.9,1688000.0
+POST-1103,Andrea Pérez,F,46.0,Bio-Bío,Técnico Superior,Analista de Datos,0.4,1107000.0
+POST-1104,Diego Rojas,M,25.0,RM,Universitaria,Soporte TI,1.8,
+POST-1105,Tomás Reyes,M,28.0,RM,Técnico Superior,Project Manager,9.7,
+POST-1106,Ignacio Torres,M,22.0,Valparaíso,Universitaria,Ventas B2B,4.0,681000.0
+POST-1107,Nicolás Díaz,M,38.0,Valparaíso,Universitaria,Desarrollador Backend,1.1,1775000.0
+POST-1108,Natalia Vargas,F,34.0,RM,Técnico Superior,Contabilidad,5.7,1302000.0
+POST-1109,Bárbara Morales,F,21.0,RM,Universitaria,Soporte TI,10.2,1287000.0
+POST-1110,Andrea Soto,F,30.0,RM,Postgrado,Analista de Datos,1.5,1559000.0
+POST-1111,Natalia Reyes,F,27.0,Maule,Técnico Superior,Ventas B2B,0.1,1560000.0
+POST-1112,Valentina Rojas,F,32.0,RM,Técnico Superior,DevOps,4.0,1290000.0
+POST-1113,Pablo Díaz,M,39.0,RM,Postgrado,Project Manager,2.3,1054000.0
+POST-1114,Rodrigo Soto,M,58.0,RM,Universitaria,Soporte TI,4.8,1263000.0
+POST-1115,Daniela Reyes,F,27.0,RM,Universitaria,Contabilidad,5.4,1130000.0
+POST-1116,Rodrigo Reyes,M,25.0,RM,Postgrado,Analista de Datos,3.5,1754000.0
+POST-1117,Daniela Soto,F,20.0,RM,Técnico Superior,Desarrollador Backend,3.2,1323000.0
+POST-1118,Alejandra Reyes,F,25.0,RM,Postgrado,Desarrollador Backend,4.4,1399000.0
+POST-1119,Ignacio González,M,33.0,RM,Universitaria,Contabilidad,0.2,1468000.0
+POST-1120,Natalia Herrera,F,46.0,Maule,Postgrado,Marketing Digital,1.8,653000.0
+POST-1121,Cristóbal Díaz,M,24.0,Bio-Bío,Universitaria,Ventas B2B,7.3,1550000.0
+POST-1122,Francisca Rojas,F,,Bio-Bío,Postgrado,Soporte TI,3.4,1665000.0
+POST-1123,Nicolás Medina,M,37.0,RM,Universitaria,DevOps,3.8,605000.0
+POST-1124,Constanza Medina,F,,RM,Universitaria,Diseñador UX,3.3,
+POST-1125,Daniela Vargas,F,28.0,Otras,Universitaria,Marketing Digital,0.4,1183000.0
+POST-1126,Valentina Díaz,F,27.0,Valparaíso,Técnico Superior,Diseñador UX,4.3,828000.0
+POST-1127,Tomás Soto,M,26.0,Otras,Técnico Superior,Analista de RRHH,7.6,1233000.0
+POST-1128,Valentina Vargas,F,36.0,Bio-Bío,Universitaria,Soporte TI,11.7,
+POST-1129,Natalia Herrera,F,32.0,RM,Técnico Superior,Project Manager,6.9,1198000.0
+POST-1130,Ignacio Díaz,M,26.0,RM,Postgrado,Marketing Digital,2.0,1281000.0
+POST-1131,Nicolás González,M,27.0,RM,Técnico Superior,Diseñador UX,0.5,1476000.0
+POST-1132,María Medina,F,28.0,Bio-Bío,Universitaria,Marketing Digital,1.9,494000.0
+POST-1133,Sofía Pérez,F,28.0,RM,Técnico Superior,Desarrollador Backend,19.8,1842000.0
+POST-1134,Martín Soto,M,43.0,RM,Universitaria,Ventas B2B,3.0,1755000.0
+POST-1135,Catalina Vargas,F,22.0,RM,Postgrado,DevOps,0.2,1331000.0
+POST-1136,Diego Díaz,M,44.0,Valparaíso,Universitaria,Diseñador UX,3.5,809000.0
+POST-1137,Carlos Morales,M,20.0,Maule,Universitaria,Analista de RRHH,4.8,1701000.0
+POST-1138,Daniela Soto,F,27.0,Valparaíso,Técnico Superior,Marketing Digital,8.6,1022000.0
+POST-1139,Constanza Soto,F,39.0,RM,Universitaria,Desarrollador Backend,20.8,1901000.0
+POST-1140,Rodrigo Pérez,M,35.0,RM,Universitaria,Desarrollador Backend,0.5,460000.0
+POST-1141,Bárbara Flores,F,41.0,RM,Postgrado,Contabilidad,5.3,1064000.0
+POST-1142,Alejandra Medina,F,34.0,RM,Postgrado,Analista de Datos,1.6,1722000.0
+POST-1143,Sofía Díaz,F,27.0,Bio-Bío,Universitaria,Analista de Datos,3.0,2022000.0
+POST-1144,Alejandra Vargas,F,29.0,RM,Universitaria,Diseñador UX,8.1,1231000.0
+POST-1145,Constanza Castro,F,28.0,RM,Universitaria,Analista de Datos,0.6,1359000.0
+POST-1146,Catalina Pérez,F,36.0,RM,Universitaria,Marketing Digital,1.7,519000.0
+POST-1147,Valentina Díaz,F,32.0,RM,Universitaria,Analista de RRHH,0.0,1817000.0
+POST-1148,Diego Reyes,M,36.0,RM,Universitaria,Marketing Digital,3.7,1203000.0
+POST-1149,Alejandra Medina,F,23.0,RM,Universitaria,Marketing Digital,0.2,1033000.0
+POST-1150,Camila Reyes,F,24.0,RM,Técnico Superior,Analista de RRHH,5.8,1778000.0
+POST-1151,Sebastián Soto,M,26.0,Valparaíso,Postgrado,Ventas B2B,6.3,1259000.0
+POST-1152,Sofía Díaz,F,39.0,Bio-Bío,Universitaria,Marketing Digital,5.3,2098000.0
+POST-1153,Carlos Pérez,M,22.0,RM,Postgrado,Analista de Datos,5.2,1219000.0
+POST-1154,María Muñoz,F,32.0,RM,Universitaria,Soporte TI,1.9,1507000.0
+POST-1155,Ignacio González,M,38.0,Valparaíso,Universitaria,Desarrollador Backend,0.3,1933000.0
+POST-1156,Bárbara Pérez,F,31.0,RM,Universitaria,Marketing Digital,9.6,2001000.0
+POST-1157,Natalia Reyes,F,42.0,RM,Técnico Superior,Diseñador UX,2.4,1323000.0
+POST-1158,Javiera Torres,F,37.0,RM,Técnico Superior,Desarrollador Backend,7.0,1954000.0
+POST-1159,Francisca Muñoz,F,29.0,RM,Universitaria,Contabilidad,0.3,794000.0
+POST-1160,Daniela Muñoz,F,46.0,Los Lagos,Secundaria,Ventas B2B,10.6,1027000.0
+POST-1161,Luis Fuentes,M,37.0,RM,Técnico Superior,Marketing Digital,9.2,862000.0
+POST-1162,Natalia Soto,F,37.0,RM,Universitaria,DevOps,5.7,998000.0
+POST-1163,Javiera Herrera,F,33.0,La Araucanía,Universitaria,DevOps,0.5,1746000.0
+POST-1164,Catalina Rojas,F,38.0,RM,Postgrado,Analista de RRHH,1.0,2253000.0
+POST-1165,Pedro Muñoz,M,20.0,Valparaíso,Universitaria,Project Manager,5.2,1057000.0
+POST-1166,Nicolás Morales,M,40.0,Bio-Bío,Postgrado,Analista de Datos,3.4,1148000.0
+POST-1167,María Castro,F,41.0,Valparaíso,Postgrado,Contabilidad,1.7,1641000.0
+POST-1168,Valentina Flores,F,30.0,Bio-Bío,Técnico Superior,Analista de Datos,3.0,855000.0
+POST-1169,Jorge Flores,M,37.0,RM,Universitaria,DevOps,5.3,1011000.0
+POST-1170,Luis Medina,M,29.0,RM,Postgrado,Analista de Datos,1.3,1335000.0
+POST-1171,Carolina Díaz,F,24.0,RM,Técnico Superior,Desarrollador Backend,0.7,1226000.0
+POST-1172,Alejandra Vargas,F,33.0,Valparaíso,Universitaria,Diseñador UX,2.5,1334000.0
+POST-1173,María Rojas,F,25.0,Valparaíso,Técnico Superior,DevOps,5.4,1318000.0
+POST-1174,Camila Reyes,F,36.0,Maule,Universitaria,Analista de Datos,1.5,1796000.0
+POST-1175,Ignacio Muñoz,M,43.0,RM,Secundaria,Project Manager,0.7,922000.0
+POST-1176,Francisca Torres,F,29.0,RM,Técnico Superior,Project Manager,2.9,2198000.0
+POST-1177,Rodrigo Castro,M,34.0,RM,Técnico Superior,Analista de Datos,1.4,
+POST-1178,Carolina González,F,35.0,RM,Universitaria,Analista de RRHH,4.6,1572000.0
+POST-1179,Javiera Herrera,F,32.0,Otras,Postgrado,Desarrollador Backend,3.4,1647000.0
+POST-1180,Ignacio Pérez,M,31.0,RM,Universitaria,Analista de RRHH,0.5,1608000.0
+POST-1181,Nicolás Rojas,M,31.0,Bio-Bío,Técnico Superior,Analista de RRHH,3.7,2283000.0
+POST-1182,María Morales,F,32.0,RM,Postgrado,DevOps,3.7,810000.0
+POST-1183,Tomás Soto,M,33.0,RM,Técnico Superior,Contabilidad,6.9,1631000.0
+POST-1184,Ignacio Torres,M,26.0,Bio-Bío,Universitaria,DevOps,1.1,1006000.0
+POST-1185,Ignacio Flores,M,28.0,RM,Técnico Superior,Contabilidad,3.2,2164000.0
+POST-1186,Felipe Díaz,M,23.0,RM,Postgrado,Ventas B2B,0.5,1429000.0
+POST-1187,Jorge Vargas,M,31.0,Bio-Bío,Universitaria,Diseñador UX,2.4,659000.0
+POST-1188,Nicolás Díaz,M,37.0,La Araucanía,Universitaria,Analista de Datos,5.8,1802000.0
+POST-1189,Constanza Fuentes,F,26.0,RM,Universitaria,Desarrollador Backend,4.5,1709000.0
+POST-1190,Sofía Herrera,F,36.0,RM,Secundaria,Ventas B2B,5.6,953000.0
+POST-1191,Cristóbal Flores,M,38.0,Maule,Universitaria,Desarrollador Backend,1.6,1485000.0
+POST-1192,Ignacio González,M,41.0,Valparaíso,Universitaria,Analista de Datos,2.3,1396000.0
+POST-1193,Natalia Reyes,F,23.0,Valparaíso,Universitaria,Project Manager,4.5,1672000.0
+POST-1194,Natalia Muñoz,F,45.0,Maule,Técnico Superior,Analista de RRHH,4.4,1121000.0
+POST-1195,Daniela González,F,50.0,RM,Universitaria,Project Manager,6.6,1400000.0
+POST-1196,Rodrigo Herrera,M,39.0,RM,Universitaria,Analista de RRHH,1.7,1516000.0
+POST-1197,Bárbara Medina,F,55.0,Otras,Universitaria,Analista de Datos,1.2,2410000.0
+POST-1198,Martín González,M,38.0,Bio-Bío,Técnico Superior,Analista de Datos,21.3,2149000.0
+POST-1199,Luis Díaz,M,30.0,La Araucanía,Universitaria,Analista de Datos,3.6,2115000.0
+POST-1200,Carolina Flores,F,40.0,RM,Técnico Superior,Marketing Digital,3.9,1384000.0

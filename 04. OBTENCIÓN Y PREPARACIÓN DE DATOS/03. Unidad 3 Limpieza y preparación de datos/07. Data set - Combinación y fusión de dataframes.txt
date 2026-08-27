@@ -1,0 +1,427 @@
+{
+ "nbformat": 4,
+ "nbformat_minor": 5,
+ "metadata": {
+  "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+  "language_info": {"name": "python", "version": "3.10.0"},
+  "colab": {"provenance": []},
+  "title": "Clase 7 - Combinación y fusión de dataframes"
+ },
+ "cells": [
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Clase 7 – Combinación y Fusión de DataFrames\n",
+    "### Limpieza y preparación de datos\n",
+    "\n",
+    "**Temas:** `pd.concat()` · `pd.merge()` · `inner` / `left` / `right` / `outer` · `left_on` / `right_on`\n",
+    "\n",
+    "---"
+   ]
+  },
+
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "print(f'pandas {pd.__version__} cargado ✅')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 3 – Desafío Inicial: Pedidos y Clientes\n",
+    "\n",
+    "Dos archivos separados que deben combinarse para análisis de comportamiento por zona.\n",
+    "Problema: no todos los clientes hicieron pedidos, y hay pedidos sin cliente vinculado.\n",
+    "\n",
+    "**Archivos:** `clientes.csv` · `pedidos.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 3: Carga del desafío inicial ───────────────────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "clientes = pd.read_csv('clientes.csv')\n",
+    "pedidos  = pd.read_csv('pedidos.csv')\n",
+    "\n",
+    "print(f'clientes.csv: {len(clientes)} filas | {list(clientes.columns)}')\n",
+    "print(f'pedidos.csv:  {len(pedidos)} filas | {list(pedidos.columns)}')\n",
+    "print()\n",
+    "print(clientes.head(5))\n",
+    "print()\n",
+    "print(pedidos.head(5))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 5–7 – Concatenación de DataFrames con `pd.concat()`\n",
+    "\n",
+    "Une DataFrames secuencialmente (misma estructura, apilando filas)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 6: Dos DataFrames con la misma estructura ───────────────────────────\n",
+    "\n",
+    "import pandas as pd\n",
+    "enero   = pd.DataFrame({'producto': ['A', 'B'], 'ventas': [100, 150]})\n",
+    "febrero = pd.DataFrame({'producto': ['A', 'B'], 'ventas': [110, 160]})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 7: Resultado de la concatenación ────────────────────────────────────\n",
+    "\n",
+    "ventas_total = pd.concat([enero, febrero], ignore_index=True)\n",
+    "print(ventas_total)\n",
+    "# Resultado:\n",
+    "# producto ventas\n",
+    "# 0    A    100\n",
+    "# 1    B    150\n",
+    "# 2    A    110\n",
+    "# 3    B    160"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 8 – Parámetros Clave de `concat()`\n",
+    "\n",
+    "| Parámetro | Descripción |\n",
+    "|-----------|-------------|\n",
+    "| `axis=0` | Une por filas (default) |\n",
+    "| `axis=1` | Une por columnas |\n",
+    "| `ignore_index` | Reinicia el índice |\n",
+    "| `keys` | Agrega etiquetas jerárquicas |\n",
+    "| `join` | `outer` conserva todas las columnas; `inner` solo las comunes |"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 8: Parámetros clave — ejemplos ──────────────────────────────────────\n",
+    "\n",
+    "# axis=1: unir por columnas\n",
+    "print('axis=1 (por columnas):')\n",
+    "print(pd.concat([enero, febrero], axis=1))\n",
+    "\n",
+    "# keys: etiquetas jerárquicas\n",
+    "print('\\nkeys (etiquetas jerárquicas):')\n",
+    "print(pd.concat([enero, febrero], keys=['Enero', 'Febrero']))\n",
+    "\n",
+    "# join='inner': solo columnas comunes\n",
+    "marzo = pd.DataFrame({'producto': ['C'], 'ventas': [90], 'stock': [5]})\n",
+    "print('\\njoin=\"inner\" (solo columnas comunes):')\n",
+    "print(pd.concat([enero, marzo], join='inner', ignore_index=True))"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 11 – Merge de DataFrames\n",
+    "\n",
+    "`merge()` une DataFrames en base a columnas clave (como JOIN en SQL)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 11: Sintaxis básica de merge() ──────────────────────────────────────\n",
+    "\n",
+    "pd.merge(df1, df2, on='columna_clave', how='tipo_de_union')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 12 – Tipos de Combinación (`how`)\n",
+    "\n",
+    "| `how` | Descripción |\n",
+    "|-------|-------------|\n",
+    "| `'inner'` | Solo registros que coincidan en ambas tablas |\n",
+    "| `'left'` | Todos los de la izquierda + coincidencias de la derecha |\n",
+    "| `'right'` | Todos los de la derecha + coincidencias de la izquierda |\n",
+    "| `'outer'` | Todos los registros, coincidan o no |"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slide 13 – Ejemplo Aplicado: Clientes y Pedidos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 13: Unión de clientes y pedidos (left join) ─────────────────────────\n",
+    "# Pedido con id_cliente=5 no existe en clientes → aparece como NaN\n",
+    "\n",
+    "clientes = pd.read_csv('clientes.csv')\n",
+    "pedidos  = pd.read_csv('pedidos.csv')\n",
+    "df = pd.merge(pedidos, clientes, on='id_cliente', how='left')\n",
+    "print(df)\n",
+    "# Resultado esperado:\n",
+    "# id_pedido id_cliente monto nombre\n",
+    "# 0 101 1 5000 Ana\n",
+    "# 1 102 2 7000 Luis\n",
+    "# 2 103 2 3000 Luis\n",
+    "# 3 104 5 2000 NaN"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 15–17 – Actividad Guiada: Combinación de Clientes y Pedidos\n",
+    "\n",
+    "**Objetivo (Slide 16):** Consolidar clientes y pedidos para análisis comercial.\n",
+    "\n",
+    "**Archivos:** `clientes.csv` · `pedidos.csv`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Cargar los archivos ─────────────────────────────────────────────\n",
+    "\n",
+    "clientes = pd.read_csv('clientes.csv')\n",
+    "pedidos  = pd.read_csv('pedidos.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Concatenar nuevos registros ──────────────────────────────────────\n",
+    "\n",
+    "clientes_actualizados = pd.concat([clientes, clientes], ignore_index=True)\n",
+    "print(clientes_actualizados.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 17: Unir con pedidos (left merge) ───────────────────────────────────\n",
+    "\n",
+    "df_final = pd.merge(pedidos, clientes, on='id_cliente', how='left')\n",
+    "print(df_final)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 18: Análisis del resultado ─────────────────────────────────────────\n",
+    "\n",
+    "print('=== Análisis del dataset consolidado ===')\n",
+    "print(f'Total de pedidos:                     {len(df_final)}')\n",
+    "print(f'Pedidos con cliente identificado:     {df_final[\"nombre\"].notna().sum()}')\n",
+    "print(f'Pedidos sin cliente (NaN en nombre):  {df_final[\"nombre\"].isna().sum()}')\n",
+    "print()\n",
+    "\n",
+    "# Clientes que NO hicieron pedidos\n",
+    "df_outer = pd.merge(pedidos, clientes, on='id_cliente', how='outer')\n",
+    "sin_pedido = df_outer[df_outer['id_pedido'].isna()]\n",
+    "print(f'Clientes sin ningún pedido: {len(sin_pedido)}')\n",
+    "print(sin_pedido[['id_cliente','nombre','region']])\n",
+    "\n",
+    "# Monto total por región (solo pedidos con cliente identificado)\n",
+    "print('\\nMonto total por región:')\n",
+    "print(df_final.groupby('region')['monto'].sum().sort_values(ascending=False))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 18: Demostración de los 4 tipos de join ─────────────────────────────\n",
+    "\n",
+    "print(f'{\"how\":>8} | {\"Filas resultado\":>16} | {\"NaN en nombre\":>15} | Descripción')\n",
+    "print('-' * 70)\n",
+    "for how in ['inner', 'left', 'right', 'outer']:\n",
+    "    df_h = pd.merge(pedidos, clientes, on='id_cliente', how=how)\n",
+    "    nan_nombre = df_h['nombre'].isna().sum() if 'nombre' in df_h.columns else '-'\n",
+    "    desc = {'inner':'Solo coincidencias', 'left':'Todos los pedidos',\n",
+    "            'right':'Todos los clientes', 'outer':'Todos de ambos'}[how]\n",
+    "    print(f'{how:>8} | {len(df_h):>16} | {str(nan_nombre):>15} | {desc}')"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## Slides 19–21 – Actividad Autónoma: Productos y Proveedores\n",
+    "\n",
+    "**Contexto (Slide 20):** Identificar productos sin proveedor y proveedores sin productos.\n",
+    "\n",
+    "**Archivos:** `productos.csv` · `proveedores.csv`\n",
+    "\n",
+    "---\n",
+    "**Completa las celdas marcadas con `# 📝 TU CÓDIGO AQUÍ`**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: Cargar los archivos ─────────────────────────────────────────────\n",
+    "\n",
+    "productos   = pd.read_csv('productos.csv')\n",
+    "proveedores = pd.read_csv('proveedores.csv')\n",
+    "print(f'productos.csv:   {len(productos)} filas | {list(productos.columns)}')\n",
+    "print(f'proveedores.csv: {len(proveedores)} filas | {list(proveedores.columns)}')\n",
+    "print()\n",
+    "print(productos.head())\n",
+    "print()\n",
+    "print(proveedores)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: Unión izquierda — todos los productos (con o sin proveedor) ──────\n",
+    "# Productos sin proveedor → NaN en columnas de proveedores\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df_left = pd.merge(productos, proveedores, on='id_proveedor', how='left')\n",
+    "# print(df_left)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: ¿Cuántos productos no tienen proveedor asignado? ────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# sin_proveedor = df_left[df_left['nombre_proveedor'].isna()]\n",
+    "# print(f'Productos sin proveedor: {len(sin_proveedor)}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: Unión exterior — todo de ambos tablas ───────────────────────────\n",
+    "# Proveedores sin productos también aparecen\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df_outer = pd.merge(productos, proveedores, on='id_proveedor', how='outer')\n",
+    "# proveedores_sin_productos = df_outer[df_outer['id_producto'].isna()]\n",
+    "# print(f'Proveedores sin productos: {len(proveedores_sin_productos)}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Slide 21: Exportar resultados como CSV ────────────────────────────────────\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ\n",
+    "# df_left.to_csv('productos_con_proveedor.csv', index=False)\n",
+    "# df_outer.to_csv('productos_proveedores_completo.csv', index=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ── Ejercicio adicional: left_on / right_on (Slide 14) ────────────────────────\n",
+    "# Cuando los nombres de la clave son distintos en cada DataFrame\n",
+    "# Crea un ejemplo donde la clave se llame 'id_prov' en productos y 'id' en proveedores\n",
+    "# y usa left_on='id_prov', right_on='id'\n",
+    "\n",
+    "# 📝 TU CÓDIGO AQUÍ"
+   ]
+  },
+
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Preguntas de reflexión y cierre (Slide 18)\n",
+    "\n",
+    "1. ¿Qué sucede si un pedido tiene un `id_cliente` que no existe en la tabla de clientes?\n",
+    "2. ¿Qué combinación (`how`) incluiría todos los pedidos, incluso los sin cliente?\n",
+    "3. ¿Cuál sería el efecto de tener claves duplicadas en ambos DataFrames?\n",
+    "4. ¿Cuándo preferirías `concat()` sobre `merge()`?"
+   ]
+  }
+
+ ]
+}

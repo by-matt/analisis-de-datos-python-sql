@@ -1,0 +1,992 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# ⚙️ Clase 5 — Operaciones con arreglos NumPy\n",
+    "## Obtención de datos y fundamentos de NumPy\n",
+    "\n",
+    "**Situación:** Trabajas en una empresa de logística que analiza rutas de reparto en tiempo real. Cada vehículo envía datos de velocidad, temperatura del motor, consumo de combustible y ubicación. Tu jefatura pide reorganizar y procesar estos datos usando NumPy: seleccionar información relevante, filtrar anomalías y aplicar funciones a gran escala.\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Indexación y slicing en vectores y matrices\n",
+    "- Selección condicional (indexación booleana)\n",
+    "- Diferencia entre referencia y copia (`.copy()`)\n",
+    "- Operaciones vectorizadas entre arreglos y con escalares\n",
+    "- Funciones universales (ufuncs) y estadísticas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "print('✅ NumPy importado')\n",
+    "print(f'Versión: {np.__version__}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — Indexación y selección de elementos\n",
+    "\n",
+    "### 1.1 Indexación en arreglos unidimensionales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "velocidades = np.array([30, 45, 55, 60, 48, 52])\n",
+    "print('Velocidades:', velocidades)\n",
+    "\n",
+    "# Acceso por posición (índice positivo)\n",
+    "print()\n",
+    "print(f'Posición 0 (primero): {velocidades[0]}')\n",
+    "print(f'Posición 3:           {velocidades[3]}')\n",
+    "\n",
+    "# Índices negativos (desde el final)\n",
+    "print()\n",
+    "print(f'Posición -1 (último):           {velocidades[-1]}')\n",
+    "print(f'Posición -3 (tercero desde fin): {velocidades[-3]}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Slicing (rebanado)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('Posiciones 1 a 3 [1:4]:   ', velocidades[1:4])   # [45 55 60]\n",
+    "print('Primeros tres [:3]:        ', velocidades[:3])    # [30 45 55]\n",
+    "print('Desde posición 3 [3:]:     ', velocidades[3:])   # [60 48 52]\n",
+    "print('Toda la secuencia [:]:     ', velocidades[:])    # completo\n",
+    "print('Paso de 2 [::2]:           ', velocidades[::2])  # [30 55 48]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.3 Indexación en matrices bidimensionales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "matriz = np.array([\n",
+    "    [10, 20, 30],\n",
+    "    [40, 50, 60],\n",
+    "    [70, 80, 90]\n",
+    "])\n",
+    "print('Matriz:')\n",
+    "print(matriz)\n",
+    "\n",
+    "print()\n",
+    "print(f'Elemento [1,2] (fila 1, col 2): {matriz[1, 2]}')  # 60\n",
+    "print(f'Fila 0 completa:                {matriz[0]}')\n",
+    "print(f'Columna 1 completa [:, 1]:      {matriz[:, 1]}')\n",
+    "print()\n",
+    "print('Submatriz filas 0-1, cols 1-2:')\n",
+    "print(matriz[0:2, 1:3])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.4 Modificación de valores e indexación avanzada"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "v = velocidades.copy()   # trabajamos sobre una copia\n",
+    "\n",
+    "# Modificar un elemento\n",
+    "v[2] = 50\n",
+    "print('Después de v[2] = 50:', v)\n",
+    "\n",
+    "# Reemplazar un segmento\n",
+    "v[0:3] = [35, 46, 51]\n",
+    "print('Después de reemplazar [0:3]:', v)\n",
+    "\n",
+    "# Indexación avanzada: seleccionar por lista de posiciones\n",
+    "posiciones = [0, 2, 4]\n",
+    "print(f'Valores en posiciones {posiciones}: {v[posiciones]}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datos_vehiculo = np.array([\n",
+    "    [80, 92, 8.5],    # velocidad, temp_motor, consumo\n",
+    "    [95, 98, 9.2],\n",
+    "    [70, 88, 7.8],\n",
+    "    [110, 105, 11.0],\n",
+    "    [85, 90, 8.9]\n",
+    "])\n",
+    "\n",
+    "# ✏️ Extrae la columna de velocidades (columna 0)\n",
+    "velocidades_col = datos_vehiculo[???, ???]\n",
+    "print('Velocidades:', velocidades_col)\n",
+    "\n",
+    "# ✏️ Extrae los registros 1 y 2 completos (filas)\n",
+    "registros_1_2 = datos_vehiculo[???, :]\n",
+    "print('Registros 1-2:')\n",
+    "print(registros_1_2)\n",
+    "\n",
+    "# ✏️ ¿Qué valor tiene el elemento en la fila 3, columna 1?\n",
+    "elemento = datos_vehiculo[???, ???]\n",
+    "print(f'Elemento [3,1]: {elemento}')\n",
+    "\n",
+    "# ✏️ Reemplaza el consumo del vehículo 0 (fila 0, col 2) con 8.0\n",
+    "datos_vehiculo[???, ???] = ???\n",
+    "print('Consumo actualizado:', datos_vehiculo[:, 2])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Selección condicional (indexación booleana)\n",
+    "\n",
+    "### 2.1 Condición sobre vector"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "temperaturas = np.array([22.5, 25.0, 19.8, 27.3, 21.0])\n",
+    "\n",
+    "# Generar máscara booleana\n",
+    "condicion = temperaturas > 23\n",
+    "print('Máscara (> 23):', condicion)\n",
+    "\n",
+    "# Usar la máscara como índice\n",
+    "print('Valores que cumplen:', temperaturas[condicion])\n",
+    "\n",
+    "# Expresión compacta\n",
+    "print('Compacto:', temperaturas[temperaturas > 23])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Otras condiciones y múltiples criterios"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('Menores a 21:  ', temperaturas[temperaturas < 21])\n",
+    "print('Igual a 25.0:  ', temperaturas[temperaturas == 25.0])\n",
+    "print('Distinto 22.5: ', temperaturas[temperaturas != 22.5])\n",
+    "\n",
+    "print()\n",
+    "# Múltiples condiciones — paréntesis OBLIGATORIOS\n",
+    "# & = AND  |  | = OR  |  ~ = NOT\n",
+    "entre_20_26 = (temperaturas > 20) & (temperaturas < 26)\n",
+    "print('Entre 20 y 26 (AND):', temperaturas[entre_20_26])\n",
+    "\n",
+    "extremos = (temperaturas < 21) | (temperaturas > 26)\n",
+    "print('Menores 21 o mayores 26 (OR):', temperaturas[extremos])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Condiciones sobre matrices"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "m = np.array([[10, 20, 30], [5, 25, 35], [15, 18, 40]])\n",
+    "print('Matriz:')\n",
+    "print(m)\n",
+    "\n",
+    "print()\n",
+    "print('Elementos > 20:', m[m > 20])       # vector con los que cumplen\n",
+    "\n",
+    "# Máscara booleana reutilizable\n",
+    "mascara_pares = m % 2 == 0\n",
+    "print('Máscara pares:')\n",
+    "print(mascara_pares)\n",
+    "print('Elementos pares:', m[mascara_pares])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.4 Asignación condicional (limpieza de datos)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "t = temperaturas.copy()\n",
+    "print('Antes:', t)\n",
+    "\n",
+    "# Reemplazar todos los valores menores a 22 con el umbral mínimo\n",
+    "t[t < 22] = 22\n",
+    "print('Después (imputación mínima 22°C):', t)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 2 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "velocidades_ruta = np.random.randint(40, 130, size=20)\n",
+    "print('Velocidades de ruta:', velocidades_ruta)\n",
+    "\n",
+    "print()\n",
+    "# ✏️ Selecciona las velocidades que excedan el límite de 100 km/h (anomalías)\n",
+    "anomalias = velocidades_ruta[??? > ???]\n",
+    "print('Velocidades anómalas (> 100):', anomalias)\n",
+    "\n",
+    "# ✏️ Selecciona velocidades entre 60 y 90 km/h (rango normal)\n",
+    "rango_normal = velocidades_ruta[??? & ???]\n",
+    "print('Rango normal (60-90):', rango_normal)\n",
+    "\n",
+    "# ✏️ ¿Cuántos registros superan los 100 km/h? (pista: los booleanos suman como 0 y 1)\n",
+    "n_anomalias = np.???(velocidades_ruta > 100)\n",
+    "print(f'Cantidad de anomalías: {n_anomalias}')\n",
+    "\n",
+    "# ✏️ Reemplaza todas las anomalías (> 120) con el valor 120\n",
+    "v_corr = velocidades_ruta.copy()\n",
+    "v_corr[v_corr > 120] = ???\n",
+    "print('Velocidades corregidas:', v_corr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Referencia vs. Copia\n",
+    "\n",
+    "### 3.1 El problema del aliasing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = np.array([1, 2, 3])\n",
+    "b = a               # b NO es una copia — apunta al mismo objeto\n",
+    "\n",
+    "b[0] = 100\n",
+    "\n",
+    "print('a:', a)      # ⚠️ [100   2   3] — ¡a también cambió!\n",
+    "print('b:', b)      # [100   2   3]\n",
+    "print('¿Comparten memoria?', np.shares_memory(a, b))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Copia real con `.copy()`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = np.array([1, 2, 3])\n",
+    "c = a.copy()        # c es completamente independiente\n",
+    "\n",
+    "c[0] = 999\n",
+    "\n",
+    "print('a:', a)      # [1 2 3] — no cambia\n",
+    "print('c:', c)      # [999   2   3]\n",
+    "print('¿Comparten memoria?', np.shares_memory(a, c))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Vista (view) con slicing sobre matrices"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "matriz = np.array([[1, 2], [3, 4]])\n",
+    "\n",
+    "# Slicing crea una VISTA, no una copia\n",
+    "submatriz = matriz[:, 0]\n",
+    "submatriz[0] = 100\n",
+    "\n",
+    "print('Matriz original (afectada):')\n",
+    "print(matriz)       # [[100, 2], [3, 4]]\n",
+    "\n",
+    "print()\n",
+    "# Solución: usar .copy() explícitamente\n",
+    "matriz2 = np.array([[1, 2], [3, 4]])\n",
+    "sub_copia = matriz2[:, 0].copy()\n",
+    "sub_copia[0] = 200\n",
+    "\n",
+    "print('Matriz2 (NO afectada con .copy()):')\n",
+    "print(matriz2)      # [[1, 2], [3, 4]]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "original = np.array([10, 20, 30, 40, 50])\n",
+    "\n",
+    "# ✏️ Crea una referencia (alias) y modifica el primer elemento\n",
+    "referencia = ???\n",
+    "referencia[0] = 999\n",
+    "print('original después de modificar referencia:', original)\n",
+    "print('¿Comparten memoria?', np.shares_memory(original, referencia))\n",
+    "\n",
+    "print()\n",
+    "# ✏️ Restaura el arreglo y crea una copia verdadera\n",
+    "original = np.array([10, 20, 30, 40, 50])\n",
+    "copia = original.???()\n",
+    "copia[0] = 999\n",
+    "print('original después de modificar copia:', original)   # no debe cambiar\n",
+    "print('copia:', copia)\n",
+    "\n",
+    "print()\n",
+    "# ✏️ ¿Por qué es crítico usar .copy() al transformar datos en ciencia de datos?\n",
+    "respuesta = \"\"\n",
+    "print('Respuesta:', respuesta)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Operaciones entre arreglos\n",
+    "\n",
+    "### 4.1 Operaciones elemento a elemento"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = np.array([10, 20, 30])\n",
+    "b = np.array([1,  2,  3])\n",
+    "\n",
+    "print(f'a + b = {a + b}')\n",
+    "print(f'a - b = {a - b}')\n",
+    "print(f'a * b = {a * b}')\n",
+    "print(f'a / b = {a / b}')\n",
+    "print(f'a ** 2 = {a ** 2}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Broadcasting"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Un solo valor se \"expande\" automáticamente\n",
+    "a = np.array([10, 20, 30])\n",
+    "b = np.array([1])\n",
+    "print('Broadcasting [1]:', a + b)    # [11 21 31]\n",
+    "\n",
+    "# Entre matriz y vector (compatible)\n",
+    "m1 = np.array([[1, 2], [3, 4]])\n",
+    "fila = np.array([1, 2])\n",
+    "print()\n",
+    "print('Matriz + vector fila:')\n",
+    "print(m1 + fila)    # [[2,4],[4,6]]\n",
+    "\n",
+    "# Error si dimensiones incompatibles\n",
+    "try:\n",
+    "    np.array([10, 20, 30]) + np.array([1, 2])\n",
+    "except ValueError as e:\n",
+    "    print()\n",
+    "    print(f'❌ Error de broadcasting: {e}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Operaciones lógicas y comparaciones entre arreglos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = np.array([10, 20, 30])\n",
+    "b = np.array([10, 15, 30])\n",
+    "\n",
+    "print('a == b:', a == b)    # [ True False  True]\n",
+    "print('a >  b:', a >  b)    # [False  True False]\n",
+    "print('a != b:', a != b)    # [False  True False]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.4 Funciones de agregación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "valores = np.array([10, 20, 30, 40])\n",
+    "\n",
+    "print(f'Suma:                {np.sum(valores)}')\n",
+    "print(f'Promedio:            {np.mean(valores)}')\n",
+    "print(f'Mínimo:              {np.min(valores)}')\n",
+    "print(f'Máximo:              {np.max(valores)}')\n",
+    "print(f'Desv. estándar:      {np.std(valores):.4f}')\n",
+    "print(f'Mediana:             {np.median(valores)}')\n",
+    "\n",
+    "# Combinación de arreglos\n",
+    "a = np.array([10, 20, 30])\n",
+    "b = np.array([10, 15, 30])\n",
+    "print()\n",
+    "print('Promedio elemento a elemento (a+b)/2:', (a + b) / 2)\n",
+    "\n",
+    "# Promoción de tipos\n",
+    "x_int   = np.array([1, 2, 3])\n",
+    "y_float = np.array([0.5, 1.5, 2.5])\n",
+    "print('int + float:', x_int + y_float, '→ dtype:', (x_int + y_float).dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 4 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Datos de un vehículo: [distancia recorrida (km), combustible consumido (L)]\n",
+    "distancia  = np.array([120, 95, 140, 80, 110])   # km\n",
+    "combustible = np.array([10.5, 8.2, 12.8, 7.1, 9.9])  # litros\n",
+    "\n",
+    "# ✏️ Calcula el consumo por kilómetro (L/km)\n",
+    "consumo_km = ??? / ???\n",
+    "print('Consumo por km (L/km):', np.round(consumo_km, 4))\n",
+    "\n",
+    "# ✏️ ¿Cuál es el promedio de consumo por km?\n",
+    "promedio = np.???(consumo_km)\n",
+    "print(f'Promedio: {promedio:.4f} L/km')\n",
+    "\n",
+    "# ✏️ ¿Qué viajes superaron el consumo promedio?\n",
+    "ineficientes = consumo_km[??? > ???]\n",
+    "print('Viajes ineficientes (sobre promedio):', np.round(ineficientes, 4))\n",
+    "\n",
+    "# ✏️ Si el combustible cuesta $1.200/L, calcula el costo total de cada viaje\n",
+    "costo_total = combustible * ???\n",
+    "print('Costo total por viaje ($):', costo_total)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Operaciones con escalares\n",
+    "\n",
+    "### 5.1 Operaciones básicas"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datos = np.array([10, 20, 30])\n",
+    "\n",
+    "print('datos + 5  =', datos + 5)    # suma\n",
+    "print('datos - 3  =', datos - 3)    # resta\n",
+    "print('datos * 2  =', datos * 2)    # multiplicación\n",
+    "print('datos / 10 =', datos / 10)   # división (→ float)\n",
+    "print('datos ** 2 =', datos ** 2)   # potencia\n",
+    "print('datos % 7  =', datos % 7)    # módulo\n",
+    "print('datos // 3 =', datos // 3)   # división entera (trunca decimales)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.2 Aplicaciones frecuentes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ajuste de precios (+5%)\n",
+    "precios = np.array([100, 200, 300])\n",
+    "nuevos_precios = precios * 1.05\n",
+    "print('Precios con +5%:', nuevos_precios)\n",
+    "\n",
+    "# Conversión de temperatura °C → °F\n",
+    "celsius    = np.array([0, 10, 20, 30, 40])\n",
+    "fahrenheit = celsius * 9/5 + 32\n",
+    "print('Celsius:   ', celsius)\n",
+    "print('Fahrenheit:', fahrenheit)\n",
+    "\n",
+    "# Normalización min-max → escala 0 a 1\n",
+    "mediciones = np.array([5, 10, 15, 20, 25])\n",
+    "normalizados = (mediciones - np.min(mediciones)) / (np.max(mediciones) - np.min(mediciones))\n",
+    "print()\n",
+    "print('Normalizados [0,1]:', normalizados)\n",
+    "\n",
+    "# Cuidado: booleanos como enteros\n",
+    "flags = np.array([True, False, True])\n",
+    "print()\n",
+    "print('Booleanos * 10:', flags * 10)   # [10 0 10]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 5 — Completa:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "velocidades_kmh = np.array([60, 80, 100, 120, 90])\n",
+    "\n",
+    "# ✏️ Convierte las velocidades de km/h a m/s (dividir por 3.6)\n",
+    "velocidades_ms = velocidades_kmh / ???\n",
+    "print('En m/s:', np.round(velocidades_ms, 2))\n",
+    "\n",
+    "# ✏️ Aplica una penalización: reduce todas las velocidades en un 10%\n",
+    "penalizadas = velocidades_kmh * ???\n",
+    "print('Con penalización 10%:', penalizadas)\n",
+    "\n",
+    "# ✏️ ¿Cuáles superan los 90 km/h antes y después de la penalización?\n",
+    "print('Superan 90 antes:', velocidades_kmh[??? > 90])\n",
+    "print('Superan 90 después:', penalizadas[??? > 90])\n",
+    "\n",
+    "# ✏️ Calcula el tiempo (horas) para recorrer 200 km a cada velocidad\n",
+    "tiempo_horas = ??? / velocidades_kmh\n",
+    "print('Tiempo para 200 km (h):', np.round(tiempo_horas, 2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 6 — Funciones universales (ufuncs)\n",
+    "\n",
+    "### 6.1 Funciones matemáticas elementales"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datos = np.array([1, 4, 9, 16])\n",
+    "\n",
+    "print('Raíz cuadrada np.sqrt:', np.sqrt(datos))\n",
+    "print('Logaritmo natural  np.log:', np.round(np.log(datos), 4))\n",
+    "print('Exponencial  np.exp:', np.round(np.exp(datos[:3]), 2))   # limitado por espacio\n",
+    "print('Valor absoluto np.abs:', np.abs(np.array([-3, -1, 0, 2, 5])))\n",
+    "\n",
+    "# Composición de funciones\n",
+    "resultado = np.log(np.sqrt(datos))\n",
+    "print()\n",
+    "print('log(sqrt(datos)):', np.round(resultado, 4))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 6.2 Funciones estadísticas por eje en matrices"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "matriz = np.array([\n",
+    "    [1, 2, 3],\n",
+    "    [4, 5, 6]\n",
+    "])\n",
+    "print('Matriz:')\n",
+    "print(matriz)\n",
+    "\n",
+    "print()\n",
+    "print('Suma total (sin eje):', np.sum(matriz))\n",
+    "print('Suma por columna (axis=0):', np.sum(matriz, axis=0))    # [5 7 9]\n",
+    "print('Suma por fila    (axis=1):', np.sum(matriz, axis=1))    # [6 15]\n",
+    "print()\n",
+    "print('Media por columna (axis=0):', np.mean(matriz, axis=0))\n",
+    "print('Media por fila    (axis=1):', np.mean(matriz, axis=1))\n",
+    "print('Máximo por columna (axis=0):', np.max(matriz, axis=0))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 6.3 Funciones booleanas: `any`, `all`, `sum`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "datos = np.array([3, 7, 2, 9])\n",
+    "\n",
+    "print('datos > 5:', datos > 5)\n",
+    "print('np.any(datos > 5):', np.any(datos > 5))   # ¿alguno cumple?\n",
+    "print('np.all(datos > 1):', np.all(datos > 1))   # ¿todos cumplen?\n",
+    "print('np.sum(datos > 5):', np.sum(datos > 5))   # ¿cuántos cumplen?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 6.4 ufuncs directas: `np.add`, `np.multiply`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = np.array([1, 2, 3])\n",
+    "y = np.array([4, 5, 6])\n",
+    "\n",
+    "print('np.add(x,y):       ', np.add(x, y))       # equivalente a x+y\n",
+    "print('np.multiply(x,y):  ', np.multiply(x, y))  # equivalente a x*y\n",
+    "print('np.power(x,2):     ', np.power(x, 2))     # equivalente a x**2\n",
+    "print('np.maximum(x,y):   ', np.maximum(x, y))   # máximo elemento a elemento"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 7 — Ejercicio guiado: Análisis de lecturas meteorológicas\n",
+    "\n",
+    "**Situación:** Tu jefatura te entrega datos de 8 horas de una estación meteorológica (temperatura °C, humedad %, velocidad del viento km/h) y te pide analizar anomalías y estadísticas."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Matriz: 8 horas × 3 variables [temperatura, humedad, viento]\n",
+    "np.random.seed(42)\n",
+    "estacion = np.array([\n",
+    "    [18.5, 72, 15],\n",
+    "    [19.2, 68, 18],\n",
+    "    [21.0, 65, 22],\n",
+    "    [23.5, 60, 30],\n",
+    "    [24.8, 58, 35],\n",
+    "    [22.1, 63, 28],\n",
+    "    [20.3, 70, 20],\n",
+    "    [17.9, 75, 12]\n",
+    "])\n",
+    "\n",
+    "print('Datos de la estación (8h × 3 variables):')\n",
+    "print(f'{\"Hora\":>6} {\"Temp(°C)\":>10} {\"Humedad(%)\": >12} {\"Viento(km/h)\":>14}')\n",
+    "print('-' * 48)\n",
+    "for i, fila in enumerate(estacion):\n",
+    "    print(f'{i:>6} {fila[0]:>10.1f} {fila[1]:>12.0f} {fila[2]:>14.0f}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 1: Estadísticas por variable (columna)\n",
+    "print('=== Estadísticas por variable ===')\n",
+    "variables = ['Temperatura', 'Humedad', 'Viento']\n",
+    "for i, var in enumerate(variables):\n",
+    "    col = estacion[:, i]\n",
+    "    print(f'{var:<14} → media: {np.mean(col):.1f}  min: {np.min(col):.1f}  max: {np.max(col):.1f}  std: {np.std(col):.2f}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 2: Extraer subconjuntos con condiciones\n",
+    "\n",
+    "# Horas con temperatura mayor a 22°C\n",
+    "temp = estacion[:, 0]\n",
+    "horas_calor = np.where(temp > 22)[0]\n",
+    "print('Horas con temperatura > 22°C:', horas_calor)\n",
+    "print('Temperaturas:', temp[horas_calor])\n",
+    "\n",
+    "print()\n",
+    "# Horas con viento fuerte (> 28 km/h)\n",
+    "viento = estacion[:, 2]\n",
+    "horas_viento = np.where(viento > 28)[0]\n",
+    "print('Horas con viento > 28 km/h:', horas_viento)\n",
+    "print('Viento:', viento[horas_viento])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 3: Vector de umbrales de alerta\n",
+    "umbrales = np.array([23.0, 65.0, 30.0])   # [temp_max, humedad_min, viento_max]\n",
+    "print('Umbrales de alerta:', umbrales)\n",
+    "\n",
+    "# Verificar si alguna lectura supera el umbral de temperatura\n",
+    "alertas_temp   = np.any(estacion[:, 0] > umbrales[0])\n",
+    "alertas_viento = np.any(estacion[:, 2] > umbrales[2])\n",
+    "print(f'¿Alerta temperatura (> {umbrales[0]})? {alertas_temp}')\n",
+    "print(f'¿Alerta viento (> {umbrales[2]})? {alertas_viento}')\n",
+    "\n",
+    "# Cuántas horas en alerta por cada variable\n",
+    "for i, (var, umb) in enumerate(zip(variables, umbrales)):\n",
+    "    n = np.sum(estacion[:, i] > umb)\n",
+    "    print(f'{var}: {n} hora(s) superan umbral {umb}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 4: Normalización Z-score (estandarización)\n",
+    "media   = np.mean(estacion, axis=0)\n",
+    "desv    = np.std(estacion, axis=0)\n",
+    "normalizado = (estacion - media) / desv\n",
+    "\n",
+    "print('=== Datos normalizados (Z-score) ===')\n",
+    "print(np.round(normalizado, 3))\n",
+    "print()\n",
+    "print('Media de normalizado (debe ser ~0):', np.round(np.mean(normalizado, axis=0), 10))\n",
+    "print('Std de normalizado (debe ser ~1): ', np.round(np.std(normalizado, axis=0), 10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paso 5: Visualización\n",
+    "horas = np.arange(8)\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(16, 4))\n",
+    "fig.suptitle('Análisis Meteorológico — 8 Horas de Medición', fontsize=13, fontweight='bold')\n",
+    "\n",
+    "configs = [\n",
+    "    ('Temperatura (°C)',    '#2E75B6', umbrales[0]),\n",
+    "    ('Humedad (%)',         '#70AD47', umbrales[1]),\n",
+    "    ('Viento (km/h)',       '#ED7D31', umbrales[2]),\n",
+    "]\n",
+    "\n",
+    "for i, (titulo, color, umbral) in enumerate(configs):\n",
+    "    axes[i].plot(horas, estacion[:, i], marker='o', color=color, linewidth=2)\n",
+    "    axes[i].axhline(umbral, color='red', linestyle='--', alpha=0.7, label=f'Umbral {umbral}')\n",
+    "    axes[i].set_title(titulo, fontweight='bold')\n",
+    "    axes[i].set_xlabel('Hora')\n",
+    "    axes[i].legend(fontsize=8)\n",
+    "    axes[i].grid(linestyle='--', alpha=0.4)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Preguntas de reflexión:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ 1. ¿Qué utilidad práctica tendría la creación de un vector de umbrales en contextos reales?\n",
+    "r1 = \"\"\n",
+    "\n",
+    "# ✏️ 2. ¿Por qué es relevante usar funciones estadísticas como mean, max o min en análisis de datos?\n",
+    "r2 = \"\"\n",
+    "\n",
+    "# ✏️ 3. ¿Qué diferencia hay entre modificar un arreglo por referencia vs. por copia?\n",
+    "r3 = \"\"\n",
+    "\n",
+    "# ✏️ 4. ¿En qué contexto de tu ámbito laboral podrías aplicar selección condicional con NumPy?\n",
+    "r4 = \"\"\n",
+    "\n",
+    "print('--- REFLEXIONES ---')\n",
+    "for i, r in enumerate([r1, r2, r3, r4], 1):\n",
+    "    print(f'{i}. {r}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen de operaciones y funciones\n",
+    "\n",
+    "| Categoría | Operación / Función | Descripción |\n",
+    "|-----------|--------------------|--------------|\n",
+    "| **Indexación** | `arr[i]`, `arr[i,j]` | Elemento por posición |\n",
+    "| **Slicing** | `arr[a:b]`, `arr[:, col]` | Subconjunto de datos |\n",
+    "| **Condicional** | `arr[arr > x]` | Filtro booleano |\n",
+    "| **Combinado** | `arr[(cond1) & (cond2)]` | AND/OR/NOT lógico |\n",
+    "| **Copia** | `arr.copy()` | Independiente del original |\n",
+    "| **Aritmética** | `+`, `-`, `*`, `/`, `**`, `%` | Elemento a elemento |\n",
+    "| **Agregación** | `np.sum`, `np.mean`, `np.std` | Estadísticas globales o por eje |\n",
+    "| **Booleanas** | `np.any`, `np.all`, `np.sum` | Verificación de condiciones |\n",
+    "| **Matemáticas** | `np.sqrt`, `np.log`, `np.exp` | Transformaciones elementales |\n",
+    "| **Por eje** | `np.sum(m, axis=0/1)` | Por columnas (0) o filas (1) |\n",
+    "\n",
+    "> 💡 **Regla de oro de las copias:** Siempre usa `.copy()` antes de transformar datos que no deben modificarse. Un alias silencioso puede propagar errores difíciles de detectar.\n",
+    "\n",
+    "> 💡 **Broadcasting:** NumPy expande automáticamente dimensiones compatibles — pero siempre verifica `.shape` antes de combinar arreglos de distinto tamaño."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

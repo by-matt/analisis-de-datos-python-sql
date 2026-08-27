@@ -1,0 +1,865 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 📐 Clase 4 — Regresión lineal múltiple: fundamentos y estructura del modelo\n",
+    "## Unidad: Correlación y modelamiento\n",
+    "\n",
+    "**Situación:** Una plataforma de educación digital quiere explicar qué factores influyen en el rendimiento final de sus estudiantes. Las variables disponibles son: tiempo de estudio, interacciones en foros, sesiones activas y notas previas.\n",
+    "\n",
+    "**Preguntas clave:**\n",
+    "- ¿Podemos combinar todas las variables para explicar el rendimiento?\n",
+    "- ¿Qué supuestos deben cumplirse para confiar en el modelo?\n",
+    "- ¿Qué variables conviene conservar?\n",
+    "\n",
+    "**Objetivos:**\n",
+    "- Construir un modelo **Y = β₀ + β₁X₁ + β₂X₂ + ... + βₙXₙ + ε**\n",
+    "- Verificar los **5 supuestos** del modelo lineal clásico\n",
+    "- Detectar **multicolinealidad** con VIF\n",
+    "- Aplicar **selección de variables** (backward/AIC)\n",
+    "- Comparar modelo completo vs modelo reducido"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "import statsmodels.api as sm\n",
+    "from statsmodels.stats.outliers_influence import variance_inflation_factor\n",
+    "from scipy import stats\n",
+    "\n",
+    "sns.set_theme(style='whitegrid')\n",
+    "plt.rcParams['figure.dpi'] = 110\n",
+    "\n",
+    "print('✅ Librerías cargadas')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 1 — De simple a múltiple: ¿por qué necesitamos más variables?\n",
+    "\n",
+    "### 1.1 Limitación del modelo simple"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(42)\n",
+    "n_demo = 80\n",
+    "\n",
+    "tiempo   = np.random.normal(10, 2, n_demo)\n",
+    "productos = np.random.randint(2, 10, n_demo).astype(float)\n",
+    "gasto     = 500 + 180 * tiempo + 120 * productos + np.random.normal(0, 300, n_demo)\n",
+    "\n",
+    "df_demo = pd.DataFrame({'tiempo': tiempo, 'productos_vistos': productos, 'gasto': gasto})\n",
+    "\n",
+    "# Modelo simple vs múltiple\n",
+    "X_simple   = sm.add_constant(df_demo[['tiempo']])\n",
+    "X_multiple = sm.add_constant(df_demo[['tiempo', 'productos_vistos']])\n",
+    "Y_demo     = df_demo['gasto']\n",
+    "\n",
+    "m_simple   = sm.OLS(Y_demo, X_simple).fit()\n",
+    "m_multiple = sm.OLS(Y_demo, X_multiple).fit()\n",
+    "\n",
+    "print('=== Modelo SIMPLE (solo tiempo) ===')\n",
+    "print(f'  R²: {m_simple.rsquared:.4f}  |  AIC: {m_simple.aic:.2f}')\n",
+    "print()\n",
+    "print('=== Modelo MÚLTIPLE (tiempo + productos_vistos) ===')\n",
+    "print(f'  R²: {m_multiple.rsquared:.4f}  |  AIC: {m_multiple.aic:.2f}')\n",
+    "print()\n",
+    "print(f'Ganancia de R²: +{(m_multiple.rsquared - m_simple.rsquared)*100:.1f}pp al añadir productos_vistos')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 1.2 Ejemplo introductorio de la presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Datos exactos de la presentación\n",
+    "data = {\n",
+    "    'tiempo':           [5, 6, 7, 8, 5.5, 6.5],\n",
+    "    'productos_vistos': [3, 4, 5, 6, 3,   5],\n",
+    "    'gasto':            [1200, 1400, 1600, 1800, 1300, 1500]\n",
+    "}\n",
+    "df_intro = pd.DataFrame(data)\n",
+    "\n",
+    "X_i = df_intro[['tiempo', 'productos_vistos']]\n",
+    "X_i = sm.add_constant(X_i)\n",
+    "Y_i = df_intro['gasto']\n",
+    "modelo_intro = sm.OLS(Y_i, X_i).fit()\n",
+    "print(modelo_intro.summary())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "b = modelo_intro.params\n",
+    "print('=== Interpretación de coeficientes (ceteris paribus) ===')\n",
+    "print(f'β₀ = {b[\"const\"]:,.0f}  → gasto base cuando tiempo=0 y productos=0')\n",
+    "print(f'β₁ = {b[\"tiempo\"]:,.0f}  → por cada minuto adicional de navegación,')\n",
+    "print(f'          el gasto aumenta ${b[\"tiempo\"]:,.0f}, si productos_vistos se mantiene constante')\n",
+    "print(f'β₂ = {b[\"productos_vistos\"]:,.0f}  → por cada producto adicional visto,')\n",
+    "print(f'          el gasto aumenta ${b[\"productos_vistos\"]:,.0f}, si tiempo se mantiene constante')\n",
+    "print()\n",
+    "print('Ecuación: ŷ = ' +\n",
+    "      f'{b[\"const\"]:,.0f} + {b[\"tiempo\"]:,.0f}·tiempo + {b[\"productos_vistos\"]:,.0f}·productos_vistos')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 1:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué significa \"manteniendo las demás constantes\" al interpretar β₁?\n",
+    "r_ceteris = \"\"\n",
+    "\n",
+    "# ✏️ ¿Por qué puede ser mejor un modelo múltiple que uno simple, incluso con mayor complejidad?\n",
+    "r_ventaja = \"\"\n",
+    "\n",
+    "# ✏️ Predice el gasto de un cliente que navega 7 min y ve 4 productos:\n",
+    "pred = b['const'] + b['tiempo']*7 + b['productos_vistos']*4\n",
+    "print(f'Predicción (7 min, 4 productos): ${pred:,.0f}')\n",
+    "\n",
+    "print(f'Ceteris paribus: {r_ceteris}')\n",
+    "print(f'Ventaja múltiple: {r_ventaja}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 2 — Actividad guiada: Plataforma educativa\n",
+    "\n",
+    "### 2.1 Generar el dataset exacto de la presentación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import statsmodels.api as sm\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "np.random.seed(42)\n",
+    "n = 100\n",
+    "df = pd.DataFrame({\n",
+    "    'tiempo_estudio':     np.random.normal(10, 2, n),\n",
+    "    'interacciones_foro': np.random.poisson(5, n),\n",
+    "    'sesiones_activas':   np.random.randint(3, 10, n),\n",
+    "    'notas_previas':      np.random.normal(4.5, 0.5, n),\n",
+    "})\n",
+    "# Variable dependiente con algo de ruido\n",
+    "df['rendimiento_final'] = (1.5 * df['tiempo_estudio']\n",
+    "                           + 0.8 * df['notas_previas']\n",
+    "                           + 0.3 * df['interacciones_foro']\n",
+    "                           + np.random.normal(0, 2, n))\n",
+    "\n",
+    "print(df.describe().round(3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.2 Exploración visual previa (siempre antes de modelar)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Matriz de correlaciones\n",
+    "corr = df.corr().round(3)\n",
+    "plt.figure(figsize=(7, 5))\n",
+    "sns.heatmap(corr, annot=True, fmt='.2f', cmap='coolwarm',\n",
+    "            vmin=-1, vmax=1, linewidths=0.5, square=True)\n",
+    "plt.title('Matriz de correlación — Plataforma educativa', fontweight='bold')\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "print('Correlaciones con rendimiento_final:')\n",
+    "print(corr['rendimiento_final'].sort_values(ascending=False))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 2.3 Ajustar el modelo completo (Paso exacto de la presentación)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "X = df[['tiempo_estudio', 'interacciones_foro', 'sesiones_activas', 'notas_previas']]\n",
+    "X = sm.add_constant(X)\n",
+    "Y = df['rendimiento_final']\n",
+    "modelo = sm.OLS(Y, X).fit()\n",
+    "print(modelo.summary())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Resumen de coeficientes y significancia ===')\n",
+    "tabla_coef = pd.DataFrame({\n",
+    "    'coef':    modelo.params.round(4),\n",
+    "    'p-value': modelo.pvalues.round(4),\n",
+    "    'sig':     modelo.pvalues.apply(lambda p:\n",
+    "                   '***' if p<0.001 else '**' if p<0.01 else '*' if p<0.05 else '(ns)')\n",
+    "})\n",
+    "print(tabla_coef)\n",
+    "print()\n",
+    "print(f'R² total:      {modelo.rsquared:.4f}')\n",
+    "print(f'R² ajustado:   {modelo.rsquared_adj:.4f}')\n",
+    "print(f'AIC:           {modelo.aic:.2f}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 3 — Verificación de supuestos\n",
+    "\n",
+    "### 3.1 Supuesto 1 — Linealidad (scatter predictores vs Y)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "predictores = ['tiempo_estudio', 'interacciones_foro', 'sesiones_activas', 'notas_previas']\n",
+    "\n",
+    "fig, axes = plt.subplots(1, 4, figsize=(16, 4))\n",
+    "fig.suptitle('Supuesto de LINEALIDAD — cada predictor vs Y', fontweight='bold')\n",
+    "\n",
+    "for ax, col in zip(axes, predictores):\n",
+    "    r = df[col].corr(Y)\n",
+    "    sns.regplot(data=df, x=col, y='rendimiento_final', ax=ax,\n",
+    "                ci=None, scatter_kws={'alpha': 0.4, 's': 20},\n",
+    "                line_kws={'color': '#ED7D31', 'linewidth': 2})\n",
+    "    ax.set_title(f'{col}\\nr = {r:.3f}', fontsize=9)\n",
+    "    ax.set_xlabel('')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.2 Supuesto 2 y 3 — Residuos vs valores ajustados (Independencia + Homocedasticidad)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "residuos     = modelo.resid\n",
+    "predicciones = modelo.fittedvalues\n",
+    "\n",
+    "# Gráfico exacto de la presentación\n",
+    "sns.scatterplot(x=predicciones, y=residuos)\n",
+    "plt.axhline(0, color='red')\n",
+    "plt.title('Residuos vs. Predicción')\n",
+    "plt.xlabel('Valores ajustados')\n",
+    "plt.ylabel('Residuos')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Versión extendida con diagnóstico\n",
+    "fig, axes = plt.subplots(1, 2, figsize=(13, 4))\n",
+    "fig.suptitle('Homocedasticidad e Independencia — Residuos', fontweight='bold')\n",
+    "\n",
+    "axes[0].scatter(predicciones, residuos, color='#2E75B6', alpha=0.6, s=30)\n",
+    "axes[0].axhline(0, color='red', linestyle='--', linewidth=2)\n",
+    "# Añadir banda ±2σ para referencia\n",
+    "s = residuos.std()\n",
+    "axes[0].axhline( 2*s, color='orange', linestyle=':', linewidth=1.5, label='+2σ')\n",
+    "axes[0].axhline(-2*s, color='orange', linestyle=':', linewidth=1.5, label='-2σ')\n",
+    "axes[0].set_title('Residuos vs Valores ajustados\\n(los puntos deben estar distribuidos aleatoriamente)')\n",
+    "axes[0].set_xlabel('ŷ')\n",
+    "axes[0].set_ylabel('Residuo')\n",
+    "axes[0].legend(fontsize=8)\n",
+    "\n",
+    "# Residuos vs orden (independencia)\n",
+    "axes[1].plot(range(len(residuos)), residuos, color='#70AD47', alpha=0.7, linewidth=1)\n",
+    "axes[1].axhline(0, color='red', linestyle='--', linewidth=2)\n",
+    "axes[1].set_title('Residuos vs Índice\\n(no debe haber patrón temporal)')\n",
+    "axes[1].set_xlabel('Índice de observación')\n",
+    "axes[1].set_ylabel('Residuo')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "n_outliers = (np.abs(residuos) > 2*s).sum()\n",
+    "print(f'Residuos fuera de ±2σ: {n_outliers} ({n_outliers/len(residuos)*100:.1f}%)')\n",
+    "print('Esperado en dist. normal: ~5%')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.3 Supuesto 4 — Normalidad de los residuos (Q-Q plot)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fig, axes = plt.subplots(1, 2, figsize=(12, 4))\n",
+    "fig.suptitle('Supuesto de NORMALIDAD de residuos', fontweight='bold')\n",
+    "\n",
+    "# Q-Q plot exacto de la presentación\n",
+    "sm.qqplot(residuos, line='45', ax=axes[0])\n",
+    "axes[0].set_title('Gráfico Q-Q de residuos\\n(puntos deben seguir la línea roja)')\n",
+    "\n",
+    "# Histograma de residuos\n",
+    "sns.histplot(residuos, bins=15, kde=True, ax=axes[1], color='#BDD7EE', edgecolor='white')\n",
+    "axes[1].axvline(0, color='red', linestyle='--', linewidth=2)\n",
+    "axes[1].set_title('Histograma de residuos\\n(debe ser ~campana centrada en 0)')\n",
+    "axes[1].set_xlabel('Residuo')\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "# Test de Shapiro-Wilk\n",
+    "stat, p_shapiro = stats.shapiro(residuos)\n",
+    "print(f'Test Shapiro-Wilk: W={stat:.4f}, p={p_shapiro:.4f}')\n",
+    "print(f'Normalidad: {\"✅ No se rechaza (p>0.05)\" if p_shapiro > 0.05 else \"⚠️ Se rechaza normalidad (p<0.05)\"}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 3.4 Supuesto 5 — No multicolinealidad (VIF)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# VIF — recomendado por la presentación\n",
+    "X_vif = df[predictores].copy()\n",
+    "X_vif = sm.add_constant(X_vif)\n",
+    "\n",
+    "vif_data = pd.DataFrame({\n",
+    "    'Variable': X_vif.columns,\n",
+    "    'VIF': [variance_inflation_factor(X_vif.values, i)\n",
+    "            for i in range(X_vif.shape[1])]\n",
+    "}).set_index('Variable').round(2)\n",
+    "\n",
+    "print('=== Variance Inflation Factor (VIF) ===')\n",
+    "print(vif_data)\n",
+    "print()\n",
+    "print('Referencia:')\n",
+    "print('  VIF < 5     → sin problemas de multicolinealidad ✅')\n",
+    "print('  VIF 5–10    → multicolinealidad moderada ⚠️')\n",
+    "print('  VIF > 10    → multicolinealidad severa ❌ — eliminar o combinar la variable')\n",
+    "\n",
+    "# Visualización VIF\n",
+    "vif_plot = vif_data.drop('const').reset_index()\n",
+    "colores_vif = ['#FC4E4E' if v > 10 else '#FFC000' if v > 5 else '#70AD47'\n",
+    "               for v in vif_plot['VIF']]\n",
+    "plt.figure(figsize=(8, 3))\n",
+    "plt.barh(vif_plot['Variable'], vif_plot['VIF'], color=colores_vif, edgecolor='white')\n",
+    "plt.axvline(5,  color='orange', linestyle='--', linewidth=2, label='Umbral moderado (5)')\n",
+    "plt.axvline(10, color='red',    linestyle='--', linewidth=2, label='Umbral severo (10)')\n",
+    "plt.title('VIF por predictor', fontweight='bold')\n",
+    "plt.xlabel('VIF')\n",
+    "plt.legend(fontsize=8)\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 3 — Evaluación de supuestos:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Se cumple la linealidad? ¿Algún predictor muestra patrón no lineal?\n",
+    "r_linealidad = \"\"\n",
+    "\n",
+    "# ✏️ ¿El gráfico de residuos muestra patrón sistemático? ¿Hay homocedasticidad?\n",
+    "r_homoced = \"\"\n",
+    "\n",
+    "# ✏️ ¿Los residuos parecen normales según el Q-Q y el histograma?\n",
+    "r_normalidad = \"\"\n",
+    "\n",
+    "# ✏️ ¿Hay multicolinealidad problemática? ¿Qué variables la presentan?\n",
+    "r_vif = \"\"\n",
+    "\n",
+    "print('Linealidad:      ', r_linealidad)\n",
+    "print('Homocedasticidad:', r_homoced)\n",
+    "print('Normalidad:      ', r_normalidad)\n",
+    "print('Multicolinealidad:', r_vif)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 4 — Selección de variables\n",
+    "\n",
+    "### 4.1 Modelo reducido — eliminar variable no significativa (Backward)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "X_reducido = df[['tiempo_estudio', 'interacciones_foro', 'notas_previas']]\n",
+    "X_reducido = sm.add_constant(X_reducido)\n",
+    "modelo_reducido = sm.OLS(Y, X_reducido).fit()\n",
+    "print(modelo_reducido.summary())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.2 Comparación sistemática de modelos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Comparar tres modelos: completo, reducido, mínimo\n",
+    "X_min = sm.add_constant(df[['tiempo_estudio', 'notas_previas']])\n",
+    "modelo_min = sm.OLS(Y, X_min).fit()\n",
+    "\n",
+    "comparacion = pd.DataFrame({\n",
+    "    'Modelo': ['Completo (4 vars)', 'Reducido (3 vars)', 'Mínimo (2 vars)'],\n",
+    "    'Variables': [\n",
+    "        'tiempo, foro, sesiones, notas_prev',\n",
+    "        'tiempo, foro, notas_prev',\n",
+    "        'tiempo, notas_prev'\n",
+    "    ],\n",
+    "    'R²':       [modelo.rsquared,         modelo_reducido.rsquared,         modelo_min.rsquared],\n",
+    "    'R² adj':   [modelo.rsquared_adj,      modelo_reducido.rsquared_adj,     modelo_min.rsquared_adj],\n",
+    "    'AIC':      [modelo.aic,              modelo_reducido.aic,              modelo_min.aic],\n",
+    "    'BIC':      [modelo.bic,              modelo_reducido.bic,              modelo_min.bic],\n",
+    "    'N vars':   [4, 3, 2]\n",
+    "})\n",
+    "comparacion[['R²','R² adj']] = comparacion[['R²','R² adj']].round(4)\n",
+    "comparacion[['AIC','BIC']]   = comparacion[['AIC','BIC']].round(2)\n",
+    "\n",
+    "print('=== Comparación de modelos ===')\n",
+    "print(comparacion.to_string(index=False))\n",
+    "print()\n",
+    "print('Regla: menor AIC/BIC = mejor equilibrio ajuste-complejidad')\n",
+    "mejor_aic = comparacion.loc[comparacion['AIC'].idxmin(), 'Modelo']\n",
+    "print(f'Mejor modelo por AIC: {mejor_aic}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Visualizar comparación\n",
+    "fig, axes = plt.subplots(1, 3, figsize=(14, 4))\n",
+    "fig.suptitle('Comparación de modelos', fontweight='bold')\n",
+    "\n",
+    "nombres = ['Completo\\n(4 vars)', 'Reducido\\n(3 vars)', 'Mínimo\\n(2 vars)']\n",
+    "colores = ['#2E75B6', '#70AD47', '#ED7D31']\n",
+    "\n",
+    "for ax, met, vals in zip(\n",
+    "    axes,\n",
+    "    ['R² ajustado', 'AIC', 'BIC'],\n",
+    "    [[m.rsquared_adj for m in [modelo, modelo_reducido, modelo_min]],\n",
+    "     [m.aic          for m in [modelo, modelo_reducido, modelo_min]],\n",
+    "     [m.bic          for m in [modelo, modelo_reducido, modelo_min]]]\n",
+    "):\n",
+    "    bars = ax.bar(nombres, vals, color=colores, edgecolor='white')\n",
+    "    ax.set_title(met, fontweight='bold')\n",
+    "    if 'R²' in met:\n",
+    "        ax.set_ylim(0, 1)\n",
+    "        ax.set_ylabel('R² ajustado (mayor = mejor)')\n",
+    "    else:\n",
+    "        ax.set_ylabel(f'{met} (menor = mejor)')\n",
+    "    for bar, v in zip(bars, vals):\n",
+    "        ax.text(bar.get_x()+bar.get_width()/2, v,\n",
+    "                f'{v:.3f}' if 'R²' in met else f'{v:.1f}',\n",
+    "                ha='center', va='bottom', fontsize=9)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 4.3 Backward elimination automatizado (por p-value)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def backward_elimination(X_df, Y, threshold=0.05, verbose=True):\n",
+    "    \"\"\"Elimina iterativamente la variable con mayor p-value si supera el umbral.\"\"\"\n",
+    "    variables = list(X_df.columns)\n",
+    "    paso = 0\n",
+    "    while True:\n",
+    "        X_sm = sm.add_constant(X_df[variables])\n",
+    "        modelo_iter = sm.OLS(Y, X_sm).fit()\n",
+    "        pvalues = modelo_iter.pvalues.drop('const')\n",
+    "        max_pval = pvalues.max()\n",
+    "        if max_pval > threshold:\n",
+    "            eliminar = pvalues.idxmax()\n",
+    "            paso += 1\n",
+    "            if verbose:\n",
+    "                print(f'Paso {paso}: eliminar \"{eliminar}\" (p={max_pval:.4f} > {threshold})')\n",
+    "            variables.remove(eliminar)\n",
+    "        else:\n",
+    "            break\n",
+    "    if verbose:\n",
+    "        print(f'\\nVariables finales: {variables}')\n",
+    "        print(f'R² ajustado: {modelo_iter.rsquared_adj:.4f}')\n",
+    "        print(f'AIC:         {modelo_iter.aic:.2f}')\n",
+    "    return variables, modelo_iter\n",
+    "\n",
+    "print('=== Backward Elimination (umbral p < 0.05) ===')\n",
+    "vars_finales, modelo_backward = backward_elimination(\n",
+    "    df[['tiempo_estudio','interacciones_foro','sesiones_activas','notas_previas']],\n",
+    "    Y\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Ejercicio 4 — Selección:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# ✏️ ¿Qué variable eliminó backward elimination? ¿Qué indica eso sobre su aporte al modelo?\n",
+    "r_elim = \"\"\n",
+    "\n",
+    "# ✏️ ¿Qué diferencia hay entre usar R² y AIC para seleccionar el mejor modelo?\n",
+    "r_r2_vs_aic = \"\"\n",
+    "\n",
+    "# ✏️ ¿Cuándo podrías querer conservar una variable aunque su p-value sea > 0.05?\n",
+    "r_conservar = \"\"\n",
+    "\n",
+    "print(f'Variable eliminada:  {r_elim}')\n",
+    "print(f'R² vs AIC:           {r_r2_vs_aic}')\n",
+    "print(f'Conservar con p>0.05: {r_conservar}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## PARTE 5 — Actividad autónoma: Rendimiento académico\n",
+    "\n",
+    "### 5.1 Cargar y diagnosticar"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "import pandas as pd\n",
+    "import statsmodels.api as sm\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "\n",
+    "df2 = pd.read_csv('datos_regresion_multiple_autonomo.csv')\n",
+    "print(df2.describe().round(3))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Valores fuera de rango ===')\n",
+    "print(df2[df2['nota_diagnostico'] > 7][['id_estudiante','nota_diagnostico','nota_final']])\n",
+    "print()\n",
+    "# Limpiar el outlier intencional\n",
+    "df2_clean = df2[df2['nota_diagnostico'] <= 7].copy()\n",
+    "print(f'Registros: {len(df2)} → {len(df2_clean)} después de limpieza')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.2 Ajustar modelo completo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "X2 = df2_clean[['horas_estudio', 'participaciones_chat', 'videos_vistos', 'nota_diagnostico']]\n",
+    "X2 = sm.add_constant(X2)\n",
+    "y2 = df2_clean['nota_final']\n",
+    "modelo2 = sm.OLS(y2, X2).fit()\n",
+    "print(modelo2.summary())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.3 Verificar supuestos"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "res2  = modelo2.resid\n",
+    "pred2 = modelo2.fittedvalues\n",
+    "\n",
+    "fig, axes = plt.subplots(2, 2, figsize=(13, 9))\n",
+    "fig.suptitle('Verificación de supuestos — Modelo autónomo', fontweight='bold', fontsize=12)\n",
+    "\n",
+    "# 1. Residuos vs ajustados\n",
+    "axes[0,0].scatter(pred2, res2, color='#2E75B6', alpha=0.6, s=30)\n",
+    "axes[0,0].axhline(0, color='red', linestyle='--', linewidth=2)\n",
+    "axes[0,0].set_title('Residuos vs Valores ajustados')\n",
+    "axes[0,0].set_xlabel('ŷ')\n",
+    "axes[0,0].set_ylabel('Residuo')\n",
+    "\n",
+    "# 2. Q-Q plot\n",
+    "sm.qqplot(res2, line='45', ax=axes[0,1])\n",
+    "axes[0,1].set_title('Q-Q plot — Normalidad de residuos')\n",
+    "\n",
+    "# 3. Histograma residuos\n",
+    "sns.histplot(res2, bins=15, kde=True, ax=axes[1,0], color='#BDD7EE', edgecolor='white')\n",
+    "axes[1,0].axvline(0, color='red', linestyle='--', linewidth=2)\n",
+    "axes[1,0].set_title('Histograma de residuos')\n",
+    "\n",
+    "# 4. VIF\n",
+    "X2_vif = sm.add_constant(df2_clean[['horas_estudio','participaciones_chat',\n",
+    "                                     'videos_vistos','nota_diagnostico']])\n",
+    "vif2 = pd.DataFrame({\n",
+    "    'Variable': X2_vif.columns,\n",
+    "    'VIF': [variance_inflation_factor(X2_vif.values, i)\n",
+    "            for i in range(X2_vif.shape[1])]\n",
+    "}).set_index('Variable').drop('const').reset_index()\n",
+    "\n",
+    "colores_v = ['#FC4E4E' if v > 10 else '#FFC000' if v > 5 else '#70AD47'\n",
+    "             for v in vif2['VIF']]\n",
+    "axes[1,1].barh(vif2['Variable'], vif2['VIF'], color=colores_v, edgecolor='white')\n",
+    "axes[1,1].axvline(5,  color='orange', linestyle='--', linewidth=1.5, label='Umbral 5')\n",
+    "axes[1,1].axvline(10, color='red',    linestyle='--', linewidth=1.5, label='Umbral 10')\n",
+    "axes[1,1].set_title('VIF por predictor')\n",
+    "axes[1,1].legend(fontsize=8)\n",
+    "\n",
+    "plt.tight_layout()\n",
+    "plt.show()\n",
+    "\n",
+    "stat2, p_shap2 = stats.shapiro(res2)\n",
+    "print(f'Shapiro-Wilk: p={p_shap2:.4f} → {\"✅ Normalidad OK\" if p_shap2 > 0.05 else \"⚠️ Revisar normalidad\"}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### 5.4 Modelo reducido y comparación"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Código exacto de la presentación\n",
+    "X2_reducido = df2_clean[['horas_estudio', 'nota_diagnostico', 'videos_vistos']]\n",
+    "X2_reducido = sm.add_constant(X2_reducido)\n",
+    "modelo2_reducido = sm.OLS(y2, X2_reducido).fit()\n",
+    "print(modelo2_reducido.summary())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### ✏️ Conclusiones actividad autónoma:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('=== Comparación modelos autónomo ===')\n",
+    "comp2 = pd.DataFrame({\n",
+    "    'Modelo':   ['Completo (4 vars)', 'Reducido (3 vars)'],\n",
+    "    'R²':       [modelo2.rsquared, modelo2_reducido.rsquared],\n",
+    "    'R² adj':   [modelo2.rsquared_adj, modelo2_reducido.rsquared_adj],\n",
+    "    'AIC':      [modelo2.aic, modelo2_reducido.aic],\n",
+    "}).round(4)\n",
+    "print(comp2.to_string(index=False))\n",
+    "print()\n",
+    "\n",
+    "# ✏️ Interpreta los coeficientes del modelo reducido:\n",
+    "c1 = \"\"\n",
+    "# ✏️ ¿Qué variables descartaste y por qué?\n",
+    "c2 = \"\"\n",
+    "# ✏️ ¿Se cumplen los supuestos? ¿Cuál presenta más dudas?\n",
+    "c3 = \"\"\n",
+    "# ✏️ ¿Cómo usarías este modelo en un contexto profesional real?\n",
+    "c4 = \"\"\n",
+    "\n",
+    "print('--- CONCLUSIONES ---')\n",
+    "for i, c in enumerate([c1, c2, c3, c4], 1):\n",
+    "    print(f'{i}. {c}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "## 📋 Resumen: supuestos, diagnósticos y selección\n",
+    "\n",
+    "| Supuesto | Cómo verificarlo | Señal de problema |\n",
+    "|----------|-----------------|-------------------|\n",
+    "| **Linealidad** | Scatter X vs Y | Patrón curvilíneo |\n",
+    "| **Independencia** | Residuos vs índice | Patrón temporal/serial |\n",
+    "| **Homocedasticidad** | Residuos vs ŷ | Embudo o patrón creciente |\n",
+    "| **Normalidad** | Q-Q plot + Shapiro | Puntos fuera de la diagonal |\n",
+    "| **No multicolinealidad** | VIF | VIF > 5 (moderado), > 10 (severo) |\n",
+    "\n",
+    "**Selección de variables:**\n",
+    "\n",
+    "| Método | Descripción | Código |\n",
+    "|--------|-------------|--------|\n",
+    "| Backward | Eliminar variable con mayor p-value iterativamente | Manual con bucle |\n",
+    "| AIC | Menor AIC = mejor ajuste penalizado | `modelo.aic` |\n",
+    "| BIC | Penaliza más fuertemente que AIC | `modelo.bic` |\n",
+    "| R² ajustado | Penaliza variables innecesarias | `modelo.rsquared_adj` |\n",
+    "| VIF | Detectar multicolinealidad | `variance_inflation_factor()` |\n",
+    "\n",
+    "> 💡 **Ceteris paribus:** Cada coeficiente β₁ se interpreta como el efecto de X₁ sobre Y **manteniendo todas las demás variables constantes**. Esto es lo que distingue la regresión múltiple del análisis de correlaciones simples.\n",
+    "\n",
+    "> 💡 **No solo R²:** Un modelo con R²=0.95 pero con VIF>10 o residuos con patrón sistemático es un modelo con problemas. Siempre verifica los supuestos."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python",
+   "version": "3.10.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
