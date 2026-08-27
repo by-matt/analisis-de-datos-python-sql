@@ -5,10 +5,9 @@
 
 ### 1. Caso QuickShop (Analisis de Empleabilidad)
 * QuickShop_Analisis_Byron_Calderon.xlsx: Modelo analitico de ventas, retencion y comportamiento del consumidor.
-* generar_quickshop_excel.py: Script en Python para automatizar la estructuracion del libro Excel.
+* Prueba_QuickShop_Informe_Ejecutivo.md: Informe ejecutivo de optimizacion de negocio.
 
-### 2. SmartRetail BI & Dashboard Executivos
-* generar_modelos_pbi.py & generar_pbix_smartretail.py: Generadores de esquemas en estrella, medidas DAX y tableros interactivos.
-
-### 3. Simuladores de Gestion & Logica Comercial
-* 2.5_SistemaDeGestionDeEquipoTorneoDeVideojuegosRetro.py: Sistema completo de gestion de torneos en Python.
+### 2. SmartRetail BI & Dashboards Ejecutivos
+* Desafio_1_Presentacion_y_Conexion_SmartRetail.md: Conexion de fuentes primarias e ingesta de datos.
+* Desafio_2_Modelado_y_DAX_SmartRetail.md: Modelo estrella, relaciones y medidas DAX.
+* Prueba_3_Dashboard_Ejecutivo_SmartRetail.md: Tablero ejecutivo interactivo.
