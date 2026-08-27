@@ -1,3 +1,6 @@
+# Ignore class PDFs and theory presentations
+*.pdf
+
 # Python
 __pycache__/
 *.py[cod]

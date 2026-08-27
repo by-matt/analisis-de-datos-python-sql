@@ -1,47 +1,38 @@
-# 📊 Portafolio de Análisis de Datos, Python & SQL
-**Autor**: Byron Matías Calderón González ([by-matt](https://github.com/by-matt))  
-**Especialidad**: Análisis cuantitativo de datos, Python (Pandas/NumPy), SQL, Inferencia Estadística y Visualización.
+# Portafolio de Desafios & Proyectos Practicos en Analisis de Datos
+**Autor**: Byron Matias Calderon Gonzalez (by-matt)
 
----
+Este repositorio contiene exclusivamente las soluciones de codigo, desafios practicos, pruebas evaluadas, consultas SQL y modelos analiticos desarrollados por Byron Calderon.
 
-## 🎯 DESCRIPCIÓN DEL REPOSITORIO
-Este repositorio reúne los proyectos, scripts, cuadernos de Jupyter (.ipynb), consultas SQL y datasets desarrollados a lo largo del programa de especialización en **Análisis de Datos**. 
+Se han excluido todas las lecturas y guias teoricas para ofrecer una vista limpia y 100% orientada al codigo ejecutable y a la estructuracion de datos.
 
-El portafolio abarca desde la limpieza y estructuración de datos no estructurados hasta la modelación estadística e inferencia para la toma de decisiones basada en evidencia.
+## ESTRUCTURA DE DESAFIOS Y CODIGO
 
----
+### 1. Desafios de Programacion Python & POO
+* Sistema de Gestion de Ventas: gestion_ventas.py y datasets de soporte.
+* Procesador de Notas: procesador_notas.py
+* POO: 01. POO.ipynb y 2.5_SistemaDeGestionDeEquipoTorneoDeVideojuegosRetro.py
 
-## 📂 ESTRUCTURA DEL REPOSITORIO
+### 2. Desafios de Obtencion y Preparacion de Datos (NumPy & Pandas)
+* Desafio 1 (NumPy): 04.1_desafio_numpy.py
+* Desafio 2 (Pandas): 04.2_desafio_pandas.py
+* Prueba Limpieza: 04.3_prueba_obtencion_preparacion.py
 
-### 🐍 1. Fundamentos de Programación Python
-* **Estructuras de Datos & POO**: Implementación de clases, funciones modularizadas, sentencias condicionales e iterativas.
-* **Procesadores Automáticos**: Scripts en Python para cálculo de calificaciones y gestión de ventas (procesador_notas.py, gestion_ventas.py).
+### 3. Desafios de Analisis Exploratorio de Datos (EDA)
+* Desafio EDA: 5.1_desafio_eda_descriptiva.py
+* Desafio Regresion: 5.2_desafio_correlacion_modelamiento.py
+* Prueba EDA: 5.3_prueba_aed_visualizacion.py
 
-### 🐼 2. Obtención y Preparación de Datos (NumPy & Pandas)
-* **Manipulación de Datasets**: Limpieza de datos primarios, imputación de valores faltantes, conversión de formatos y transformaciones de texto.
-* **Desafíos Técnicos**: desafio_numpy.py, desafio_pandas.py, prueba_obtencion_preparacion.py.
+### 4. Desafios de Inferencia Estadistica
+* Inferencia & TLC: inferencia_estadistica.py, desafio_tlc.py, desafio_metodo_cientifico.py, desafio_inferencia.py
 
-### 📈 3. Análisis Exploratorio de Datos (EDA) & Estadística Descriptiva
-* **Análisis Exploratorio**: Estudio de distribuciones, correlaciones entre variables, regresión lineal simple/múltiple.
-* **Visualización de Datos**: Gráficos interactivos y narrativos para detección de tendencias e insumos de toma de decisión.
+### 5. Consultas & Desafios SQL
+* Consultas SQL: consultas_desafio_1.sql, consultas_desafio_2.sql, prueba_diseno_manipulacion.sql
 
-### 🧪 4. Inferencia Estadística & Pruebas de Hipótesis
-* **Trazabilidad & Muestreo**: Pruebas de hipótesis, estimadores, teorema del límite central y validación de supuestos estadísticos (inferencia_estadistica.py, desafio_tlc.py).
+### 6. Casos de Estudio & Proyectos
+* Caso QuickShop: QuickShop_Analisis_Byron_Calderon.xlsx y generar_quickshop_excel.py
+* SmartRetail BI: generar_modelos_pbi.py y generar_pbix_smartretail.py
 
-### 🗄️ 5. Bases de Datos & Consultas SQL
-* **Diseño & Manipulación de BD**: Consultas DDL/DML, agregaciones, cláusulas GROUP BY, JOINs múltiples e integridad referencial (consultas_desafio.sql, prueba_diseno_manipulacion.sql).
-
----
-
-## 🛠️ HERRAMIENTAS Y TECNOLOGÍAS
-* **Lenguajes**: Python 3.x, SQL, R
-* **Librerías de Datos**: Pandas, NumPy, Matplotlib, Seaborn
-* **Entornos de Desarrollo**: Jupyter Notebook, VS Code, Git/GitHub
-* **Bases de Datos & BI**: PostgreSQL / MySQL, Microsoft Excel Avanzado, Power BI
-
----
-
-## ✉️ CONTACTO
-* **LinkedIn**: [linkedin.com/in/byron-calderón](https://linkedin.com/in/byron-calderón)
-* **GitHub**: [github.com/by-matt](https://github.com/by-matt)
-* **Correo**: byroncalde@gmail.com
+## CONTACTO
+* GitHub: https://github.com/by-matt
+* LinkedIn: https://linkedin.com/in/byron-calderon
+* Correo: byroncalde@gmail.com
