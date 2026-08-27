@@ -1,9 +1,0 @@
-ticket_id,canal_ingreso,tiempo_espera_min,tipo_reclamo,satisfaccion_post_servicio
-1001,Web,12,Demora en atención,2
-1002,Teléfono,25,Respuesta incompleta,3
-1003,Web,8,Demora en atención,4
-1004,Correo,15,Mal trato,1
-1005,Web,30,Demora en atención,2
-1006,Teléfono,22,Mal trato,1
-1007,Correo,18,Demora en atención,2
-1008,Web,35,Demora en atención,1

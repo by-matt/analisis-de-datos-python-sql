@@ -1,7 +1,0 @@
-ID,Descripcion_visualizacion,Tipo_error
-1,Gráfico de barras con eje Y truncado para mostrar diferencias exageradas en ingresos.,Manipulación de escala
-2,Gráfico de torta con 10 categorías de colores similares y sin etiquetas claras.,Uso excesivo de categorías y falta de contraste
-3,"Gráfico de líneas 3D con superposición de series, dificultando la lectura.",Perspectiva distorsionante
-4,Mapa de calor con escala de colores rojo-verde sin opción para daltónicos.,Accesibilidad deficiente
-5,"Diagrama de dispersión sin leyenda, ni explicación de qué representa cada eje.",Falta de contexto
-6,"Gráfico circular con datos de tiempo, sin orden cronológico lógico.",Mal uso del tipo de gráfico

@@ -1,9 +1,0 @@
-usuario_id,fecha_ingreso,modulo_utilizado,tiempo_en_sistema_min,errores_reportados
-301,2025-07-15,Inventario,45,0
-302,2025-07-15,Ventas,30,1
-303,2025-07-16,Ventas,12,3
-304,2025-07-16,RRHH,60,0
-305,2025-07-17,Inventario,25,0
-306,2025-07-17,RRHH,55,2
-307,2025-07-18,Finanzas,10,4
-308,2025-07-18,Ventas,20,1
